@@ -9,7 +9,11 @@
     </resultMap>
 
     <select id="findByUserName" resultType="com.xiaoyaotong.api.login.entity.User" parameterType="String">
-        select * from user where username = #{username}
+        select * from t_user where username = #{username}
+    </select>
+
+    <select id="findByID" resultType="com.xiaoyaotong.api.login.entity.User">
+        select * from t_user where id = #{id}
     </select>
 
 
