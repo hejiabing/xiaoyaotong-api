@@ -22,6 +22,4 @@ public class Constants {
      */
     public static final String AUTHORIZATION = "authorization";
 
-    public static final Object NULLUSER = null;
-
 }
