@@ -33,7 +33,7 @@ public class TokenController {
 
     @Autowired
     private TokenManager tokenManager;
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(value="/login", method = RequestMethod.POST)
     public ResponseEntity<ResultModel> login(@RequestParam String username, @RequestParam String password) {
         Assert.notNull(username, "username can not be empty");
         Assert.notNull(password, "password can not be empty");
@@ -49,11 +49,10 @@ public class TokenController {
         return new ResponseEntity<>(ResultModel.ok(model), HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.DELETE)
+    @RequestMapping(value="logout",method = RequestMethod.DELETE)
     @Authorization
     public ResponseEntity<ResultModel> logout(@CurrentUser User user) {
         tokenManager.deleteToken(user.getId());
         return new ResponseEntity<>(ResultModel.ok(), HttpStatus.OK);
     }
-
 }
