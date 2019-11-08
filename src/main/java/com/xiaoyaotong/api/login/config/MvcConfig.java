@@ -1,11 +1,18 @@
 package com.xiaoyaotong.api.login.config;
 
+import com.xiaoyaotong.api.login.interceptor.AuthorizationInterceptor;
+import com.xiaoyaotong.api.login.resolvers.CurrentUserMethodArgumentResolver;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.method.support.HandlerMethodArgumentResolver;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+import java.util.List;
+
 @Configuration
-public class MvcConfig extends WebMvcConfigurerAdapter {}
-/*
+public class MvcConfig extends WebMvcConfigurerAdapter {
+
     @Autowired
     private AuthorizationInterceptor authorizationInterceptor;
 
@@ -22,4 +29,3 @@ public class MvcConfig extends WebMvcConfigurerAdapter {}
         argumentResolvers.add(currentUserMethodArgumentResolver);
     }
 }
-*/

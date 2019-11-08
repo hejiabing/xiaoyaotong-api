@@ -59,12 +59,12 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>5.2.0.RELEASE</version>
+            <version>5.2.1.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>5.2.0.RELEASE</version>
+            <version>5.2.1.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -72,8 +72,6 @@
             <version>4.0.0</version>
             <scope>provided</scope>
         </dependency>
-
-
     </dependencies>
 
     <build>

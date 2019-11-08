@@ -49,7 +49,7 @@ public class TokenController {
         return new ResponseEntity<>(ResultModel.ok(model), HttpStatus.OK);
     }
 
-    @RequestMapping(value="logout",method = RequestMethod.DELETE)
+    @RequestMapping(value="logout",method = RequestMethod.POST)
     @Authorization
     public ResponseEntity<ResultModel> logout(@CurrentUser User user) {
         tokenManager.deleteToken(user.getId());

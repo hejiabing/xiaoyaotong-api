@@ -20,6 +20,4 @@
     <select id="test" resultType="String">
         select version()
     </select>
-
-
 </mapper>

@@ -4,6 +4,7 @@ import com.xiaoyaotong.api.login.annotation.Authorization;
 import com.xiaoyaotong.api.login.config.Constants;
 import com.xiaoyaotong.api.login.manager.TokenManager;
 import com.xiaoyaotong.api.login.model.TokenModel;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
@@ -16,7 +17,7 @@ import java.lang.reflect.Method;
 @Component
 public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
 
-    //@Autowired
+    @Autowired
     private TokenManager manager;
 
     public boolean preHandle(HttpServletRequest request,
@@ -26,10 +27,24 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
         if (!(handler instanceof HandlerMethod)) {
             return true;
         }
+
         HandlerMethod handlerMethod = (HandlerMethod) handler;
         Method method = handlerMethod.getMethod();
+
+        //方法不需要验证
+        if (method.getAnnotation(Authorization.class) == null ){
+            return true;
+        }
         //从header中得到token
         String authorization = request.getHeader(Constants.AUTHORIZATION);
+
+
+
+        //需要验证，并authorization为空，直接返回
+        if (method.getAnnotation(Authorization.class) != null && null == authorization ){
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            return false;
+        }
         //验证token
         TokenModel model = manager.getToken(authorization);
         if (manager.checkToken(model)) {

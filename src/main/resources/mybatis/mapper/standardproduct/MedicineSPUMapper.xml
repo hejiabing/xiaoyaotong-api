@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaoyaotong.api.standardproduct.mapper.MedicineSPUMapper">
+
+
+    <resultMap id="medicineSPUType" type="com.xiaoyaotong.api.standardproduct.entity.MedicineSPU">
+        <id column="_id" jdbcType="VARCHAR" property="id" />
+        <result column="spu_id" jdbcType="VARCHAR" property="spuId" />
+        <result column="common_name" jdbcType="VARCHAR" property="commonName" />
+        <result column="approval_code" jdbcType="VARCHAR" property="approvalCode" />
+        <result column="spec" jdbcType="VARCHAR" property="spec" />
+        <result column="factory_name" jdbcType="VARCHAR" property="factoryName" />
+        <result column="formal_name" jdbcType="VARCHAR" property="formalName" />
+        <result column="short_name" jdbcType="VARCHAR" property="shortName" />
+        <result column="first_category" jdbcType="VARCHAR" property="firstCategory" />
+        <result column="second_category" jdbcType="VARCHAR" property="secondCategory" />
+        <result column="is_standard" jdbcType="VARCHAR" property="isStandard" />
+        <result column="status" jdbcType="VARCHAR" property="status" />
+        <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+        <result column="bar_code" jdbcType="VARCHAR" property="barCode" />
+        <collection property="pics" ofType="com.xiaoyaotong.api.standardproduct.entity.MedicineSPUPic" column="f_spu_id">
+            <id property="id" column="_id"/>
+            <result property="picUrl" column="pic_url"/>
+            <result property="status" column="status"/>
+            <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+            <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+            <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
+            <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+        </collection>
+    </resultMap>
+    <select id="findMedicineSPUByID" resultMap="medicineSPUType">
+        select spu.*,pic.* from t_medicine_spu spu
+        inner join t_medicine_spu_pic pic
+        on pic.f_spu_id = spu.spu_id
+        where spu.spu_id = #{spuid}
+    </select>
+
+    <select id="getSPUList" parameterType="hashmap" resultMap="medicineSPUType">
+        select spu.*,pic.* from t_medicine_spu spu
+        left join t_medicine_spu_pic pic
+         on pic.spu_id = spu.spu_id
+         limit #{itemBegin},#{pageNum}
+    </select>
+
+    <select id="getAllSPUIds" resultType="java.lang.Integer">
+        select spu_id from t_medicine_spu
+    </select>
+
+</mapper>
