@@ -73,4 +73,48 @@
         select spu_id from t_medicine_spu
     </select>
 
+    <insert id="insertMedicineSPU">
+        insert into t_medicine_spu(_id,spu_id,common_name,approval_code,spec,factory_name,
+        formal_name,short_name,first_category,second_category,is_standard,status,create_user,
+        create_time,update_user,update_time,bar_code)
+        values (
+        #{id},#{spuId},#{commonName},#{approvalCode},#{spec},#{factoryName},#{formalName},
+        #{shortName},#{firstCategory},#{secondCategory},#{isStandard},#{status},#{createUser},
+        #{createTime},#{updateUser},#{updateTime},#{barCode}
+        )
+    </insert>
+
+    <update id="updateMedicineSPU">
+        update t_medicine_spu set
+        common_name = #{commonName},
+        approval_code = #{approvalCode},
+        spec = #{spec},
+        factory_name = #{factoryName},
+        formal_name = #{formalName},
+        short_name = #{shortName},
+        first_category = #{firstCategory},
+        second_category = #{secondCategory},
+        is_standard = #{isStandard},
+        status = #{status},
+        create_user = #{createUser},
+        create_time = #{createTime},
+        update_user = #{updateUser},
+        update_time = #{updateTime},
+        bar_code = #{barCode}
+        where _id = #{id} and spu_id = #{spuId}
+    </update>
+
+    <!--物理删除-->
+    <delete id="deleteMedicineSPUBad">
+        delete from t_medicine_spu
+        where _id=#{id} and spu_id=#{spuId}
+    </delete>
+
+    <!--逻辑删除-->
+    <update id="deleteMedicineSPU">
+        update t_medicine_spu set
+        status = -1
+        where _id=#{id} and spu_id=#{spuId}
+    </update>
+
 </mapper>

@@ -40,4 +40,31 @@ public class MedicineSPUServiceImpl implements MedicineSPUService {
         return medicineSPUMapper.getSPUList(hashMap);
     }
 
+    @Override
+    public boolean insertMedicineSPU(MedicineSPU medicineSPU) {
+        int result = medicineSPUMapper.insertMedicineSPU(medicineSPU);
+        if(result>0){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean updateMedicineSPU(MedicineSPU medicineSPU) {
+        int result = medicineSPUMapper.updateMedicineSPU(medicineSPU);
+        if(result>0){
+            return  true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean deleteMedicineSPU(MedicineSPU medicineSPU) {
+        int result = medicineSPUMapper.deleteMedicineSPU(medicineSPU.getId(),medicineSPU.getSpuId());
+        if(result>0){
+            return true;
+        }
+        return false;
+    }
+
 }

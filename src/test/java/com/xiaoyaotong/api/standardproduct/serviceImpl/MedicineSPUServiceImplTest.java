@@ -38,4 +38,16 @@ class MedicineSPUServiceImplTest {
             System.out.println(m);
         }
     }
+
+
+    void testInsertItem(){
+        MedicineSPU spu = new MedicineSPU();
+        spu.setId(0);
+        spu.setSpuId(5);
+        spu.setCommonName("武汉");
+        spu.setSpec("12s*6");
+        spu.setFactoryName("湖北武汉");
+        spu.setApprovalCode("国A5432");
+        medicineSPUService.insertItem(spu);
+    }
 }

@@ -40,7 +40,7 @@ public class MedicineSPUController {
 
     @RequestMapping(value="/getspulist", method = RequestMethod.POST)
     @Authorization
-    public ResponseEntity<List<MedicineSPU>> getAllSPU(@RequestParam("pagebegin") int pageBegin ,@RequestParam("pagenum") int pageNum) {
+    public ResponseEntity<List<MedicineSPU>> getSPUList(@RequestParam("pagebegin") int pageBegin ,@RequestParam("pagenum") int pageNum) {
         Assert.notNull(pageBegin, "pageid can not be empty");
         Assert.notNull(pageNum, "pageNum can not be empty");
         List<MedicineSPU> spus = medicineSPUService.getSPUList(pageBegin,pageNum);
@@ -48,6 +48,31 @@ public class MedicineSPUController {
             return  new ResponseEntity<List<MedicineSPU>>(spus, HttpStatus.OK);
         }else{
             return new ResponseEntity<List<MedicineSPU>>((List<MedicineSPU>)null, HttpStatus.OK);
+        }
+    }
+
+    @RequestMapping(value="/updatespu", method = RequestMethod.POST)
+    @Authorization
+    public ResponseEntity<Boolean> updateSPU(@RequestParam("spu") MedicineSPU spu) {
+        Assert.notNull(spu, "pageid can not be empty");
+        boolean result = medicineSPUService.updateMedicineSPU(spu);
+        if(result == true){
+            MedicineSPU newspu = medicineSPUService.getSPUByspuid(spu.getId());
+            return  new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
+        }else{
+            return  new ResponseEntity<Boolean>(Boolean.FALSE, HttpStatus.OK);
+        }
+    }
+
+    @RequestMapping(value="/addspu", method = RequestMethod.POST)
+    @Authorization
+    public ResponseEntity<Boolean> addSPU(@RequestParam("spu") MedicineSPU spu) {
+        Assert.notNull(spu, "pageid can not be empty");
+        boolean result = medicineSPUService.insertMedicineSPU(spu);
+        if(result == true){
+            return  new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
+        }else{
+            return  new ResponseEntity<Boolean>(Boolean.FALSE, HttpStatus.OK);
         }
     }
 
