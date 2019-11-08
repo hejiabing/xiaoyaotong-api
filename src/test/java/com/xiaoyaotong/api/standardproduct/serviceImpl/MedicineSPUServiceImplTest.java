@@ -33,6 +33,9 @@ class MedicineSPUServiceImplTest {
     @Test
     void testGetSPUList(){
         List<MedicineSPU> spus = medicineSPUService.getSPUList(0,12);
-        System.out.println(spus);
+        for (MedicineSPU m:spus) {
+            System.out.println();
+            System.out.println(m);
+        }
     }
 }
