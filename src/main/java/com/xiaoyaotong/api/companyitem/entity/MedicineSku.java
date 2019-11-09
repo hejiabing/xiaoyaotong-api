@@ -1,6 +1,6 @@
-package com.xiaoyaotong.api.product.entity;
+package com.xiaoyaotong.api.companyitem.entity;
 
-public class MedicineSKU {
+public class MedicineSku {
 
   private long id;
   private long skuId;

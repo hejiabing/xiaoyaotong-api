@@ -48,6 +48,6 @@ class MedicineSPUServiceImplTest {
         spu.setSpec("12s*6");
         spu.setFactoryName("湖北武汉");
         spu.setApprovalCode("国A5432");
-        medicineSPUService.insertItem(spu);
+        medicineSPUService.insertMedicineSPU(spu);
     }
 }

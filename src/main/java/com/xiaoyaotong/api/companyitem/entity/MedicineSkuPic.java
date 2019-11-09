@@ -1,7 +1,7 @@
-package com.xiaoyaotong.api.product.entity;
+package com.xiaoyaotong.api.companyitem.entity;
 
 
-public class MedicineSKUPic {
+public class MedicineSkuPic {
 
   private long id;
   private long spuId;
