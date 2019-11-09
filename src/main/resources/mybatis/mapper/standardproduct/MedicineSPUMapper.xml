@@ -32,7 +32,8 @@
         </collection>
     </resultMap>
     <select id="findMedicineSPUByID" resultMap="medicineSPUType">
-        select spu.*,pic.* from t_medicine_spu spu
+        select spu.*,pic.id as pid, pic.pic_url, pic.status
+        from t_medicine_spu spu
         inner join t_medicine_spu_pic pic
         on pic.f_spu_id = spu.spu_id
         where spu.spu_id = #{spuid}
