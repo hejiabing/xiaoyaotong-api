@@ -8,8 +8,8 @@ import java.util.List;
  * @date ：2019/11/7 10:25 PM
  */
 public class MedicineSPU {
-    private long id;
-    private long spuId;
+    private int id;
+    private int spuId;
     private String commonName;
     private String approvalCode;
     private String spec;
@@ -35,20 +35,19 @@ public class MedicineSPU {
         this.pics = pics;
     }
 
-
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public long getSpuId() {
+    public int getSpuId() {
         return spuId;
     }
 
-    public void setSpuId(long spuId) {
+    public void setSpuId(int spuId) {
         this.spuId = spuId;
     }
 

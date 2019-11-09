@@ -17,4 +17,12 @@ public interface MedicineSPUService {
     //获取SPU list，分页获取
     List<MedicineSPU> getSPUList(int pageBegin,int pageNum);
 
+    boolean insertMedicineSPU(MedicineSPU medicineSPU);
+
+    boolean updateMedicineSPU(MedicineSPU medicineSPU);
+
+    boolean deleteMedicineSPU(MedicineSPU medicineSPU);
+
+
+
 }
