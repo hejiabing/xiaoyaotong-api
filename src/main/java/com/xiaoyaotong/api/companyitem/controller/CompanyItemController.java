@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.Assert;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -32,7 +29,7 @@ public class CompanyItemController {
      **/
     @RequestMapping(value = "/addlist", method = RequestMethod.POST)
     @Authorization
-    public ResponseEntity<HashMap> addItems(@RequestParam List<CompanySku> items) {
+    public ResponseEntity<HashMap> addItems(@RequestBody List<CompanySku> items) {
         Assert.notNull(items, "username can not be empty");
         int allItems = items.size();
         int result = 0;
@@ -48,7 +45,7 @@ public class CompanyItemController {
      **/
     @RequestMapping(value = "/addone", method = RequestMethod.POST)
     @Authorization
-    public ResponseEntity<HashMap> addItem(@RequestParam CompanySku item) {
+    public ResponseEntity<HashMap> addItem(@RequestBody CompanySku item) {
         Assert.notNull(item, "username can not be empty");
         int result = 0;
         result = companySkuService.insertCompanySku(item);
