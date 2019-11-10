@@ -58,3 +58,12 @@
 2019-11-09 13:15:29.296 INFO  --- [http-nio-8080-exec-1] io.lettuce.core.KqueueProvider Line:70  - Starting without optional kqueue library
 2019-11-09 13:15:29.873 INFO  --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource Line:110 - HikariPool-1 - Starting...
 2019-11-09 13:15:30.928 INFO  --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource Line:123 - HikariPool-1 - Start completed.
+2019-11-10 12:14:51.022 INFO  --- [main] com.xiaoyaotong.api.ApiApplicationTests Line:55  - Starting ApiApplicationTests on yyw-sh-pc-1449 with PID 11424 (started by hejiabing in D:\xiaoyaotong-api)
+2019-11-10 12:14:51.025 INFO  --- [main] com.xiaoyaotong.api.ApiApplicationTests Line:651 - No active profile set, falling back to default profiles: default
+2019-11-10 12:14:53.245 INFO  --- [main] com.xiaoyaotong.api.ApiApplicationTests Line:61  - Started ApiApplicationTests in 2.469 seconds (JVM running for 3.352)
+2019-11-10 12:14:53.638 INFO  --- [main] com.zaxxer.hikari.HikariDataSource Line:110 - HikariPool-1 - Starting...
+2019-11-10 12:14:54.574 INFO  --- [main] com.zaxxer.hikari.HikariDataSource Line:123 - HikariPool-1 - Start completed.
+2019-11-10 12:14:54.886 INFO  --- [main] io.lettuce.core.EpollProvider Line:68  - Starting without optional epoll library
+2019-11-10 12:14:54.888 INFO  --- [main] io.lettuce.core.KqueueProvider Line:70  - Starting without optional kqueue library
+2019-11-10 12:14:55.822 INFO  --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource Line:350 - HikariPool-1 - Shutdown initiated...
+2019-11-10 12:14:55.973 INFO  --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource Line:352 - HikariPool-1 - Shutdown completed.
