@@ -41,47 +41,20 @@
 2019-11-09 12:37:10.341 INFO  --- [http-nio-8080-exec-1] io.lettuce.core.KqueueProvider Line:70  - Starting without optional kqueue library
 2019-11-09 12:37:10.718 INFO  --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource Line:110 - HikariPool-1 - Starting...
 2019-11-09 12:37:11.666 INFO  --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource Line:123 - HikariPool-1 - Start completed.
-2019-11-09 14:25:35.184 INFO  --- [restartedMain] com.xiaoyaotong.api.ApiApplication Line:55  - Starting ApiApplication on yyw-sh-pc-1449 with PID 25388 (D:\xiaoyaotong-api\target\classes started by hejiabing in D:\xiaoyaotong-api)
-2019-11-09 14:25:35.186 INFO  --- [restartedMain] com.xiaoyaotong.api.ApiApplication Line:651 - No active profile set, falling back to default profiles: default
-2019-11-09 14:25:35.970 INFO  --- [restartedMain] org.apache.coyote.http11.Http11NioProtocol Line:173 - Initializing ProtocolHandler ["http-nio-8080"]
-2019-11-09 14:25:35.971 INFO  --- [restartedMain] org.apache.catalina.core.StandardService Line:173 - Starting service [Tomcat]
-2019-11-09 14:25:35.971 INFO  --- [restartedMain] org.apache.catalina.core.StandardEngine Line:173 - Starting Servlet engine: [Apache Tomcat/9.0.27]
-2019-11-09 14:25:36.026 INFO  --- [restartedMain] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring embedded WebApplicationContext
-2019-11-09 14:25:36.592 INFO  --- [restartedMain] org.apache.coyote.http11.Http11NioProtocol Line:173 - Starting ProtocolHandler ["http-nio-8080"]
-2019-11-09 14:25:36.608 INFO  --- [restartedMain] com.xiaoyaotong.api.ApiApplication Line:61  - Started ApiApplication in 1.659 seconds (JVM running for 2.238)
-2019-11-09 14:26:55.119 INFO  --- [http-nio-8080-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2019-11-09 14:26:55.152 INFO  --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource Line:110 - HikariPool-1 - Starting...
-2019-11-09 14:26:55.845 INFO  --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource Line:123 - HikariPool-1 - Start completed.
-2019-11-09 14:26:55.989 INFO  --- [http-nio-8080-exec-1] io.lettuce.core.EpollProvider Line:68  - Starting without optional epoll library
-2019-11-09 14:26:55.990 INFO  --- [http-nio-8080-exec-1] io.lettuce.core.KqueueProvider Line:70  - Starting without optional kqueue library
-2019-11-09 14:38:12.428 INFO  --- [restartedMain] com.xiaoyaotong.api.ApiApplication Line:55  - Starting ApiApplication on yyw-sh-pc-1449 with PID 28800 (D:\xiaoyaotong-api\target\classes started by hejiabing in D:\xiaoyaotong-api)
-2019-11-09 14:38:12.431 INFO  --- [restartedMain] com.xiaoyaotong.api.ApiApplication Line:651 - No active profile set, falling back to default profiles: default
-2019-11-09 14:38:13.200 INFO  --- [restartedMain] org.apache.coyote.http11.Http11NioProtocol Line:173 - Initializing ProtocolHandler ["http-nio-8080"]
-2019-11-09 14:38:13.200 INFO  --- [restartedMain] org.apache.catalina.core.StandardService Line:173 - Starting service [Tomcat]
-2019-11-09 14:38:13.201 INFO  --- [restartedMain] org.apache.catalina.core.StandardEngine Line:173 - Starting Servlet engine: [Apache Tomcat/9.0.27]
-2019-11-09 14:38:13.259 INFO  --- [restartedMain] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring embedded WebApplicationContext
-2019-11-09 14:38:13.840 INFO  --- [restartedMain] org.apache.coyote.http11.Http11NioProtocol Line:173 - Starting ProtocolHandler ["http-nio-8080"]
-2019-11-09 14:38:13.855 INFO  --- [restartedMain] com.xiaoyaotong.api.ApiApplication Line:61  - Started ApiApplication in 1.668 seconds (JVM running for 2.235)
-2019-11-09 14:38:48.151 INFO  --- [http-nio-8080-exec-3] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2019-11-09 14:38:48.185 INFO  --- [http-nio-8080-exec-3] com.zaxxer.hikari.HikariDataSource Line:110 - HikariPool-1 - Starting...
-2019-11-09 14:38:48.886 INFO  --- [http-nio-8080-exec-3] com.zaxxer.hikari.HikariDataSource Line:123 - HikariPool-1 - Start completed.
-2019-11-09 14:38:49.031 INFO  --- [http-nio-8080-exec-3] io.lettuce.core.EpollProvider Line:68  - Starting without optional epoll library
-2019-11-09 14:38:49.032 INFO  --- [http-nio-8080-exec-3] io.lettuce.core.KqueueProvider Line:70  - Starting without optional kqueue library
-2019-11-09 14:56:49.373 INFO  --- [main] com.xiaoyaotong.api.ApiApplicationTests Line:55  - Starting ApiApplicationTests on yyw-sh-pc-1449 with PID 27712 (started by hejiabing in D:\xiaoyaotong-api)
-2019-11-09 14:56:49.376 INFO  --- [main] com.xiaoyaotong.api.ApiApplicationTests Line:651 - No active profile set, falling back to default profiles: default
-2019-11-09 14:56:51.387 INFO  --- [main] com.xiaoyaotong.api.ApiApplicationTests Line:61  - Started ApiApplicationTests in 2.214 seconds (JVM running for 3.0)
-2019-11-09 14:56:51.714 INFO  --- [main] com.zaxxer.hikari.HikariDataSource Line:110 - HikariPool-1 - Starting...
-2019-11-09 14:56:52.426 INFO  --- [main] com.zaxxer.hikari.HikariDataSource Line:123 - HikariPool-1 - Start completed.
-2019-11-09 14:56:52.741 INFO  --- [main] io.lettuce.core.EpollProvider Line:68  - Starting without optional epoll library
-2019-11-09 14:56:52.743 INFO  --- [main] io.lettuce.core.KqueueProvider Line:70  - Starting without optional kqueue library
-2019-11-09 14:56:53.650 INFO  --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource Line:350 - HikariPool-1 - Shutdown initiated...
-2019-11-09 14:56:53.751 INFO  --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource Line:352 - HikariPool-1 - Shutdown completed.
-2019-11-09 14:57:45.397 INFO  --- [main] com.xiaoyaotong.api.ApiApplicationTests Line:55  - Starting ApiApplicationTests on yyw-sh-pc-1449 with PID 1836 (started by hejiabing in D:\xiaoyaotong-api)
-2019-11-09 14:57:45.400 INFO  --- [main] com.xiaoyaotong.api.ApiApplicationTests Line:651 - No active profile set, falling back to default profiles: default
-2019-11-09 14:57:47.449 INFO  --- [main] com.xiaoyaotong.api.ApiApplicationTests Line:61  - Started ApiApplicationTests in 2.251 seconds (JVM running for 3.045)
-2019-11-09 14:57:47.802 INFO  --- [main] com.zaxxer.hikari.HikariDataSource Line:110 - HikariPool-1 - Starting...
-2019-11-09 14:57:48.613 INFO  --- [main] com.zaxxer.hikari.HikariDataSource Line:123 - HikariPool-1 - Start completed.
-2019-11-09 14:57:48.913 INFO  --- [main] io.lettuce.core.EpollProvider Line:68  - Starting without optional epoll library
-2019-11-09 14:57:48.915 INFO  --- [main] io.lettuce.core.KqueueProvider Line:70  - Starting without optional kqueue library
-2019-11-09 14:57:49.848 INFO  --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource Line:350 - HikariPool-1 - Shutdown initiated...
-2019-11-09 14:57:49.857 INFO  --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource Line:352 - HikariPool-1 - Shutdown completed.
+2019-11-09 13:10:54.472 INFO  --- [lettuce-eventExecutorLoop-1-1] io.lettuce.core.protocol.ConnectionWatchdog Line:173 - Reconnecting, last destination was x.y.z/47.105.198.197:6379
+2019-11-09 13:10:54.545 INFO  --- [lettuce-nioEventLoop-4-2] io.lettuce.core.protocol.ReconnectionHandler Line:188 - Reconnected to x.y.z:6379
+2019-11-09 13:15:10.087 INFO  --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource Line:350 - HikariPool-1 - Shutdown initiated...
+2019-11-09 13:15:10.104 INFO  --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource Line:352 - HikariPool-1 - Shutdown completed.
+2019-11-09 13:15:16.082 INFO  --- [restartedMain] com.xiaoyaotong.api.ApiApplication Line:55  - Starting ApiApplication on tangliyandembp with PID 28114 (/Users/tangliyan/IdeaProjects/xiaoyaotong-api/target/classes started by tangliyan in /Users/tangliyan/IdeaProjects/xiaoyaotong-api)
+2019-11-09 13:15:16.086 INFO  --- [restartedMain] com.xiaoyaotong.api.ApiApplication Line:651 - No active profile set, falling back to default profiles: default
+2019-11-09 13:15:17.791 INFO  --- [restartedMain] org.apache.coyote.http11.Http11NioProtocol Line:173 - Initializing ProtocolHandler ["http-nio-8080"]
+2019-11-09 13:15:17.791 INFO  --- [restartedMain] org.apache.catalina.core.StandardService Line:173 - Starting service [Tomcat]
+2019-11-09 13:15:17.792 INFO  --- [restartedMain] org.apache.catalina.core.StandardEngine Line:173 - Starting Servlet engine: [Apache Tomcat/9.0.27]
+2019-11-09 13:15:17.863 INFO  --- [restartedMain] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring embedded WebApplicationContext
+2019-11-09 13:15:18.829 INFO  --- [restartedMain] org.apache.coyote.http11.Http11NioProtocol Line:173 - Starting ProtocolHandler ["http-nio-8080"]
+2019-11-09 13:15:18.861 INFO  --- [restartedMain] com.xiaoyaotong.api.ApiApplication Line:61  - Started ApiApplication in 3.229 seconds (JVM running for 4.535)
+2019-11-09 13:15:29.128 INFO  --- [http-nio-8080-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-11-09 13:15:29.294 INFO  --- [http-nio-8080-exec-1] io.lettuce.core.EpollProvider Line:68  - Starting without optional epoll library
+2019-11-09 13:15:29.296 INFO  --- [http-nio-8080-exec-1] io.lettuce.core.KqueueProvider Line:70  - Starting without optional kqueue library
+2019-11-09 13:15:29.873 INFO  --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource Line:110 - HikariPool-1 - Starting...
+2019-11-09 13:15:30.928 INFO  --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource Line:123 - HikariPool-1 - Start completed.
