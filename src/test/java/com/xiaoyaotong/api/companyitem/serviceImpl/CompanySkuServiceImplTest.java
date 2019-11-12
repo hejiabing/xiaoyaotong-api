@@ -1,6 +1,5 @@
 package com.xiaoyaotong.api.companyitem.serviceImpl;
 
-import com.xiaoyaotong.api.companyitem.entity.CompanySku;
 import com.xiaoyaotong.api.companyitem.service.CompanySkuService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +14,7 @@ class CompanySkuServiceImplTest {
     private CompanySkuService companySkuService;
     @Test
     void insertCompanySku() {
+        /*
         CompanySku cs = new CompanySku();
         cs.setErpId("s00001");
         cs.setApprovalCode("国B1243");
@@ -24,6 +24,8 @@ class CompanySkuServiceImplTest {
         cs.setCompayId(2);
         cs.setBarCode("234343");
         companySkuService.insertCompanySku(cs);
+        */
+
     }
 
     @Test
