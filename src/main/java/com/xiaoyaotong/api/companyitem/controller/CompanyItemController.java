@@ -55,4 +55,10 @@ public class CompanyItemController {
         return new ResponseEntity<HashMap>(map, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/getitems", method = RequestMethod.POST)
+    @Authorization
+    public ResponseEntity<List<CompanySku>> getItems() {
+        List<CompanySku> result = companySkuService.getCompanySkuList(1,10);
+        return new ResponseEntity<List<CompanySku>>(result, HttpStatus.OK);
+    }
 }
