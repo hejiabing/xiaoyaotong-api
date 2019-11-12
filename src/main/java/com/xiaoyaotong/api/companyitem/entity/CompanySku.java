@@ -5,7 +5,7 @@ public class CompanySku {
 
   private int id;
   private int companyId;
-  private String erpId;
+  private String productCode;
   private String commonName;
   private String approvalCode;
   private String spec;
@@ -63,11 +63,11 @@ public class CompanySku {
   }
 
   public String getErpId() {
-    return erpId;
+    return productCode;
   }
 
   public void setErpId(String erpId) {
-    this.erpId = erpId;
+    this.productCode = erpId;
   }
 
   public String getCommonName() {
