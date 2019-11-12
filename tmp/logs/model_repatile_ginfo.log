@@ -8,3 +8,60 @@
 2019-11-12 19:56:52.110 INFO  --- [restartedMain] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring embedded WebApplicationContext
 2019-11-12 19:56:53.147 INFO  --- [restartedMain] org.apache.coyote.http11.Http11NioProtocol Line:173 - Starting ProtocolHandler ["http-nio-8080"]
 2019-11-12 19:56:53.180 INFO  --- [restartedMain] com.xiaoyaotong.api.ApiApplication Line:61  - Started ApiApplication in 3.703 seconds (JVM running for 5.146)
+2019-11-12 20:02:47.506 INFO  --- [restartedMain] com.xiaoyaotong.api.ApiApplication Line:55  - Starting ApiApplication on yyw-sh-pc-1449 with PID 18776 (D:\xiaoyaotong-api\target\classes started by hejiabing in D:\xiaoyaotong-api)
+2019-11-12 20:02:47.508 INFO  --- [restartedMain] com.xiaoyaotong.api.ApiApplication Line:651 - No active profile set, falling back to default profiles: default
+2019-11-12 20:02:48.405 INFO  --- [restartedMain] org.apache.coyote.http11.Http11NioProtocol Line:173 - Initializing ProtocolHandler ["http-nio-8080"]
+2019-11-12 20:02:48.406 INFO  --- [restartedMain] org.apache.catalina.core.StandardService Line:173 - Starting service [Tomcat]
+2019-11-12 20:02:48.406 INFO  --- [restartedMain] org.apache.catalina.core.StandardEngine Line:173 - Starting Servlet engine: [Apache Tomcat/9.0.27]
+2019-11-12 20:02:48.466 INFO  --- [restartedMain] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring embedded WebApplicationContext
+2019-11-12 20:02:49.152 INFO  --- [restartedMain] org.apache.coyote.http11.Http11NioProtocol Line:173 - Starting ProtocolHandler ["http-nio-8080"]
+2019-11-12 20:02:49.168 INFO  --- [restartedMain] com.xiaoyaotong.api.ApiApplication Line:61  - Started ApiApplication in 1.915 seconds (JVM running for 2.549)
+2019-11-12 20:02:51.001 INFO  --- [http-nio-8080-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-11-12 20:04:33.576 INFO  --- [http-nio-8080-exec-4] com.zaxxer.hikari.HikariDataSource Line:110 - HikariPool-1 - Starting...
+2019-11-12 20:04:34.336 INFO  --- [http-nio-8080-exec-4] com.zaxxer.hikari.HikariDataSource Line:123 - HikariPool-1 - Start completed.
+2019-11-12 20:04:34.509 INFO  --- [http-nio-8080-exec-4] io.lettuce.core.EpollProvider Line:68  - Starting without optional epoll library
+2019-11-12 20:04:34.510 INFO  --- [http-nio-8080-exec-4] io.lettuce.core.KqueueProvider Line:70  - Starting without optional kqueue library
+2019-11-12 20:25:44.675 INFO  --- [restartedMain] com.xiaoyaotong.api.ApiApplication Line:55  - Starting ApiApplication on yyw-sh-pc-1449 with PID 17192 (D:\xiaoyaotong-api\target\classes started by hejiabing in D:\xiaoyaotong-api)
+2019-11-12 20:25:44.677 INFO  --- [restartedMain] com.xiaoyaotong.api.ApiApplication Line:651 - No active profile set, falling back to default profiles: default
+2019-11-12 20:25:45.449 INFO  --- [restartedMain] org.apache.coyote.http11.Http11NioProtocol Line:173 - Initializing ProtocolHandler ["http-nio-8080"]
+2019-11-12 20:25:45.449 INFO  --- [restartedMain] org.apache.catalina.core.StandardService Line:173 - Starting service [Tomcat]
+2019-11-12 20:25:45.449 INFO  --- [restartedMain] org.apache.catalina.core.StandardEngine Line:173 - Starting Servlet engine: [Apache Tomcat/9.0.27]
+2019-11-12 20:25:45.502 INFO  --- [restartedMain] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring embedded WebApplicationContext
+2019-11-12 20:25:46.091 INFO  --- [restartedMain] org.apache.coyote.http11.Http11NioProtocol Line:173 - Starting ProtocolHandler ["http-nio-8080"]
+2019-11-12 20:25:46.107 INFO  --- [restartedMain] com.xiaoyaotong.api.ApiApplication Line:61  - Started ApiApplication in 1.676 seconds (JVM running for 2.239)
+2019-11-12 20:26:23.089 INFO  --- [http-nio-8080-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-11-12 20:27:23.893 INFO  --- [http-nio-8080-exec-4] com.zaxxer.hikari.HikariDataSource Line:110 - HikariPool-1 - Starting...
+2019-11-12 20:27:24.605 INFO  --- [http-nio-8080-exec-4] com.zaxxer.hikari.HikariDataSource Line:123 - HikariPool-1 - Start completed.
+2019-11-12 20:29:05.380 INFO  --- [restartedMain] com.xiaoyaotong.api.ApiApplication Line:55  - Starting ApiApplication on yyw-sh-pc-1449 with PID 21296 (D:\xiaoyaotong-api\target\classes started by hejiabing in D:\xiaoyaotong-api)
+2019-11-12 20:29:05.383 INFO  --- [restartedMain] com.xiaoyaotong.api.ApiApplication Line:651 - No active profile set, falling back to default profiles: default
+2019-11-12 20:29:06.181 INFO  --- [restartedMain] org.apache.coyote.http11.Http11NioProtocol Line:173 - Initializing ProtocolHandler ["http-nio-8080"]
+2019-11-12 20:29:06.182 INFO  --- [restartedMain] org.apache.catalina.core.StandardService Line:173 - Starting service [Tomcat]
+2019-11-12 20:29:06.182 INFO  --- [restartedMain] org.apache.catalina.core.StandardEngine Line:173 - Starting Servlet engine: [Apache Tomcat/9.0.27]
+2019-11-12 20:29:06.236 INFO  --- [restartedMain] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring embedded WebApplicationContext
+2019-11-12 20:29:06.794 INFO  --- [restartedMain] org.apache.coyote.http11.Http11NioProtocol Line:173 - Starting ProtocolHandler ["http-nio-8080"]
+2019-11-12 20:29:06.811 INFO  --- [restartedMain] com.xiaoyaotong.api.ApiApplication Line:61  - Started ApiApplication in 1.662 seconds (JVM running for 2.233)
+2019-11-12 20:29:14.415 INFO  --- [http-nio-8080-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-11-12 20:29:14.479 INFO  --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource Line:110 - HikariPool-1 - Starting...
+2019-11-12 20:29:15.134 INFO  --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource Line:123 - HikariPool-1 - Start completed.
+2019-11-12 20:30:22.494 INFO  --- [restartedMain] com.xiaoyaotong.api.ApiApplication Line:55  - Starting ApiApplication on yyw-sh-pc-1449 with PID 19344 (D:\xiaoyaotong-api\target\classes started by hejiabing in D:\xiaoyaotong-api)
+2019-11-12 20:30:22.496 INFO  --- [restartedMain] com.xiaoyaotong.api.ApiApplication Line:651 - No active profile set, falling back to default profiles: default
+2019-11-12 20:30:23.286 INFO  --- [restartedMain] org.apache.coyote.http11.Http11NioProtocol Line:173 - Initializing ProtocolHandler ["http-nio-8080"]
+2019-11-12 20:30:23.287 INFO  --- [restartedMain] org.apache.catalina.core.StandardService Line:173 - Starting service [Tomcat]
+2019-11-12 20:30:23.287 INFO  --- [restartedMain] org.apache.catalina.core.StandardEngine Line:173 - Starting Servlet engine: [Apache Tomcat/9.0.27]
+2019-11-12 20:30:23.345 INFO  --- [restartedMain] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring embedded WebApplicationContext
+2019-11-12 20:30:23.971 INFO  --- [restartedMain] org.apache.coyote.http11.Http11NioProtocol Line:173 - Starting ProtocolHandler ["http-nio-8080"]
+2019-11-12 20:30:23.988 INFO  --- [restartedMain] com.xiaoyaotong.api.ApiApplication Line:61  - Started ApiApplication in 1.718 seconds (JVM running for 2.33)
+2019-11-12 20:30:25.602 INFO  --- [http-nio-8080-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-11-12 20:30:25.664 INFO  --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource Line:110 - HikariPool-1 - Starting...
+2019-11-12 20:30:26.326 INFO  --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource Line:123 - HikariPool-1 - Start completed.
+2019-11-12 20:37:47.176 INFO  --- [restartedMain] com.xiaoyaotong.api.ApiApplication Line:55  - Starting ApiApplication on yyw-sh-pc-1449 with PID 11124 (D:\xiaoyaotong-api\target\classes started by hejiabing in D:\xiaoyaotong-api)
+2019-11-12 20:37:47.178 INFO  --- [restartedMain] com.xiaoyaotong.api.ApiApplication Line:651 - No active profile set, falling back to default profiles: default
+2019-11-12 20:37:47.958 INFO  --- [restartedMain] org.apache.coyote.http11.Http11NioProtocol Line:173 - Initializing ProtocolHandler ["http-nio-8080"]
+2019-11-12 20:37:47.958 INFO  --- [restartedMain] org.apache.catalina.core.StandardService Line:173 - Starting service [Tomcat]
+2019-11-12 20:37:47.958 INFO  --- [restartedMain] org.apache.catalina.core.StandardEngine Line:173 - Starting Servlet engine: [Apache Tomcat/9.0.27]
+2019-11-12 20:37:48.025 INFO  --- [restartedMain] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring embedded WebApplicationContext
+2019-11-12 20:37:48.598 INFO  --- [restartedMain] org.apache.coyote.http11.Http11NioProtocol Line:173 - Starting ProtocolHandler ["http-nio-8080"]
+2019-11-12 20:37:48.615 INFO  --- [restartedMain] com.xiaoyaotong.api.ApiApplication Line:61  - Started ApiApplication in 1.64 seconds (JVM running for 2.284)
+2019-11-12 20:38:00.316 INFO  --- [http-nio-8080-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-11-12 20:38:00.391 INFO  --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource Line:110 - HikariPool-1 - Starting...
+2019-11-12 20:38:01.035 INFO  --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource Line:123 - HikariPool-1 - Start completed.

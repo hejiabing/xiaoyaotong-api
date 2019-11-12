@@ -72,6 +72,5 @@ public class ProductInfoDTO implements Serializable{
 	public void setBarCode(String barCode) {
 		this.barCode = barCode;
 	}
-	
 
 }
