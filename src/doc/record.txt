@@ -1,5 +1,8 @@
 鉴权参考： http://www.scienjus.com/restful-token-authorization/
 
+ealsticsearch 安装
+https://blog.csdn.net/xueyunzi1/article/details/86580050
+
 http://10.105.198.197:8080/tokens/login/?username=hejiabing&password=123456
 
 http://10.25.31.35:8080/companyitem/addone
