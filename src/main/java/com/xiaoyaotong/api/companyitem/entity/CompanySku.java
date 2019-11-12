@@ -11,6 +11,27 @@ public class CompanySku {
   private String spec;
   private String factoryName;
   private String barCode;
+
+  public void setProductCode(String productCode) {
+    this.productCode = productCode;
+  }
+
+  public void setErpProductCode(String erpProductCode) {
+    this.erpProductCode = erpProductCode;
+  }
+
+  private String erpProductCode;//企业的ERP编码
+
+
+  public String getErpProductCode() {
+    return erpProductCode;
+  }
+
+  public String getProductCode() {
+    return productCode;
+  }
+
+
   private long status;
 
   public void setCreateUser(String createUser) {
