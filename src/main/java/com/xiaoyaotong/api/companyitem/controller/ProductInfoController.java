@@ -4,6 +4,7 @@ import com.xiaoyaotong.api.companyitem.dto.ProductInfoDTO;
 import com.xiaoyaotong.api.companyitem.entity.CompanySku;
 import com.xiaoyaotong.api.companyitem.service.CompanySkuService;
 import com.xiaoyaotong.api.companyitem.util.ProductInfoDTOCompanySkuConvert;
+import com.xiaoyaotong.api.login.util.JsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,8 +36,25 @@ public class ProductInfoController {
 
     @RequestMapping(value = "/addlist", method = RequestMethod.POST)
     //@Authorization
-    public ResponseEntity<HashMap> addProdutInfo(@RequestBody List<ProductInfoDTO> pdtos) {
+    public ResponseEntity<HashMap> addProdutInfo1(@RequestBody List<ProductInfoDTO> pdtos) {
         Assert.notNull(pdtos, "username can not be empty");
+        int total = pdtos.size();
+        int successresult = 0;
+        for (ProductInfoDTO pdto: pdtos){
+            CompanySku csku = ProductInfoDTOCompanySkuConvert.dtoToEntity(pdto);
+            int result = companySkuService.insertCompanySku(csku);
+            successresult=successresult + companySkuService.insertCompanySku(csku);
+        }
+        HashMap map = new HashMap();
+        map.put("all",total);
+        map.put("success",successresult);
+        return new ResponseEntity<HashMap>(map, HttpStatus.OK);
+    }
+
+    public ResponseEntity<HashMap> addProdutInfo(@RequestBody String dtosJson) {
+        Assert.notNull(dtosJson, "username can not be empty");
+        List<ProductInfoDTO> pdtos = JsonUtil.jsonToList(dtosJson,ProductInfoDTO.class);
+
         int total = pdtos.size();
         int successresult = 0;
         for (ProductInfoDTO pdto: pdtos){
