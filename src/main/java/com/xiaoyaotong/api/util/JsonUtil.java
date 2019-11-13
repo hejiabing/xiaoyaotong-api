@@ -1,4 +1,4 @@
-package com.xiaoyaotong.api.login.util;
+package com.xiaoyaotong.api.util;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;

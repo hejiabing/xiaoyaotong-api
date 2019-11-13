@@ -1,4 +1,4 @@
-package com.xiaoyaotong.api.login.util;
+package com.xiaoyaotong.api.util;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;

@@ -4,7 +4,7 @@ import com.xiaoyaotong.api.login.annotation.Authorization;
 import com.xiaoyaotong.api.login.config.Constants;
 import com.xiaoyaotong.api.login.manager.TokenManager;
 import com.xiaoyaotong.api.login.model.TokenModel;
-import com.xiaoyaotong.api.login.util.Md5Sign;
+import com.xiaoyaotong.api.util.Md5Sign;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
