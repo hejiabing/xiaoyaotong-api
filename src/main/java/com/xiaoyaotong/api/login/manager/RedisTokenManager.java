@@ -13,7 +13,6 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class RedisTokenManager implements TokenManager {
 
-
     private RedisTemplate<Long, String> redis;
 
     @Autowired
@@ -62,4 +61,5 @@ public class RedisTokenManager implements TokenManager {
     public void deleteToken(long userId) {
         redis.delete(userId);
     }
+
 }
