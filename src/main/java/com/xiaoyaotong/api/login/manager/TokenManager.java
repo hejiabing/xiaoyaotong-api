@@ -37,4 +37,7 @@ public interface TokenManager {
      */
     public void deleteToken(long userId);
 
+    //获取认证key
+    public String getSignString(String userId);
+
 }

@@ -64,18 +64,25 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
         }
         //根据发送的KEY MD5的方式验证
         else if(Constants.KEY_AUTHORIZATION.equals(auth.way())){
-            String sign = request.getHeader(Constants.SIGN);
-            String json = request.getQueryString()+"pppp";
-            if((null == sign) || ("" == sign)){
+            String fromSign = request.getHeader(Constants.SIGN);
+            String userid = request.getHeader(Constants.USER_ID);
+            String signCode = manager.getSignString(userid);
+            String json = request.getQueryString();
+            System.out.println(json);
+            String localSign = Md5Sign.getMD5String(json,signCode);
+            System.out.println(localSign);
+
+            if((null == fromSign) || ("" == fromSign)){
                 return  false ;
             }else{
-                String test = Md5Sign.getMD5String(json,"pppp");
-                if(json==sign){
+
+                if(fromSign.equals(localSign)){
                     return true;
                 }
             }
         }
 
+        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         return false;
     }
 }

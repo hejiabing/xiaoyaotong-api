@@ -16,12 +16,21 @@ public class RedisTokenManager implements TokenManager {
 
     private RedisTemplate<Long, String> redis;
 
+    private RedisTemplate<String, String> stringRedis;
+
     @Autowired
     public void setRedis(RedisTemplate redisTemplate) {
         this.redis = redisTemplate;
         //泛型设置成Long后必须更改对应的序列化方案
         redis.setKeySerializer(new JdkSerializationRedisSerializer());
     }
+
+    @Autowired
+    public void setStringredis(RedisTemplate redisTemplate){
+        this.stringRedis = redisTemplate;
+    }
+
+
 
     public TokenModel createToken(long userId) {
         //使用uuid作为源token
@@ -61,5 +70,10 @@ public class RedisTokenManager implements TokenManager {
 
     public void deleteToken(long userId) {
         redis.delete(userId);
+    }
+
+    public String getSignString(String userId){
+        String signString =  stringRedis.boundValueOps("sign_"+userId).get();
+        return signString;
     }
 }

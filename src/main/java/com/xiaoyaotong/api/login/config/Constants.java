@@ -24,11 +24,13 @@ public class Constants {
 
 
     //使用key的方式进行验证
-    public static final String KEY_AUTHORIZATION = "key";
+    public static final String KEY_AUTHORIZATION = "sign";
 
     //使用password的方式进行验证
     public static final String PASSWORD_AUTHORIZATION = "password";
 
     public static final String SIGN = "sign";
+
+    public static final String USER_ID = "userid";
 
 }
