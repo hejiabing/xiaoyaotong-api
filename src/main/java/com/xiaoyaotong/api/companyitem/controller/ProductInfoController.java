@@ -4,6 +4,8 @@ import com.xiaoyaotong.api.companyitem.dto.ProductInfoDTO;
 import com.xiaoyaotong.api.companyitem.entity.CompanySku;
 import com.xiaoyaotong.api.companyitem.service.CompanySkuService;
 import com.xiaoyaotong.api.companyitem.util.ProductInfoDTOCompanySkuConvert;
+import com.xiaoyaotong.api.login.annotation.Authorization;
+import com.xiaoyaotong.api.login.config.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,7 +38,7 @@ public class ProductInfoController {
 
 
     @RequestMapping(value = "/addlist", method = RequestMethod.POST)
-    //@Authorization
+    @Authorization(way = Constants.SIGN)
     public ResponseEntity<HashMap> addProdutInfo1(@RequestBody List<ProductInfoDTO> pdtos) {
         Assert.notNull(pdtos, "username can not be empty");
         int total = pdtos.size();
