@@ -69,6 +69,7 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
             String signCode = manager.getSignString(userid);
             String json = request.getQueryString();
             System.out.println(json);
+            System.out.println(json);
             String localSign = Md5Sign.getMD5String(json,signCode);
             System.out.println(localSign);
 
