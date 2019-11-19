@@ -17,6 +17,12 @@ public class Company {
   private String contactPhone;
   private long status;
   private String createUser;
+
+  public String getSign() {
+    return sign;
+  }
+
+  private String sign;
   private java.sql.Timestamp createTime;
   private String updateUser;
   private java.sql.Timestamp updateTime;

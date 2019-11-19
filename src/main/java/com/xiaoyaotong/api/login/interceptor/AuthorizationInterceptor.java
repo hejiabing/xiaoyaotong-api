@@ -1,10 +1,12 @@
 package com.xiaoyaotong.api.login.interceptor;
 
+import com.xiaoyaotong.api.company.entity.Company;
+import com.xiaoyaotong.api.company.service.CompanyService;
 import com.xiaoyaotong.api.login.annotation.Authorization;
 import com.xiaoyaotong.api.login.config.Constants;
 import com.xiaoyaotong.api.login.manager.TokenManager;
 import com.xiaoyaotong.api.login.model.TokenModel;
-import com.xiaoyaotong.api.util.Md5Sign;
+import com.xiaoyaotong.api.login.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
@@ -13,6 +15,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
+import java.util.HashMap;
 
 
 @Component
@@ -20,6 +23,12 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
 
     @Autowired
     private TokenManager manager;
+
+    @Autowired
+    UserService userService;
+
+    @Autowired
+    CompanyService companyService;
 
     public boolean preHandle(HttpServletRequest request,
                              HttpServletResponse response, Object handler) throws Exception {
@@ -64,21 +73,23 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
         }
         //根据发送的KEY MD5的方式验证
         else if(Constants.KEY_AUTHORIZATION.equals(auth.way())){
+            //获取加密的字符串
             String fromSign = request.getHeader(Constants.SIGN);
-            String userid = request.getHeader(Constants.USER_ID);
-            String signCode = manager.getSignString(userid);
-            String json = request.getQueryString();
-            System.out.println(json);
-            String localSign = Md5Sign.getMD5String(json,signCode);
-            System.out.println(localSign);
-
-            if((null == fromSign) || ("" == fromSign)){
-                return  false ;
+            //获取公司id
+            String companyId = request.getHeader(Constants.COMPANY_ID);
+            //获取公司配置的key
+            Company company = companyService.getCompanyById(Integer.valueOf(companyId));
+            String key = company.getSign();
+            if (null == key || "".equals(key)|| "0".equals(key)){
+                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                return false;
             }else{
-
-                if(fromSign.equals(localSign)){
-                    return true;
-                }
+                HashMap hashMap = new HashMap();
+                hashMap.put("from",fromSign);
+                hashMap.put("companyId",companyId);
+                hashMap.put("key",key);
+                request.setAttribute("signWay",hashMap);
+                return true;
             }
         }
 

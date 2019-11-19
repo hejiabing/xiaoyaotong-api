@@ -1,15 +1,2 @@
-2019-11-14 00:00:09.492 DEBUG --- [main] org.apache.ibatis.logging.LogFactory Line:105 - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
-2019-11-14 00:58:26.071 DEBUG --- [restartedMain] org.apache.ibatis.logging.LogFactory Line:105 - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
-2019-11-14 01:01:11.160 DEBUG --- [restartedMain] org.apache.ibatis.logging.LogFactory Line:105 - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
-2019-11-14 01:02:35.264 DEBUG --- [restartedMain] com.xiaoyaotong.api.ApiApplication Line:56  - Running with Spring Boot v2.2.1.RELEASE, Spring v5.2.1.RELEASE
-2019-11-14 01:02:36.391 DEBUG --- [restartedMain] org.apache.ibatis.logging.LogFactory Line:105 - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
-2019-11-14 01:03:02.930 DEBUG --- [restartedMain] com.xiaoyaotong.api.ApiApplication Line:56  - Running with Spring Boot v2.2.1.RELEASE, Spring v5.2.1.RELEASE
-2019-11-14 01:03:04.145 DEBUG --- [restartedMain] org.apache.ibatis.logging.LogFactory Line:105 - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
-2019-11-14 01:06:39.661 DEBUG --- [restartedMain] com.xiaoyaotong.api.ApiApplication Line:56  - Running with Spring Boot v2.2.1.RELEASE, Spring v5.2.1.RELEASE
-2019-11-14 01:06:40.933 DEBUG --- [restartedMain] org.apache.ibatis.logging.LogFactory Line:105 - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
-2019-11-14 01:14:37.983 DEBUG --- [restartedMain] com.xiaoyaotong.api.ApiApplication Line:56  - Running with Spring Boot v2.2.1.RELEASE, Spring v5.2.1.RELEASE
-2019-11-14 01:14:39.396 DEBUG --- [restartedMain] org.apache.ibatis.logging.LogFactory Line:105 - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
-2019-11-14 01:18:26.545 DEBUG --- [restartedMain] com.xiaoyaotong.api.ApiApplication Line:56  - Running with Spring Boot v2.2.1.RELEASE, Spring v5.2.1.RELEASE
-2019-11-14 01:18:27.796 DEBUG --- [restartedMain] org.apache.ibatis.logging.LogFactory Line:105 - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
-2019-11-14 01:21:04.492 DEBUG --- [restartedMain] com.xiaoyaotong.api.ApiApplication Line:56  - Running with Spring Boot v2.2.1.RELEASE, Spring v5.2.1.RELEASE
-2019-11-14 01:21:06.146 DEBUG --- [restartedMain] org.apache.ibatis.logging.LogFactory Line:105 - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2019-11-19 13:57:18.464 DEBUG --- [restartedMain] com.xiaoyaotong.api.ApiApplication Line:56  - Running with Spring Boot v2.2.1.RELEASE, Spring v5.2.1.RELEASE
+2019-11-19 13:57:18.994 DEBUG --- [restartedMain] org.apache.ibatis.logging.LogFactory Line:105 - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
