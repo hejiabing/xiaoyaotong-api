@@ -1,11 +1,8 @@
 package com.xiaoyaotong.api.companyitem.controller;
 
-import com.xiaoyaotong.api.companyitem.dto.ProductInfoDTO;
-import com.xiaoyaotong.api.companyitem.entity.CompanySku;
-import com.xiaoyaotong.api.companyitem.service.CompanySkuService;
-import com.xiaoyaotong.api.companyitem.util.ProductInfoDTOCompanySkuConvert;
-import com.xiaoyaotong.api.login.annotation.Authorization;
-import com.xiaoyaotong.api.login.config.Constants;
+import java.util.HashMap;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,11 +11,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import com.xiaoyaotong.api.util.JsonUtil;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import com.xiaoyaotong.api.companyitem.dto.ProductInfoDTO;
+import com.xiaoyaotong.api.companyitem.dto.ProductInfoRequestDTO;
+import com.xiaoyaotong.api.companyitem.entity.CompanySku;
+import com.xiaoyaotong.api.companyitem.service.CompanySkuService;
+import com.xiaoyaotong.api.companyitem.util.ProductInfoDTOCompanySkuConvert;
+import com.xiaoyaotong.api.util.JsonUtil;
 
 @RestController
 @RequestMapping("/productinfo")
@@ -38,15 +37,24 @@ public class ProductInfoController {
 
 
     @RequestMapping(value = "/addlist", method = RequestMethod.POST)
-    @Authorization(way = Constants.SIGN)
-    public ResponseEntity<HashMap> addProdutInfo1(@RequestBody List<ProductInfoDTO> pdtos) {
-        Assert.notNull(pdtos, "username can not be empty");
-        int total = pdtos.size();
+   // @Authorization(way = Constants.SIGN)
+    public ResponseEntity<HashMap> addProdutInfo1(@RequestBody ProductInfoRequestDTO requestDTO) {
+        Assert.notNull(requestDTO, "username can not be empty");
+        int total = requestDTO.getProductDTOList().size();
         int successresult = 0;
-        for (ProductInfoDTO pdto: pdtos){
-            CompanySku csku = ProductInfoDTOCompanySkuConvert.dtoToEntity(pdto);
-            int result = companySkuService.insertCompanySku(csku);
-            successresult=successresult + companySkuService.insertCompanySku(csku);
+        for (ProductInfoDTO pdto: requestDTO.getProductDTOList()){
+        	CompanySku csku = ProductInfoDTOCompanySkuConvert.dtoToEntity(pdto);
+        	if(requestDTO.getIsAll() == 1){
+        		Integer id = companySkuService.getCompanySkuId(csku.getCompanyId(), csku.getProductCode());
+        		if(id != null){
+        			csku.setId(id);
+        			successresult += companySkuService.updateCompanySkuById(csku);
+        		}else{
+        			successresult += companySkuService.insertCompanySku(csku);
+        		}
+            }else{
+            	successresult += companySkuService.insertCompanySku(csku);
+            }
         }
         HashMap map = new HashMap();
         map.put("all",total);

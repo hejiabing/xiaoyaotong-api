@@ -1,12 +1,13 @@
 package com.xiaoyaotong.api.companyitem.serviceImpl;
 
-import com.xiaoyaotong.api.companyitem.entity.CompanySku;
-import com.xiaoyaotong.api.companyitem.mapper.CompanySkuMapper;
-import com.xiaoyaotong.api.companyitem.service.CompanySkuService;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.xiaoyaotong.api.companyitem.entity.CompanySku;
+import com.xiaoyaotong.api.companyitem.mapper.CompanySkuMapper;
+import com.xiaoyaotong.api.companyitem.service.CompanySkuService;
 
 /**
  * @author ：billHe
@@ -54,4 +55,14 @@ public class CompanySkuServiceImpl implements CompanySkuService {
         }
         return addSuccessNum;
     }
+
+	@Override
+	public int getCompanySkuId(int companyId, String productCode) {
+		return companySkuMapper.getCompanySkuId(companyId,productCode);
+	}
+
+	@Override
+	public int updateCompanySkuById(CompanySku csku) {
+		return companySkuMapper.updateCompanySku(csku);
+	}
 }

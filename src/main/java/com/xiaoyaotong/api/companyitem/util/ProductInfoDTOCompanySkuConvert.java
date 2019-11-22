@@ -18,7 +18,7 @@ public class ProductInfoDTOCompanySkuConvert {
         csku.setSpec(pdto.getSpec());//设置规格
         csku.setFactoryName(pdto.getFactory());//设置生产厂家
         csku.setBarCode(pdto.getBarCode());//设置条码
-        csku.setErpProductCode(pdto.getProductCode());//设置企业的的ERP编码
+        csku.setProductCode(pdto.getProductCode());//设置企业的的ERP编码
         return  csku;
     }
 

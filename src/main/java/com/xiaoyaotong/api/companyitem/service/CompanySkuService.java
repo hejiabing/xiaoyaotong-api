@@ -15,4 +15,6 @@ public interface CompanySkuService {
     public CompanySku getCompanySkuById(int companyId, String erpProductCode);
     public List<CompanySku> getCompanySkuList(int itemBegin, int itemNum);
     public int addCompanySkuList(List<CompanySku> skus);
+	public int getCompanySkuId(int companyId, String productCode);
+	public int updateCompanySkuById(CompanySku csku);
 }

@@ -1,6 +1,8 @@
 package com.xiaoyaotong.api.companyitem.mapper;
 
 import com.xiaoyaotong.api.companyitem.entity.CompanySku;
+
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -22,4 +24,6 @@ public interface CompanySkuMapper {
     public CompanySku selectCompanySkuByid(int companyId, String erpId);
 
     public List<CompanySku> selectCompanySkuList(int itemBegin, int itemNum);
+
+	public int getCompanySkuId(@Param("companyId")  int companyId,@Param("productCode") String productCode);
 }

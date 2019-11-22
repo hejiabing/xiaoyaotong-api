@@ -57,6 +57,19 @@
         select * from t_company_sku t
         limit #{itemBegin},#{itemNum}
     </select>
+	
+	<select id="getCompanySkuId" resultType="Integer">
+        select id from t_company_sku t
+        where t.company_id =#{companyId} and t.erp_product_id = #{productCode}
+    </select>
 
-
+ 	<update id="updateCompanySkuById">
+        update t_company_sku set
+        common_name=#{commonName},
+        approval_code=#{approvalCode},
+        spec=#{spec},
+        factory_name=#{factoryName},
+        bar_code=#{barCode} 
+        where id = {id}
+    </update>
 </mapper>
