@@ -19,11 +19,13 @@ public interface CompanySkuMapper {
 
     public int deleteCompanySku(int companyId,String erpId);
 
-    public int updateCompanySku(CompanySku companySku);
+    public int updateByCompanyIdAndProductCode(CompanySku companySku);
 
     public CompanySku selectCompanySkuByid(int companyId, String erpId);
 
     public List<CompanySku> selectCompanySkuList(int itemBegin, int itemNum);
 
-	public int getCompanySkuId(@Param("companyId")  int companyId,@Param("productCode") String productCode);
+	public Integer getCompanySkuId(@Param("companyId")  int companyId,@Param("productCode") String productCode);
+
+	public int updateCompanySkuById(CompanySku csku);
 }

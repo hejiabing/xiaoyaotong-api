@@ -5,7 +5,7 @@
     <resultMap id="companySkuType" type="com.xiaoyaotong.api.companyitem.entity.CompanySku">
         <id property="id" jdbcType="INTEGER" column="_id"/>
         <result property="companyId" column="company_id" jdbcType="INTEGER"/>
-        <result property="erpProductCode" column="erp_product_id" jdbcType="VARCHAR"/>
+        <result property="productCode" column="product_code" jdbcType="VARCHAR"/>
         <result column="common_name" jdbcType="VARCHAR" property="commonName"/>
         <result column="approval_code" jdbcType="VARCHAR" property="approvalCode"/>
         <result column="spec" jdbcType="VARCHAR" property="spec"/>
@@ -20,37 +20,31 @@
     </resultMap>
 
     <insert id="insertCompanySku">
-        insert into t_company_sku(_id,company_id,erp_product_id,common_name,approval_code,spec,factory_name,
+        insert into t_company_sku(_id,company_id,product_code,common_name,approval_code,spec,factory_name,
         bar_code,status,standard_spu,create_user,create_time,update_user,update_time)
         values (
-        #{id},#{companyId},#{erpProductCode},#{commonName},#{approvalCode},#{spec},#{factoryName},#{barCode},
+        #{id},#{companyId},#{productCode},#{commonName},#{approvalCode},#{spec},#{factoryName},#{barCode},
         #{status},#{standardSpu},#{createUser},#{createTime},#{updateUser},#{updateTime}
         )
     </insert>
 
     <delete id="deleteCompanySku">
-        delete from t_company_sku t where t.company_id = #{companyId} and t.erp_product_id = #{erpProductCode}
+        delete from t_company_sku t where t.company_id = #{companyId} and t.product_code = #{productCode}
     </delete>
 
-    <update id="updateCompanySku">
+    <update id="updateByCompanyIdAndProductCode">
         update t_company_sku set
         common_name=#{commonName},
         approval_code=#{approvalCode},
         spec=#{spec},
         factory_name=#{factoryName},
-        bar_code=#{barCode},
-        status=#{status},
-        standard_spu=#{standardSpu},
-        create_user=#{createUser},
-        create_time=#{createTime},
-        update_user=#{updateUser},
-        update_time=#{updateTime}
-        where company_id = #{companyId} and erp_id = #{erpProductCode}
+        bar_code=#{barCode}  
+        where company_id = #{companyId} and product_code = #{productCode}
     </update>
 
     <select id="selectCompanySkuByid" resultMap="companySkuType">
         select * from t_company_sku t
-        where t.company_id =#{companyId} and t.erp_product_id = #{erpProductCode}
+        where t.company_id =#{companyId} and t.product_code = #{productCode}
     </select>
 
     <select id="selectCompanySkuList" resultMap="companySkuType">
@@ -60,7 +54,7 @@
 	
 	<select id="getCompanySkuId" resultType="Integer">
         select id from t_company_sku t
-        where t.company_id =#{companyId} and t.erp_product_id = #{productCode}
+        where t.company_id =#{companyId} and t.product_code = #{productCode}
     </select>
 
  	<update id="updateCompanySkuById">

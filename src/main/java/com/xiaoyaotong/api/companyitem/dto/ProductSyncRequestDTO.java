@@ -8,14 +8,14 @@ import java.util.List;
  * @author xulongfei
  *
  */
-public class ProductInfoRequestDTO implements Serializable{
+public class ProductSyncRequestDTO<T> implements Serializable{
 
 	/**
 	 * 是否全量
 	 */
 	private int isAll = 0;
 	
-	private List<ProductInfoDTO> productDTOList;
+	private List<T> productDTOList;
 
 	public int getIsAll() {
 		return isAll;
@@ -25,11 +25,11 @@ public class ProductInfoRequestDTO implements Serializable{
 		this.isAll = isAll;
 	}
 
-	public List<ProductInfoDTO> getProductDTOList() {
+	public List<T> getProductDTOList() {
 		return productDTOList;
 	}
 
-	public void setProductDTOList(List<ProductInfoDTO> productDTOList) {
+	public void setProductDTOList(List<T> productDTOList) {
 		this.productDTOList = productDTOList;
 	}
 

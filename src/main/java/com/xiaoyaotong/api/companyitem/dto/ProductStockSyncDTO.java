@@ -10,7 +10,7 @@ public class ProductStockSyncDTO implements Serializable{
 	
 	private String batchNo;
 	
-	private String expiryDate;
+	private String deadLine;
 	
 	private String stock;
 	
@@ -30,14 +30,6 @@ public class ProductStockSyncDTO implements Serializable{
 		this.batchNo = batchNo;
 	}
 
-	public String getExpiryDate() {
-		return expiryDate;
-	}
-
-	public void setExpiryDate(String expiryDate) {
-		this.expiryDate = expiryDate;
-	}
-
 	public String getEnterpriseId() {
 		return enterpriseId;
 	}
@@ -52,5 +44,13 @@ public class ProductStockSyncDTO implements Serializable{
 
 	public void setStock(String stock) {
 		this.stock = stock;
+	}
+
+	public String getDeadLine() {
+		return deadLine;
+	}
+
+	public void setDeadLine(String deadLine) {
+		this.deadLine = deadLine;
 	}
 }
