@@ -16,6 +16,8 @@ import com.xiaoyaotong.api.companyitem.entity.CompanySku;
 import com.xiaoyaotong.api.companyitem.entity.CompanySkuBatch;
 import com.xiaoyaotong.api.companyitem.service.CompanySkuBatchService;
 import com.xiaoyaotong.api.companyitem.service.CompanySkuService;
+import com.xiaoyaotong.api.login.annotation.Authorization;
+import com.xiaoyaotong.api.login.config.Constants;
 
 @RestController
 @RequestMapping("/product")
@@ -26,7 +28,7 @@ public class ProductInfoController {
     private CompanySkuBatchService companySkuBatchService;
     
     @RequestMapping(value = "/addInfoList", method = RequestMethod.POST)
-   // @Authorization(way = Constants.SIGN)
+    @Authorization(way = Constants.SIGN)
     public ResponseEntity<HashMap> addProdutInfoList(@RequestBody ProductSyncRequestDTO<CompanySku> requestDTO) {
         Assert.notNull(requestDTO, "username can not be empty");
         int total = requestDTO.getProductDTOList().size();
@@ -50,8 +52,8 @@ public class ProductInfoController {
         return new ResponseEntity<HashMap>(map, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/updateInfoList", method = RequestMethod.POST)
-    // @Authorization(way = Constants.SIGN)
+     @RequestMapping(value = "/updateInfoList", method = RequestMethod.POST)
+     @Authorization(way = Constants.SIGN)
      public ResponseEntity<HashMap> updateProdutInfoList(@RequestBody ProductSyncRequestDTO<CompanySku> requestDTO) {
          Assert.notNull(requestDTO, "username can not be empty");
          int total = requestDTO.getProductDTOList().size();
@@ -65,15 +67,15 @@ public class ProductInfoController {
          return new ResponseEntity<HashMap>(map, HttpStatus.OK);
      }
 
-    @RequestMapping(value = "/addStockList", method = RequestMethod.POST)
-    // @Authorization(way = Constants.SIGN)
+     @RequestMapping(value = "/addStockList", method = RequestMethod.POST)
+     @Authorization(way = Constants.SIGN)
      public ResponseEntity<HashMap> addProductStockList(@RequestBody ProductSyncRequestDTO<CompanySkuBatch> requestDTO) {
          Assert.notNull(requestDTO, "username can not be empty");
          int total = requestDTO.getProductDTOList().size();
          int successresult = 0;
          for (CompanySkuBatch csku: requestDTO.getProductDTOList()){
          	if(requestDTO.getIsAll() == 1){
-         		Integer id = companySkuBatchService.getCompanySkuBatchId(csku.getCompanyId(), csku.getProductCode());
+         		Integer id = companySkuBatchService.getCompanySkuBatchId(csku);
          		if(id != null){
          			csku.setId(id);
          			successresult += companySkuBatchService.updateCompanySkuBatchById(csku);
@@ -90,8 +92,8 @@ public class ProductInfoController {
          return new ResponseEntity<HashMap>(map, HttpStatus.OK);
      }
     
-    @RequestMapping(value = "/updateStockList", method = RequestMethod.POST)
-    // @Authorization(way = Constants.SIGN)
+     @RequestMapping(value = "/updateStockList", method = RequestMethod.POST)
+     @Authorization(way = Constants.SIGN)
      public ResponseEntity<HashMap> updateProductStockList(@RequestBody ProductSyncRequestDTO<CompanySkuBatch> requestDTO) {
          Assert.notNull(requestDTO, "username can not be empty");
          int total = requestDTO.getProductDTOList().size();

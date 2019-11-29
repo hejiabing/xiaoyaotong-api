@@ -12,7 +12,7 @@ import com.xiaoyaotong.api.companyitem.entity.CompanySkuBatch;
 public interface CompanySkuBatchService {
     public int insertCompanySkuBatch(CompanySkuBatch companySkuBatch);
     public int addCompanySkuBatchList(List<CompanySkuBatch> skus);
-	public Integer getCompanySkuBatchId(int companyId, String productCode);
+	public Integer getCompanySkuBatchId(CompanySkuBatch csku);
 	public int updateCompanySkuBatchById(CompanySkuBatch csku);
 	public int updateByCompanyIdAndProductCode(CompanySkuBatch csku);
 	

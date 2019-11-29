@@ -78,7 +78,10 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
             //获取公司id
             String companyId = request.getHeader(Constants.COMPANY_ID);
             //获取公司配置的key
-            Company company = companyService.getCompanyById(Integer.valueOf(companyId));
+            Company company = companyService.getCompanyByCompanyId(Integer.valueOf(companyId));
+            if(company == null){
+            	return false;
+            }
             String key = company.getSign();
             if (null == key || "".equals(key)|| "0".equals(key)){
                 response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);

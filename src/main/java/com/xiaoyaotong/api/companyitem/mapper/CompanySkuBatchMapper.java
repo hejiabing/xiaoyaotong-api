@@ -53,7 +53,7 @@ public interface CompanySkuBatchMapper {
      */
     int updateByPrimaryKey(CompanySkuBatch record);
 
-    Integer getCompanySkuBatchId(@Param("companyId")  int companyId,@Param("productCode") String productCode);
+    Integer getCompanySkuBatchId(CompanySkuBatch record);
 
 	int updateCompanySkuBatchById(CompanySkuBatch csku);
 

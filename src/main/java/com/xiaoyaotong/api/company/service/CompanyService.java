@@ -8,5 +8,7 @@ import com.xiaoyaotong.api.company.entity.Company;
  * @date ：2019/11/19 9:54
  */
 public interface CompanyService {
-    public Company getCompanyById(int id);
+    public Company getCompanyByCompanyId(Integer id);
+
+	public int updateHeartBeat(Integer companyId);
 }

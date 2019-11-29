@@ -14,6 +14,8 @@ import com.xiaoyaotong.api.heartbeat.config.ErpSettingsEnum;
 import com.xiaoyaotong.api.heartbeat.dto.ErpClientSettings;
 import com.xiaoyaotong.api.heartbeat.entity.ErpSettings;
 import com.xiaoyaotong.api.heartbeat.service.ErpSettingsService;
+import com.xiaoyaotong.api.login.annotation.Authorization;
+import com.xiaoyaotong.api.login.config.Constants;
 
 @RestController
 @RequestMapping("/erpsettings")
@@ -24,6 +26,7 @@ public class ErpSettingsController {
 	
 	@ResponseBody
 	@RequestMapping("/save")
+	@Authorization(way = Constants.SIGN)
 	public int saveERPsettings(@RequestBody ErpClientSettings clientSettings){
 		List<ErpSettings> settingList = new ArrayList<ErpSettings>();
 		

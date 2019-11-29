@@ -1,6 +1,7 @@
 package com.xiaoyaotong.api.company.mapper;
 
 import com.xiaoyaotong.api.company.entity.Company;
+
 import org.springframework.stereotype.Repository;
 
 /**
@@ -10,5 +11,8 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface CompanyMapper {
-    Company findCompanyById(int id);
+    Company findByCompanyId(Integer id);
+
+	int updateHeartBeat(Integer companyId);
+
 }

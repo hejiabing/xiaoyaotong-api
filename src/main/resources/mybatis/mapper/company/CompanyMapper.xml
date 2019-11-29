@@ -16,5 +16,8 @@
     <select id="findByCompanyId" resultMap="companyMap">
         select * from t_company where company_id = #{companyId}
     </select>
-
+    
+    <update id="updateHeartBeat">
+        update t_company set update_time = now() where company_id = #{companyId}
+    </update>
 </mapper>

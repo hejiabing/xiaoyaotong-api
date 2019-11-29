@@ -204,7 +204,7 @@
   
   <select id="getCompanySkuBatchId" resultType="Integer">
     select id from t_company_sku_batch t
-        where t.company_id =#{companyId} and t.product_code = #{productCode}
+        where t.company_id =#{companyId} and t.product_code = #{productCode} and t.batch_no = #{batchNo,jdbcType=VARCHAR}
   </select>
   
   <update id="updateCompanySkuBatchById">
@@ -220,6 +220,6 @@
        dead_line = #{deadLine,jdbcType=VARCHAR},
       batch_no = #{batchNo,jdbcType=VARCHAR},
       stock = #{stock,jdbcType=DECIMAL}
-       where company_id =#{companyId} and product_code = #{productCode}
+       where company_id =#{companyId} and product_code = #{productCode} and batch_no = #{batchNo,jdbcType=VARCHAR}
     </update>
 </mapper>

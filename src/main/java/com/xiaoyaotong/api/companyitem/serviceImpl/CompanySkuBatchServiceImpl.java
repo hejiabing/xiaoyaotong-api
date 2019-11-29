@@ -1,11 +1,11 @@
 package com.xiaoyaotong.api.companyitem.serviceImpl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.xiaoyaotong.api.companyitem.entity.CompanySku;
 import com.xiaoyaotong.api.companyitem.entity.CompanySkuBatch;
 import com.xiaoyaotong.api.companyitem.mapper.CompanySkuBatchMapper;
 import com.xiaoyaotong.api.companyitem.service.CompanySkuBatchService;
@@ -22,6 +22,8 @@ public class CompanySkuBatchServiceImpl implements CompanySkuBatchService {
     private CompanySkuBatchMapper companySkuBatchMapper;
 
     public int insertCompanySkuBatch(CompanySkuBatch companySkuBatch){
+    	companySkuBatch.setCreateTime(new Date());
+    	companySkuBatch.setCreateUser("sysSync");
     	return companySkuBatchMapper.insertSelective(companySkuBatch);
     }
  
@@ -42,8 +44,8 @@ public class CompanySkuBatchServiceImpl implements CompanySkuBatchService {
     }
 
 	@Override
-	public Integer getCompanySkuBatchId(int companyId, String productCode) {
-		return companySkuBatchMapper.getCompanySkuBatchId(companyId,productCode);
+	public Integer getCompanySkuBatchId(CompanySkuBatch csku) {
+		return companySkuBatchMapper.getCompanySkuBatchId(csku);
 	}
 
 	@Override
