@@ -1,16 +1,52 @@
 package com.xiaoyaotong.api.companyitem.entity;
 
+/**
+ *
+ * 本实体类存放的是商家同步过来的药品
+ */
 
 public class CompanySku {
 
-  private int id;
-  private int companyId;
-  private String productCode;
-  private String commonName;
-  private String approvalCode;
-  private String spec;
-  private String factoryName;
-  private String barCode;
+  private int id;//自增id
+  private int companyId; //公司的id
+  private String productCode; //公司自己的ERP编码
+  private String commonName; //通用名
+  private String approvalCode; //国药准字
+  private String spec; //规格
+  private String factoryName; //生产厂家
+  private String barCode; //条形码
+  private long standardSpu; //匹配上的标准库里面的编码
+  private boolean isMatched; //是否完全匹配上
+  private int matchCount; //匹配的次数
+  private String createUser; //创建人
+  private String updateUser; //更新人
+  private java.sql.Timestamp createTime;//创建时间
+  private java.sql.Timestamp updateTime;//更新时间
+
+
+
+  public void setStandardSpu(int standardSpu) {
+    this.standardSpu = standardSpu;
+  }
+
+
+
+  public int getMatchCount() {
+    return matchCount;
+  }
+
+  public boolean isMatched() {
+    return isMatched;
+  }
+
+  public void setMatchCount(int matchCount) {
+    this.matchCount = matchCount;
+  }
+
+  public void setMatched(boolean matched) {
+    isMatched = matched;
+  }
+
 
   public void setProductCode(String productCode) {
     this.productCode = productCode;
@@ -43,17 +79,11 @@ public class CompanySku {
     this.companyId = companyId;
   }
 
-  private long standardSpu;
-
   public int getCompanyId() {
     return companyId;
   }
 
-  private String createUser;
-  private String updateUser;
 
-  private java.sql.Timestamp createTime;
-  private java.sql.Timestamp updateTime;
 
 
   public int getId() {

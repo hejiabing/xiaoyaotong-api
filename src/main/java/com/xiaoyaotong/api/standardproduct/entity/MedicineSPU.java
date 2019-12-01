@@ -4,28 +4,28 @@ import java.util.List;
 
 /**
  * @author ：billHe
- * @description：TODO
+ * @description：这个是药品的标准库 entity
  * @date ：2019/11/7 10:25 PM
  */
 public class MedicineSPU {
-    private int id;
-    private int spuId;
-    private String commonName;
-    private String approvalCode;
-    private String spec;
-    private String factoryName;
-    private String formalName;
-    private String shortName;
-    private String firstCategory;
-    private String secondCategory;
-    private long isStandard;
-    private long status;
-    private String createUser;
-    private java.sql.Timestamp createTime;
-    private String updateUser;
-    private java.sql.Timestamp updateTime;
-    private String barCode;
-    private List<MedicineSPUPic> pics;
+    private int id;//自增生成的id
+    private String spuCode; //标品的code
+    private String commonName; //通用名
+    private String approvalCode;//国药准字
+    private String spec; //规格
+    private String factoryName; //生产厂家
+    private String formalName; // 商品名
+    private String shortName;  //别名
+    private String firstCategory; //一级目录
+    private String secondCategory; //二级目录
+    private long isStandard; //是否已经是经过确认标品
+    private long status; //当前状态：录入，审核，完成。
+    private String createUser; //创建人
+    private java.sql.Timestamp createTime; //创建时间
+    private String updateUser; //更新人
+    private java.sql.Timestamp updateTime; //更新时间
+    private String barCode;  //标品上的条码
+    private List<MedicineSPUPic> pics; //图片
 
     public List<MedicineSPUPic> getPics() {
         return pics;
@@ -43,12 +43,12 @@ public class MedicineSPU {
         this.id = id;
     }
 
-    public int getSpuId() {
-        return spuId;
+    public String getSpuCode() {
+        return spuCode;
     }
 
-    public void setSpuId(int spuId) {
-        this.spuId = spuId;
+    public void setSpuCode(String spuCode) {
+        this.spuCode = spuCode;
     }
 
     public String getCommonName() {
@@ -177,7 +177,7 @@ public class MedicineSPU {
     @Override
     public String toString(){
         return
-                "spuId:" + this.getSpuId() +
+                "spuId:" + this.getSpuCode() +
                 ",ApprovalCode:" + this.getApprovalCode() +
                 ",spec:" + this.getSpec() +
                 ",CommonName:" + this.getCommonName()+

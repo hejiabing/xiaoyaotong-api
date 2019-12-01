@@ -14,11 +14,11 @@ class MedicineSPUMapperTest {
 
     @Test
     void getAllSPUids() {
-        System.out.println(medicineSPUMapper.getAllSPUIds());
+        System.out.println(medicineSPUMapper.getAllSPUCodes());
     }
     @Test
     void getSPUByid() {
-        System.out.println(medicineSPUMapper.findMedicineSPUByID(1));
+        System.out.println(medicineSPUMapper.findMedicineBySpuCode("1"));
     }
 
 

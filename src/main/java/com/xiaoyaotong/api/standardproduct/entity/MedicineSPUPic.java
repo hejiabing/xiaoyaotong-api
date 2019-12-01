@@ -2,12 +2,13 @@ package com.xiaoyaotong.api.standardproduct.entity;
 
 /**
  * @author ：billHe
- * @description：TODO
+ * @description：该类是和标品库绑定的的图片url
+ *
  * @date ：2019/11/8 8:42 PM
  */
 public class MedicineSPUPic {
     private long id;
-    private long spuId;
+    private String spuCode;
     private String picUrl;
     private long status;
     private String createUser;
@@ -25,12 +26,12 @@ public class MedicineSPUPic {
     }
 
 
-    public long getSpuId() {
-        return spuId;
+    public String getSpuId() {
+        return spuCode;
     }
 
-    public void setSpuId(long spuId) {
-        this.spuId = spuId;
+    public void setSpuId(String spuId) {
+        this.spuCode = spuCode;
     }
 
 

@@ -10,9 +10,9 @@ import java.util.List;
  * @date ：2019/11/8 9:16
  */
 public interface MedicineSPUService {
-    MedicineSPU getSPUByspuid(int spuid);
+    MedicineSPU getBySpuCode(String spuCode);
 
-    List<Integer> getAllSPUid();
+    List<String> getAllSPUCode();
 
     //获取SPU list，分页获取
     List<MedicineSPU> getSPUList(int pageBegin,int pageNum);

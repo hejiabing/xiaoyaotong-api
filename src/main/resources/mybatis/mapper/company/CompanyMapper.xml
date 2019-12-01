@@ -9,11 +9,11 @@
         <result column="sign" jdbcType="VARCHAR" property="sign" />
     </resultMap>
 
-    <select id="findByCompanyName" resultMap="companyMap" parameterType="String">
+    <select id="findCompanyByName" resultMap="companyMap" parameterType="String">
         select * from t_company where company_name = #{companyName}
     </select>
 
-    <select id="findByCompanyId" resultMap="companyMap">
+    <select id="findCompanyById" resultMap="companyMap">
         select * from t_company where company_id = #{companyId}
     </select>
     

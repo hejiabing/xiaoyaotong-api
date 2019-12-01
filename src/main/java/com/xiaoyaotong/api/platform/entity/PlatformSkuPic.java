@@ -1,7 +1,7 @@
-package com.xiaoyaotong.api.companyitem.entity;
+package com.xiaoyaotong.api.platform.entity;
 
 
-public class MedicineSkuPic {
+public class PlatformSkuPic {
 
   private long id;
   private long spuId;
@@ -39,7 +39,6 @@ public class MedicineSkuPic {
   public void setSkuId(long skuId) {
     this.skuId = skuId;
   }
-
 
   public String getPicUrl() {
     return picUrl;

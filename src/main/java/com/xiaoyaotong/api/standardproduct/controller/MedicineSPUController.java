@@ -28,9 +28,9 @@ public class MedicineSPUController {
 
     @RequestMapping(value="/getspubyid", method = RequestMethod.POST)
     @Authorization
-    public ResponseEntity<MedicineSPU> getSPUByid(@RequestParam int spuid) {
-        Assert.notNull(spuid, "spuid can not be empty");
-        MedicineSPU medicineSPU = medicineSPUService.getSPUByspuid(spuid);
+    public ResponseEntity<MedicineSPU> getSPUByid(@RequestParam String spuCode) {
+        Assert.notNull(spuCode, "spuid can not be empty");
+        MedicineSPU medicineSPU = medicineSPUService.getBySpuCode(spuCode);
         if (null != medicineSPU && (medicineSPU.getId()>0)){
             return  new ResponseEntity<MedicineSPU>(medicineSPU, HttpStatus.OK);
         }else{
@@ -57,7 +57,7 @@ public class MedicineSPUController {
         Assert.notNull(spu, "pageid can not be empty");
         boolean result = medicineSPUService.updateMedicineSPU(spu);
         if(result == true){
-            MedicineSPU newspu = medicineSPUService.getSPUByspuid(spu.getId());
+            MedicineSPU newspu = medicineSPUService.getBySpuCode(spu.getSpuCode());
             return  new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
         }else{
             return  new ResponseEntity<Boolean>(Boolean.FALSE, HttpStatus.OK);

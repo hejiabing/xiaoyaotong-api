@@ -1,23 +1,48 @@
-package com.xiaoyaotong.api.companyitem.entity;
+package com.xiaoyaotong.api.platform.entity;
 
-public class MedicineSku {
+public class PlatformSku {
 
   private long id;
-  private long skuId;
-  private long spuId;
-  private long sellerId;
-  private String sellerSkuCode;
-  private String companyName;
-  private String deadLine;
-  private double commonPrice;
-  private long ctlArea;
-  private long ctlPrice;
+  private long skuId;//自动生成的唯一的skuid
+  private long spuId;//标品库的spuid
+  private long sellerId; //卖家的id，companyid
+  private String sellerSkuCode; // 卖家的sku编码
+  private String companyName; //公司名称
+  private String batchNos; //批号集合
+  private String deadlineNos; //效期集合
+  private int stocks; //库存数量，可销售数量
+  private double commonPrice; //价格
   private long status;
   private String createUser;
   private java.sql.Timestamp createTime;
   private String updateUser;
   private java.sql.Timestamp updateTime;
 
+
+  public String getDeadlineNos() {
+    return deadlineNos;
+  }
+
+  public void setDeadlineNos(String deadlineNos) {
+    this.deadlineNos = deadlineNos;
+  }
+
+
+  public String getBatchNos() {
+    return batchNos;
+  }
+
+  public int getStocks() {
+    return stocks;
+  }
+
+  public void setBatchNos(String batchNos) {
+    this.batchNos = batchNos;
+  }
+
+  public void setStocks(int stocks) {
+    this.stocks = stocks;
+  }
 
   public long getId() {
     return id;
@@ -72,16 +97,6 @@ public class MedicineSku {
     this.companyName = companyName;
   }
 
-
-  public String getDeadLine() {
-    return deadLine;
-  }
-
-  public void setDeadLine(String deadLine) {
-    this.deadLine = deadLine;
-  }
-
-
   public double getCommonPrice() {
     return commonPrice;
   }
@@ -90,25 +105,6 @@ public class MedicineSku {
     this.commonPrice = commonPrice;
   }
 
-
-  public long getCtlArea() {
-    return ctlArea;
-  }
-
-  public void setCtlArea(long ctlArea) {
-    this.ctlArea = ctlArea;
-  }
-
-
-  public long getCtlPrice() {
-    return ctlPrice;
-  }
-
-  public void setCtlPrice(long ctlPrice) {
-    this.ctlPrice = ctlPrice;
-  }
-
-
   public long getStatus() {
     return status;
   }
@@ -116,7 +112,6 @@ public class MedicineSku {
   public void setStatus(long status) {
     this.status = status;
   }
-
 
   public String getCreateUser() {
     return createUser;

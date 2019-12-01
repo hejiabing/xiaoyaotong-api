@@ -11,12 +11,19 @@ import java.util.List;
  */
 public interface CompanySkuService {
     public int insertCompanySku(CompanySku companySku);
+
     public int deleteCompanySku(CompanySku companySku);
+
     public CompanySku getCompanySkuById(int companyId, String erpProductCode);
+
     public List<CompanySku> getCompanySkuList(int itemBegin, int itemNum);
+
     public int addCompanySkuList(List<CompanySku> skus);
-	public Integer getCompanySkuId(int companyId, String productCode);
-	public int updateCompanySkuById(CompanySku csku);
-	public int updateByCompanyIdAndProductCode(CompanySku csku);
+
+    public Integer getCompanySkuId(int companyId, String productCode);
+
+    public int updateCompanySkuById(CompanySku csku);
+
+    public int updateByCompanyIdAndProductCode(CompanySku csku);
 	
 }

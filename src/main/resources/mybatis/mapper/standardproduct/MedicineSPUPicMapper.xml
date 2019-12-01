@@ -4,7 +4,7 @@
 
     <resultMap id="medicineSPUPicType" type="com.xiaoyaotong.api.standardproduct.entity.MedicineSPUPic">
         <id column="_id" jdbcType="VARCHAR" property="id" />
-        <result column="spu_id" jdbcType="VARCHAR" property="spuId" />
+        <result column="spu_code" jdbcType="VARCHAR" property="spuCode" />
         <result column="pic_url" jdbcType="VARCHAR" property="picUrl" />
         <result column="status" jdbcType="VARCHAR" property="status" />
         <result column="create_user" jdbcType="VARCHAR" property="createUser" />

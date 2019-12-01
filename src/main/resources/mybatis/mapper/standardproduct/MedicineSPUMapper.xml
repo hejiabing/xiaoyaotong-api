@@ -4,7 +4,7 @@
 
     <resultMap id="medicineSPUType" type="com.xiaoyaotong.api.standardproduct.entity.MedicineSPU">
         <id column="s_id" jdbcType="VARCHAR" property="id" />
-        <result column="spu_id" jdbcType="VARCHAR" property="spuId" />
+        <result column="spu_code" jdbcType="VARCHAR" property="spuCode" />
         <result column="common_name" jdbcType="VARCHAR" property="commonName" />
         <result column="approval_code" jdbcType="VARCHAR" property="approvalCode" />
         <result column="spec" jdbcType="VARCHAR" property="spec" />
@@ -33,8 +33,8 @@
     
     <sql id="basicSQL">
         select
-        s._id as s_id,
-        s.spu_id ,
+        s.id as s_id,
+        s.spu_code ,
         s.approval_code,
         s.spec,
         s.factory_name,
@@ -49,7 +49,7 @@
         s.update_time,
         s.update_user,
         s.bar_code,
-        p._id as p_id,
+        p.id as p_id,
         p.pic_url,
         p.status as p_status,
         p.create_user as p_create_user,
@@ -58,27 +58,27 @@
         p.update_time as p_update_time
         from t_medicine_spu s
         left join t_medicine_spu_pic p
-        on s.spu_id = p.spu_id
+        on s.spu_code = p.spu_code
     </sql>
 
-    <select id="findMedicineSPUByID" resultMap="medicineSPUType">
-        <include refid="basicSQL"/> where s.spu_id = #{spuid}
+    <select id="findMedicineBySpuCode" resultMap="medicineSPUType">
+        <include refid="basicSQL"/> where s.spu_code = #{spuCode}
     </select>
 
     <select id="getSPUList" parameterType="hashmap" resultMap="medicineSPUType">
         <include refid="basicSQL"/> limit #{itemBegin},#{pageNum}
     </select>
 
-    <select id="getAllSPUIds" resultType="java.lang.Integer">
-        select spu_id from t_medicine_spu
+    <select id="getAllSPUCodes" resultType="java.lang.Integer">
+        select spu_code from t_medicine_spu
     </select>
 
     <insert id="insertMedicineSPU">
-        insert into t_medicine_spu(_id,spu_id,common_name,approval_code,spec,factory_name,
+        insert into t_medicine_spu(id,spu_code,common_name,approval_code,spec,factory_name,
         formal_name,short_name,first_category,second_category,is_standard,status,create_user,
         create_time,update_user,update_time,bar_code)
         values (
-        #{id},#{spuId},#{commonName},#{approvalCode},#{spec},#{factoryName},#{formalName},
+        #{id},#{spuCode},#{commonName},#{approvalCode},#{spec},#{factoryName},#{formalName},
         #{shortName},#{firstCategory},#{secondCategory},#{isStandard},#{status},#{createUser},
         #{createTime},#{updateUser},#{updateTime},#{barCode}
         )
@@ -101,20 +101,20 @@
         update_user = #{updateUser},
         update_time = #{updateTime},
         bar_code = #{barCode}
-        where _id = #{id} and spu_id = #{spuId}
+        where id = #{id} and spu_code = #{spuCode}
     </update>
 
     <!--物理删除-->
     <delete id="deleteMedicineSPUBad">
         delete from t_medicine_spu
-        where _id=#{id} and spu_id=#{spuId}
+        where id=#{id} and spu_code=#{spuCode}
     </delete>
 
     <!--逻辑删除-->
     <update id="deleteMedicineSPU">
         update t_medicine_spu set
         status = -1
-        where _id=#{id} and spu_id=#{spuId}
+        where id=#{id} and spu_code=#{spuCode}
     </update>
 
 </mapper>

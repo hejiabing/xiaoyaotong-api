@@ -20,13 +20,13 @@ public class MedicineSPUServiceImpl implements MedicineSPUService {
     @Resource
     private MedicineSPUMapper medicineSPUMapper;
     @Override
-    public MedicineSPU getSPUByspuid(int spuid) {
-        return medicineSPUMapper.findMedicineSPUByID(spuid);
+    public MedicineSPU getBySpuCode(String spuCode) {
+        return medicineSPUMapper.findMedicineBySpuCode(spuCode);
     }
 
     @Override
-    public List<Integer> getAllSPUid() {
-         return  medicineSPUMapper.getAllSPUIds();
+    public List<String> getAllSPUCode() {
+         return  medicineSPUMapper.getAllSPUCodes();
     }
 
     @Override
@@ -60,7 +60,7 @@ public class MedicineSPUServiceImpl implements MedicineSPUService {
 
     @Override
     public boolean deleteMedicineSPU(MedicineSPU medicineSPU) {
-        int result = medicineSPUMapper.deleteMedicineSPU(medicineSPU.getId(),medicineSPU.getSpuId());
+        int result = medicineSPUMapper.deleteMedicineSPU(medicineSPU.getId(),medicineSPU.getSpuCode());
         if(result>0){
             return true;
         }
