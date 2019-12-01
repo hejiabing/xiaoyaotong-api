@@ -3,17 +3,17 @@
 <mapper namespace="com.xiaoyaotong.api.platform.mapper.PlatformSkuMapper">
 
     <resultMap id="platformSku" type="com.xiaoyaotong.api.platform.entity.PlatformSku">
-        <id column="id" jdbcType="int" property="id" />
+        <id column="id" jdbcType="INTEGER" property="id" />
         <result column="sku_id" jdbcType="VARCHAR" property="skuId" />
         <result column="spu_code" jdbcType="VARCHAR" property="spuCode" />
-        <result column="company_id" jdbcType="int" property="companyId" />
+        <result column="company_id" jdbcType="INTEGER" property="companyId" />
         <result column="company_skucode" jdbcType="VARCHAR" property="companySkuCode" />
         <result column="company_name" jdbcType="VARCHAR" property="companyName" />
         <result column="batch_nos" jdbcType="VARCHAR" property="batchNos" />
         <result column="deadline_nos" jdbcType="VARCHAR" property="deadlineNos" />
-        <result column="common_price" jdbcType="D" property="commonPrice" />
-        <result column="stocks" jdbcType="int" property="stocks" />
-        <result column="status" jdbcType="int" property="status" />
+        <result column="common_price" jdbcType="DECIMAL" property="commonPrice" />
+        <result column="stocks" jdbcType="INTEGER" property="stocks" />
+        <result column="status" jdbcType="INTEGER" property="status" />
         <result column="create_user" jdbcType="VARCHAR" property="createUser" />
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
         <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
