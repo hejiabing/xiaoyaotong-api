@@ -57,5 +57,5 @@ public interface CompanySkuBatchMapper {
 
 	int updateCompanySkuBatchById(CompanySkuBatch csku);
 
-	int updateByCompanyIdAndProductCode(CompanySkuBatch csku);
+	int updateByCompanyIdAndSkuCode(CompanySkuBatch csku);
 }

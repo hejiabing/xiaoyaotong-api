@@ -14,6 +14,6 @@ public interface CompanySkuBatchService {
     public int addCompanySkuBatchList(List<CompanySkuBatch> skus);
 	public Integer getCompanySkuBatchId(CompanySkuBatch csku);
 	public int updateCompanySkuBatchById(CompanySkuBatch csku);
-	public int updateByCompanyIdAndProductCode(CompanySkuBatch csku);
+	public int updateByCompanyIdAndSkuCode(CompanySkuBatch csku);
 	
 }

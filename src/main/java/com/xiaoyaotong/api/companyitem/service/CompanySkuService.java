@@ -24,6 +24,6 @@ public interface CompanySkuService {
 
     public int updateCompanySkuById(CompanySku csku);
 
-    public int updateByCompanyIdAndProductCode(CompanySku csku);
+    public int updateByCompanyIdAndSkuCode(CompanySku csku);
 	
 }

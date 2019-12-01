@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.xiaoyaotong.api.companyitem.dto.ProductSyncRequestDTO;
 import com.xiaoyaotong.api.companyitem.entity.CompanySku;
 import com.xiaoyaotong.api.companyitem.entity.CompanySkuBatch;
+import com.xiaoyaotong.api.companyitem.entity.CompanySkuPrice;
 import com.xiaoyaotong.api.companyitem.service.CompanySkuBatchService;
+import com.xiaoyaotong.api.companyitem.service.CompanySkuPriceService;
 import com.xiaoyaotong.api.companyitem.service.CompanySkuService;
 import com.xiaoyaotong.api.login.annotation.Authorization;
 import com.xiaoyaotong.api.login.config.Constants;
@@ -26,6 +28,8 @@ public class ProductInfoController {
     private CompanySkuService companySkuService;
     @Autowired
     private CompanySkuBatchService companySkuBatchService;
+    @Autowired
+    private CompanySkuPriceService companySkuPriceService;
     
     @RequestMapping(value = "/addInfoList", method = RequestMethod.POST)
     @Authorization(way = Constants.SIGN)
@@ -59,7 +63,7 @@ public class ProductInfoController {
          int total = requestDTO.getProductDTOList().size();
          int successresult = 0;
          for (CompanySku csku: requestDTO.getProductDTOList()){
-         	successresult += companySkuService.updateByCompanyIdAndProductCode(csku);
+         	successresult += companySkuService.updateByCompanyIdAndSkuCode(csku);
          }
          HashMap map = new HashMap();
          map.put("all",total);
@@ -99,7 +103,47 @@ public class ProductInfoController {
          int total = requestDTO.getProductDTOList().size();
          int successresult = 0;
          for (CompanySkuBatch csku: requestDTO.getProductDTOList()){
-         	successresult += companySkuBatchService.updateByCompanyIdAndProductCode(csku);
+         	successresult += companySkuBatchService.updateByCompanyIdAndSkuCode(csku);
+         }
+         HashMap map = new HashMap();
+         map.put("all",total);
+         map.put("success",successresult);
+         return new ResponseEntity<HashMap>(map, HttpStatus.OK);
+     }
+     
+     @RequestMapping(value = "/addPriceList", method = RequestMethod.POST)
+     @Authorization(way = Constants.SIGN)
+     public ResponseEntity<HashMap> addProductPriceList(@RequestBody ProductSyncRequestDTO<CompanySkuPrice> requestDTO) {
+         Assert.notNull(requestDTO, "username can not be empty");
+         int total = requestDTO.getProductDTOList().size();
+         int successresult = 0;
+         for (CompanySkuPrice csku: requestDTO.getProductDTOList()){
+         	if(requestDTO.getIsAll() == 1){
+         		Integer id = companySkuPriceService.getCompanySkuPriceId(csku);
+         		if(id != null){
+         			csku.setId(id);
+         			successresult += companySkuPriceService.updateCompanySkuPriceById(csku);
+         		}else{
+         			successresult += companySkuPriceService.insertCompanySkuPrice(csku);
+         		}
+             }else{
+             	successresult += companySkuPriceService.insertCompanySkuPrice(csku);
+             }
+         }
+         HashMap map = new HashMap();
+         map.put("all",total);
+         map.put("success",successresult);
+         return new ResponseEntity<HashMap>(map, HttpStatus.OK);
+     }
+    
+     @RequestMapping(value = "/updatePriceList", method = RequestMethod.POST)
+     @Authorization(way = Constants.SIGN)
+     public ResponseEntity<HashMap> updatePriceList(@RequestBody ProductSyncRequestDTO<CompanySkuPrice> requestDTO) {
+         Assert.notNull(requestDTO, "username can not be empty");
+         int total = requestDTO.getProductDTOList().size();
+         int successresult = 0;
+         for (CompanySkuPrice csku: requestDTO.getProductDTOList()){
+         	successresult += companySkuPriceService.updateByCompanyIdAndSkuCode(csku);
          }
          HashMap map = new HashMap();
          map.put("all",total);

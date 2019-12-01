@@ -67,7 +67,7 @@ public class CompanySkuServiceImpl implements CompanySkuService {
 	}
 	
 	@Override
-	public int updateByCompanyIdAndProductCode(CompanySku csku) {
-		return companySkuMapper.updateByCompanyIdAndProductCode(csku);
+	public int updateByCompanyIdAndSkuCode(CompanySku csku) {
+		return companySkuMapper.updateByCompanyIdAndSkuCode(csku);
 	}
 }

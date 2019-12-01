@@ -6,7 +6,7 @@ public class ProductStockSyncDTO implements Serializable{
 
 	private String enterpriseId;
 	
-	private String productCode;
+	private String skuCode;
 	
 	private String batchNo;
 	
@@ -14,14 +14,6 @@ public class ProductStockSyncDTO implements Serializable{
 	
 	private String stock;
 	
-	public String getProductCode() {
-		return productCode;
-	}
-
-	public void setProductCode(String productCode) {
-		this.productCode = productCode;
-	}
-
 	public String getBatchNo() {
 		return batchNo;
 	}
@@ -52,5 +44,13 @@ public class ProductStockSyncDTO implements Serializable{
 
 	public void setDeadLine(String deadLine) {
 		this.deadLine = deadLine;
+	}
+
+	public String getSkuCode() {
+		return skuCode;
+	}
+
+	public void setSkuCode(String skuCode) {
+		this.skuCode = skuCode;
 	}
 }

@@ -19,7 +19,7 @@ public interface CompanySkuMapper {
 
     public int deleteCompanySku(int companyId,String erpId);
 
-    public int updateByCompanyIdAndProductCode(CompanySku companySku);
+    public int updateByCompanyIdAndSkuCode(CompanySku companySku);
 
     public CompanySku selectCompanySkuByid(int companyId, String erpId);
 

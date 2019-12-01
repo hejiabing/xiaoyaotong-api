@@ -6,19 +6,10 @@ public class ProductPriceSyncDTO implements Serializable{
 
 	private String enterpriseId;
 	
-	private String productCode;
+	private String skuCode;
 	
 	private String price;
  
-	
-	public String getProductCode() {
-		return productCode;
-	}
-
-	public void setProductCode(String productCode) {
-		this.productCode = productCode;
-	}
-
 	public String getPrice() {
 		return price;
 	}
@@ -33,5 +24,13 @@ public class ProductPriceSyncDTO implements Serializable{
 
 	public void setEnterpriseId(String enterpriseId) {
 		this.enterpriseId = enterpriseId;
+	}
+
+	public String getSkuCode() {
+		return skuCode;
+	}
+
+	public void setSkuCode(String skuCode) {
+		this.skuCode = skuCode;
 	}
 }

@@ -13,7 +13,7 @@
         select * from t_company where company_name = #{companyName}
     </select>
 
-    <select id="findCompanyById" resultMap="companyMap">
+    <select id="findByCompanyId" resultMap="companyMap">
         select * from t_company where company_id = #{companyId}
     </select>
     

@@ -54,8 +54,8 @@ public class CompanySkuBatchServiceImpl implements CompanySkuBatchService {
 	}
 	
 	@Override
-	public int updateByCompanyIdAndProductCode(CompanySkuBatch csku) {
-		return companySkuBatchMapper.updateByCompanyIdAndProductCode(csku);
+	public int updateByCompanyIdAndSkuCode(CompanySkuBatch csku) {
+		return companySkuBatchMapper.updateByCompanyIdAndSkuCode(csku);
 	}
 
 }

@@ -143,7 +143,7 @@
     </where>
   </select>
   
-  <update id="updateByCompanyIdAndskuCode" parameterType="com.xiaoyaotong.api.companyitem.entity.CompanySkuPrice">
+  <update id="updateByCompanyIdAndSkuCode" parameterType="com.xiaoyaotong.api.companyitem.entity.CompanySkuPrice">
     update t_company_sku_price
     set  
       price = #{price,jdbcType=DECIMAL} 
