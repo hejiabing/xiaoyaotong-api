@@ -22,6 +22,7 @@ public class CompanySku {
   private String updateUser; //更新人
   private java.sql.Timestamp createTime;//创建时间
   private java.sql.Timestamp updateTime;//更新时间
+    private long status;
 
 
   public int getMatchCount() {
@@ -50,7 +51,6 @@ public class CompanySku {
   }
 
 
-  private long status;
 
   public void setCreateUser(String createUser) {
     this.createUser = createUser;
