@@ -26,7 +26,7 @@ public class MedicineSPUController {
     @Autowired
     private MedicineSPUService medicineSPUService;
 
-    @RequestMapping(value="/getspubyid", method = RequestMethod.POST)
+    @RequestMapping(value="/getbyspucode", method = RequestMethod.POST)
     @Authorization
     public ResponseEntity<MedicineSPU> getSPUByid(@RequestParam String spuCode) {
         Assert.notNull(spuCode, "spuid can not be empty");

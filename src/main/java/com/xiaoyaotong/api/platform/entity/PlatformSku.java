@@ -6,7 +6,7 @@ public class PlatformSku {
   private long skuId;//自动生成的唯一的skuid
   private long spuId;//标品库的spuid
   private long sellerId; //卖家的id，companyid
-  private String sellerSkuCode; // 卖家的sku编码
+  private String companySkuCode; // 卖家的sku编码
   private String companyName; //公司名称
   private String batchNos; //批号集合
   private String deadlineNos; //效期集合
@@ -80,12 +80,12 @@ public class PlatformSku {
   }
 
 
-  public String getSellerSkuCode() {
-    return sellerSkuCode;
+  public String getCompanySkuCode() {
+    return companySkuCode;
   }
 
-  public void setSellerSkuCode(String sellerSkuCode) {
-    this.sellerSkuCode = sellerSkuCode;
+  public void setCompanySkuCode(String sellerSkuCode) {
+    this.companySkuCode = companySkuCode;
   }
 
 
