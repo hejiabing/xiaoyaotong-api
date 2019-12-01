@@ -16,7 +16,7 @@ class CompanyServiceImplTest {
 
     @Test
     public void testGetCompanyById(){
-    Company company = companyService.getCompanyByCompanyId(1);
+    Company company = companyService.getCompanyByCompanyId(1212);
     System.out.println(company.getId());
     }
 

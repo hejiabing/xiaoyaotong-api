@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  * @author ：billHe
- * @description：TODO
+ * @description：标品库对外提供服务的控制页面
  * @date ：2019/11/8 12:37
  */
 @RestController

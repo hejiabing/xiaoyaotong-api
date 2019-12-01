@@ -7,7 +7,7 @@ import java.util.List;
 public interface PlatformSkuService {
 
     //根据SKUid获取
-    public PlatformSku getSkuBySkuId();
+    public PlatformSku getSkuBySkuId(String skuId);
 
     //根据公司ID获取SKU列表
     public List<PlatformSku> getSkuByCompanyId(int companyId);

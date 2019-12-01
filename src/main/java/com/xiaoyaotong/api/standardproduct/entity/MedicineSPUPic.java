@@ -7,10 +7,10 @@ package com.xiaoyaotong.api.standardproduct.entity;
  * @date ：2019/11/8 8:42 PM
  */
 public class MedicineSPUPic {
-    private long id;
-    private String spuCode;
-    private String picUrl;
-    private long status;
+    private long id;//自动生成的id
+    private String spuCode; //标品库的spuCode
+    private String picUrl; //图片的url
+    private long status; //状态
     private String createUser;
     private java.sql.Timestamp createTime;
     private String updateUser;
