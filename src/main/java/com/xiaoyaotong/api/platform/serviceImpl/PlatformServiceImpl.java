@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * @author ：billHe
- * @description：TODO
+ * @description：platformserice的方法实现
  * @date ：2019/12/1 7:40 PM
  */
 public class PlatformServiceImpl implements PlatformSkuService {
