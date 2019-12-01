@@ -17,17 +17,17 @@ class MedicineSPUServiceImplTest {
 
     @Test
     void getAllspuids() {
-        System.out.println(medicineSPUService.getAllSPUid());
+        System.out.println(medicineSPUService.getAllSPUCode());
     }
 
     @Test
     void getSPUbyID(){
-        MedicineSPU m = medicineSPUService.getSPUByspuid(1);
+        MedicineSPU m = medicineSPUService.getBySpuCode("1");
         List<MedicineSPUPic> ll = m.getPics();
         for(MedicineSPUPic e:ll){
            System.out.println(e.getId());
         }
-        System.out.println(medicineSPUService.getSPUByspuid(1));
+        System.out.println(medicineSPUService.getBySpuCode("1"));
     }
 
     @Test
@@ -42,7 +42,7 @@ class MedicineSPUServiceImplTest {
     void testInsertItem(){
         MedicineSPU spu = new MedicineSPU();
         spu.setId(0);
-        spu.setSpuId(5);
+        spu.setSpuCode("5");
         spu.setCommonName("武汉");
         spu.setSpec("12s*6");
         spu.setFactoryName("湖北武汉");
