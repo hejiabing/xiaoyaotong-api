@@ -9,7 +9,7 @@ public class CompanySku {
 
   private int id;//自增id
   private int companyId; //公司的id
-  private String productCode; //公司自己的ERP编码
+  private String skuCode; //公司自己的ERP编码
   private String commonName; //通用名
   private String approvalCode; //国药准字
   private String spec; //规格
@@ -40,17 +40,6 @@ public class CompanySku {
   public void setMatched(boolean matched) {
     matched = matched;
   }
-
-
-  public void setProductCode(String productCode) {
-    this.productCode = productCode;
-  }
-
-  public String getProductCode() {
-    return productCode;
-  }
-
-
 
   public void setCreateUser(String createUser) {
     this.createUser = createUser;
@@ -93,14 +82,6 @@ public class CompanySku {
 
   public void setCompayId(int compayId) {
     this.companyId = compayId;
-  }
-
-  public String getErpId() {
-    return productCode;
-  }
-
-  public void setErpId(String erpId) {
-    this.productCode = erpId;
   }
 
   public String getCommonName() {
@@ -175,5 +156,13 @@ public class CompanySku {
   public void setUpdateTime(java.sql.Timestamp updateTime) {
     this.updateTime = updateTime;
   }
+
+public String getSkuCode() {
+	return skuCode;
+}
+
+public void setSkuCode(String skuCode) {
+	this.skuCode = skuCode;
+}
 
 }

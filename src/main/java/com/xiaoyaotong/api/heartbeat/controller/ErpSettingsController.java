@@ -1,9 +1,12 @@
 package com.xiaoyaotong.api.heartbeat.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -27,7 +30,7 @@ public class ErpSettingsController {
 	@ResponseBody
 	@RequestMapping("/save")
 	@Authorization(way = Constants.SIGN)
-	public int saveERPsettings(@RequestBody ErpClientSettings clientSettings){
+	public ResponseEntity<HashMap> saveERPsettings(@RequestBody ErpClientSettings clientSettings){
 		List<ErpSettings> settingList = new ArrayList<ErpSettings>();
 		
 		if(clientSettings.getProductSettings() != null){
@@ -62,6 +65,10 @@ public class ErpSettingsController {
 			erpSettings.setPanelContent(JSON.toJSONString(clientSettings.getDbSettings()));
 			settingList.add(erpSettings);
 		}
-		return erpSettingsService.insetOrUpdateSettings(settingList);
+		erpSettingsService.insetOrUpdateSettings(settingList);
+		HashMap map = new HashMap();
+        map.put("all",1);
+        map.put("success",1);
+        return new ResponseEntity<HashMap>(map, HttpStatus.OK);
 	}
 }

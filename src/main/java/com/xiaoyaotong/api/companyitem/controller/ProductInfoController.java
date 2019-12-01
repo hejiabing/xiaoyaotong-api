@@ -39,7 +39,7 @@ public class ProductInfoController {
         int successresult = 0;
         for (CompanySku csku: requestDTO.getProductDTOList()){
         	if(requestDTO.getIsAll() == 1){
-        		Integer id = companySkuService.getCompanySkuId(csku.getCompanyId(), csku.getProductCode());
+        		Integer id = companySkuService.getCompanySkuId(csku.getCompanyId(), csku.getSkuCode());
         		if(id != null){
         			csku.setId(id);
         			successresult += companySkuService.updateCompanySkuById(csku);

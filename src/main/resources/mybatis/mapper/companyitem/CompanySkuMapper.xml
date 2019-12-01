@@ -5,7 +5,7 @@
     <resultMap id="companySkuType" type="com.xiaoyaotong.api.companyitem.entity.CompanySku">
         <id property="id" jdbcType="INTEGER" column="_id"/>
         <result property="companyId" column="company_id" jdbcType="INTEGER"/>
-        <result property="productCode" column="product_code" jdbcType="VARCHAR"/>
+        <result property="skuCode" column="sku_code" jdbcType="VARCHAR"/>
         <result column="common_name" jdbcType="VARCHAR" property="commonName"/>
         <result column="approval_code" jdbcType="VARCHAR" property="approvalCode"/>
         <result column="spec" jdbcType="VARCHAR" property="spec"/>
@@ -20,31 +20,31 @@
     </resultMap>
 
     <insert id="insertCompanySku">
-        insert into t_company_sku(_id,company_id,product_code,common_name,approval_code,spec,factory_name,
+        insert into t_company_sku(_id,company_id,sku_code,common_name,approval_code,spec,factory_name,
         bar_code,status,standard_spu,create_user,create_time,update_user,update_time)
         values (
-        #{id},#{companyId},#{productCode},#{commonName},#{approvalCode},#{spec},#{factoryName},#{barCode},
+        #{id},#{companyId},#{skuCode},#{commonName},#{approvalCode},#{spec},#{factoryName},#{barCode},
         #{status},#{standardSpu},#{createUser},#{createTime},#{updateUser},#{updateTime}
         )
     </insert>
 
     <delete id="deleteCompanySku">
-        delete from t_company_sku t where t.company_id = #{companyId} and t.product_code = #{productCode}
+        delete from t_company_sku t where t.company_id = #{companyId} and t.sku_code = #{skuCode}
     </delete>
 
-    <update id="updateByCompanyIdAndProductCode">
+    <update id="updateByCompanyIdAndskuCode">
         update t_company_sku set
         common_name=#{commonName},
         approval_code=#{approvalCode},
         spec=#{spec},
         factory_name=#{factoryName},
         bar_code=#{barCode}  
-        where company_id = #{companyId} and product_code = #{productCode}
+        where company_id = #{companyId} and sku_code = #{skuCode}
     </update>
 
     <select id="selectCompanySkuByid" resultMap="companySkuType">
         select * from t_company_sku t
-        where t.company_id =#{companyId} and t.product_code = #{productCode}
+        where t.company_id =#{companyId} and t.sku_code = #{skuCode}
     </select>
 
     <select id="selectCompanySkuList" resultMap="companySkuType">
@@ -54,7 +54,7 @@
 	
 	<select id="getCompanySkuId" resultType="Integer">
         select id from t_company_sku t
-        where t.company_id =#{companyId} and t.product_code = #{productCode}
+        where t.company_id =#{companyId} and t.sku_code = #{skuCode}
     </select>
 
  	<update id="updateCompanySkuById">

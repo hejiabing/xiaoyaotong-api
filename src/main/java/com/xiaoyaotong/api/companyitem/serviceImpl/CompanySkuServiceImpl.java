@@ -27,7 +27,7 @@ public class CompanySkuServiceImpl implements CompanySkuService {
 
     @Override
     public int deleteCompanySku(CompanySku sku){
-        int result = companySkuMapper.deleteCompanySku(sku.getCompayId(),sku.getErpId());
+        int result = companySkuMapper.deleteCompanySku(sku.getCompayId(),sku.getSkuCode());
         return result;
     }
 

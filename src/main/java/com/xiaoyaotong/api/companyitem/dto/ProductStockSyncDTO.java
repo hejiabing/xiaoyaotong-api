@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class ProductStockSyncDTO implements Serializable{
 
-	private String enterpriseId;
+	private String companyId;
 	
 	private String skuCode;
 	
@@ -20,14 +20,6 @@ public class ProductStockSyncDTO implements Serializable{
 
 	public void setBatchNo(String batchNo) {
 		this.batchNo = batchNo;
-	}
-
-	public String getEnterpriseId() {
-		return enterpriseId;
-	}
-
-	public void setEnterpriseId(String enterpriseId) {
-		this.enterpriseId = enterpriseId;
 	}
 
 	public String getStock() {
@@ -52,5 +44,13 @@ public class ProductStockSyncDTO implements Serializable{
 
 	public void setSkuCode(String skuCode) {
 		this.skuCode = skuCode;
+	}
+
+	public String getCompanyId() {
+		return companyId;
+	}
+
+	public void setCompanyId(String companyId) {
+		this.companyId = companyId;
 	}
 }
