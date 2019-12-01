@@ -16,7 +16,7 @@ public class CompanySku {
   private String factoryName; //生产厂家
   private String barCode; //条形码
   private long standardSpu; //匹配上的标准库里面的编码
-  private boolean isMatched; //是否完全匹配上
+  private boolean matched; //是否完全匹配上
   private int matchCount; //匹配的次数
   private String createUser; //创建人
   private String updateUser; //更新人
@@ -29,7 +29,7 @@ public class CompanySku {
   }
 
   public boolean isMatched() {
-    return isMatched;
+    return matched;
   }
 
   public void setMatchCount(int matchCount) {
@@ -37,7 +37,7 @@ public class CompanySku {
   }
 
   public void setMatched(boolean matched) {
-    isMatched = matched;
+    matched = matched;
   }
 
 
