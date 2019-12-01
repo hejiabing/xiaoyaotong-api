@@ -24,13 +24,6 @@ public class CompanySku {
   private java.sql.Timestamp updateTime;//更新时间
 
 
-
-  public void setStandardSpu(int standardSpu) {
-    this.standardSpu = standardSpu;
-  }
-
-
-
   public int getMatchCount() {
     return matchCount;
   }

@@ -18,7 +18,6 @@ public class PlatformSku {
   private String updateUser;
   private java.sql.Timestamp updateTime;
 
-
   public String getDeadlineNos() {
     return deadlineNos;
   }
