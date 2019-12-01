@@ -18,27 +18,27 @@ public class PlatformServiceImpl implements PlatformSkuService {
     private PlatformSkuMapper platformSkuMapper;
 
     @Override
-    public PlatformSku getSkuBySkuId() {
-        return null;
+    public PlatformSku getSkuBySkuId(String skuId) {
+        return platformSkuMapper.getPlatformSkuById(skuId);
     }
 
     @Override
     public List<PlatformSku> getSkuByCompanyId(int companyId) {
-        return null;
+        return platformSkuMapper.getPlatformSkyByCompanyId(companyId);
     }
 
     @Override
     public int insertPlatformSku(PlatformSku platformSku) {
-        return 0;
+        return platformSkuMapper.insertPlatformSku(platformSku);
     }
 
     @Override
     public int updatePlatformSku(PlatformSku platformSku) {
-        return 0;
+        return platformSkuMapper.updatePlatformSku(platformSku);
     }
 
     @Override
     public int deletePlatformSku(String skuId) {
-        return 0;
+        return  platformSkuMapper.deletePlatformSku(skuId);
     }
 }
