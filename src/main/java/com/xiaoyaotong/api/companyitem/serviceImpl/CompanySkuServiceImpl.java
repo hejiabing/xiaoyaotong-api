@@ -57,8 +57,8 @@ public class CompanySkuServiceImpl implements CompanySkuService {
     }
 
 	@Override
-	public Integer getCompanySkuId(int companyId, String productCode) {
-		return companySkuMapper.getCompanySkuId(companyId,productCode);
+	public Integer getCompanySkuId(int companyId, String skuCode) {
+		return companySkuMapper.getCompanySkuId(companyId,skuCode);
 	}
 
 	@Override
