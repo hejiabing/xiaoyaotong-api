@@ -1,6 +1,6 @@
 package com.xiaoyaotong.api.search.serviceImpl;
 
-import com.xiaoyaotong.api.search.dao.ESPlatformSkuDAO;
+import com.xiaoyaotong.api.search.dao.ESPlatformSkuDao;
 import com.xiaoyaotong.api.search.entity.ESPlatformSku;
 import com.xiaoyaotong.api.search.service.ESPlatformSkuService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 public class ESPlatformSkuServiceImpl implements ESPlatformSkuService {
 
     @Autowired
-    ESPlatformSkuDAO esPlatformSkuDAO;
+    ESPlatformSkuDao esPlatformSkuDAO;
 
     @Override
     public void addESPlatformSku(ESPlatformSku esPlatformSku) {

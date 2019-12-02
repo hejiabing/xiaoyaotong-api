@@ -4,5 +4,5 @@ import com.xiaoyaotong.api.search.entity.ESMedicineSpu;
 import com.xiaoyaotong.api.search.entity.ESPlatformSku;
 import org.springframework.data.repository.CrudRepository;
 
-public interface ESPlatformSkuDAO extends CrudRepository<ESPlatformSku, String> {
+public interface ESPlatformSkuDao extends CrudRepository<ESPlatformSku, String> {
 }
