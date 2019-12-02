@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/matchspu")
 public class MatchSpuController {
     @Autowired
-    private ESMedicineSpuService esMedicineSpuService;
+    private ESMedicineSpuService eSMedicineSpuService;
 
     @RequestMapping("/add")
     public void addSpu(){
@@ -23,7 +23,7 @@ public class MatchSpuController {
             ESMedicineSpu esMedicineSpu = new ESMedicineSpu();
             esMedicineSpu.setId(i);
             esMedicineSpu.setCommonName("测试"+i);
-            esMedicineSpuService.addMedicineSpu(esMedicineSpu);
+            eSMedicineSpuService.addMedicineSpu(esMedicineSpu);
         }
 
     }
