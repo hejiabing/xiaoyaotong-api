@@ -1,4 +1,4 @@
-package com.xiaoyaotong.api.matchspu.entity;
+package com.xiaoyaotong.api.search.entity;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;

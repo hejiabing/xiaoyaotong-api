@@ -1,8 +1,8 @@
-package com.xiaoyaotong.api.matchspu.serviceImpl;
+package com.xiaoyaotong.api.search.serviceImpl;
 
-import com.xiaoyaotong.api.matchspu.dao.ESMedicineSpuDao;
-import com.xiaoyaotong.api.matchspu.entity.ESMedicineSpu;
-import com.xiaoyaotong.api.matchspu.service.ESMedicineSpuService;
+import com.xiaoyaotong.api.search.dao.ESMedicineSpuDao;
+import com.xiaoyaotong.api.search.entity.ESMedicineSpu;
+import com.xiaoyaotong.api.search.service.ESMedicineSpuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 import org.springframework.stereotype.Service;

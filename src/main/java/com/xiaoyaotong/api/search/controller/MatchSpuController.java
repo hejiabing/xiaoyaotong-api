@@ -1,7 +1,7 @@
-package com.xiaoyaotong.api.matchspu.controller;
+package com.xiaoyaotong.api.search.controller;
 
-import com.xiaoyaotong.api.matchspu.entity.ESMedicineSpu;
-import com.xiaoyaotong.api.matchspu.service.ESMedicineSpuService;
+import com.xiaoyaotong.api.search.entity.ESMedicineSpu;
+import com.xiaoyaotong.api.search.service.ESMedicineSpuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
