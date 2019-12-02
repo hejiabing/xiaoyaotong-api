@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.data.redis.RedisRepositoriesAutoCo
 @SpringBootApplication
 public class ApiApplication {
     public static void main(String[] args) {
+        System.setProperty("es.set.netty.runtime.available.processors", "false");
         SpringApplication.run(ApiApplication.class, args);
     }
 }

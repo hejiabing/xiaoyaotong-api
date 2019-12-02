@@ -1,0 +1,7 @@
+spring:
+  ## Elasticsearch配置文件（必须）
+  ## 该配置和Elasticsearch本地文件config下的elasticsearch.yml中的配置信息有关
+  data:
+    elasticsearch:
+      cluster-name: xiaoyaotong-application
+      cluster-nodes: 47.105.198.197:9300
