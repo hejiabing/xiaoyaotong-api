@@ -10,7 +10,9 @@ import java.math.BigDecimal;
 /**
  * @author ：billHe
  * @description：可以销卖的SKU搜索
+ * es 7.0以后支持一个index一个type, 8.0以后会去掉type
  * @date ：2019/12/2 9:48 PM
+ *
  */
 @Document(indexName = "sku",type = "sku")
 public class ESPlatformSku implements Serializable {
