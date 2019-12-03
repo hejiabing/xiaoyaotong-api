@@ -26,7 +26,7 @@ public class SchedulerConfig {
     public void init() {
         try {
             JobDetail jobDetail = JobBuilder.newJob(ESJobService.class).withIdentity("job", "xiaoyaotong").build();
-            String cron = "* */5 * * * ?";
+            String cron = "0 */5 * * * ?";//每隔五分钟执行一次
             jobDetail.getJobDataMap().put("cron", cron);
             CronTrigger trigger = TriggerBuilder.newTrigger().withIdentity("trigger", "t1").withSchedule(CronScheduleBuilder.cronSchedule(cron)).build();
             scheduler.scheduleJob(jobDetail, trigger);
