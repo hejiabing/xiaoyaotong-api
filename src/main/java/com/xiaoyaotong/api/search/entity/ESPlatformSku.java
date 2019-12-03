@@ -4,13 +4,16 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 
+import java.io.Serializable;
+import java.math.BigDecimal;
+
 /**
  * @author ：billHe
  * @description：可以销卖的SKU搜索
  * @date ：2019/12/2 9:48 PM
  */
-@Document(indexName = "xiaoyaotong",type = "sku")
-public class ESPlatformSku {
+@Document(indexName = "sku",type = "sku")
+public class ESPlatformSku implements Serializable {
 
     @Id
     private int id;
@@ -47,7 +50,7 @@ public class ESPlatformSku {
     @Field
     private int stocks;//库存
     @Field
-    private double commonPrice; //价格
+    private BigDecimal commonPrice; //价格
 
 
     public int getId() {
@@ -106,7 +109,7 @@ public class ESPlatformSku {
         return stocks;
     }
 
-    public double getCommonPrice() {
+    public BigDecimal getCommonPrice() {
         return commonPrice;
     }
 
@@ -166,7 +169,7 @@ public class ESPlatformSku {
         this.stocks = stocks;
     }
 
-    public void setCommonPrice(double commonPrice) {
+    public void setCommonPrice(BigDecimal commonPrice) {
         this.commonPrice = commonPrice;
     }
 

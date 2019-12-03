@@ -13,7 +13,7 @@ import java.io.Serializable;
  * @date ：2019/12/2 7:26 PM
  */
 @Data
-@Document(indexName = "xiaoyaotong",type="spu")
+@Document(indexName = "spu",type="spu")
 public class ESMedicineSpu implements Serializable {
 
     public void setCommonName(String commonName) {
@@ -82,6 +82,7 @@ public class ESMedicineSpu implements Serializable {
 
     @Field
     private String commonName; //通用名
+
     @Field
     private String spuCode;// spu code
     @Field
