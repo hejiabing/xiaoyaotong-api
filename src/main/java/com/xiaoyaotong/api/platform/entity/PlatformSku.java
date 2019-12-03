@@ -1,5 +1,7 @@
 package com.xiaoyaotong.api.platform.entity;
 
+import java.math.BigDecimal;
+
 public class PlatformSku {
 
   private long id;
@@ -11,7 +13,7 @@ public class PlatformSku {
   private String batchNos; //批号集合
   private String deadlineNos; //效期集合
   private int stocks; //库存数量，可销售数量
-  private double commonPrice; //价格
+  private BigDecimal commonPrice; //价格
   private long status;
   private String createUser;
   private java.sql.Timestamp createTime;
@@ -96,11 +98,11 @@ public class PlatformSku {
     this.companyName = companyName;
   }
 
-  public double getCommonPrice() {
+  public BigDecimal getCommonPrice() {
     return commonPrice;
   }
 
-  public void setCommonPrice(double commonPrice) {
+  public void setCommonPrice(BigDecimal commonPrice) {
     this.commonPrice = commonPrice;
   }
 
