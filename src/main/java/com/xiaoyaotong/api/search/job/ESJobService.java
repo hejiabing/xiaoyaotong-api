@@ -1,5 +1,6 @@
 package com.xiaoyaotong.api.search.job;
 
+import com.xiaoyaotong.api.search.service.StandardSpuSynService;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
