@@ -23,6 +23,8 @@ public interface MedicineSPUService {
 
     boolean deleteMedicineSPU(MedicineSPU medicineSPU);
 
+    int addMedicineSPU(MedicineSPU medicineSPU);
+
 
 
 }
