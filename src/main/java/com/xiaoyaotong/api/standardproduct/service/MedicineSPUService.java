@@ -25,6 +25,4 @@ public interface MedicineSPUService {
 
     int addMedicineSPU(MedicineSPU medicineSPU);
 
-
-
 }

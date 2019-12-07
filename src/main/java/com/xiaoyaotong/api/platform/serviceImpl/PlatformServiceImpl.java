@@ -4,6 +4,7 @@ import com.xiaoyaotong.api.platform.entity.PlatformSku;
 import com.xiaoyaotong.api.platform.mapper.PlatformSkuMapper;
 import com.xiaoyaotong.api.platform.service.PlatformSkuService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.List;
  * @description：platformserice的方法实现
  * @date ：2019/12/1 7:40 PM
  */
+@Service
 public class PlatformServiceImpl implements PlatformSkuService {
 
     @Autowired
@@ -25,6 +27,11 @@ public class PlatformServiceImpl implements PlatformSkuService {
     @Override
     public List<PlatformSku> getSkuByCompanyId(int companyId) {
         return platformSkuMapper.getPlatformSkyByCompanyId(companyId);
+    }
+
+    @Override
+    public List<PlatformSku> getSkuByCompanyIdAndSkuCode(int companyId, String companySkucode) {
+        return platformSkuMapper.getPlatformSkyByCompanyIdAndSkuCode(companyId,companySkucode);
     }
 
     @Override

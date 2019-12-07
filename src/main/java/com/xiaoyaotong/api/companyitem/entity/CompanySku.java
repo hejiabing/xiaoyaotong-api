@@ -9,21 +9,36 @@ public class CompanySku {
 
   private int id;//自增id
   private int companyId; //公司的id
-  private String skuCode; //公司自己的ERP编码
+  private String companySkuCode; //公司自己的ERP编码
   private String commonName; //通用名
   private String approvalCode; //国药准字
   private String spec; //规格
   private String factoryName; //生产厂家
   private String barCode; //条形码
-  private long standardSpu; //匹配上的标准库里面的编码
+  private String spuCode; //匹配上的标准库里面的编码
   private boolean matched; //是否完全匹配上
   private int matchCount; //匹配的次数
   private String createUser; //创建人
   private String updateUser; //更新人
   private java.sql.Timestamp createTime;//创建时间
   private java.sql.Timestamp updateTime;//更新时间
-    private long status;
+  private long status;
 
+  public String getSpuCode() {
+    return spuCode;
+  }
+
+  public void setSpuCode(String spuCode) {
+    this.spuCode = spuCode;
+  }
+
+  public String getCompanySkuCode() {
+    return companySkuCode;
+  }
+
+  public void setCompanySkuCode(String companySkuCode) {
+    this.companySkuCode = companySkuCode;
+  }
 
   public int getMatchCount() {
     return matchCount;
@@ -132,15 +147,6 @@ public class CompanySku {
     this.status = status;
   }
 
-  public long getStandardSpu() {
-    return standardSpu;
-  }
-
-  public void setStandardSpu(long standardSpu) {
-    this.standardSpu = standardSpu;
-  }
-
-
   public java.sql.Timestamp getCreateTime() {
     return createTime;
   }
@@ -157,12 +163,5 @@ public class CompanySku {
     this.updateTime = updateTime;
   }
 
-public String getSkuCode() {
-	return skuCode;
-}
-
-public void setSkuCode(String skuCode) {
-	this.skuCode = skuCode;
-}
 
 }

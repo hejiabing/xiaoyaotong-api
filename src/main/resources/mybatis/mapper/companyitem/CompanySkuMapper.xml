@@ -5,19 +5,38 @@
     <resultMap id="companySkuType" type="com.xiaoyaotong.api.companyitem.entity.CompanySku">
         <id property="id" jdbcType="INTEGER" column="_id"/>
         <result property="companyId" column="company_id" jdbcType="INTEGER"/>
-        <result property="skuCode" column="sku_code" jdbcType="VARCHAR"/>
+        <result property="companySkuCode" column="company_skucode" jdbcType="VARCHAR"/>
         <result column="common_name" jdbcType="VARCHAR" property="commonName"/>
         <result column="approval_code" jdbcType="VARCHAR" property="approvalCode"/>
         <result column="spec" jdbcType="VARCHAR" property="spec"/>
         <result column="factory_name" jdbcType="VARCHAR" property="factoryName"/>
         <result column="bar_code" jdbcType="VARCHAR" property="barCode"/>
         <result column="status" jdbcType="VARCHAR" property="status"/>
-        <result property="standardSpu" column="standard_spu" jdbcType="INTEGER"/>
+        <result property="spuCode" column="spu_code" jdbcType="VARCHAR"/>
         <result column="create_user" jdbcType="VARCHAR" property="createUser"/>
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
         <result column="update_user" jdbcType="VARCHAR" property="updateUser"/>
         <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
     </resultMap>
+
+    <sql id="basicSQL">
+        select
+        s.id as id,
+        s.company_id,
+        s.company_skucode,
+        s.common_name,
+        s.approval_code,
+        s.spec,
+        s.factory_name,
+        s.bar_code,
+        s.status,
+        s.spu_code,
+        s.create_time,
+        s.create_user,
+        s.update_time,
+        s.update_user
+        from t_company_sku s
+    </sql>
 
     <insert id="insertCompanySku">
         insert into t_company_sku(_id,company_id,sku_code,common_name,approval_code,spec,factory_name,
@@ -38,14 +57,27 @@
         approval_code=#{approvalCode},
         spec=#{spec},
         factory_name=#{factoryName},
+        spu_code = #{spuCode},
         bar_code=#{barCode}  
+        where company_id = #{companyId} and company_skucode = #{companySkuCode}
+    </update>
+
+    <update id="updateSpuCodeByCompanyIdAndskuCode">
+        update t_company_sku set
+        standard_spu=#{spuCode},
         where company_id = #{companyId} and sku_code = #{skuCode}
     </update>
 
-    <select id="selectCompanySkuByid" resultMap="companySkuType">
-        select * from t_company_sku t
-        where t.company_id =#{companyId} and t.sku_code = #{skuCode}
+    <select id="selectSkuByCompanyIdAndSkuCode" resultMap="companySkuType">
+        <include refid="basicSQL"/>
+        where s.company_id =#{companyId} and s.company_skucode = #{skuCode}
     </select>
+
+    <select id="selectSkuByCompanyId" resultMap="companySkuType">
+        <include refid="basicSQL"/>
+        where s.company_id =#{companyId}
+    </select>
+
 
     <select id="selectCompanySkuList" resultMap="companySkuType">
         select * from t_company_sku t

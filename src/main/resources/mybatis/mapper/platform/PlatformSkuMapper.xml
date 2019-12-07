@@ -4,7 +4,7 @@
 
     <resultMap id="platformSku" type="com.xiaoyaotong.api.platform.entity.PlatformSku">
         <id column="id" jdbcType="INTEGER" property="id" />
-        <result column="sku_id" jdbcType="VARCHAR" property="skuId" />
+        <result column="sku_code" jdbcType="VARCHAR" property="skuCode" />
         <result column="spu_code" jdbcType="VARCHAR" property="spuCode" />
         <result column="company_id" jdbcType="INTEGER" property="companyId" />
         <result column="company_skucode" jdbcType="VARCHAR" property="companySkuCode" />
@@ -24,7 +24,7 @@
     <sql id="basicSQL">
         select
         s.id as id,
-        s.sku_id,
+        s.sku_code,
         s.spu_code ,
         s.company_id,
         s.company_skucode,
@@ -56,6 +56,11 @@
     <select id="getPlatformSkyByCompanyIdAndSpuCode"
             parameterType="hashmap" resultMap="platformSku">
         <include refid="basicSQL"/> where s.company_id = #{companyId} and s.spu_code = #{spuCode}
+    </select>
+
+    <select id="getPlatformSkyByCompanyIdAndSkuCode"
+            parameterType="hashmap" resultMap="platformSku">
+        <include refid="basicSQL"/> where s.company_id = #{companyId} and s.company_skucode = #{skuCode}
     </select>
 
 

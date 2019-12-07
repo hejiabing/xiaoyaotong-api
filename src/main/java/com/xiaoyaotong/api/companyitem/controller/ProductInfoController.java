@@ -1,6 +1,7 @@
 package com.xiaoyaotong.api.companyitem.controller;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -39,8 +40,9 @@ public class ProductInfoController {
         int successresult = 0;
         for (CompanySku csku: requestDTO.getProductDTOList()){
         	if(requestDTO.getIsAll() == 1){
-        		Integer id = companySkuService.getCompanySkuId(csku.getCompanyId(), csku.getSkuCode());
-        		if(id != null){
+        		List<CompanySku> lists = companySkuService.getSkuByCompanyIdAndSkuCode(csku.getCompanyId(), csku.getCompanySkuCode());
+        		int id = lists.get(0).getId();
+        		if(id >0){
         			csku.setId(id);
         			successresult += companySkuService.updateCompanySkuById(csku);
         		}else{

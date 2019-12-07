@@ -37,6 +37,7 @@
         s.spu_code ,
         s.approval_code,
         s.spec,
+        s.common_name,
         s.factory_name,
         s.formal_name,
         s.short_name,

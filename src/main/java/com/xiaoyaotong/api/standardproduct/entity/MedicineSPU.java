@@ -27,6 +27,14 @@ public class MedicineSPU {
     private String barCode;  //标品上的条码
     private List<MedicineSPUPic> pics; //图片
 
+    public void setCommonName(String commonName) {
+        this.commonName = commonName;
+    }
+
+    public String getCommonName() {
+        return commonName;
+    }
+
     public List<MedicineSPUPic> getPics() {
         return pics;
     }
@@ -51,13 +59,6 @@ public class MedicineSPU {
         this.spuCode = spuCode;
     }
 
-    public String getCommonName() {
-        return commonName;
-    }
-
-    public void setCommonName(String commonName) {
-        this.commonName = commonName;
-    }
 
     public String getApprovalCode() {
         return approvalCode;

@@ -27,18 +27,24 @@ public class CompanySkuServiceImpl implements CompanySkuService {
 
     @Override
     public int deleteCompanySku(CompanySku sku){
-        int result = companySkuMapper.deleteCompanySku(sku.getCompayId(),sku.getSkuCode());
+        int result = companySkuMapper.deleteCompanySku(sku.getCompayId(),sku.getCompanySkuCode());
         return result;
     }
 
+
     @Override
-    public CompanySku getCompanySkuById(int companyId, String erpId) {
-        return companySkuMapper.selectCompanySkuByid(companyId,erpId);
+    public List<CompanySku> getSkuByCompanyIdAndSkuCode(int companyId, String skuCode) {
+        return companySkuMapper.selectSkuByCompanyIdAndSkuCode(companyId,skuCode);
     }
 
     @Override
     public List<CompanySku> getCompanySkuList(int itemBegin, int itemNum) {
         return companySkuMapper.selectCompanySkuList(itemBegin,itemNum);
+    }
+
+    @Override
+    public List<CompanySku> getSkuByCompanyId(int companyId) {
+        return companySkuMapper.selectSkuByCompanyId(companyId);
     }
 
     /**
@@ -56,10 +62,6 @@ public class CompanySkuServiceImpl implements CompanySkuService {
         return addSuccessNum;
     }
 
-	@Override
-	public Integer getCompanySkuId(int companyId, String skuCode) {
-		return companySkuMapper.getCompanySkuId(companyId,skuCode);
-	}
 
 	@Override
 	public int updateCompanySkuById(CompanySku csku) {
@@ -68,6 +70,6 @@ public class CompanySkuServiceImpl implements CompanySkuService {
 	
 	@Override
 	public int updateByCompanyIdAndSkuCode(CompanySku csku) {
-		return companySkuMapper.updateByCompanyIdAndSkuCode(csku);
+		return companySkuMapper.updateByCompanyIdAndskuCode(csku);
 	}
 }

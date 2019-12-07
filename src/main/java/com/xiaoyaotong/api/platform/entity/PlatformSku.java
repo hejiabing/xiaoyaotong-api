@@ -5,9 +5,9 @@ import java.math.BigDecimal;
 public class PlatformSku {
 
   private long id;
-  private long skuId;//自动生成的唯一的skuid
-  private long spuId;//标品库的spuid
-  private long sellerId; //卖家的id，companyid
+  private String skuCode;//自动生成的唯一的skuid
+  private String spuCode;//标品库的spucode
+  private int companyId; //卖家的id，companyid
   private String companySkuCode; // 卖家的sku编码
   private String companyName; //公司名称
   private String batchNos; //批号集合
@@ -19,6 +19,14 @@ public class PlatformSku {
   private java.sql.Timestamp createTime;
   private String updateUser;
   private java.sql.Timestamp updateTime;
+
+  public String getCompanySkuCode() {
+    return companySkuCode;
+  }
+
+  public void setCompanySkuCode(String companySkuCode) {
+    this.companySkuCode = companySkuCode;
+  }
 
   public String getDeadlineNos() {
     return deadlineNos;
@@ -54,39 +62,30 @@ public class PlatformSku {
   }
 
 
-  public long getSkuId() {
-    return skuId;
+  public String getSkuCode() {
+    return skuCode;
   }
 
-  public void setSkuId(long skuId) {
-    this.skuId = skuId;
-  }
-
-
-  public long getSpuId() {
-    return spuId;
-  }
-
-  public void setSpuId(long spuId) {
-    this.spuId = spuId;
+  public void setSkuCode(String skuCode) {
+    this.skuCode = skuCode;
   }
 
 
-  public long getSellerId() {
-    return sellerId;
+  public String getSpuCode() {
+    return spuCode;
   }
 
-  public void setSellerId(long sellerId) {
-    this.sellerId = sellerId;
+  public void setSpuCode(String spuCode) {
+    this.spuCode = spuCode;
   }
 
 
-  public String getCompanySkuCode() {
-    return companySkuCode;
+  public int getCompanyId() {
+    return companyId;
   }
 
-  public void setCompanySkuCode(String sellerSkuCode) {
-    this.companySkuCode = companySkuCode;
+  public void setCompanyId(int companyId) {
+    this.companyId = companyId;
   }
 
 

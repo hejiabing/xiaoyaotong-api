@@ -61,4 +61,6 @@ public class CompanyItemController {
         List<CompanySku> result = companySkuService.getCompanySkuList(1,10);
         return new ResponseEntity<List<CompanySku>>(result, HttpStatus.OK);
     }
+
+
 }

@@ -14,13 +14,24 @@ public interface CompanySkuService {
 
     public int deleteCompanySku(CompanySku companySku);
 
-    public CompanySku getCompanySkuById(int companyId, String erpProductCode);
+    /**
+     * 根据企业id和企业的sku编码查询商品
+     * @param companyId
+     * @param skuCode
+     * @return
+     */
+    public List<CompanySku> getSkuByCompanyIdAndSkuCode(int companyId, String skuCode);
 
     public List<CompanySku> getCompanySkuList(int itemBegin, int itemNum);
 
-    public int addCompanySkuList(List<CompanySku> skus);
+    /**
+     * 根据企业id查询本公司的商品
+     * @param companyId
+     * @return
+     */
+    public List<CompanySku> getSkuByCompanyId(int companyId);
 
-    public Integer getCompanySkuId(int companyId, String productCode);
+    public int addCompanySkuList(List<CompanySku> skus);
 
     public int updateCompanySkuById(CompanySku csku);
 
