@@ -17,7 +17,7 @@ import java.net.UnknownHostException;
  * @author: 01
  * @create: 2018-06-28 22:32
  **/
-
+@Configuration
 public class ESConfig {
 
 

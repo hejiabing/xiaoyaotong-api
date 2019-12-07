@@ -3,24 +3,32 @@ package com.xiaoyaotong.api.standardproduct.serviceImpl;
 import com.xiaoyaotong.api.standardproduct.entity.MedicineSPU;
 import com.xiaoyaotong.api.standardproduct.entity.MedicineSPUPic;
 import com.xiaoyaotong.api.standardproduct.service.MedicineSPUService;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.List;
+import java.util.logging.Logger;
 
 @SpringBootTest
 class MedicineSPUServiceImplTest {
+    private static Logger logger = Logger.getLogger(MedicineSPUServiceImplTest.class.getName()); // 日志打印类
+
 
     @Autowired
     MedicineSPUService medicineSPUService;
 
-    @Test
     void getAllspuids() {
         System.out.println(medicineSPUService.getAllSPUCode());
     }
 
-    @Test
     void getSPUbyID(){
         MedicineSPU m = medicineSPUService.getBySpuCode("1");
         List<MedicineSPUPic> ll = m.getPics();
@@ -30,7 +38,7 @@ class MedicineSPUServiceImplTest {
         System.out.println(medicineSPUService.getBySpuCode("1"));
     }
 
-    @Test
+
     void testGetSPUList(){
         List<MedicineSPU> spus = medicineSPUService.getSPUList(0,12);
         for (MedicineSPU m:spus) {
@@ -39,14 +47,9 @@ class MedicineSPUServiceImplTest {
         }
     }
 
+    @Test
     void testInsertItem(){
-        MedicineSPU spu = new MedicineSPU();
-        spu.setId(0);
-        spu.setSpuCode("5");
-        spu.setCommonName("武汉");
-        spu.setSpec("12s*6");
-        spu.setFactoryName("湖北武汉");
-        spu.setApprovalCode("国A5432");
-        medicineSPUService.insertMedicineSPU(spu);
+
+
     }
 }

@@ -3,6 +3,7 @@ package com.xiaoyaotong.api.standardproduct.serviceImpl;
 import com.xiaoyaotong.api.standardproduct.entity.MedicineSPU;
 import com.xiaoyaotong.api.standardproduct.mapper.MedicineSPUMapper;
 import com.xiaoyaotong.api.standardproduct.service.MedicineSPUService;
+import com.xiaoyaotong.api.util.GenerateUniqueIdUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -67,4 +68,14 @@ public class MedicineSPUServiceImpl implements MedicineSPUService {
         return false;
     }
 
+    @Override
+    public int addMedicineSPU(MedicineSPU medicineSPU) {
+        //产生1个20位的ID
+        String longId = GenerateUniqueIdUtil.getGuid();
+        String spuCode = "D"+longId;
+        System.out.println(spuCode);
+        medicineSPU.setSpuCode(spuCode);
+        medicineSPU.setId(0);
+        return medicineSPUMapper.insertMedicineSPU(medicineSPU);
+    }
 }
