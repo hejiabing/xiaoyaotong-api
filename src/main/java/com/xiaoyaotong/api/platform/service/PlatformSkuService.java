@@ -12,6 +12,9 @@ public interface PlatformSkuService {
     //根据公司ID获取SKU列表
     public List<PlatformSku> getSkuByCompanyId(int companyId);
 
+    //根据companyid & companyskucode查询
+    public List<PlatformSku> getSkuByCompanyIdAndSkuCode(int companyId, String companySkucode);
+
     //插入sku
     public int insertPlatformSku(PlatformSku platformSku);
 
