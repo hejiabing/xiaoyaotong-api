@@ -30,9 +30,18 @@ public class ESMedicineSpu implements Serializable {
     private String formalName; //商品名
     @Field
     private String shortName; //别名
+    @Field
+    private String barCode; //条形码
     @Id
     private int id;//id
 
+    public String getBarCode() {
+        return barCode;
+    }
+
+    public void setBarCode(String barCode) {
+        this.barCode = barCode;
+    }
 
     public String getCommonName() {
         return commonName;

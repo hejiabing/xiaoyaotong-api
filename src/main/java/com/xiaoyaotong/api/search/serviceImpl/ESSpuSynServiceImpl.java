@@ -43,6 +43,7 @@ public class ESSpuSynServiceImpl implements ESSpuSynService {
                 esSpu.setFactoryName(spu.getFactoryName());
                 esSpu.setShortName(spu.getShortName());
                 esSpu.setFormalName(spu.getFormalName());
+                esSpu.setBarCode(spu.getBarCode());
                 esSpu.setId(spu.getId());
                 esMedicineSpuDao.save(esSpu);
             }
