@@ -15,6 +15,15 @@ public class QueryCompanySkuVO {
     private String spu;
     private int pageSize;
     private int startPage;
+    private int matched;//是否已经匹配
+
+    public int getMatched() {
+        return matched;
+    }
+
+    public void setMatched(int matched) {
+        this.matched = matched;
+    }
 
     public String getSpu() {
         return spu;

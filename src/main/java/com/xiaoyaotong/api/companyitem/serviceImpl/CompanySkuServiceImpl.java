@@ -27,14 +27,14 @@ public class CompanySkuServiceImpl implements CompanySkuService {
 
     @Override
     public int deleteCompanySku(CompanySku sku){
-        int result = companySkuMapper.deleteCompanySku(sku.getCompayId(),sku.getCompanySkuCode());
+        int result = companySkuMapper.deleteCompanySku(sku.getCompanyId(),sku.getCompanySkuCode());
         return result;
     }
 
 
     @Override
-    public List<CompanySku> getSkuByCompanyIdAndSkuCode(int companyId, String skuCode) {
-        return companySkuMapper.selectSkuByCompanyIdAndSkuCode(companyId,skuCode);
+    public List<CompanySku> getSkuByCompanyIdAndSkuCode(int companyId, String skuCode,int matched) {
+        return companySkuMapper.selectSkuByCompanyIdAndSkuCode(companyId,skuCode,matched);
     }
 
     @Override
@@ -43,8 +43,8 @@ public class CompanySkuServiceImpl implements CompanySkuService {
     }
 
     @Override
-    public List<CompanySku> getSkuByCompanyId(int companyId) {
-        return companySkuMapper.selectSkuByCompanyId(companyId);
+    public List<CompanySku> getSkuByCompanyId(int companyId,int matched) {
+        return companySkuMapper.selectSkuByCompanyId(companyId,matched);
     }
 
     /**

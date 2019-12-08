@@ -31,12 +31,17 @@ public class MedicineSPUServiceImpl implements MedicineSPUService {
     }
 
     @Override
+    public int getCountofAllSpus() {
+        return medicineSPUMapper.getCountofAllSpus();
+    }
+
+    @Override
     public List<MedicineSPU> getSPUList(int pageBegin, int pageNum) {
         HashMap hashMap = new HashMap();
         int itemBegin = pageBegin - 1;
         if(itemBegin<0) itemBegin =0;
 
-        hashMap.put("itemBegin",itemBegin*pageNum);
+        hashMap.put("itemBegin",itemBegin * pageNum);
         hashMap.put("pageNum",pageNum);
         return medicineSPUMapper.getSPUList(hashMap);
     }
@@ -77,5 +82,10 @@ public class MedicineSPUServiceImpl implements MedicineSPUService {
         medicineSPU.setSpuCode(spuCode);
         medicineSPU.setId(0);
         return medicineSPUMapper.insertMedicineSPU(medicineSPU);
+    }
+
+    @Override
+    public List<MedicineSPU> getSpuByKeyParameters(String commonName, String approvalCode, String barCode) {
+        return medicineSPUMapper.getSpuByKeyParameters(commonName,approvalCode,barCode);
     }
 }

@@ -20,7 +20,7 @@ public interface CompanySkuService {
      * @param skuCode
      * @return
      */
-    public List<CompanySku> getSkuByCompanyIdAndSkuCode(int companyId, String skuCode);
+    public List<CompanySku> getSkuByCompanyIdAndSkuCode(int companyId, String skuCode,int matched);
 
     public List<CompanySku> getCompanySkuList(int itemBegin, int itemNum);
 
@@ -29,7 +29,7 @@ public interface CompanySkuService {
      * @param companyId
      * @return
      */
-    public List<CompanySku> getSkuByCompanyId(int companyId);
+    public List<CompanySku> getSkuByCompanyId(int companyId,int matached);
 
     public int addCompanySkuList(List<CompanySku> skus);
 

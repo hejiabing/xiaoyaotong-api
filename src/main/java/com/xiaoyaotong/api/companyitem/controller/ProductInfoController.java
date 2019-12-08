@@ -40,7 +40,7 @@ public class ProductInfoController {
         int successresult = 0;
         for (CompanySku csku: requestDTO.getProductDTOList()){
         	if(requestDTO.getIsAll() == 1){
-        		List<CompanySku> lists = companySkuService.getSkuByCompanyIdAndSkuCode(csku.getCompanyId(), csku.getCompanySkuCode());
+        		List<CompanySku> lists = companySkuService.getSkuByCompanyIdAndSkuCode(csku.getCompanyId(), csku.getCompanySkuCode(),0);
         		int id = lists.get(0).getId();
         		if(id >0){
         			csku.setId(id);

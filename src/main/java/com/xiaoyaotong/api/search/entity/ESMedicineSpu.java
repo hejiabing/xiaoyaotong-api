@@ -16,73 +16,8 @@ import java.io.Serializable;
 @Document(indexName = "spu",type="spu")
 public class ESMedicineSpu implements Serializable {
 
-    public void setCommonName(String commonName) {
-        this.commonName = commonName;
-    }
-
-    public void setSpuCode(String spuCode) {
-        this.spuCode = spuCode;
-    }
-
-    public void setApprovalCode(String approvalCode) {
-        this.approvalCode = approvalCode;
-    }
-
-    public void setSpec(String spec) {
-        this.spec = spec;
-    }
-
-    public void setFactoryName(String factoryName) {
-        this.factoryName = factoryName;
-    }
-
-    public void setFormalName(String formalName) {
-        this.formalName = formalName;
-    }
-
-    public void setShortName(String shortName) {
-        this.shortName = shortName;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getCommonName() {
-        return commonName;
-    }
-
-    public String getSpuCode() {
-        return spuCode;
-    }
-
-    public String getApprovalCode() {
-        return approvalCode;
-    }
-
-    public String getSpec() {
-        return spec;
-    }
-
-    public String getFactoryName() {
-        return factoryName;
-    }
-
-    public String getFormalName() {
-        return formalName;
-    }
-
-    public String getShortName() {
-        return shortName;
-    }
-
-    public int getId() {
-        return id;
-    }
-
     @Field
     private String commonName; //通用名
-
     @Field
     private String spuCode;// spu code
     @Field
@@ -98,4 +33,68 @@ public class ESMedicineSpu implements Serializable {
     @Id
     private int id;//id
 
+
+    public String getCommonName() {
+        return commonName;
+    }
+
+    public void setCommonName(String commonName) {
+        this.commonName = commonName;
+    }
+
+    public String getSpuCode() {
+        return spuCode;
+    }
+
+    public void setSpuCode(String spuCode) {
+        this.spuCode = spuCode;
+    }
+
+    public String getApprovalCode() {
+        return approvalCode;
+    }
+
+    public void setApprovalCode(String approvalCode) {
+        this.approvalCode = approvalCode;
+    }
+
+    public String getSpec() {
+        return spec;
+    }
+
+    public void setSpec(String spec) {
+        this.spec = spec;
+    }
+
+    public String getFactoryName() {
+        return factoryName;
+    }
+
+    public void setFactoryName(String factoryName) {
+        this.factoryName = factoryName;
+    }
+
+    public String getFormalName() {
+        return formalName;
+    }
+
+    public void setFormalName(String formalName) {
+        this.formalName = formalName;
+    }
+
+    public String getShortName() {
+        return shortName;
+    }
+
+    public void setShortName(String shortName) {
+        this.shortName = shortName;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

@@ -67,11 +67,29 @@
     </select>
 
     <select id="getSPUList" parameterType="hashmap" resultMap="medicineSPUType">
-        <include refid="basicSQL"/> limit #{itemBegin},#{pageNum}
+        <include refid="basicSQL"/> order by s.id limit #{itemBegin},#{pageNum}
     </select>
 
-    <select id="getAllSPUCodes" resultType="java.lang.Integer">
+    <select id="getAllSPUCodes" resultType="java.lang.String">
         select spu_code from t_medicine_spu
+    </select>
+
+
+    <select id="getSpuByKeyParameters" resultMap="medicineSPUType">
+        <include refid="basicSQL"/> where 1=1
+        <if test="commonName != null and commonName!=''">
+            and s.common_name=#{commonName}
+        </if>
+        <if test="approvalCode != null and approvalCode!=''">
+            and s.approval_code=#{approvalCode}
+        </if>
+        <if test="barCode != null and barCode != '' ">
+            and s.bar_code=#{barCode}
+        </if>
+    </select>
+
+    <select id="getCountofAllSpus" resultType="Integer">
+        select count(*) from t_medicine_spu
     </select>
 
     <insert id="insertMedicineSPU">

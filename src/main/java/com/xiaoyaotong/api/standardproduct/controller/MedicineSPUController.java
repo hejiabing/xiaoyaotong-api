@@ -7,11 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.Assert;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -49,6 +47,22 @@ public class MedicineSPUController {
         }else{
             return new ResponseEntity<List<MedicineSPU>>((List<MedicineSPU>)null, HttpStatus.OK);
         }
+    }
+
+
+    @RequestMapping(value="/getspubykeyparameters", method = RequestMethod.POST)
+    //@Authorization
+    public ResponseEntity<List<MedicineSPU>> getSpuByAll(@RequestBody MedicineSPU spu) {
+        Assert.notNull(spu, "pageid can not be empty");
+        List<MedicineSPU> lists = new ArrayList<>();
+        if(spu != null){
+            String commonName = spu.getCommonName();
+            String approvalCode = spu.getApprovalCode();
+            String barCode = spu.getBarCode();
+            lists = medicineSPUService.getSpuByKeyParameters(commonName,approvalCode,barCode);
+            return new ResponseEntity<List<MedicineSPU>>(lists, HttpStatus.OK);
+        }
+        return new ResponseEntity<List<MedicineSPU>>((List<MedicineSPU>)null, HttpStatus.OK);
     }
 
     @RequestMapping(value="/updatespu", method = RequestMethod.POST)

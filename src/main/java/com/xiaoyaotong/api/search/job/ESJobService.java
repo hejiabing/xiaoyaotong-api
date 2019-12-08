@@ -1,6 +1,6 @@
 package com.xiaoyaotong.api.search.job;
 
-import com.xiaoyaotong.api.search.service.StandardSpuSynService;
+import com.xiaoyaotong.api.search.service.ESSpuSynService;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
@@ -14,9 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class ESJobService implements Job {
 
     @Autowired
-    StandardSpuSynService standardSpuSynService;
+    ESSpuSynService standardSpuSynService;
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
-        standardSpuSynService.synStandardSpu();
+        standardSpuSynService.synAllSpu();
     }
 }

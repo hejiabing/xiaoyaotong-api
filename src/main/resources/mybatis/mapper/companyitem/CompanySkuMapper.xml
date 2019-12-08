@@ -13,6 +13,7 @@
         <result column="bar_code" jdbcType="VARCHAR" property="barCode"/>
         <result column="status" jdbcType="VARCHAR" property="status"/>
         <result property="spuCode" column="spu_code" jdbcType="VARCHAR"/>
+        <result property="matched" column="matched" jdbcType="INTEGER"/>
         <result column="create_user" jdbcType="VARCHAR" property="createUser"/>
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
         <result column="update_user" jdbcType="VARCHAR" property="updateUser"/>
@@ -71,11 +72,23 @@
     <select id="selectSkuByCompanyIdAndSkuCode" resultMap="companySkuType">
         <include refid="basicSQL"/>
         where s.company_id =#{companyId} and s.company_skucode = #{companySkucode}
+        <if test="matched != null and matched = 1">
+            AND s.matched = 1
+        </if>
+        <if test="matched != null and matched = -1">
+        AND s.matched = -1
+        </if>
     </select>
 
     <select id="selectSkuByCompanyId" resultMap="companySkuType">
         <include refid="basicSQL"/>
         where s.company_id =#{companyId}
+        <if test="matched != null and matched == 1">
+            AND s.matched = 1
+        </if>
+        <if test="matched != null and matched== -1">
+            AND s.matched = -1
+        </if>
     </select>
 
 

@@ -47,7 +47,7 @@ public class CompanySkuController {
         String spu = queryCompanySkuVO.getSpu();
 
         if(companyId>0 &&companySkuCode!=null && companySkuCode !=""){ //确保能找到一个商品
-            List<CompanySku> companySkus = companySkuService.getSkuByCompanyIdAndSkuCode(companyId,companySkuCode);
+            List<CompanySku> companySkus = companySkuService.getSkuByCompanyIdAndSkuCode(companyId,companySkuCode,0);
             if(companySkus!=null && companySkus.size()>0){
                 CompanySku sku = companySkus.get(0);
                 if(spu !=null && spu !=""){ //判断传入的spu是否存在
@@ -90,18 +90,19 @@ public class CompanySkuController {
             String companySkuQ = queryCompanySkuVO.getCompanySkuCode();//公司的sku代码
             int startPageQ = queryCompanySkuVO.getStartPage(); //查询的开始页面
             int pageSizeQ = queryCompanySkuVO.getPageSize(); //每页的数量
+            int matchedQ = queryCompanySkuVO.getMatched();//是否匹配，-1表示没匹配上的，1匹配上，0表示所有
 
             PageInfo<CompanySku> page; //分页的辅助
 
             if (companyIdQ > 0) { //可转换为数字
                 if (null != companySkuQ && companySkuQ != "") { //根据企业id和公司sku查询
                     PageHelper.startPage(startPageQ, pageSizeQ);
-                    skus = companySkuService.getSkuByCompanyIdAndSkuCode(companyIdQ, companySkuQ);
+                    skus = companySkuService.getSkuByCompanyIdAndSkuCode(companyIdQ, companySkuQ,matchedQ);
                     page = new PageInfo<>(skus);
 
                 } else {//根据企业id查询
                     PageHelper.startPage(startPageQ, pageSizeQ);
-                    skus = companySkuService.getSkuByCompanyId(companyIdQ);
+                    skus = companySkuService.getSkuByCompanyId(companyIdQ,matchedQ);
                     page = new PageInfo<>(skus);
                 }
                 //组装信息
