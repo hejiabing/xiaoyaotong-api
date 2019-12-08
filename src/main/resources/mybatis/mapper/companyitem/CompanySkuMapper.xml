@@ -39,16 +39,16 @@
     </sql>
 
     <insert id="insertCompanySku">
-        insert into t_company_sku(_id,company_id,sku_code,common_name,approval_code,spec,factory_name,
+        insert into t_company_sku(_id,company_id,company_skucode,common_name,approval_code,spec,factory_name,
         bar_code,status,standard_spu,create_user,create_time,update_user,update_time)
         values (
-        #{id},#{companyId},#{skuCode},#{commonName},#{approvalCode},#{spec},#{factoryName},#{barCode},
+        #{id},#{companyId},#{companySkucode},#{commonName},#{approvalCode},#{spec},#{factoryName},#{barCode},
         #{status},#{standardSpu},#{createUser},#{createTime},#{updateUser},#{updateTime}
         )
     </insert>
 
     <delete id="deleteCompanySku">
-        delete from t_company_sku t where t.company_id = #{companyId} and t.sku_code = #{skuCode}
+        delete from t_company_sku t where t.company_id = #{companyId} and t.company_skucode = #{companySkucode}
     </delete>
 
     <update id="updateByCompanyIdAndskuCode">
@@ -65,12 +65,12 @@
     <update id="updateSpuCodeByCompanyIdAndskuCode">
         update t_company_sku set
         standard_spu=#{spuCode},
-        where company_id = #{companyId} and sku_code = #{skuCode}
+        where company_id = #{companyId} and company_skucode = #{companySkucode}
     </update>
 
     <select id="selectSkuByCompanyIdAndSkuCode" resultMap="companySkuType">
         <include refid="basicSQL"/>
-        where s.company_id =#{companyId} and s.company_skucode = #{skuCode}
+        where s.company_id =#{companyId} and s.company_skucode = #{companySkucode}
     </select>
 
     <select id="selectSkuByCompanyId" resultMap="companySkuType">
@@ -86,7 +86,7 @@
 	
 	<select id="getCompanySkuId" resultType="Integer">
         select id from t_company_sku t
-        where t.company_id =#{companyId} and t.sku_code = #{skuCode}
+        where t.company_id =#{companyId} and t.company_skucode = #{companySkucode}
     </select>
 
  	<update id="updateCompanySkuById">

@@ -28,7 +28,7 @@ public class CompanySkuBatch {
      *
      * @mbg.generated Tue Nov 26 15:24:11 CST 2019
      */
-    private String skuCode;
+    private String companySkucode;
 
     /**
      *
@@ -335,11 +335,11 @@ public class CompanySkuBatch {
 		this.companyId = companyId;
 	}
 
-	public String getSkuCode() {
-		return skuCode;
+	public String getCompanySkucode() {
+		return companySkucode;
 	}
 
-	public void setSkuCode(String skuCode) {
-		this.skuCode = skuCode;
+	public void setCompanySkucode(String companySkucode) {
+		this.companySkucode = companySkucode;
 	}
 }

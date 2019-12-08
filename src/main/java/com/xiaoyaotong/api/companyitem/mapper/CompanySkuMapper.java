@@ -22,17 +22,17 @@ public interface CompanySkuMapper {
     public int updateByCompanyIdAndskuCode(CompanySku companySku);
 
     //根据公司id和公司sku编码
-    public List<CompanySku> selectSkuByCompanyIdAndSkuCode(@Param("companyId") int companyId, @Param("skuCode")String skuCode);
+    public List<CompanySku> selectSkuByCompanyIdAndSkuCode(@Param("companyId") int companyId, @Param("companySkucode")String companySkucode);
 
     //根据公司id查询
     public List<CompanySku> selectSkuByCompanyId(int companyId);
 
 
-    public List<CompanySku>  updateSpuCodeByCompanyIdAndskuCode(int companyId, String skuCode);
+    public List<CompanySku>  updateSpuCodeByCompanyIdAndskuCode(int companyId, String companySkucode);
 
     public List<CompanySku> selectCompanySkuList(int itemBegin, int itemNum);
 
-	public Integer getCompanySkuId(@Param("companyId")  int companyId,@Param("skuCode") String skuCode);
+	public Integer getCompanySkuId(@Param("companyId")  int companyId,@Param("companySkucode") String companySkucode);
 
 	public int updateCompanySkuById(CompanySku csku);
 }
