@@ -20,6 +20,8 @@ public interface MedicineSPUMapper {
 
     public List<String> getAllSPUCodes();
 
+    public List<MedicineSPU> getSpusByminumumId( @Param("minumumId")int minumumId, @Param("pageSize")int pageSize);
+
     public int getCountofAllSpus();
 
     public List<MedicineSPU> getSpuByKeyParameters(@Param("commonName") String commonName,

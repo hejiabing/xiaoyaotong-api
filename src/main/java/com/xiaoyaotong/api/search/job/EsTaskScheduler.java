@@ -13,9 +13,9 @@ import org.quartz.*;
  * @date ：2019/12/3 10:25 PM
  */
 @Service
-public class ESTaskScheduler {
+public class EsTaskScheduler {
 
-    private static Log log = LogFactory.getLog(ESTaskScheduler.class);
+    private static Log log = LogFactory.getLog(EsTaskScheduler.class);
 
     @Autowired
     SchedulerFactoryBean schedulerFactory;

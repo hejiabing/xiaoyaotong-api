@@ -7,7 +7,7 @@ import com.xiaoyaotong.api.companyitem.entity.CompanySku;
  * @description：本服务主要用来做标品库的匹配
  * @date ：2019/12/2 10:30 PM
  */
-public interface ESMatchSpuService {
+public interface EsMatchSpuService {
 
     /**
      * 根据条形码进行匹配

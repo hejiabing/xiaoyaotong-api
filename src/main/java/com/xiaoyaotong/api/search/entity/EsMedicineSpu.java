@@ -14,7 +14,7 @@ import java.io.Serializable;
  */
 @Data
 @Document(indexName = "spu",type="spu")
-public class ESMedicineSpu implements Serializable {
+public class EsMedicineSpu implements Serializable {
 
     @Field
     private String commonName; //通用名

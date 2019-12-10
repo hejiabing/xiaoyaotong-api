@@ -1,7 +1,7 @@
 package com.xiaoyaotong.api.matchspu.serviceImpl;
 
-import com.xiaoyaotong.api.search.entity.ESMedicineSpu;
-import com.xiaoyaotong.api.search.serviceImpl.ESMedicineSpuServiceImpl;
+import com.xiaoyaotong.api.search.entity.EsMedicineSpu;
+import com.xiaoyaotong.api.search.serviceImpl.EsMedicineSpuServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,13 +10,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 class ESMedicineSpuServiceImplTest {
 
     @Autowired
-    ESMedicineSpuServiceImpl medicineSpuService;
+    EsMedicineSpuServiceImpl medicineSpuService;
 
     @Test
     void testAddMedicineSpu(){
         //System.setProperty("es.set.netty.runtime.available.processors", "false");
 
-        ESMedicineSpu medicineSpu = new ESMedicineSpu();
+        EsMedicineSpu medicineSpu = new EsMedicineSpu();
         medicineSpu.setCommonName("1111");
         medicineSpuService.addMedicineSpu(medicineSpu);
     }

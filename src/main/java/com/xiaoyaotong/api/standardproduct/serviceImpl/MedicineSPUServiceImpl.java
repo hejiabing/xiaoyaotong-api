@@ -47,6 +47,11 @@ public class MedicineSPUServiceImpl implements MedicineSPUService {
     }
 
     @Override
+    public List<MedicineSPU> getSPUListByMinimumId(int minimumId,int pageSize) {
+        return medicineSPUMapper.getSpusByminumumId(minimumId,pageSize);
+    }
+
+    @Override
     public boolean insertMedicineSPU(MedicineSPU medicineSPU) {
         int result = medicineSPUMapper.insertMedicineSPU(medicineSPU);
         if(result>0){

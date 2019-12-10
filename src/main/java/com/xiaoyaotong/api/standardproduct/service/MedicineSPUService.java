@@ -22,7 +22,10 @@ public interface MedicineSPUService {
     int getCountofAllSpus();
 
     //获取SPU list，分页获取
-    List<MedicineSPU> getSPUList(int pageBegin,int pageNum);
+    List<MedicineSPU> getSPUList(int pageBegin, int pageNum);
+
+    //获取大于当前id后面的所有对象
+    List<MedicineSPU> getSPUListByMinimumId(int minimumId,int pageSize);
 
     boolean insertMedicineSPU(MedicineSPU medicineSPU);
 

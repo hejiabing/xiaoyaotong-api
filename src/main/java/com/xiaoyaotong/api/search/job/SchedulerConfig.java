@@ -16,7 +16,7 @@ import javax.annotation.PostConstruct;
  */
 @Component
 public class SchedulerConfig {
-    private static Log log = LogFactory.getLog(ESTaskScheduler.class);
+    private static Log log = LogFactory.getLog(EsTaskScheduler.class);
 
     @Autowired
     SchedulerFactoryBean schedulerFactory;
@@ -25,12 +25,30 @@ public class SchedulerConfig {
     @PostConstruct
     public void init() {
         try {
-            JobDetail jobDetail = JobBuilder.newJob(ESJobService.class).withIdentity("job", "xiaoyaotong").build();
-            String cron = "0 30 23 * * ?";//每天23点30分执行一次全量同步
-            jobDetail.getJobDataMap().put("cron", cron);
-            CronTrigger trigger = TriggerBuilder.newTrigger().withIdentity("trigger", "t1").withSchedule(CronScheduleBuilder.cronSchedule(cron)).build();
-            scheduler.scheduleJob(jobDetail, trigger);
+            JobDetail syncAllSpuJob = JobBuilder.newJob(EsSyncAllSpuJob.class).withIdentity("job1", "xiaoyaotong").build();
+            String syncAlltSpuJobcron = "0 13 17 * * ?";//每天23点30分执行一次全量同步
+            syncAllSpuJob.getJobDataMap().put("syncAlltSpuJobcron", syncAlltSpuJobcron);
+            CronTrigger syncAllSpuTrigger = TriggerBuilder.newTrigger().withIdentity("trigger1", "t1").withSchedule(CronScheduleBuilder.cronSchedule(syncAlltSpuJobcron)).build();
+            scheduler.scheduleJob(syncAllSpuJob, syncAllSpuTrigger);
+
+
+            JobDetail syncIncrementSpuJob = JobBuilder.newJob(EsSyncIncrementSpuJob.class).withIdentity("job2", "xiaoyaotong").build();
+            String syncIncrementSpuJobCron = "0 */55 * * * ?";//每天23点30分执行一次全量同步
+            syncAllSpuJob.getJobDataMap().put("syncIncrementSpuJobCron", syncIncrementSpuJobCron);
+            CronTrigger syncIncrementSpuTrigger = TriggerBuilder.newTrigger().withIdentity("trigger2", "t2").withSchedule(CronScheduleBuilder.cronSchedule(syncIncrementSpuJobCron)).build();
+            scheduler.scheduleJob(syncIncrementSpuJob, syncIncrementSpuTrigger);
+
+
+
+            JobDetail syncAllSkuJob = JobBuilder.newJob(EsSyncAllSkuJob.class).withIdentity("job3", "xiaoyaotong").build();
+            String syncAlltSkuJobcron = "0 50 23 * * ?";//每天23点30分执行一次全量同步
+            syncAllSkuJob.getJobDataMap().put("syncAlltkpuJobcron", syncAlltSpuJobcron);
+            CronTrigger syncAllSkuTrigger = TriggerBuilder.newTrigger().withIdentity("trigger3", "t1").withSchedule(CronScheduleBuilder.cronSchedule(syncAlltSkuJobcron)).build();
+            scheduler.scheduleJob(syncAllSkuJob, syncAllSkuTrigger);
+
             scheduler.start();
+
+
             log.info("初始化成功!");
         } catch (Exception e) {
             log.info("", e);

@@ -20,6 +20,11 @@ public class PlatformServiceImpl implements PlatformSkuService {
     private PlatformSkuMapper platformSkuMapper;
 
     @Override
+    public int getAllPlatformSkuCount() {
+        return platformSkuMapper.getAllPlatformSkuCount();
+    }
+
+    @Override
     public PlatformSku getSkuBySkuId(String skuId) {
         return platformSkuMapper.getPlatformSkuById(skuId);
     }
@@ -27,6 +32,11 @@ public class PlatformServiceImpl implements PlatformSkuService {
     @Override
     public List<PlatformSku> getSkuByCompanyId(int companyId) {
         return platformSkuMapper.getPlatformSkyByCompanyId(companyId);
+    }
+
+    @Override
+    public List<PlatformSku> getPlatformSkuList(int beginPage, int pageSize) {
+        return platformSkuMapper.getPlatformSkuList(beginPage,pageSize);
     }
 
     @Override

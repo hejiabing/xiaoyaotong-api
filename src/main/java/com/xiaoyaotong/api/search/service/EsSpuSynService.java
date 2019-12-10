@@ -7,6 +7,13 @@ import org.springframework.stereotype.Service;
  * @description：同步SPU数据到ES
  * @date ：2019/12/3 10:38 PM
  */
-public interface ESSpuSynService {
+public interface EsSpuSynService {
+
+    //全量同步
     public void synAllSpu();
+
+    //增量同步
+    public void synIncrementSpu();
+
+
 }

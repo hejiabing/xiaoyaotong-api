@@ -6,11 +6,15 @@ import java.util.List;
 
 public interface PlatformSkuService {
 
+    public int getAllPlatformSkuCount();
+
     //根据SKUid获取
     public PlatformSku getSkuBySkuId(String skuId);
 
     //根据公司ID获取SKU列表
     public List<PlatformSku> getSkuByCompanyId(int companyId);
+
+    public List<PlatformSku> getPlatformSkuList(int beginPage, int pageSize);
 
     //根据companyid & companyskucode查询
     public List<PlatformSku> getSkuByCompanyIdAndSkuCode(int companyId, String companySkucode);

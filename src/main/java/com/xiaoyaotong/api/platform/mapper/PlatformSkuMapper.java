@@ -1,9 +1,12 @@
 package com.xiaoyaotong.api.platform.mapper;
 
 import com.xiaoyaotong.api.platform.entity.PlatformSku;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface PlatformSkuMapper {
     //根据skuid查询商品
     public PlatformSku getPlatformSkuById(String skuid);
@@ -32,6 +35,14 @@ public interface PlatformSkuMapper {
 
     //删除
     public int deletePlatformSku(String skuId);
+
+    //获取所有sku的数量
+    public int getAllPlatformSkuCount();
+
+    //分页获取
+    public List<PlatformSku> getPlatformSkuList(@Param("beginPage") int beginPage, @Param("pageSize")int pageSize);
+
+
 
 
 

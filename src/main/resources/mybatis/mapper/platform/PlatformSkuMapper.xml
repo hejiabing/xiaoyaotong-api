@@ -63,6 +63,15 @@
         <include refid="basicSQL"/> where s.company_id = #{companyId} and s.company_skucode = #{skuCode}
     </select>
 
+    <select id="getAllPlatformSkuCount" resultType="Integer">
+      select count(*) from t_platform_sku
+   </select>
+
+
+    <select id="getPlatformSkuList" parameterType="hashmap" resultMap="platformSku">
+        <include refid="basicSQL"/> order by s.id asc limit #{beginPage},#{pageSize}
+    </select>
+
 
     <insert id="insertPlatformSku">
         insert into t_platform_sku(id,sku_id,spu_code,company_id,company_skucode,company_name,batch_nos,

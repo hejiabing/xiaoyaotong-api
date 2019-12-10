@@ -2,7 +2,8 @@ package com.xiaoyaotong.api.search.serviceImpl;
 
 import com.xiaoyaotong.api.search.dao.EsMedicineSpuDao;
 import com.xiaoyaotong.api.search.entity.EsMedicineSpu;
-import com.xiaoyaotong.api.search.service.EsSpuSearchService;
+import com.xiaoyaotong.api.search.entity.EsPlatformSku;
+import com.xiaoyaotong.api.search.service.EsSkuSearchService;
 import org.elasticsearch.action.search.SearchType;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
@@ -17,25 +18,25 @@ import java.util.List;
 /**
  * @author ：billHe
  * @description：TODO
- * @date ：2019/12/8 11:36 PM
+ * @date ：2019/12/10 11:18 PM
  */
 @Service
-public class EsSpuSearchServiceImpl implements EsSpuSearchService {
-    @Autowired
-    EsMedicineSpuDao esMedicineSpuDao;
+public class EsSkuSearchServiceImpl implements EsSkuSearchService {
 
     @Autowired
     ElasticsearchTemplate elasticsearchTemplate;
 
     @Override
-    public List<EsMedicineSpu> searchSpuList(EsMedicineSpu esMedicineSpu) {
-        String commonName = esMedicineSpu.getCommonName();//通用名
-        String approvalCode = esMedicineSpu.getApprovalCode();//批准文号
-        String barCode = esMedicineSpu.getBarCode();//条形码
+    public List<EsPlatformSku> searchSkuList(EsPlatformSku esPlatformSku) {
+        String commonName = esPlatformSku.getCommonName();//通用名
+        String approvalCode = esPlatformSku.getApprovalCode();//批准文号
+        String barCode = esPlatformSku.getBarCode();//条形码
+        String factoryName = esPlatformSku.getFactoryName();//生产厂家
+        String companyName = esPlatformSku.getCompanyName();// 商家名字
 
         BoolQueryBuilder bqb = QueryBuilders.boolQuery();//布尔查询
 
-        if (esMedicineSpu != null){
+        if (esPlatformSku != null){
             if(commonName!=null && commonName !=""){
                 bqb.must(QueryBuilders.matchPhraseQuery("commonName",commonName));
             }
@@ -47,14 +48,22 @@ public class EsSpuSearchServiceImpl implements EsSpuSearchService {
             if(barCode!=null && barCode !=""){
                 bqb.must(QueryBuilders.matchPhraseQuery("barCode",barCode));
             }
+
+            if(factoryName!=null && factoryName !=""){
+                bqb.must(QueryBuilders.matchPhraseQuery("factoryName",factoryName));
+            }
+
+            if(companyName!=null && companyName !=""){
+                bqb.must(QueryBuilders.matchPhraseQuery("companyName",companyName));
+            }
         }
 
         SearchQuery searchQuery = new NativeSearchQueryBuilder().withQuery(bqb)
-                .withIndices("spu").withTypes("spu")
+                .withIndices("sku").withTypes("sku")
                 .withSearchType(SearchType.DEFAULT)
                 .build();
 
-        List<EsMedicineSpu> spus = elasticsearchTemplate.queryForList(searchQuery , EsMedicineSpu.class);
+        List<EsPlatformSku> spus = elasticsearchTemplate.queryForList(searchQuery , EsPlatformSku.class);
         return spus;
     }
 }

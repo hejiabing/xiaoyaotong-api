@@ -67,7 +67,13 @@
     </select>
 
     <select id="getSPUList" parameterType="hashmap" resultMap="medicineSPUType">
-        <include refid="basicSQL"/> order by s.id limit #{itemBegin},#{pageNum}
+        <include refid="basicSQL"/> order by s.id asc limit #{itemBegin},#{pageNum}
+    </select>
+
+    <select id="getSpusByminumumId" resultMap="medicineSPUType">
+        <include refid="basicSQL"/> where s.id > #{minumumId}
+        order by s.id asc
+        limit #{pageSize}
     </select>
 
     <select id="getAllSPUCodes" resultType="java.lang.String">

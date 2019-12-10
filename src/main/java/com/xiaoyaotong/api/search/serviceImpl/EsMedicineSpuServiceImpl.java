@@ -1,8 +1,8 @@
 package com.xiaoyaotong.api.search.serviceImpl;
 
-import com.xiaoyaotong.api.search.dao.ESMedicineSpuDao;
-import com.xiaoyaotong.api.search.entity.ESMedicineSpu;
-import com.xiaoyaotong.api.search.service.ESMedicineSpuService;
+import com.xiaoyaotong.api.search.dao.EsMedicineSpuDao;
+import com.xiaoyaotong.api.search.entity.EsMedicineSpu;
+import com.xiaoyaotong.api.search.service.EsMedicineSpuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 import org.springframework.stereotype.Service;
@@ -13,15 +13,15 @@ import org.springframework.stereotype.Service;
  * @date ：2019/12/2 8:00 PM
  */
 @Service
-public class ESMedicineSpuServiceImpl implements ESMedicineSpuService {
+public class EsMedicineSpuServiceImpl implements EsMedicineSpuService {
 
     @Autowired
-    private ESMedicineSpuDao eSMedicineSpuDao;
+    private EsMedicineSpuDao eSMedicineSpuDao;
 
     @Autowired
     private ElasticsearchTemplate elasticsearchTemplate;
 
-    public void addMedicineSpu(ESMedicineSpu medicineSpu) {
+    public void addMedicineSpu(EsMedicineSpu medicineSpu) {
         eSMedicineSpuDao.save(medicineSpu);
     }
 }
