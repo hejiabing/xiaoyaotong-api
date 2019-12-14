@@ -3,23 +3,24 @@ package com.xiaoyaotong.api.platform.controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.xiaoyaotong.api.platform.dto.PlatformSkuDTO;
-import com.xiaoyaotong.api.platform.dto.QueryPlatformSkuVO;
-import com.xiaoyaotong.api.platform.dto.ReturnPlatformVO;
+import com.xiaoyaotong.api.platform.vo.CopyPlatformSkuVO;
+import com.xiaoyaotong.api.platform.vo.OnsalePlatformSkuVO;
+import com.xiaoyaotong.api.platform.vo.QueryPlatformSkuVO;
+import com.xiaoyaotong.api.platform.vo.ReturnPlatformVO;
 import com.xiaoyaotong.api.platform.entity.PlatformSku;
 import com.xiaoyaotong.api.platform.service.PlatformSkuService;
 import com.xiaoyaotong.api.standardproduct.entity.MedicineSPU;
 import com.xiaoyaotong.api.standardproduct.service.MedicineSPUService;
+import com.xiaoyaotong.api.util.GenerateUniqueIdUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -96,5 +97,52 @@ public class PlatformSkuController {
         }
         return returnPlatformVO;
     }// end of getPlatformSku
+
+    @RequestMapping(value ="/copy",method = RequestMethod.POST)
+    public PlatformSku insertPlatformSku(@RequestBody CopyPlatformSkuVO copyPlatformSkuVo ){
+        Assert.notNull(copyPlatformSkuVo, "dto can not be empty");
+
+         String skuId = copyPlatformSkuVo.getSkuId(); //需要copy的skuid
+         int validMonthStart = copyPlatformSkuVo.getValidMonthStart(); //效期的开始时间
+         int validMonthEnd = copyPlatformSkuVo.getValidMonthEnd(); //效期的结束时间
+         BigDecimal price = copyPlatformSkuVo.getPrice(); //价格
+
+        PlatformSku basicPlatformSku = platformSkuService.getSkuBySkuId(skuId);//查询到的原始
+        PlatformSku newPlatformSku = new PlatformSku();
+
+        String newSkuId = GenerateUniqueIdUtil.getUniqueSkuid();
+        newPlatformSku.setSkuCode(newSkuId);//设置skuid
+        newPlatformSku.setCompanyId(basicPlatformSku.getCompanyId()); //设置companyid
+        newPlatformSku.setCompanySkuCode(basicPlatformSku.getCompanySkuCode()); //设置companyskucode
+        newPlatformSku.setCompanyName(basicPlatformSku.getCompanyName()); //设置公司名称
+        newPlatformSku.setValidMonthStart(validMonthStart); //设置效期开始时间
+        newPlatformSku.setValidMonthEnd(validMonthEnd); //设置效期结束时间
+        newPlatformSku.setCommonPrice(price);
+        newPlatformSku.setSpuCode(basicPlatformSku.getSpuCode());
+
+        platformSkuService.insertPlatformSku(newPlatformSku);
+        return platformSkuService.getSkuBySkuId(newSkuId);
+    }
+
+    @RequestMapping(value ="/onsale",method = RequestMethod.POST)
+    public int onSalePlatformSku(@RequestBody OnsalePlatformSkuVO onsalePlatformSkuVO){
+        Assert.notNull(onsalePlatformSkuVO, "dto can not be empty");
+        List<String> skus = onsalePlatformSkuVO.getSkuCodes();
+        int onsale = onsalePlatformSkuVO.getStatus();
+
+        int result = 0 ;
+
+        for(String skuCode : skus){
+            PlatformSku platformSku = new PlatformSku();
+            platformSku.setSkuCode(skuCode);
+            platformSku.setStatus(onsale);
+            int re = platformSkuService.updatePlatformSku(platformSku);
+            if(re>0){
+                result++;
+            }
+        }
+        return result;
+    }
+
 }//end of the clase
 

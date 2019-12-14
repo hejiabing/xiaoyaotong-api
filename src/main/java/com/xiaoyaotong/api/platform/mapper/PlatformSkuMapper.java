@@ -21,7 +21,6 @@ public interface PlatformSkuMapper {
     public List<PlatformSku> getPlatformSkyByCompanyIdAndSkuCode(int companyId, String SkuCode);
 
 
-
     //根据公司Id查询所有商品
     public List<PlatformSku> getPlatformSkyByCompanyId(int companyId);
 

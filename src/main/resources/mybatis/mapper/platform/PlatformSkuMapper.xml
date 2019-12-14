@@ -18,6 +18,8 @@
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
         <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
         <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+        <result column="valid_month_start" jdbcType="INTEGER" property="validMonthStart" />
+        <result column="valid_month_end" jdbcType="INTEGER" property="validMonthEnd" />
 
     </resultMap>
     
@@ -42,7 +44,7 @@
     </sql>
 
     <select id="getPlatformSkuById" resultMap="platformSku">
-        <include refid="basicSQL"/> where s.sku_id = #{skuId}
+        <include refid="basicSQL"/> where s.sku_code = #{skuCode}
     </select>
 
     <select id="getPlatformSkuByCompanySkuCode" resultMap="platformSku">
@@ -74,28 +76,49 @@
 
 
     <insert id="insertPlatformSku">
-        insert into t_platform_sku(id,sku_id,spu_code,company_id,company_skucode,company_name,batch_nos,
-        deadline_nos,common_price,stocks,status,create_user,
+        insert into t_platform_sku(id,sku_code,spu_code,company_id,company_skucode,company_name,batch_nos,
+        deadline_nos,common_price,valid_month_start,valid_month_end,stocks,status,create_user,
         create_time,update_user,update_time)
         values (
-        #{id},#{skuId},#{spuCode},#{companyId},#{companySkuCode},#{companyName},#{batchNos},#{deadlineNos},
-        #{commonPrice},#{stocks},#{status},#{createUser},
-        #{createTime},#{updateUser},#{updateTime}
+        #{id},#{skuCode},#{spuCode},#{companyId},#{companySkuCode},#{companyName},#{batchNos},#{deadlineNos},
+        #{commonPrice},#{validMonthStart},#{validMonthEnd},#{stocks},#{status},#{createUser},
+        #{createTime},#{updateUser},now()
         )
     </insert>
 
     <update id="updatePlatformSku">
-        update t_platform_sku set
-        batch_nos = #{commonName},
-        deadline_nos = #{approvalCode},
-        common_price = #{spec},
-        stocks = #{factoryName},
-        status = #{status},
-        create_user = #{createUser},
-        create_time = #{createTime},
-        update_user = #{updateUser},
-        update_time = #{updateTime}
-        where sku_id = #{skuId}
+        update t_platform_sku
+        set
+        <if test="batchNos != null and batchNos != '' ">
+            batch_nos = #{batchNos},
+        </if>
+
+        <if test="deadlineNos != null and deadlineNos != '' ">
+            deadline_nos = #{deadlineNos},
+        </if>
+
+        <if test="commonPrice != null and commonPrice != '' ">
+            common_price = #{commonPrice},
+        </if>
+
+        <if test="validMonthStart != null and validMonthStart != '' ">
+            valid_month_start = #{validMonthStart},
+        </if>
+
+        <if test="validMonthEnd != null and validMonthEnd != '' ">
+          valid_month_end = # {validMonthEnd},
+        </if>
+        <if test="stocks != null and stocks != '' ">
+          stocks = #{stocks},
+        </if>
+        <if test="status != null and status != '' ">
+          status = #{status},
+        </if>
+        <if test="updateUser != null and updateUser != '' ">
+            update_user = #{updateUser},
+        </if>
+        update_time = now()
+        where sku_code = #{skuCode}
     </update>
 
     <!--物理删除-->

@@ -14,11 +14,29 @@ public class PlatformSku {
   private String deadlineNos; //效期集合
   private int stocks; //库存数量，可销售数量
   private BigDecimal commonPrice; //价格
+  private int validMonthStart; //效期集合的开始时间
+  private  int validMonthEnd;//效期集合的结束时间
   private long status;
   private String createUser;
   private java.sql.Timestamp createTime;
   private String updateUser;
   private java.sql.Timestamp updateTime;
+
+  public int getValidMonthStart() {
+    return validMonthStart;
+  }
+
+  public void setValidMonthStart(int validMonthStart) {
+    this.validMonthStart = validMonthStart;
+  }
+
+  public int getValidMonthEnd() {
+    return validMonthEnd;
+  }
+
+  public void setValidMonthEnd(int validMonthEnd) {
+    this.validMonthEnd = validMonthEnd;
+  }
 
   public String getCompanySkuCode() {
     return companySkuCode;

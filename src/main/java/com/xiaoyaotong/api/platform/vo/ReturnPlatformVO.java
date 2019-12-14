@@ -1,5 +1,6 @@
-package com.xiaoyaotong.api.platform.dto;
+package com.xiaoyaotong.api.platform.vo;
 
+import com.xiaoyaotong.api.platform.dto.PlatformSkuDTO;
 import com.xiaoyaotong.api.platform.entity.PlatformSku;
 
 import java.util.List;

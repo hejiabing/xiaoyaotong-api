@@ -1,4 +1,4 @@
-package com.xiaoyaotong.api.platform.dto;
+package com.xiaoyaotong.api.platform.vo;
 
 import java.io.Serializable;
 
