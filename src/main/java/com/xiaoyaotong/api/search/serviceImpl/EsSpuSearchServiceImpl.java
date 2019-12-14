@@ -37,15 +37,15 @@ public class EsSpuSearchServiceImpl implements EsSpuSearchService {
 
         if (esMedicineSpu != null){
             if(commonName!=null && commonName !=""){
-                bqb.must(QueryBuilders.matchPhraseQuery("commonName",commonName));
+                bqb.must(QueryBuilders.matchQuery("commonName",commonName));
             }
 
             if(approvalCode!=null && approvalCode !=""){
-                bqb.must(QueryBuilders.matchPhraseQuery("approvalCode",approvalCode));
+                bqb.must(QueryBuilders.matchQuery("approvalCode",approvalCode));
             }
 
             if(barCode!=null && barCode !=""){
-                bqb.must(QueryBuilders.matchPhraseQuery("barCode",barCode));
+                bqb.must(QueryBuilders.matchQuery("barCode",barCode));
             }
         }
 

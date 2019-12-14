@@ -20,7 +20,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/search")
-public class MatchSpuController {
+public class SearchController {
     @Autowired
     private EsMedicineSpuService eSMedicineSpuService;
 
