@@ -124,7 +124,7 @@
     <!--物理删除-->
     <delete id="deletePlatformSku">
         delete from t_platform_sku
-        where sku_id = #{skuId}
+        where sku_id = #{skuCode}
     </delete>
 
 </mapper>

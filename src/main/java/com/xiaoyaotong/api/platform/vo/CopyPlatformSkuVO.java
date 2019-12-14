@@ -8,20 +8,20 @@ import java.math.BigDecimal;
  * @date ：2019/12/14 3:45 PM
  */
 public class CopyPlatformSkuVO {
-    private String skuId; //skuid
+    private String skuCode; //skucode
     private String companyId ; //公司id
-    private String companySkuId;//公司的erpId
+    private String companySkuCode;//公司的erpId
     private int validMonthStart; //效期的开始时间
     private int validMonthEnd; //效期的结束时间
     private BigDecimal price; //价格
     private int stocks; //库存
 
-    public String getCompanySkuId() {
-        return companySkuId;
+    public String getSkuCode() {
+        return skuCode;
     }
 
-    public void setCompanySkuId(String companySkuId) {
-        this.companySkuId = companySkuId;
+    public void setSkuCode(String skuCode) {
+        this.skuCode = skuCode;
     }
 
     public String getCompanyId() {
@@ -32,12 +32,12 @@ public class CopyPlatformSkuVO {
         this.companyId = companyId;
     }
 
-    public String getSkuId() {
-        return skuId;
+    public String getCompanySkuCode() {
+        return companySkuCode;
     }
 
-    public void setSkuId(String skuId) {
-        this.skuId = skuId;
+    public void setCompanySkuCode(String companySkuCode) {
+        this.companySkuCode = companySkuCode;
     }
 
     public int getValidMonthStart() {

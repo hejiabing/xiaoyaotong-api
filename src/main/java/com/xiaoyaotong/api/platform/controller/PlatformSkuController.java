@@ -102,7 +102,7 @@ public class PlatformSkuController {
     public PlatformSku insertPlatformSku(@RequestBody CopyPlatformSkuVO copyPlatformSkuVo ){
         Assert.notNull(copyPlatformSkuVo, "dto can not be empty");
 
-         String skuId = copyPlatformSkuVo.getSkuId(); //需要copy的skuid
+         String skuId = copyPlatformSkuVo.getSkuCode(); //需要copy的skuid
          int validMonthStart = copyPlatformSkuVo.getValidMonthStart(); //效期的开始时间
          int validMonthEnd = copyPlatformSkuVo.getValidMonthEnd(); //效期的结束时间
          BigDecimal price = copyPlatformSkuVo.getPrice(); //价格
