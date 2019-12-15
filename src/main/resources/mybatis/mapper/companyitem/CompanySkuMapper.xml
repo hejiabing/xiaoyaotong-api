@@ -44,7 +44,7 @@
         bar_code,status,standard_spu,create_user,create_time,update_user,update_time)
         values (
         #{id},#{companyId},#{companySkucode},#{commonName},#{approvalCode},#{spec},#{factoryName},#{barCode},
-        #{status},#{standardSpu},#{createUser},#{createTime},#{updateUser},#{updateTime}
+        #{status},#{standardSpu},#{createUser},#{createTime},#{updateUser},now()
         )
     </insert>
 
