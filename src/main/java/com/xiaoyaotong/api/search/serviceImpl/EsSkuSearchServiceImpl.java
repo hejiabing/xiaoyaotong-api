@@ -23,6 +23,8 @@ import java.util.List;
 @Service
 public class EsSkuSearchServiceImpl implements EsSkuSearchService {
 
+
+
     @Autowired
     ElasticsearchTemplate elasticsearchTemplate;
 
