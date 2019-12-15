@@ -1,6 +1,8 @@
 package com.xiaoyaotong.api.platform.entity;
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.util.Date;
 
 public class PlatformSku {
 
@@ -16,11 +18,91 @@ public class PlatformSku {
   private BigDecimal commonPrice; //价格
   private int validMonthStart; //效期集合的开始时间
   private  int validMonthEnd;//效期集合的结束时间
-  private long status;
+  private int status;
   private String createUser;
-  private java.sql.Timestamp createTime;
+  private java.util.Date createTime;
   private String updateUser;
-  private java.sql.Timestamp updateTime;
+  private java.util.Date updateTime;
+
+  public long getId() {
+    return id;
+  }
+
+  public void setId(long id) {
+    this.id = id;
+  }
+
+  public String getSkuCode() {
+    return skuCode;
+  }
+
+  public void setSkuCode(String skuCode) {
+    this.skuCode = skuCode;
+  }
+
+  public String getSpuCode() {
+    return spuCode;
+  }
+
+  public void setSpuCode(String spuCode) {
+    this.spuCode = spuCode;
+  }
+
+  public int getCompanyId() {
+    return companyId;
+  }
+
+  public void setCompanyId(int companyId) {
+    this.companyId = companyId;
+  }
+
+  public String getCompanySkuCode() {
+    return companySkuCode;
+  }
+
+  public void setCompanySkuCode(String companySkuCode) {
+    this.companySkuCode = companySkuCode;
+  }
+
+  public String getCompanyName() {
+    return companyName;
+  }
+
+  public void setCompanyName(String companyName) {
+    this.companyName = companyName;
+  }
+
+  public String getBatchNos() {
+    return batchNos;
+  }
+
+  public void setBatchNos(String batchNos) {
+    this.batchNos = batchNos;
+  }
+
+  public String getDeadlineNos() {
+    return deadlineNos;
+  }
+
+  public void setDeadlineNos(String deadlineNos) {
+    this.deadlineNos = deadlineNos;
+  }
+
+  public int getStocks() {
+    return stocks;
+  }
+
+  public void setStocks(int stocks) {
+    this.stocks = stocks;
+  }
+
+  public BigDecimal getCommonPrice() {
+    return commonPrice;
+  }
+
+  public void setCommonPrice(BigDecimal commonPrice) {
+    this.commonPrice = commonPrice;
+  }
 
   public int getValidMonthStart() {
     return validMonthStart;
@@ -38,96 +120,11 @@ public class PlatformSku {
     this.validMonthEnd = validMonthEnd;
   }
 
-  public String getCompanySkuCode() {
-    return companySkuCode;
-  }
-
-  public void setCompanySkuCode(String companySkuCode) {
-    this.companySkuCode = companySkuCode;
-  }
-
-  public String getDeadlineNos() {
-    return deadlineNos;
-  }
-
-  public void setDeadlineNos(String deadlineNos) {
-    this.deadlineNos = deadlineNos;
-  }
-
-
-  public String getBatchNos() {
-    return batchNos;
-  }
-
-  public int getStocks() {
-    return stocks;
-  }
-
-  public void setBatchNos(String batchNos) {
-    this.batchNos = batchNos;
-  }
-
-  public void setStocks(int stocks) {
-    this.stocks = stocks;
-  }
-
-  public long getId() {
-    return id;
-  }
-
-  public void setId(long id) {
-    this.id = id;
-  }
-
-
-  public String getSkuCode() {
-    return skuCode;
-  }
-
-  public void setSkuCode(String skuCode) {
-    this.skuCode = skuCode;
-  }
-
-
-  public String getSpuCode() {
-    return spuCode;
-  }
-
-  public void setSpuCode(String spuCode) {
-    this.spuCode = spuCode;
-  }
-
-
-  public int getCompanyId() {
-    return companyId;
-  }
-
-  public void setCompanyId(int companyId) {
-    this.companyId = companyId;
-  }
-
-
-  public String getCompanyName() {
-    return companyName;
-  }
-
-  public void setCompanyName(String companyName) {
-    this.companyName = companyName;
-  }
-
-  public BigDecimal getCommonPrice() {
-    return commonPrice;
-  }
-
-  public void setCommonPrice(BigDecimal commonPrice) {
-    this.commonPrice = commonPrice;
-  }
-
-  public long getStatus() {
+  public int getStatus() {
     return status;
   }
 
-  public void setStatus(long status) {
+  public void setStatus(int status) {
     this.status = status;
   }
 
@@ -139,15 +136,13 @@ public class PlatformSku {
     this.createUser = createUser;
   }
 
-
-  public java.sql.Timestamp getCreateTime() {
+  public Date getCreateTime() {
     return createTime;
   }
 
-  public void setCreateTime(java.sql.Timestamp createTime) {
+  public void setCreateTime(Date createTime) {
     this.createTime = createTime;
   }
-
 
   public String getUpdateUser() {
     return updateUser;
@@ -157,13 +152,11 @@ public class PlatformSku {
     this.updateUser = updateUser;
   }
 
-
-  public java.sql.Timestamp getUpdateTime() {
+  public Date getUpdateTime() {
     return updateTime;
   }
 
-  public void setUpdateTime(java.sql.Timestamp updateTime) {
+  public void setUpdateTime(Date updateTime) {
     this.updateTime = updateTime;
   }
-
 }
