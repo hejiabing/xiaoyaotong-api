@@ -43,7 +43,7 @@
         from t_platform_sku s
     </sql>
 
-    <select id="getPlatformSkuById" resultMap="platformSku">
+    <select id="getPlatformBySkuCode" resultMap="platformSku">
         <include refid="basicSQL"/> where s.sku_code = #{skuCode}
     </select>
 

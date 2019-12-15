@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface PlatformSkuMapper {
     //根据skuid查询商品
-    public PlatformSku getPlatformSkuById(String skuid);
+    public PlatformSku getPlatformBySkuCode(String skuCode);
 
     //根据公司的skuid查询商品
     public List<PlatformSku> getPlatformSkuByCompanySkuCode(String companySkuCode);

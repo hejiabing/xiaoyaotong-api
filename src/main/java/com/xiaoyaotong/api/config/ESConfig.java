@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.elasticsearch.common.transport.TransportAddress;
 
 
+import javax.annotation.PostConstruct;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
@@ -19,6 +20,8 @@ import java.net.UnknownHostException;
  **/
 @Configuration
 public class ESConfig {
-
-
+    @PostConstruct
+    void init() {
+        System.setProperty("es.set.netty.runtime.available.processors", "false");
+    }
 }

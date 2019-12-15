@@ -51,22 +51,27 @@ public class PlatformSkuController {
         if (null != queryPlatformSkuVO) {//如果对象为空，返回空
             int companyIdV = queryPlatformSkuVO.getCompanyId(); //公司id
             String companySkuV = queryPlatformSkuVO.getCompanySkuCode();//公司的sku代码
+            String skuCode = queryPlatformSkuVO.getSkuCode();//skuCode
             int startPage = queryPlatformSkuVO.getStartPage(); //查询的开始页面
             int pageSize = queryPlatformSkuVO.getPageSize(); //每页的数量
 
-            PageInfo<PlatformSku> page; //分页的辅助
+            if(pageSize<2) pageSize = 10;
+            if(startPage< 0 ) startPage = 0;
 
+            PageInfo<PlatformSku> page; //分页的辅助
+            PageHelper.startPage(startPage, pageSize);
             if (companyIdV > 0) { //可转换为数字
                 if (null != companySkuV && companySkuV != "") { //根据企业id和公司sku查询
-                    PageHelper.startPage(startPage, pageSize);
                     skus = platformSkuService.getSkuByCompanyIdAndSkuCode(companyIdV, companySkuV);
-                    page = new PageInfo<>(skus);
-
+                } else if(null!=skuCode && skuCode!= ""){
+                    PlatformSku mySku = platformSkuService.getSkuBySkuCode(skuCode);
+                    skus.add(mySku);
                 } else {//根据企业id查询
-                    PageHelper.startPage(startPage, pageSize);
                     skus = platformSkuService.getSkuByCompanyId(companyIdV);
-                    page = new PageInfo<>(skus);
                 }
+
+                page = new PageInfo<>(skus);
+
                 //组装信息
                 returnPlatformVO.setCount(page.getTotal());
                 returnPlatformVO.setPageNum(page.getPageNum());
@@ -107,7 +112,7 @@ public class PlatformSkuController {
          int validMonthEnd = copyPlatformSkuVo.getValidMonthEnd(); //效期的结束时间
          BigDecimal price = copyPlatformSkuVo.getPrice(); //价格
 
-        PlatformSku basicPlatformSku = platformSkuService.getSkuBySkuId(skuId);//查询到的原始
+        PlatformSku basicPlatformSku = platformSkuService.getSkuBySkuCode(skuId);//查询到的原始
         PlatformSku newPlatformSku = new PlatformSku();
 
         String newSkuId = GenerateUniqueIdUtil.getUniqueSkuid();
@@ -121,7 +126,7 @@ public class PlatformSkuController {
         newPlatformSku.setSpuCode(basicPlatformSku.getSpuCode());
 
         platformSkuService.insertPlatformSku(newPlatformSku);
-        return platformSkuService.getSkuBySkuId(newSkuId);
+        return platformSkuService.getSkuBySkuCode(newSkuId);
     }
 
     @RequestMapping(value ="/onsale",method = RequestMethod.POST)

@@ -9,7 +9,7 @@ public interface PlatformSkuService {
     public int getAllPlatformSkuCount();
 
     //根据SKUid获取
-    public PlatformSku getSkuBySkuId(String skuId);
+    public PlatformSku getSkuBySkuCode(String skuCode);
 
     //根据公司ID获取SKU列表
     public List<PlatformSku> getSkuByCompanyId(int companyId);

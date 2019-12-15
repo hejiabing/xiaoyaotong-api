@@ -25,8 +25,8 @@ public class PlatformServiceImpl implements PlatformSkuService {
     }
 
     @Override
-    public PlatformSku getSkuBySkuId(String skuId) {
-        return platformSkuMapper.getPlatformSkuById(skuId);
+    public PlatformSku getSkuBySkuCode(String skuCode) {
+        return platformSkuMapper.getPlatformBySkuCode(skuCode);
     }
 
     @Override

@@ -14,6 +14,7 @@ public class QueryPlatformSkuVO {
     private String factoryName;
     private int companyId;
     private String companySkuCode;
+    private String skuCode;
     private int pageSize;
     private int startPage;
 
@@ -21,63 +22,71 @@ public class QueryPlatformSkuVO {
         return CommonName;
     }
 
-    public String getApprovalCode() {
-        return approvalCode;
-    }
-
-    public String getBarCode() {
-        return barCode;
-    }
-
-    public String getFactoryName() {
-        return factoryName;
-    }
-
-    public Integer getCompanyId() {
-        return companyId;
-    }
-
-    public String getCompanySkuCode() {
-        return companySkuCode;
-    }
-
-    public Integer getPageSize() {
-        return pageSize;
-    }
-
-    public Integer getStartPage() {
-        return startPage;
-    }
-
     public void setCommonName(String commonName) {
         CommonName = commonName;
+    }
+
+    public String getApprovalCode() {
+        return approvalCode;
     }
 
     public void setApprovalCode(String approvalCode) {
         this.approvalCode = approvalCode;
     }
 
+    public String getBarCode() {
+        return barCode;
+    }
+
     public void setBarCode(String barCode) {
         this.barCode = barCode;
+    }
+
+    public String getFactoryName() {
+        return factoryName;
     }
 
     public void setFactoryName(String factoryName) {
         this.factoryName = factoryName;
     }
 
-    public void setCompanyId(Integer companyId) {
+    public int getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(int companyId) {
         this.companyId = companyId;
+    }
+
+    public String getCompanySkuCode() {
+        return companySkuCode;
     }
 
     public void setCompanySkuCode(String companySkuCode) {
         this.companySkuCode = companySkuCode;
     }
 
-    public void setPageSize(Integer pageSize) {
+    public String getSkuCode() {
+        return skuCode;
+    }
+
+    public void setSkuCode(String skuCode) {
+        this.skuCode = skuCode;
+    }
+
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(int pageSize) {
         this.pageSize = pageSize;
     }
 
-    public void setStartPage(Integer startPage) {
+    public int getStartPage() {
+        return startPage;
+    }
+
+    public void setStartPage(int startPage) {
         this.startPage = startPage;
     }
 }
