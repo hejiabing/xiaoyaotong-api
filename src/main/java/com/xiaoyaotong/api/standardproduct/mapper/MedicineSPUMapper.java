@@ -24,7 +24,8 @@ public interface MedicineSPUMapper {
 
     public int getCountofAllSpus();
 
-    public List<MedicineSPU> getSpuByKeyParameters(@Param("commonName") String commonName,
+    public List<MedicineSPU> getSpuByKeyParameters(@Param("spuCode") String spuCode,
+                                                   @Param("commonName") String commonName,
                                                    @Param("approvalCode")String approvalCode,
                                                    @Param("barCode") String barCode);
 

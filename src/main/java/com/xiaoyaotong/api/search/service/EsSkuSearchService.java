@@ -2,6 +2,8 @@ package com.xiaoyaotong.api.search.service;
 
 import com.xiaoyaotong.api.search.entity.EsMedicineSpu;
 import com.xiaoyaotong.api.search.entity.EsPlatformSku;
+import com.xiaoyaotong.api.search.vo.QuerySkuVO;
+import com.xiaoyaotong.api.search.vo.ReturnSkuVO;
 
 import java.util.List;
 
@@ -11,5 +13,5 @@ import java.util.List;
  * @date ：2019/12/8 11:34 PM
  */
 public interface EsSkuSearchService {
-    public List<EsPlatformSku> searchSkuList(EsPlatformSku esPlatformSku);
+    public ReturnSkuVO searchSkuList(QuerySkuVO querySkuVO);
 }

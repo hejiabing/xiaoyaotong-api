@@ -4,10 +4,13 @@ import com.xiaoyaotong.api.search.dao.EsMedicineSpuDao;
 import com.xiaoyaotong.api.search.entity.EsMedicineSpu;
 import com.xiaoyaotong.api.search.entity.EsPlatformSku;
 import com.xiaoyaotong.api.search.service.EsSkuSearchService;
+import com.xiaoyaotong.api.search.vo.QuerySkuVO;
+import com.xiaoyaotong.api.search.vo.ReturnSkuVO;
 import org.elasticsearch.action.search.SearchType;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
 import org.springframework.data.elasticsearch.core.query.SearchQuery;
@@ -29,16 +32,28 @@ public class EsSkuSearchServiceImpl implements EsSkuSearchService {
     ElasticsearchTemplate elasticsearchTemplate;
 
     @Override
-    public List<EsPlatformSku> searchSkuList(EsPlatformSku esPlatformSku) {
-        String commonName = esPlatformSku.getCommonName();//通用名
-        String approvalCode = esPlatformSku.getApprovalCode();//批准文号
-        String barCode = esPlatformSku.getBarCode();//条形码
-        String factoryName = esPlatformSku.getFactoryName();//生产厂家
-        String companyName = esPlatformSku.getCompanyName();// 商家名字
+    public ReturnSkuVO searchSkuList(QuerySkuVO querySkuVO) {
+        String commonName = querySkuVO.getCommonName();//通用名
+        String approvalCode = querySkuVO.getApprovalCode();//批准文号
+        String barCode = querySkuVO.getBarCode();//条形码
+        String factoryName = querySkuVO.getFactoryName();//生产厂家
+        String companyName = querySkuVO.getCompanyName();// 商家名字
+        int companyId = querySkuVO.getCompanyId();
+
+        int startPage = querySkuVO.getStartPage();
+        int pageSize = querySkuVO.getPageSize();
+
+        if(startPage<0){
+            startPage = 0;
+        }
+
+        if(pageSize<2) {pageSize = 10;}
+
+        ReturnSkuVO returnSkuVO = new ReturnSkuVO();
 
         BoolQueryBuilder bqb = QueryBuilders.boolQuery();//布尔查询
 
-        if (esPlatformSku != null){
+        if (querySkuVO != null){
             if(commonName!=null && commonName !=""){
                 bqb.must(QueryBuilders.matchPhraseQuery("commonName",commonName));
             }
@@ -63,9 +78,14 @@ public class EsSkuSearchServiceImpl implements EsSkuSearchService {
         SearchQuery searchQuery = new NativeSearchQueryBuilder().withQuery(bqb)
                 .withIndices("sku").withTypes("sku")
                 .withSearchType(SearchType.DEFAULT)
+                .withPageable(PageRequest.of(startPage,pageSize))
                 .build();
 
-        List<EsPlatformSku> spus = elasticsearchTemplate.queryForList(searchQuery , EsPlatformSku.class);
-        return spus;
+        long count = elasticsearchTemplate.count(searchQuery);
+        List<EsPlatformSku> skus = elasticsearchTemplate.queryForList(searchQuery , EsPlatformSku.class);
+        returnSkuVO.setCount(count);
+        returnSkuVO.setSkus(skus);
+
+        return returnSkuVO;
     }
 }

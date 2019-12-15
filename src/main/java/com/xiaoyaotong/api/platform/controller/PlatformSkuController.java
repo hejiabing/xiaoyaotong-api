@@ -81,6 +81,7 @@ public class PlatformSkuController {
                     PlatformSkuDTO dto = new PlatformSkuDTO();
                     dto.setSkuCode(sku.getSkuCode());
                     dto.setCompanyId(sku.getCompanyId());
+                    dto.setStatus(sku.getStatus());
                     dto.setCommonName(spu.getCommonName());
                     dto.setSpec(spu.getSpec());
                     dto.setCompanySkuCode(sku.getCompanySkuCode());
@@ -133,6 +134,7 @@ public class PlatformSkuController {
     public int onSalePlatformSku(@RequestBody OnsalePlatformSkuVO onsalePlatformSkuVO){
         Assert.notNull(onsalePlatformSkuVO, "dto can not be empty");
         List<String> skus = onsalePlatformSkuVO.getSkuCodes();
+        if(null==skus ||skus.size()<1 ) return 0;
         int onsale = onsalePlatformSkuVO.getStatus();
 
         int result = 0 ;

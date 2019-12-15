@@ -35,6 +35,6 @@ public interface MedicineSPUService {
 
     int addMedicineSPU(MedicineSPU medicineSPU);
 
-    List<MedicineSPU> getSpuByKeyParameters(String commonName,String approvalCode, String barCode);
+    List<MedicineSPU> getSpuByKeyParameters(String spuCode,String commonName,String approvalCode, String barCode);
 
 }

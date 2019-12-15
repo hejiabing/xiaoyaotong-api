@@ -90,7 +90,7 @@ public class MedicineSPUServiceImpl implements MedicineSPUService {
     }
 
     @Override
-    public List<MedicineSPU> getSpuByKeyParameters(String commonName, String approvalCode, String barCode) {
-        return medicineSPUMapper.getSpuByKeyParameters(commonName,approvalCode,barCode);
+    public List<MedicineSPU> getSpuByKeyParameters(String spuCode, String commonName, String approvalCode, String barCode) {
+        return medicineSPUMapper.getSpuByKeyParameters(spuCode, commonName,approvalCode,barCode);
     }
 }

@@ -92,6 +92,9 @@
         <if test="barCode != null and barCode != '' ">
             and s.bar_code=#{barCode}
         </if>
+        <if test="spuCode != null and spuCode != '' ">
+            and s.spu_code=#{spuCode}
+        </if>
     </select>
 
     <select id="getCountofAllSpus" resultType="Integer">

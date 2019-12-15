@@ -59,7 +59,8 @@ public class MedicineSPUController {
             String commonName = spu.getCommonName();
             String approvalCode = spu.getApprovalCode();
             String barCode = spu.getBarCode();
-            lists = medicineSPUService.getSpuByKeyParameters(commonName,approvalCode,barCode);
+            String spuCode = spu.getSpuCode();
+            lists = medicineSPUService.getSpuByKeyParameters(spuCode,commonName,approvalCode,barCode);
             return new ResponseEntity<List<MedicineSPU>>(lists, HttpStatus.OK);
         }
         return new ResponseEntity<List<MedicineSPU>>((List<MedicineSPU>)null, HttpStatus.OK);

@@ -27,6 +27,16 @@ public class PlatformSkuDTO implements Serializable {
 
     private String spuCode;
 
+    private int status;
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
     public String getSpuCode() {
         return spuCode;
     }

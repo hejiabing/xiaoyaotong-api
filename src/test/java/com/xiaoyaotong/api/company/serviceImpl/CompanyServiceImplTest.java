@@ -19,5 +19,4 @@ class CompanyServiceImplTest {
     Company company = companyService.getCompanyByCompanyId(1212);
     System.out.println(company.getId());
     }
-
 }
