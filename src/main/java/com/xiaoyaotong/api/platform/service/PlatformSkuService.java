@@ -28,6 +28,8 @@ public interface PlatformSkuService {
     //根据Skuid删除SKU
     public int deletePlatformSku(String skuId);
 
+	public int updatePlatformSkuById(PlatformSku platSku);
+
 
     
 }

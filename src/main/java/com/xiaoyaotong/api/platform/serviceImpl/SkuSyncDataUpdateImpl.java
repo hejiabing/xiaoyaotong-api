@@ -80,7 +80,7 @@ public class SkuSyncDataUpdateImpl implements SkuSyncDataUpdate {
 					platformSku.setStocks((Integer)validStockMap.get("stock"));
 					platformSku.setUpdateTime(new Date());
 					platformSku.setUpdateUser("skuSyncDataJob");
-					platformSkuService.updatePlatformSku(platformSku );
+					platformSkuService.updatePlatformSkuById(platformSku );
 				}else{
 					Map<Integer,Integer> validStockMap = new HashMap<Integer,Integer>();
 					Map<Integer,String> validDeadLinesMap = new HashMap<Integer,String>();
@@ -107,8 +107,8 @@ public class SkuSyncDataUpdateImpl implements SkuSyncDataUpdate {
 						StringBuffer batchNos = new StringBuffer();
 						for(int i=start;i<end;i++){
 							if(validStockMap.containsKey(i)){
-								deadLines.append(validDeadLinesMap.get(i));
-								batchNos.append(validBatchNosMap.get(i));
+								deadLines.append(validDeadLinesMap.get(i)).append("/");
+								batchNos.append(validBatchNosMap.get(i)).append("/");
 								stock += validStockMap.get(i);
 							}
 						}
@@ -117,7 +117,7 @@ public class SkuSyncDataUpdateImpl implements SkuSyncDataUpdate {
 						platSku.setDeadlineNos(deadLines.toString());
 						platSku.setUpdateTime(new Date());
 						platSku.setUpdateUser("skuSyncDataJob");
-						platformSkuService.updatePlatformSku(platSku );
+						platformSkuService.updatePlatformSkuById(platSku );
 					}
 				}
 				

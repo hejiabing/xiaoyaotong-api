@@ -41,6 +41,8 @@ public interface PlatformSkuMapper {
     //分页获取
     public List<PlatformSku> getPlatformSkuList(@Param("beginPage") int beginPage, @Param("pageSize")int pageSize);
 
+	public int updatePlatformSkuById(PlatformSku platSku);
+
 
 
 

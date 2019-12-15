@@ -58,4 +58,9 @@ public class PlatformServiceImpl implements PlatformSkuService {
     public int deletePlatformSku(String skuId) {
         return  platformSkuMapper.deletePlatformSku(skuId);
     }
+
+	@Override
+	public int updatePlatformSkuById(PlatformSku platSku) {
+		return platformSkuMapper.updatePlatformSkuById(platSku);
+	}
 }

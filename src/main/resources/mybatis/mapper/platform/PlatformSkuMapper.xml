@@ -108,7 +108,7 @@
         </if>
 
         <if test="validMonthEnd != null and validMonthEnd != '' ">
-          valid_month_end = # {validMonthEnd},
+          valid_month_end = #{validMonthEnd},
         </if>
         <if test="stocks != null and stocks != '' ">
           stocks = #{stocks},
@@ -123,6 +123,40 @@
         where sku_code = #{skuCode}
     </update>
 
+    <update id="updatePlatformSkuById">
+        update t_platform_sku
+        set
+        <if test="batchNos != null and batchNos != '' ">
+            batch_nos = #{batchNos},
+        </if>
+
+        <if test="deadlineNos != null and deadlineNos != '' ">
+            deadline_nos = #{deadlineNos},
+        </if>
+
+        <if test="commonPrice != null and commonPrice != '' ">
+            common_price = #{commonPrice},
+        </if>
+
+        <if test="validMonthStart != null and validMonthStart != '' ">
+            valid_month_start = #{validMonthStart},
+        </if>
+
+        <if test="validMonthEnd != null and validMonthEnd != '' ">
+          valid_month_end = #{validMonthEnd},
+        </if>
+        <if test="stocks != null and stocks != '' ">
+          stocks = #{stocks},
+        </if>
+        <if test="status != null ">
+          status = #{status},
+        </if>
+        <if test="updateUser != null and updateUser != '' ">
+            update_user = #{updateUser},
+        </if>
+        update_time = now()
+        where id = #{id}
+    </update>
     <!--物理删除-->
     <delete id="deletePlatformSku">
         delete from t_platform_sku

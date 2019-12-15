@@ -21,7 +21,7 @@ public class SkuSyncDataUpdateTest {
 	@Test
 	public void stockConsumerTest(){
 		skuSyncDataUpdate.stockProducer("69027161", 1212);
-		skuSyncDataUpdate.stockProducer("81364361686", 1212);
+		//skuSyncDataUpdate.stockProducer("81364361686", 1212);
 		skuSyncDataUpdate.stockConsumer();
 	}
 }
