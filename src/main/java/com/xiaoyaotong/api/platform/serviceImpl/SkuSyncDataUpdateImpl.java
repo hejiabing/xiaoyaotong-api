@@ -9,6 +9,7 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import com.xiaoyaotong.api.companyitem.entity.CompanySkuBatch;
@@ -20,6 +21,7 @@ import com.xiaoyaotong.api.platform.service.SkuSyncDataUpdate;
 import com.xiaoyaotong.api.util.DateUtil;
 import com.xiaoyaotong.api.util.RedisUtilService;
 
+@Service("skuSyncDataUpdate")
 public class SkuSyncDataUpdateImpl implements SkuSyncDataUpdate {
 
 	private static Logger log = LoggerFactory.getLogger(SkuSyncDataUpdateImpl.class);
@@ -66,9 +68,9 @@ public class SkuSyncDataUpdateImpl implements SkuSyncDataUpdate {
 								validStockMap.put("deadLines", oneBatch.getDeadLine());
 								validStockMap.put("batchNos", oneBatch.getBatchNo());
 							}else{
-								validStockMap.put("stock", ((Integer)validStockMap.get(validMonth)).intValue() + oneBatch.getStock().intValue());
-								validStockMap.put("deadLines", validStockMap.get(validMonth)+"/"+oneBatch.getDeadLine());
-								validStockMap.put("batchNos", validStockMap.get(validMonth)+"/"+oneBatch.getBatchNo());
+								validStockMap.put("stock", ((Integer)validStockMap.get("stock")).intValue() + oneBatch.getStock().intValue());
+								validStockMap.put("deadLines", validStockMap.get("deadLines")+"/"+oneBatch.getDeadLine());
+								validStockMap.put("batchNos", validStockMap.get("batchNos")+"/"+oneBatch.getBatchNo());
 							}
 						}
 					}
@@ -83,8 +85,11 @@ public class SkuSyncDataUpdateImpl implements SkuSyncDataUpdate {
 					Map<Integer,Integer> validStockMap = new HashMap<Integer,Integer>();
 					Map<Integer,String> validDeadLinesMap = new HashMap<Integer,String>();
 					Map<Integer,String> validBatchNosMap = new HashMap<Integer,String>();
+					for(PlatformSku platSku : platformSkuList){
+						
+					}
 					for(CompanySkuBatch oneBatch : comSkuCodeList){
-						Integer validMonth = 3;
+						Integer validMonth =  DateUtil.getOffsetMonth(oneBatch.getDeadLine());;
 						if(validStockMap.get(validMonth) == null){
 							validStockMap.put(validMonth, oneBatch.getStock().intValue());
 							validDeadLinesMap.put(validMonth, oneBatch.getDeadLine());
@@ -96,9 +101,7 @@ public class SkuSyncDataUpdateImpl implements SkuSyncDataUpdate {
 						}
 					}
 					
-					for(PlatformSku platSku : platformSkuList){
-						
-					}
+					
 				}
 				
 			}

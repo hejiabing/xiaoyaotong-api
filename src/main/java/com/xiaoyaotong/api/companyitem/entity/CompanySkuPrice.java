@@ -8,7 +8,7 @@ public class CompanySkuPrice {
 
     private Integer companyId;
 
-    private String companySkucode;
+    private String companySkuCode;
 
     private BigDecimal price;
 
@@ -76,11 +76,11 @@ public class CompanySkuPrice {
         this.updateTime = updateTime;
     }
 
-	public String getCompanySkucode() {
-		return companySkucode;
+	public String getCompanySkuCode() {
+		return companySkuCode;
 	}
 
-	public void setCompanySkucode(String companySkucode) {
-		this.companySkucode = companySkucode;
+	public void setCompanySkuCode(String companySkuCode) {
+		this.companySkuCode = companySkuCode;
 	}
 }

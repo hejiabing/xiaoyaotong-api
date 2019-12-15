@@ -62,7 +62,7 @@
 
     <select id="getPlatformSkyByCompanyIdAndSkuCode"
             parameterType="hashmap" resultMap="platformSku">
-        <include refid="basicSQL"/> where s.company_id = #{companyId} and s.company_skucode = #{skuCode}
+        <include refid="basicSQL"/> where s.company_id = #{companyId} and s.company_skucode = #{companySkucode}
     </select>
 
     <select id="getAllPlatformSkuCount" resultType="Integer">

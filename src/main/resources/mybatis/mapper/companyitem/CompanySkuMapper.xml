@@ -5,7 +5,7 @@
     <resultMap id="companySkuType" type="com.xiaoyaotong.api.companyitem.entity.CompanySku">
         <id property="id" jdbcType="INTEGER" column="_id"/>
         <result property="companyId" column="company_id" jdbcType="INTEGER"/>
-        <result property="companySkuCode" column="company_skucode" jdbcType="VARCHAR"/>
+        <result property="companySkuCode" column="company_sku_code" jdbcType="VARCHAR"/>
         <result column="common_name" jdbcType="VARCHAR" property="commonName"/>
         <result column="approval_code" jdbcType="VARCHAR" property="approvalCode"/>
         <result column="spec" jdbcType="VARCHAR" property="spec"/>
@@ -24,7 +24,7 @@
         select
         s.id as id,
         s.company_id,
-        s.company_skucode,
+        s.company_sku_code,
         s.common_name,
         s.approval_code,
         s.spec,
@@ -40,16 +40,16 @@
     </sql>
 
     <insert id="insertCompanySku">
-        insert into t_company_sku(_id,company_id,company_skucode,common_name,approval_code,spec,factory_name,
+        insert into t_company_sku(_id,company_id,company_sku_code,common_name,approval_code,spec,factory_name,
         bar_code,status,standard_spu,create_user,create_time,update_user,update_time)
         values (
-        #{id},#{companyId},#{companySkucode},#{commonName},#{approvalCode},#{spec},#{factoryName},#{barCode},
+        #{id},#{companyId},#{companySkuCode},#{commonName},#{approvalCode},#{spec},#{factoryName},#{barCode},
         #{status},#{standardSpu},#{createUser},#{createTime},#{updateUser},now()
         )
     </insert>
 
     <delete id="deleteCompanySku">
-        delete from t_company_sku t where t.company_id = #{companyId} and t.company_skucode = #{companySkucode}
+        delete from t_company_sku t where t.company_id = #{companyId} and t.company_sku_code = #{companySkuCode}
     </delete>
 
     <update id="updateByCompanyIdAndskuCode">
@@ -60,18 +60,18 @@
         factory_name=#{factoryName},
         spu_code = #{spuCode},
         bar_code=#{barCode}  
-        where company_id = #{companyId} and company_skucode = #{companySkuCode}
+        where company_id = #{companyId} and company_sku_code = #{companySkuCode}
     </update>
 
     <update id="updateSpuCodeByCompanyIdAndskuCode">
         update t_company_sku set
         standard_spu=#{spuCode},
-        where company_id = #{companyId} and company_skucode = #{companySkucode}
+        where company_id = #{companyId} and company_sku_code = #{companySkuCode}
     </update>
 
     <select id="selectSkuByCompanyIdAndSkuCode" resultMap="companySkuType">
         <include refid="basicSQL"/>
-        where s.company_id =#{companyId} and s.company_skucode = #{companySkucode}
+        where s.company_id =#{companyId} and s.company_sku_code = #{companySkuCode}
         <if test="matched != null and matched = 1">
             AND s.matched = 1
         </if>
@@ -99,7 +99,7 @@
 	
 	<select id="getCompanySkuId" resultType="Integer">
         select id from t_company_sku t
-        where t.company_id =#{companyId} and t.company_skucode = #{companySkucode}
+        where t.company_id =#{companyId} and t.company_sku_code = #{companySkuCode}
     </select>
 
  	<update id="updateCompanySkuById">

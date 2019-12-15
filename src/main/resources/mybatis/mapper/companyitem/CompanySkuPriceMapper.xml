@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.xiaoyaotong.api.companyitem.entity.CompanySkuPrice">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="company_id" jdbcType="INTEGER" property="companyId" />
-    <result column="company_companySkucode" jdbcType="VARCHAR" property="companySkucode" />
+    <result column="company_sku_code" jdbcType="VARCHAR" property="companySkuCode" />
     <result column="price" jdbcType="DECIMAL" property="price" />
     <result column="create_user" jdbcType="VARCHAR" property="createUser" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
@@ -12,7 +12,7 @@
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, company_id,   company_companySkucode, price, create_user, create_time, update_user, 
+    id, company_id,   company_sku_code, price, create_user, create_time, update_user, 
     update_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -27,11 +27,11 @@
   </delete>
   <insert id="insert" parameterType="com.xiaoyaotong.api.companyitem.entity.CompanySkuPrice">
     insert into t_company_sku_price (id, company_id,  
-      company_companySkucode, price, create_user, 
+      company_sku_code, price, create_user, 
       create_time, update_user, update_time
       )
     values (#{id,jdbcType=INTEGER}, #{companyId,jdbcType=INTEGER},  
-      #{companySkucode,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, #{createUser,jdbcType=VARCHAR}, 
+      #{companySkuCode,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, #{createUser,jdbcType=VARCHAR}, 
       #{createTime,jdbcType=TIMESTAMP}, #{updateUser,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}
       )
   </insert>
@@ -44,8 +44,8 @@
       <if test="companyId != null">
         company_id,
       </if>
-      <if test="companySkucode != null">
-        company_companySkucode,
+      <if test="companySkuCode != null">
+        company_sku_code,
       </if>
       <if test="price != null">
         price,
@@ -70,8 +70,8 @@
       <if test="companyId != null">
         #{companyId,jdbcType=INTEGER},
       </if>
-      <if test="companySkucode != null">
-        #{companySkucode,jdbcType=VARCHAR},
+      <if test="companySkuCode != null">
+        #{companySkuCode,jdbcType=VARCHAR},
       </if>
       <if test="price != null">
         #{price,jdbcType=DECIMAL},
@@ -96,8 +96,8 @@
       <if test="companyId != null">
         company_id = #{companyId,jdbcType=INTEGER},
       </if>
-      <if test="companySkucode != null">
-        company_companySkucode = #{companySkucode,jdbcType=VARCHAR},
+      <if test="companySkuCode != null">
+        company_sku_code = #{companySkuCode,jdbcType=VARCHAR},
       </if>
       <if test="price != null">
         price = #{price,jdbcType=DECIMAL},
@@ -120,7 +120,7 @@
   <update id="updateByPrimaryKey" parameterType="com.xiaoyaotong.api.companyitem.entity.CompanySkuPrice">
     update t_company_sku_price
     set company_id = #{companyId,jdbcType=INTEGER},
-      company_companySkucode = #{companySkucode,jdbcType=VARCHAR},
+      company_sku_code = #{companySkuCode,jdbcType=VARCHAR},
       price = #{price,jdbcType=DECIMAL},
       create_user = #{createUser,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -137,17 +137,17 @@
      <if test="companyId != null">
         company_id = #{companyId,jdbcType=INTEGER}
       </if>
-      <if test="companySkucode != null">
-      and   company_companySkucode = #{companySkucode,jdbcType=VARCHAR}
+      <if test="companySkuCode != null">
+      and   company_sku_code = #{companySkuCode,jdbcType=VARCHAR}
       </if>
     </where>
   </select>
   
-  <update id="updateByCompanyIdAndcompanySkucode" parameterType="com.xiaoyaotong.api.companyitem.entity.CompanySkuPrice">
+  <update id="updateByCompanyIdAndcompanySkuCode" parameterType="com.xiaoyaotong.api.companyitem.entity.CompanySkuPrice">
     update t_company_sku_price
     set  
       price = #{price,jdbcType=DECIMAL} 
     where company_id = #{companyId,jdbcType=INTEGER}
-      and company_companySkucode = #{companySkucode,jdbcType=VARCHAR} 
+      and company_sku_code = #{companySkuCode,jdbcType=VARCHAR} 
   </update>
 </mapper>

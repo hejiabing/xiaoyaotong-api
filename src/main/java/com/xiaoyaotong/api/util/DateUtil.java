@@ -279,15 +279,7 @@ public class DateUtil {
 
 	public static Integer getOffsetMonth(String deadLine) {
 		Date deadDate = stringToDate(deadLine);
-		
-		Calendar c1 = Calendar.getInstance();
-        Calendar c2 = Calendar.getInstance();
-
-        c1.setTime(deadDate);
-        c2.setTime(new Date());
-
-        int result = c1.get(Calendar.MONTH) - c2.get(Calendar.MONTH);
-
-        return  Math.abs(result);
+		Long month = (deadDate.getTime()- new Date().getTime())/1000/3600/24/30;
+		return month.intValue();
 	}
 }
