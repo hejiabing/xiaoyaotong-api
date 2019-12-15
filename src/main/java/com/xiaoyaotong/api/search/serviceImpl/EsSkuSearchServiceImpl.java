@@ -10,6 +10,7 @@ import org.elasticsearch.action.search.SearchType;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
@@ -82,6 +83,7 @@ public class EsSkuSearchServiceImpl implements EsSkuSearchService {
                 .build();
 
         long count = elasticsearchTemplate.count(searchQuery);
+
         List<EsPlatformSku> skus = elasticsearchTemplate.queryForList(searchQuery , EsPlatformSku.class);
         returnSkuVO.setCount(count);
         returnSkuVO.setSkus(skus);

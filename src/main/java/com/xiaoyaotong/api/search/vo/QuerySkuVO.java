@@ -2,11 +2,11 @@ package com.xiaoyaotong.api.search.vo;
 
 /**
  * @author ：billHe
- * @description：TODO
+ * @description：搜索sku传递的参数，包装成vo
  * @date ：2019/12/7 3:26 PM
  */
 public class QuerySkuVO {
-    private String CommonName;
+    private String commonName;
     private String approvalCode;
     private String barCode;
     private String factoryName;
@@ -18,11 +18,11 @@ public class QuerySkuVO {
     private int startPage;
 
     public String getCommonName() {
-        return CommonName;
+        return commonName;
     }
 
     public void setCommonName(String commonName) {
-        CommonName = commonName;
+        this.commonName = commonName;
     }
 
     public String getApprovalCode() {

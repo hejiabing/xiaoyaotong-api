@@ -1,10 +1,13 @@
 package com.xiaoyaotong.api.search.controller;
 
+import com.xiaoyaotong.api.platform.vo.QueryPlatformSkuVO;
 import com.xiaoyaotong.api.search.entity.EsMedicineSpu;
 import com.xiaoyaotong.api.search.entity.EsPlatformSku;
 import com.xiaoyaotong.api.search.service.EsMedicineSpuService;
 import com.xiaoyaotong.api.search.service.EsSkuSearchService;
 import com.xiaoyaotong.api.search.service.EsSpuSearchService;
+import com.xiaoyaotong.api.search.vo.QuerySkuVO;
+import com.xiaoyaotong.api.search.vo.ReturnSkuVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,8 +51,8 @@ public class SearchController {
     }
 
     @RequestMapping(value = "/sku",method = RequestMethod.POST)
-    public List<EsPlatformSku> searchSku(@RequestBody EsPlatformSku esPlatformSku){
-        List<EsPlatformSku> spus = esSkuSearchService.searchSkuList(esPlatformSku);
-        return spus;
+    public ReturnSkuVO searchSku(@RequestBody QuerySkuVO querySkuVO){
+        ReturnSkuVO skus = esSkuSearchService.searchSkuList(querySkuVO);
+        return skus;
     }
 }
