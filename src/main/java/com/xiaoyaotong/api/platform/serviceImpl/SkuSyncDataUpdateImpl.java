@@ -85,9 +85,7 @@ public class SkuSyncDataUpdateImpl implements SkuSyncDataUpdate {
 					Map<Integer,Integer> validStockMap = new HashMap<Integer,Integer>();
 					Map<Integer,String> validDeadLinesMap = new HashMap<Integer,String>();
 					Map<Integer,String> validBatchNosMap = new HashMap<Integer,String>();
-					for(PlatformSku platSku : platformSkuList){
-						
-					}
+					
 					for(CompanySkuBatch oneBatch : comSkuCodeList){
 						Integer validMonth =  DateUtil.getOffsetMonth(oneBatch.getDeadLine());;
 						if(validStockMap.get(validMonth) == null){
@@ -101,7 +99,26 @@ public class SkuSyncDataUpdateImpl implements SkuSyncDataUpdate {
 						}
 					}
 					
-					
+					for(PlatformSku platSku : platformSkuList){
+						int start = platSku.getValidMonthStart();
+						int end = platSku.getValidMonthEnd();
+						Integer stock = 0;
+						StringBuffer deadLines = new StringBuffer();
+						StringBuffer batchNos = new StringBuffer();
+						for(int i=start;i<end;i++){
+							if(validStockMap.containsKey(i)){
+								deadLines.append(validDeadLinesMap.get(i));
+								batchNos.append(validBatchNosMap.get(i));
+								stock += validStockMap.get(i);
+							}
+						}
+						platSku.setStocks(stock);
+						platSku.setBatchNos(batchNos.toString());
+						platSku.setDeadlineNos(deadLines.toString());
+						platSku.setUpdateTime(new Date());
+						platSku.setUpdateUser("skuSyncDataJob");
+						platformSkuService.updatePlatformSku(platSku );
+					}
 				}
 				
 			}

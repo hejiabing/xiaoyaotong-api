@@ -7,7 +7,7 @@
         <result column="sku_code" jdbcType="VARCHAR" property="skuCode" />
         <result column="spu_code" jdbcType="VARCHAR" property="spuCode" />
         <result column="company_id" jdbcType="INTEGER" property="companyId" />
-        <result column="company_skucode" jdbcType="VARCHAR" property="companySkuCode" />
+        <result column="company_sku_code" jdbcType="VARCHAR" property="companySkuCode" />
         <result column="company_name" jdbcType="VARCHAR" property="companyName" />
         <result column="batch_nos" jdbcType="VARCHAR" property="batchNos" />
         <result column="deadline_nos" jdbcType="VARCHAR" property="deadlineNos" />
@@ -29,7 +29,7 @@
         s.sku_code,
         s.spu_code ,
         s.company_id,
-        s.company_skucode,
+        s.company_sku_code,
         s.company_name,
         s.batch_nos,
         s.deadline_nos,
@@ -39,7 +39,9 @@
         s.create_time,
         s.create_user,
         s.update_time,
-        s.update_user
+        s.update_user,
+        s.valid_month_start,
+        s.valid_month_end
         from t_platform_sku s
     </sql>
 
@@ -47,8 +49,8 @@
         <include refid="basicSQL"/> where s.sku_code = #{skuCode}
     </select>
 
-    <select id="getPlatformSkuByCompanySkuCode" resultMap="platformSku">
-        <include refid="basicSQL"/> where s.company_skucode = #{companySkuCode}
+    <select id="getPlatformSkuBycompanySkuCode" resultMap="platformSku">
+        <include refid="basicSQL"/> where s.company_sku_code = #{companySkuCode}
     </select>
 
     <select id="getPlatformSkyByCompanyId" resultMap="platformSku">
@@ -62,7 +64,7 @@
 
     <select id="getPlatformSkyByCompanyIdAndSkuCode"
             parameterType="hashmap" resultMap="platformSku">
-        <include refid="basicSQL"/> where s.company_id = #{companyId} and s.company_skucode = #{companySkucode}
+        <include refid="basicSQL"/> where s.company_id = #{companyId} and s.company_sku_code = #{companySkuCode}
     </select>
 
     <select id="getAllPlatformSkuCount" resultType="Integer">
@@ -76,7 +78,7 @@
 
 
     <insert id="insertPlatformSku">
-        insert into t_platform_sku(id,sku_code,spu_code,company_id,company_skucode,company_name,batch_nos,
+        insert into t_platform_sku(id,sku_code,spu_code,company_id,company_sku_code,company_name,batch_nos,
         deadline_nos,common_price,valid_month_start,valid_month_end,stocks,status,create_user,
         create_time,update_user,update_time)
         values (
