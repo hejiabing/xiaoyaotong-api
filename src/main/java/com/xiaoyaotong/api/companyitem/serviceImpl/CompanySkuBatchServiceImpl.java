@@ -58,4 +58,11 @@ public class CompanySkuBatchServiceImpl implements CompanySkuBatchService {
 		return companySkuBatchMapper.updateByCompanyIdAndSkuCode(csku);
 	}
 
+
+	@Override
+	public List<CompanySkuBatch> getValidCompanySkuBatch(Integer companyId,
+			String companySkuCode) {
+		return companySkuBatchMapper.getValidCompanySkuBatch(companyId,companySkuCode);
+	}
+
 }

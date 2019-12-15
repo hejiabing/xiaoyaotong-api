@@ -15,5 +15,7 @@ public interface CompanySkuBatchService {
 	public Integer getCompanySkuBatchId(CompanySkuBatch csku);
 	public int updateCompanySkuBatchById(CompanySkuBatch csku);
 	public int updateByCompanyIdAndSkuCode(CompanySkuBatch csku);
+	public List<CompanySkuBatch> getValidCompanySkuBatch(Integer companyId,
+			String companySkuCode);
 	
 }
