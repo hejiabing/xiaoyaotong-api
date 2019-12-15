@@ -111,7 +111,7 @@
         <if test="stocks != null and stocks != '' ">
           stocks = #{stocks},
         </if>
-        <if test="status != null and status != '' ">
+        <if test="status != null ">
           status = #{status},
         </if>
         <if test="updateUser != null and updateUser != '' ">

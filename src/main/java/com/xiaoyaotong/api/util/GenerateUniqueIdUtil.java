@@ -14,7 +14,7 @@ public class GenerateUniqueIdUtil
      */
     private static volatile int Guid = 100;
 
-    private static String SKU_PREFIX = "S";
+    private static String SKU_PREFIX = "D";
 
     public static String getUniqueSkuid(){
         return SKU_PREFIX + getGuid();
