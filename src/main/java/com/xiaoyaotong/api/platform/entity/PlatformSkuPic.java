@@ -1,6 +1,8 @@
 package com.xiaoyaotong.api.platform.entity;
 
 
+import java.util.Date;
+
 public class PlatformSkuPic {
 
   private long id;
@@ -9,10 +11,9 @@ public class PlatformSkuPic {
   private String picUrl;
   private long status;
   private String createUser;
-  private java.sql.Timestamp createTime;
+  private java.util.Date createTime;
   private String updateUser;
-  private java.sql.Timestamp updateTime;
-
+  private java.util.Date updateTime;
 
   public long getId() {
     return id;
@@ -22,7 +23,6 @@ public class PlatformSkuPic {
     this.id = id;
   }
 
-
   public long getSpuId() {
     return spuId;
   }
@@ -30,7 +30,6 @@ public class PlatformSkuPic {
   public void setSpuId(long spuId) {
     this.spuId = spuId;
   }
-
 
   public long getSkuId() {
     return skuId;
@@ -48,7 +47,6 @@ public class PlatformSkuPic {
     this.picUrl = picUrl;
   }
 
-
   public long getStatus() {
     return status;
   }
@@ -56,7 +54,6 @@ public class PlatformSkuPic {
   public void setStatus(long status) {
     this.status = status;
   }
-
 
   public String getCreateUser() {
     return createUser;
@@ -66,15 +63,13 @@ public class PlatformSkuPic {
     this.createUser = createUser;
   }
 
-
-  public java.sql.Timestamp getCreateTime() {
+  public Date getCreateTime() {
     return createTime;
   }
 
-  public void setCreateTime(java.sql.Timestamp createTime) {
+  public void setCreateTime(Date createTime) {
     this.createTime = createTime;
   }
-
 
   public String getUpdateUser() {
     return updateUser;
@@ -84,13 +79,11 @@ public class PlatformSkuPic {
     this.updateUser = updateUser;
   }
 
-
-  public java.sql.Timestamp getUpdateTime() {
+  public Date getUpdateTime() {
     return updateTime;
   }
 
-  public void setUpdateTime(java.sql.Timestamp updateTime) {
+  public void setUpdateTime(Date updateTime) {
     this.updateTime = updateTime;
   }
-
 }
