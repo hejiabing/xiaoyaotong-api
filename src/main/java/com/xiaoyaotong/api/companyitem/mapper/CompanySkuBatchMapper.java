@@ -1,5 +1,7 @@
 package com.xiaoyaotong.api.companyitem.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 import com.xiaoyaotong.api.companyitem.entity.CompanySkuBatch;
@@ -58,4 +60,7 @@ public interface CompanySkuBatchMapper {
 	int updateCompanySkuBatchById(CompanySkuBatch csku);
 
 	int updateByCompanyIdAndSkuCode(CompanySkuBatch csku);
+
+	List<CompanySkuBatch> getValidCompanySkuBatch(@Param("companyId") Integer companyId,
+			@Param("companySkuCode") String companySkuCode);
 }
