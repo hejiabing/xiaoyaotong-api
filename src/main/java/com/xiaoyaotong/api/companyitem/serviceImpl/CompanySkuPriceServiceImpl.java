@@ -36,4 +36,10 @@ public class CompanySkuPriceServiceImpl implements CompanySkuPriceService{
 		return companySkuPriceMapper.updateByCompanyIdAndSkuCode(csku);
 	}
 
+	@Override
+	public CompanySkuPrice getCompanySkuPrice(Integer companyId,
+			String companySkuCode) {
+		return companySkuPriceMapper.getCompanySkuPrice( companyId,companySkuCode);
+	}
+
 }

@@ -1,5 +1,7 @@
 package com.xiaoyaotong.api.companyitem.mapper;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.xiaoyaotong.api.companyitem.entity.CompanySkuPrice;
 
 public interface CompanySkuPriceMapper {
@@ -18,4 +20,7 @@ public interface CompanySkuPriceMapper {
 	Integer getCompanySkuPriceId(CompanySkuPrice csku);
 
 	int updateByCompanyIdAndSkuCode(CompanySkuPrice csku);
+
+	CompanySkuPrice getCompanySkuPrice(@Param("companyId") Integer companyId,
+			@Param("companySkuCode") String companySkuCode);
 }

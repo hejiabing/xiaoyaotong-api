@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import com.xiaoyaotong.api.companyitem.entity.CompanySkuBatch;
+import com.xiaoyaotong.api.companyitem.entity.CompanySkuPrice;
 import com.xiaoyaotong.api.companyitem.service.CompanySkuBatchService;
 import com.xiaoyaotong.api.companyitem.service.CompanySkuPriceService;
 import com.xiaoyaotong.api.platform.entity.PlatformSku;
@@ -133,8 +134,35 @@ public class SkuSyncDataUpdateImpl implements SkuSyncDataUpdate {
 
 	@Override
 	public void priceConsumer() {
-		// TODO Auto-generated method stub
-		
+		while(true){
+			String companyIdAndSku = redisUtil.rpop(PRICE_MSGQUEUE);
+			if(StringUtils.isEmpty(companyIdAndSku)){
+				return;
+			}else{
+				List<String> list = Arrays.asList(companyIdAndSku.split("_"));
+				Integer companyId = Integer.valueOf(list.get(0));
+				String companySkuCode = list.get(1);
+				log.info("价格更新消费消息队列companyId:{},companySkuCode{}",companyId,companySkuCode);
+				List<PlatformSku> platformSkuList =platformSkuService.getSkuByCompanyIdAndSkuCode(companyId, companySkuCode);
+				CompanySkuPrice companySkuPrice = companySkuPriceService.getCompanySkuPrice(companyId, companySkuCode);
+				
+				if(platformSkuList.size() == 1){//未克隆，无近效期品，默认取12个月以上效期的
+					PlatformSku platformSku = platformSkuList.get(0);
+					platformSku.setCommonPrice(companySkuPrice.getPrice());
+					platformSku.setUpdateTime(new Date());
+					platformSku.setUpdateUser("skuSyncDataJob");
+					platformSkuService.updatePlatformSkuById(platformSku );
+				}else{
+					//如果克隆过，取ID最小的，即克隆来源，  逻辑待讨论
+					PlatformSku platformSku = platformSkuList.get(0);
+					platformSku.setCommonPrice(companySkuPrice.getPrice());
+					platformSku.setUpdateTime(new Date());
+					platformSku.setUpdateUser("skuSyncDataJob");
+					platformSkuService.updatePlatformSkuById(platformSku );
+				}
+				
+			}
+		}
 	}
 
 }

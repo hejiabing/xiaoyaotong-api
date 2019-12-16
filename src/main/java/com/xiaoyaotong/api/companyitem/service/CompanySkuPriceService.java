@@ -12,4 +12,7 @@ public interface CompanySkuPriceService {
 
 	int updateByCompanyIdAndSkuCode(CompanySkuPrice csku);
 
+	CompanySkuPrice getCompanySkuPrice(
+			Integer companyId, String companySkuCode);
+
 }

@@ -150,4 +150,12 @@
     where company_id = #{companyId,jdbcType=INTEGER}
       and company_sku_code = #{companySkuCode,jdbcType=VARCHAR} 
   </update>
+  
+   <select id="getCompanySkuPrice" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_company_sku_price
+    where company_id = #{companyId,jdbcType=INTEGER}
+     and   company_sku_code = #{companySkuCode,jdbcType=VARCHAR}
+  </select>
 </mapper>
