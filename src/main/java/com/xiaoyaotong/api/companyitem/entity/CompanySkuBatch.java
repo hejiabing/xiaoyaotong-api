@@ -55,7 +55,7 @@ public class CompanySkuBatch {
      *
      * @mbg.generated Tue Nov 26 15:24:11 CST 2019
      */
-    private BigDecimal stock;
+    private Integer stock;
 
     /**
      *
@@ -190,7 +190,7 @@ public class CompanySkuBatch {
      *
      * @mbg.generated Tue Nov 26 15:24:11 CST 2019
      */
-    public BigDecimal getStock() {
+    public Integer getStock() {
         return stock;
     }
 
@@ -202,7 +202,7 @@ public class CompanySkuBatch {
      *
      * @mbg.generated Tue Nov 26 15:24:11 CST 2019
      */
-    public void setStock(BigDecimal stock) {
+    public void setStock(Integer stock) {
         this.stock = stock;
     }
 

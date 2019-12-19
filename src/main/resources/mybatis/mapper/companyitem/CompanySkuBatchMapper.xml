@@ -12,7 +12,7 @@
     <result column="company_sku_code" jdbcType="VARCHAR" property="companySkuCode" />
     <result column="dead_line" jdbcType="VARCHAR" property="deadLine" />
     <result column="batch_no" jdbcType="VARCHAR" property="batchNo" />
-    <result column="stock" jdbcType="DECIMAL" property="stock" />
+    <result column="stock" jdbcType="INTEGER" property="stock" />
     <result column="create_user" jdbcType="VARCHAR" property="createUser" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
@@ -58,7 +58,7 @@
        create_user, create_time, 
       update_user, update_time)
     values (#{id,jdbcType=INTEGER}, #{companyId,jdbcType=INTEGER}, #{companySkuCode,jdbcType=VARCHAR}, 
-      #{deadLine,jdbcType=VARCHAR}, #{batchNo,jdbcType=VARCHAR}, #{stock,jdbcType=DECIMAL}, 
+      #{deadLine,jdbcType=VARCHAR}, #{batchNo,jdbcType=VARCHAR}, #{stock,jdbcType=INTEGER}, 
        #{createUser,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
       #{updateUser,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP})
   </insert>
@@ -118,7 +118,7 @@
         #{batchNo,jdbcType=VARCHAR},
       </if>
       <if test="stock != null">
-        #{stock,jdbcType=DECIMAL},
+        #{stock,jdbcType=INTEGER},
       </if>
       <if test="createUser != null">
         #{createUser,jdbcType=VARCHAR},
@@ -155,7 +155,7 @@
         batch_no = #{batchNo,jdbcType=VARCHAR},
       </if>
       <if test="stock != null">
-        stock = #{stock,jdbcType=DECIMAL},
+        stock = #{stock,jdbcType=INTEGER},
       </if>
       <if test="createUser != null">
         create_user = #{createUser,jdbcType=VARCHAR},
@@ -184,7 +184,7 @@
       company_sku_code = #{companySkuCode,jdbcType=VARCHAR},
       dead_line = #{deadLine,jdbcType=VARCHAR},
       batch_no = #{batchNo,jdbcType=VARCHAR},
-      stock = #{stock,jdbcType=DECIMAL},
+      stock = #{stock,jdbcType=INTEGER},
       create_user = #{createUser,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_user = #{updateUser,jdbcType=VARCHAR},
@@ -201,7 +201,7 @@
         update t_company_sku_batch set
        dead_line = #{deadLine,jdbcType=VARCHAR},
       batch_no = #{batchNo,jdbcType=VARCHAR},
-      stock = #{stock,jdbcType=DECIMAL}
+      stock = #{stock,jdbcType=INTEGER}
         where id = #{id}
     </update>
     
@@ -209,7 +209,7 @@
         update t_company_sku_batch set
        dead_line = #{deadLine,jdbcType=VARCHAR},
       batch_no = #{batchNo,jdbcType=VARCHAR},
-      stock = #{stock,jdbcType=DECIMAL}
+      stock = #{stock,jdbcType=INTEGER}
        where company_id =#{companyId} and company_sku_code = #{companySkuCode} and batch_no = #{batchNo,jdbcType=VARCHAR}
     </update>
     
