@@ -35,4 +35,6 @@ public interface CompanySkuMapper {
 	public Integer getCompanySkuId(@Param("companyId")  int companyId,@Param("companySkuCode") String companySkuCode);
 
 	public int updateCompanySkuById(CompanySku csku);
+
+	public int insertCompanySkuBySelective(CompanySku companySku);
 }

@@ -36,5 +36,7 @@ public interface CompanySkuService {
     public int updateCompanySkuById(CompanySku csku);
 
     public int updateByCompanyIdAndSkuCode(CompanySku csku);
+
+	public int insertCompanySkuBySelective(CompanySku csku);
 	
 }

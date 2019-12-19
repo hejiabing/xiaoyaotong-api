@@ -205,7 +205,7 @@
         where id = #{id}
     </update>
     
-    <update id="updateByCompanyIdAndcompanySkuCode">
+    <update id="updateByCompanyIdAndSkuCode">
         update t_company_sku_batch set
        dead_line = #{deadLine,jdbcType=VARCHAR},
       batch_no = #{batchNo,jdbcType=VARCHAR},

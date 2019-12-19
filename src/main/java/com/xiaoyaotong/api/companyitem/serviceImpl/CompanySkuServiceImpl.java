@@ -1,5 +1,6 @@
 package com.xiaoyaotong.api.companyitem.serviceImpl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,10 @@ public class CompanySkuServiceImpl implements CompanySkuService {
     private CompanySkuMapper companySkuMapper;
 
     public int insertCompanySku(CompanySku companySku){
+    	companySku.setStatus(-1);
+    	companySku.setCreateUser("syncJob");
+    	companySku.setUpdateUser("syncJob");
+    	companySku.setCreateTime(new Date());
         int result = companySkuMapper.insertCompanySku(companySku);
         return result;
     }
@@ -71,5 +76,15 @@ public class CompanySkuServiceImpl implements CompanySkuService {
 	@Override
 	public int updateByCompanyIdAndSkuCode(CompanySku csku) {
 		return companySkuMapper.updateByCompanyIdAndskuCode(csku);
+	}
+
+	@Override
+	public int insertCompanySkuBySelective(CompanySku companySku) {
+		companySku.setStatus(-1);
+    	companySku.setCreateUser("syncJob");
+    	companySku.setUpdateUser("syncJob");
+    	companySku.setCreateTime(new Date());
+        int result = companySkuMapper.insertCompanySkuBySelective(companySku);
+        return result;
 	}
 }

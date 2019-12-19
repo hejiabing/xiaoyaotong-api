@@ -40,14 +40,98 @@
     </sql>
 
     <insert id="insertCompanySku">
-        insert into t_company_sku(_id,company_id,company_sku_code,common_name,approval_code,spec,factory_name,
-        bar_code,status,standard_spu,create_user,create_time,update_user,update_time)
+        insert into t_company_sku(company_id,company_sku_code,common_name,approval_code,spec,factory_name,
+        bar_code,status, create_user,create_time,update_user,update_time)
         values (
-        #{id},#{companyId},#{companySkuCode},#{commonName},#{approvalCode},#{spec},#{factoryName},#{barCode},
-        #{status},#{standardSpu},#{createUser},#{createTime},#{updateUser},now()
+        #{companyId},#{companySkuCode},#{commonName},#{approvalCode},#{spec},#{factoryName},#{barCode},
+        #{status} ,#{createUser},#{createTime},#{updateUser},now()
         )
     </insert>
-
+    <insert id="insertCompanySkuBySelective">
+        insert into t_company_sku
+ 	<trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+       <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="companySkuCode != null">
+        company_sku_code,
+      </if>
+      <if test="commonName != null">
+        common_name,
+      </if>
+      <if test="approvalCode != null">
+        approval_code,
+      </if>
+      <if test="spec != null">
+        spec,
+      </if>
+      <if test="factoryName != null">
+        factory_name,
+      </if>
+      <if test="barCode != null">
+        bar_code,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createUser != null">
+        create_user,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateUser != null">
+        update_user,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="companySkuCode != null">
+        #{companySkuCode,jdbcType=VARCHAR},
+      </if>
+       <if test="commonName != null">
+         #{commonName},
+      </if>
+      <if test="approvalCode != null">
+       #{approvalCode},
+      </if>
+      <if test="spec != null">
+        #{spec},
+      </if>
+      <if test="factoryName != null">
+       #{factoryName},
+      </if>
+      <if test="barCode != null">
+       #{barCode},
+      </if>
+      <if test="status != null">
+        #{status} ,
+      </if>
+      <if test="createUser != null">
+        #{createUser},
+      </if>
+      <if test="createTime != null">
+        #{createTime},
+      </if>
+      <if test="updateUser != null">
+        #{updateUser},
+      </if>
+      <if test="updateTime != null">
+        now()
+      </if>
+    </trim>
+  </insert>
     <delete id="deleteCompanySku">
         delete from t_company_sku t where t.company_id = #{companyId} and t.company_sku_code = #{companySkuCode}
     </delete>

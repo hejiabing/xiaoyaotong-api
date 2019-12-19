@@ -3,6 +3,8 @@ package com.xiaoyaotong.api.companyitem.controller;
 import java.util.HashMap;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +28,7 @@ import com.xiaoyaotong.api.platform.service.SkuSyncDataUpdate;
 @RestController
 @RequestMapping("/product")
 public class ProductInfoController {
+	private static Logger log = LoggerFactory.getLogger(ProductInfoController.class);
 	@Autowired
 	private CompanySkuService companySkuService;
 	@Autowired
@@ -47,16 +50,17 @@ public class ProductInfoController {
 				List<CompanySku> lists = companySkuService
 						.getSkuByCompanyIdAndSkuCode(csku.getCompanyId(),
 								csku.getCompanySkuCode(), 0);
-				int id = lists.get(0).getId();
-				if (id > 0) {
+				
+				if (lists.size() > 0) {
+					int id = lists.get(0).getId();
 					csku.setId(id);
 					successresult += companySkuService
 							.updateCompanySkuById(csku);
 				} else {
-					successresult += companySkuService.insertCompanySku(csku);
+					successresult += companySkuService.insertCompanySkuBySelective(csku);
 				}
 			} else {
-				successresult += companySkuService.insertCompanySku(csku);
+				successresult += companySkuService.insertCompanySkuBySelective(csku);
 			}
 		}
 		HashMap map = new HashMap();
@@ -98,25 +102,30 @@ public class ProductInfoController {
 		String skuUpdate = requestDTO.getProductDTOList().get(0)
 				.getCompanySkuCode();
 		for (CompanySkuBatch csku : requestDTO.getProductDTOList()) {
-			if (requestDTO.getIsAll() == 1) {
-				Integer id = companySkuBatchService.getCompanySkuBatchId(csku);
-				if (id != null) {
-					csku.setId(id);
-					successresult += companySkuBatchService
-							.updateCompanySkuBatchById(csku);
+			try{
+				if (requestDTO.getIsAll() == 1) {
+					Integer id = companySkuBatchService.getCompanySkuBatchId(csku);
+					if (id != null) {
+						csku.setId(id);
+						successresult += companySkuBatchService
+								.updateCompanySkuBatchById(csku);
+					} else {
+						successresult += companySkuBatchService
+								.insertCompanySkuBatch(csku);
+					}
 				} else {
 					successresult += companySkuBatchService
 							.insertCompanySkuBatch(csku);
 				}
-			} else {
-				successresult += companySkuBatchService
-						.insertCompanySkuBatch(csku);
+				// sku库存变化写入消息队列
+				if (!csku.getCompanySkuCode().equals(skuUpdate)) {
+					skuSyncDataUpdate.stockProducer(skuUpdate, csku.getCompanyId());
+					skuUpdate = csku.getCompanySkuCode();
+				}
+			}catch(Exception e){
+				log.error("库存同步报错", e);
 			}
-			// sku库存变化写入消息队列
-			if (!csku.getCompanySkuCode().equals(skuUpdate)) {
-				skuSyncDataUpdate.stockProducer(skuUpdate, csku.getCompanyId());
-				skuUpdate = csku.getCompanySkuCode();
-			}
+			
 		}
 		skuSyncDataUpdate.stockProducer(skuUpdate, requestDTO
 				.getProductDTOList().get(0).getCompanyId());
@@ -142,11 +151,15 @@ public class ProductInfoController {
 		String skuUpdate = requestDTO.getProductDTOList().get(0)
 				.getCompanySkuCode();
 		for (CompanySkuBatch csku : requestDTO.getProductDTOList()) {
-			successresult += companySkuBatchService
-					.updateByCompanyIdAndSkuCode(csku);
-			if (!csku.getCompanySkuCode().equals(skuUpdate)) {
-				skuSyncDataUpdate.stockProducer(skuUpdate, csku.getCompanyId());
-				skuUpdate = csku.getCompanySkuCode();
+			try{
+				successresult += companySkuBatchService
+						.updateByCompanyIdAndSkuCode(csku);
+				if (!csku.getCompanySkuCode().equals(skuUpdate)) {
+					skuSyncDataUpdate.stockProducer(skuUpdate, csku.getCompanyId());
+					skuUpdate = csku.getCompanySkuCode();
+				}
+			}catch(Exception e){
+				log.error("库存更新报错", e);
 			}
 		}
 		skuSyncDataUpdate.stockProducer(skuUpdate, requestDTO
@@ -166,22 +179,26 @@ public class ProductInfoController {
 		int total = requestDTO.getProductDTOList().size();
 		int successresult = 0;
 		for (CompanySkuPrice csku : requestDTO.getProductDTOList()) {
-			if (requestDTO.getIsAll() == 1) {
-				Integer id = companySkuPriceService.getCompanySkuPriceId(csku);
-				if (id != null) {
-					csku.setId(id);
-					successresult += companySkuPriceService
-							.updateCompanySkuPriceById(csku);
+			try{
+				if (requestDTO.getIsAll() == 1) {
+					Integer id = companySkuPriceService.getCompanySkuPriceId(csku);
+					if (id != null) {
+						csku.setId(id);
+						successresult += companySkuPriceService
+								.updateCompanySkuPriceById(csku);
+					} else {
+						successresult += companySkuPriceService
+								.insertCompanySkuPrice(csku);
+					}
 				} else {
 					successresult += companySkuPriceService
 							.insertCompanySkuPrice(csku);
 				}
-			} else {
-				successresult += companySkuPriceService
-						.insertCompanySkuPrice(csku);
+				skuSyncDataUpdate.priceProducer(csku.getCompanySkuCode(),
+						csku.getCompanyId());
+			}catch(Exception e){
+				log.error("价格同步报错", e);
 			}
-			skuSyncDataUpdate.priceProducer(csku.getCompanySkuCode(),
-					csku.getCompanyId());
 		}
 		HashMap map = new HashMap();
 		map.put("all", total);
