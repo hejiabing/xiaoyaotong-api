@@ -32,11 +32,12 @@ public class SchedulerConfig {
             scheduler.scheduleJob(syncAllSpuJob, syncAllSpuTrigger);
 
 
-            JobDetail syncIncrementSpuJob = JobBuilder.newJob(EsSyncIncrementSpuJob.class).withIdentity("job2", "xiaoyaotong").build();
-            String syncIncrementSpuJobCron = "0 */10 * * * ?";//每10分钟执行一次增量同步
-            syncAllSpuJob.getJobDataMap().put("syncIncrementSpuJobCron", syncIncrementSpuJobCron);
+     //   JobDetail syncIncrementSpuJob = JobBuilder.newJob(EsSyncIncrementSpuJob.class).withIdentity("job2", "xiaoyaotong").build();
+        //    String syncIncrementSpuJobCron = "0 */10 * * * ?";//每10分钟执行一次增量同步
+            /*       syncAllSpuJob.getJobDataMap().put("syncIncrementSpuJobCron", syncIncrementSpuJobCron);
             CronTrigger syncIncrementSpuTrigger = TriggerBuilder.newTrigger().withIdentity("trigger2", "t2").withSchedule(CronScheduleBuilder.cronSchedule(syncIncrementSpuJobCron)).build();
             scheduler.scheduleJob(syncIncrementSpuJob, syncIncrementSpuTrigger);
+            */
 
 
 
