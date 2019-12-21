@@ -3,10 +3,12 @@ package com.xiaoyaotong.api.search.serviceImpl;
 import com.xiaoyaotong.api.search.dao.EsMedicineSpuDao;
 import com.xiaoyaotong.api.search.entity.EsMedicineSpu;
 import com.xiaoyaotong.api.search.service.EsSpuSearchService;
+import com.xiaoyaotong.api.search.vo.QuerySpuVO;
 import org.elasticsearch.action.search.SearchType;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
 import org.springframework.data.elasticsearch.core.query.SearchQuery;
@@ -28,14 +30,16 @@ public class EsSpuSearchServiceImpl implements EsSpuSearchService {
     ElasticsearchTemplate elasticsearchTemplate;
 
     @Override
-    public List<EsMedicineSpu> searchSpuList(EsMedicineSpu esMedicineSpu) {
-        String commonName = esMedicineSpu.getCommonName();//通用名
-        String approvalCode = esMedicineSpu.getApprovalCode();//批准文号
-        String barCode = esMedicineSpu.getBarCode();//条形码
+    public List<EsMedicineSpu> searchSpuList(QuerySpuVO querySpuVO) {
+        String commonName = querySpuVO.getCommonName();//通用名
+        String approvalCode = querySpuVO.getApprovalCode();//批准文号
+        String barCode = querySpuVO.getBarCode();//条形码
+        int startPage = querySpuVO.getStartPage();
+        int pageSize = querySpuVO.getPageSize();
 
         BoolQueryBuilder bqb = QueryBuilders.boolQuery();//布尔查询
 
-        if (esMedicineSpu != null){
+        if (querySpuVO != null){
             if(commonName!=null && commonName !=""){
                 bqb.must(QueryBuilders.matchQuery("commonName",commonName));
             }
@@ -52,6 +56,7 @@ public class EsSpuSearchServiceImpl implements EsSpuSearchService {
         SearchQuery searchQuery = new NativeSearchQueryBuilder().withQuery(bqb)
                 .withIndices("spu").withTypes("spu")
                 .withSearchType(SearchType.DEFAULT)
+                .withPageable(PageRequest.of(startPage,pageSize))
                 .build();
 
         List<EsMedicineSpu> spus = elasticsearchTemplate.queryForList(searchQuery , EsMedicineSpu.class);

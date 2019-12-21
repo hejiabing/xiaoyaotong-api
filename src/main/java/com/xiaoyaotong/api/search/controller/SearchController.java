@@ -7,7 +7,9 @@ import com.xiaoyaotong.api.search.service.EsMedicineSpuService;
 import com.xiaoyaotong.api.search.service.EsSkuSearchService;
 import com.xiaoyaotong.api.search.service.EsSpuSearchService;
 import com.xiaoyaotong.api.search.vo.QuerySkuVO;
+import com.xiaoyaotong.api.search.vo.QuerySpuVO;
 import com.xiaoyaotong.api.search.vo.ReturnSkuVO;
+import com.xiaoyaotong.api.search.vo.ReturnSpuVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,14 +47,20 @@ public class SearchController {
     }
 
     @RequestMapping(value = "/spu",method = RequestMethod.POST)
-    public List<EsMedicineSpu> searchSpu(@RequestBody EsMedicineSpu esMedicineSpu){
-        List<EsMedicineSpu> spus = esSpuSearchService.searchSpuList(esMedicineSpu);
-        return spus;
+    public ReturnSpuVO searchSpu(@RequestBody QuerySpuVO querySpuVO){
+        ReturnSpuVO returnSpuVO = new ReturnSpuVO();
+        List<EsMedicineSpu> spus = esSpuSearchService.searchSpuList(querySpuVO);
+        returnSpuVO.setSpus(spus);
+        returnSpuVO.setPageNum(querySpuVO.getStartPage());
+        returnSpuVO.setPageSize(querySpuVO.getPageSize());
+        return returnSpuVO;
     }
 
     @RequestMapping(value = "/sku",method = RequestMethod.POST)
     public ReturnSkuVO searchSku(@RequestBody QuerySkuVO querySkuVO){
         ReturnSkuVO skus = esSkuSearchService.searchSkuList(querySkuVO);
+        skus.setPageNum(querySkuVO.getStartPage());
+        skus.setPageSize(querySkuVO.getPageSize());
         return skus;
     }
 }
