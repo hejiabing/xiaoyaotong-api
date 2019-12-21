@@ -18,7 +18,8 @@ import java.math.BigDecimal;
 public class EsCompanyItem implements Serializable {
 
     @Id
-    private long id;
+    private int id;
+
     @Field
     private int companyId; //卖家id
     @Field
@@ -41,22 +42,13 @@ public class EsCompanyItem implements Serializable {
     @Field
     private String barCode; //条形码
     @Field
-    private String spuCode; //spu code
+    private String spuCode;
 
-
-    public String getSpuCode() {
-        return spuCode;
-    }
-
-    public void setSpuCode(String spuCode) {
-        this.spuCode = spuCode;
-    }
-
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -138,5 +130,13 @@ public class EsCompanyItem implements Serializable {
 
     public void setBarCode(String barCode) {
         this.barCode = barCode;
+    }
+
+    public String getSpuCode() {
+        return spuCode;
+    }
+
+    public void setSpuCode(String spuCode) {
+        this.spuCode = spuCode;
     }
 }

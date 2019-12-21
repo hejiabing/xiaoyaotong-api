@@ -87,4 +87,9 @@ public class CompanySkuServiceImpl implements CompanySkuService {
         int result = companySkuMapper.insertCompanySkuBySelective(companySku);
         return result;
 	}
+
+    @Override
+    public int getCompanyItemCount() {
+        return companySkuMapper.getCompanyItemCount();
+    }
 }

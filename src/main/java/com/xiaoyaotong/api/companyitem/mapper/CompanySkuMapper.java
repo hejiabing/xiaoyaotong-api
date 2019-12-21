@@ -30,11 +30,13 @@ public interface CompanySkuMapper {
 
     public List<CompanySku>  updateSpuCodeByCompanyIdAndskuCode(@Param("companyId")  int companyId,@Param("companySkuCode") String companySkuCode);
 
-    public List<CompanySku> selectCompanySkuList(int itemBegin, int itemNum);
+    public List<CompanySku> selectCompanySkuList(@Param("itemBegin")int itemBegin, @Param("itemNum")int itemNum);
 
 	public Integer getCompanySkuId(@Param("companyId")  int companyId,@Param("companySkuCode") String companySkuCode);
 
 	public int updateCompanySkuById(CompanySku csku);
 
 	public int insertCompanySkuBySelective(CompanySku companySku);
+
+	public int getCompanyItemCount();
 }

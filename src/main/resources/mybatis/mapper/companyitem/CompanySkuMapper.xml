@@ -3,7 +3,7 @@
 <mapper namespace="com.xiaoyaotong.api.companyitem.mapper.CompanySkuMapper">
 
     <resultMap id="companySkuType" type="com.xiaoyaotong.api.companyitem.entity.CompanySku">
-        <id property="id" jdbcType="INTEGER" column="_id"/>
+        <id property="id" jdbcType="INTEGER" column="id"/>
         <result property="companyId" column="company_id" jdbcType="INTEGER"/>
         <result property="companySkuCode" column="company_sku_code" jdbcType="VARCHAR"/>
         <result column="common_name" jdbcType="VARCHAR" property="commonName"/>
@@ -177,7 +177,8 @@
 
 
     <select id="selectCompanySkuList" resultMap="companySkuType">
-        select * from t_company_sku t
+        <include refid="basicSQL"/>
+        order by s.id desc
         limit #{itemBegin},#{itemNum}
     </select>
 	
@@ -185,6 +186,14 @@
         select id from t_company_sku t
         where t.company_id =#{companyId} and t.company_sku_code = #{companySkuCode}
     </select>
+
+
+    <select id="getCompanyItemCount" resultType="Integer">
+        select count(*) from t_company_sku t
+    </select>
+
+
+
 
  	<update id="updateCompanySkuById">
         update t_company_sku set

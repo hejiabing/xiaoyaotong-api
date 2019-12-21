@@ -47,6 +47,16 @@ public class SchedulerConfig {
             CronTrigger syncAllSkuTrigger = TriggerBuilder.newTrigger().withIdentity("trigger3", "t1").withSchedule(CronScheduleBuilder.cronSchedule(syncAlltSkuJobcron)).build();
             scheduler.scheduleJob(syncAllSkuJob, syncAllSkuTrigger);
 
+
+            JobDetail syncAllCompanyItemJob = JobBuilder.newJob(EsSyncAllCompanyItemJob.class).withIdentity("job4", "xiaoyaotong").build();
+            String syncAllCompanyItemJobcron = "0 56 21 * * ?";//每天23点30分执行一次全量同步
+            syncAllCompanyItemJob.getJobDataMap().put("syncAllCompanyItemJobcron", syncAllCompanyItemJobcron);
+            CronTrigger syncAllCompanyItemJobTrigger = TriggerBuilder.newTrigger().withIdentity("trigger4", "t1").withSchedule(CronScheduleBuilder.cronSchedule(syncAllCompanyItemJobcron)).build();
+            scheduler.scheduleJob(syncAllCompanyItemJob, syncAllCompanyItemJobTrigger);
+
+
+
+
             scheduler.start();
 
 
