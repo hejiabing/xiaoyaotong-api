@@ -95,6 +95,7 @@
         <if test="spuCode != null and spuCode != '' ">
             and s.spu_code=#{spuCode}
         </if>
+        limit 10
     </select>
 
     <select id="getCountofAllSpus" resultType="Integer">
