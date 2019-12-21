@@ -86,11 +86,13 @@ public class CompanySkuController {
         }
 
         if (null != queryCompanySkuVO) {//如果对象为空，返回空
-            int companyIdQ = queryCompanySkuVO.getCompanyId(); //公司id
+            Integer companyIdQ = queryCompanySkuVO.getCompanyId(); //公司id
             String companySkuQ = queryCompanySkuVO.getCompanySkuCode();//公司的sku代码
-            int startPageQ = queryCompanySkuVO.getStartPage(); //查询的开始页面
-            int pageSizeQ = queryCompanySkuVO.getPageSize(); //每页的数量
-            int matchedQ = queryCompanySkuVO.getMatched();//是否匹配，-1表示没匹配上的，1匹配上，0表示所有
+            Integer startPageQ = queryCompanySkuVO.getStartPage(); //查询的开始页面
+            Integer pageSizeQ = queryCompanySkuVO.getPageSize(); //每页的数量
+            Integer matchedQ = queryCompanySkuVO.getMatched();//是否匹配，-1表示没匹配上的，1匹配上，0表示所有
+
+            if(null == matchedQ){matchedQ = 0;}
 
             PageInfo<CompanySku> page; //分页的辅助
 

@@ -156,10 +156,10 @@
     <select id="selectSkuByCompanyIdAndSkuCode" resultMap="companySkuType">
         <include refid="basicSQL"/>
         where s.company_id =#{companyId} and s.company_sku_code = #{companySkuCode}
-        <if test="matched != null and matched = 1">
+        <if test="matched != null and matched == 1">
             AND s.matched = 1
         </if>
-        <if test="matched != null and matched = -1">
+        <if test="matched != null and matched == -1">
         AND s.matched = -1
         </if>
     </select>
@@ -170,7 +170,7 @@
         <if test="matched != null and matched == 1">
             AND s.matched = 1
         </if>
-        <if test="matched != null and matched== -1">
+        <if test="matched != null and matched == -1">
             AND s.matched = -1
         </if>
     </select>

@@ -10,28 +10,13 @@ public class QueryCompanySkuVO {
     private String approvalCode;
     private String barCode;
     private String factoryName;
-    private int companyId;
+    private Integer companyId;
     private String companySkuCode;
     private String spu;
-    private int pageSize;
-    private int startPage;
-    private int matched;//是否已经匹配
+    private Integer pageSize;
+    private Integer startPage;
+    private Integer matched;//是否已经匹配
 
-    public int getMatched() {
-        return matched;
-    }
-
-    public void setMatched(int matched) {
-        this.matched = matched;
-    }
-
-    public String getSpu() {
-        return spu;
-    }
-
-    public void setSpu(String spu) {
-        this.spu = spu;
-    }
 
     public String getCommonName() {
         return CommonName;
@@ -65,11 +50,11 @@ public class QueryCompanySkuVO {
         this.factoryName = factoryName;
     }
 
-    public int getCompanyId() {
+    public Integer getCompanyId() {
         return companyId;
     }
 
-    public void setCompanyId(int companyId) {
+    public void setCompanyId(Integer companyId) {
         this.companyId = companyId;
     }
 
@@ -81,19 +66,35 @@ public class QueryCompanySkuVO {
         this.companySkuCode = companySkuCode;
     }
 
-    public int getPageSize() {
+    public String getSpu() {
+        return spu;
+    }
+
+    public void setSpu(String spu) {
+        this.spu = spu;
+    }
+
+    public Integer getPageSize() {
         return pageSize;
     }
 
-    public void setPageSize(int pageSize) {
+    public void setPageSize(Integer pageSize) {
         this.pageSize = pageSize;
     }
 
-    public int getStartPage() {
+    public Integer getStartPage() {
         return startPage;
     }
 
-    public void setStartPage(int startPage) {
+    public void setStartPage(Integer startPage) {
         this.startPage = startPage;
+    }
+
+    public Integer getMatched() {
+        return matched;
+    }
+
+    public void setMatched(Integer matched) {
+        this.matched = matched;
     }
 }
