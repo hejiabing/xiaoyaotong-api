@@ -1,6 +1,10 @@
 package com.xiaoyaotong.api.platform.dto;
 
+import com.xiaoyaotong.api.platform.entity.PlatformSku;
+import com.xiaoyaotong.api.standardproduct.entity.MedicineSPU;
+
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 /**
  * @author ：billHe
@@ -9,111 +13,34 @@ import java.io.Serializable;
  */
 public class PlatformSkuDTO implements Serializable {
 
-    private String factoryName;
-
-    private String barCode;
-
-    private int companyId;
-
     private String skuCode;
 
-    private String commonName;
+    private MedicineSPU spu;
 
-    private String spec;
+    private PlatformSku sku;
 
-    private String approvalCode;
-
-    private String companySkuCode;
-
-    private String spuCode;
-
-    private int status;
-
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
-
-    public String getSpuCode() {
-        return spuCode;
-    }
-
-    public void setSpuCode(String spuCode) {
-        this.spuCode = spuCode;
-    }
-
-    public int getCompanyId() {
-        return companyId;
-    }
 
     public String getSkuCode() {
         return skuCode;
-    }
-
-    public String getCommonName() {
-        return commonName;
-    }
-
-    public String getSpec() {
-        return spec;
-    }
-
-    public String getApprovalCode() {
-        return approvalCode;
-    }
-
-    public String getFactoryName() {
-        return factoryName;
-    }
-
-    public String getBarCode() {
-        return barCode;
-    }
-
-    public void setCompanyId(int companyId) {
-        this.companyId = companyId;
     }
 
     public void setSkuCode(String skuCode) {
         this.skuCode = skuCode;
     }
 
-    public void setCommonName(String commonName) {
-        this.commonName = commonName;
+    public MedicineSPU getSpu() {
+        return spu;
     }
 
-    public void setSpec(String spec) {
-        this.spec = spec;
+    public void setSpu(MedicineSPU spu) {
+        this.spu = spu;
     }
 
-    public void setApprovalCode(String approvalCode) {
-        this.approvalCode = approvalCode;
+    public PlatformSku getSku() {
+        return sku;
     }
 
-    public void setFactoryName(String factoryName) {
-        this.factoryName = factoryName;
+    public void setSku(PlatformSku sku) {
+        this.sku = sku;
     }
-
-    public void setBarCode(String barCode) {
-        this.barCode = barCode;
-    }
-
-    public void setCompanySkuCode(String companySkuCode) {
-        this.companySkuCode = companySkuCode;
-    }
-
-
-    public String getCompanySkuCode() {
-        return companySkuCode;
-    }
-
-
-
-
-
-
-
 }

@@ -63,4 +63,7 @@ public class SearchController {
         skus.setPageSize(querySkuVO.getPageSize());
         return skus;
     }
+
+
+
 }

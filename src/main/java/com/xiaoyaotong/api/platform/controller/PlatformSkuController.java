@@ -80,15 +80,8 @@ public class PlatformSkuController {
                     MedicineSPU spu = medicineSPUService.getBySpuCode(sku.getSpuCode());
                     PlatformSkuDTO dto = new PlatformSkuDTO();
                     dto.setSkuCode(sku.getSkuCode());
-                    dto.setCompanyId(sku.getCompanyId());
-                    dto.setStatus(sku.getStatus());
-                    dto.setCommonName(spu.getCommonName());
-                    dto.setSpec(spu.getSpec());
-                    dto.setCompanySkuCode(sku.getCompanySkuCode());
-                    dto.setFactoryName(spu.getFactoryName());
-                    dto.setBarCode(spu.getBarCode());
-                    dto.setApprovalCode(spu.getApprovalCode());
-                    dto.setSpuCode(spu.getSpuCode());
+                    dto.setSpu(spu);
+                    dto.setSku(sku);
                     dtos.add(dto);
                 }
                 returnPlatformVO.setProductList(dtos);//设置组装后的dto
