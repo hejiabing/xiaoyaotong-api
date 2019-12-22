@@ -19,15 +19,16 @@ public class ReturnCompanySkuVO implements Serializable {
     /**
      * 每页包含的数量，默认为10
      */
-    private int pageSize = 10;
+    private Integer pageSize = 10;
     /**
      * 当前的页面Num，默认为0
      */
-    private int pageNum = 0;
+    private Integer pageNum = 0;
     /**
      * 总共的数量
      */
-    private long count = 0;
+    private Long count = 0L;
+
 
     public List<CompanySkuDTO> getCompanySkuList() {
         return companySkuList;
@@ -37,27 +38,27 @@ public class ReturnCompanySkuVO implements Serializable {
         this.companySkuList = companySkuList;
     }
 
-    public int getPageSize() {
+    public Integer getPageSize() {
         return pageSize;
     }
 
-    public void setPageSize(int pageSize) {
+    public void setPageSize(Integer pageSize) {
         this.pageSize = pageSize;
     }
 
-    public int getPageNum() {
+    public Integer getPageNum() {
         return pageNum;
     }
 
-    public void setPageNum(int pageNum) {
+    public void setPageNum(Integer pageNum) {
         this.pageNum = pageNum;
     }
 
-    public long getCount() {
+    public Long getCount() {
         return count;
     }
 
-    public void setCount(long count) {
+    public void setCount(Long count) {
         this.count = count;
     }
 }

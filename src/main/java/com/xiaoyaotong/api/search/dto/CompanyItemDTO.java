@@ -12,19 +12,11 @@ import java.util.List;
 public class CompanyItemDTO {
     private List<EsCompanyItem> items;
 
-    private int startPage;
+    private Integer startPage;
 
-    private int pageSize;
+    private Integer pageSize;
 
-    private long count;
-
-    public long getCount() {
-        return count;
-    }
-
-    public void setCount(long count) {
-        this.count = count;
-    }
+    private Long count;
 
     public List<EsCompanyItem> getItems() {
         return items;
@@ -34,19 +26,27 @@ public class CompanyItemDTO {
         this.items = items;
     }
 
-    public int getStartPage() {
+    public Integer getStartPage() {
         return startPage;
     }
 
-    public void setStartPage(int startPage) {
+    public void setStartPage(Integer startPage) {
         this.startPage = startPage;
     }
 
-    public int getPageSize() {
+    public Integer getPageSize() {
         return pageSize;
     }
 
-    public void setPageSize(int pageSize) {
+    public void setPageSize(Integer pageSize) {
         this.pageSize = pageSize;
+    }
+
+    public Long getCount() {
+        return count;
+    }
+
+    public void setCount(Long count) {
+        this.count = count;
     }
 }

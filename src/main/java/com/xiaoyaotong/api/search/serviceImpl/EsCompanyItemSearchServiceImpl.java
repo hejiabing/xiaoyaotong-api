@@ -42,14 +42,14 @@ public class EsCompanyItemSearchServiceImpl implements EsCompanyItemSearchServic
         Integer matched = queryCompanyItemVO.getMatached();//
 
 
-        int startPage = queryCompanyItemVO.getStartPage();
-        int pageSize = queryCompanyItemVO.getPageSize();
+        Integer startPage = queryCompanyItemVO.getStartPage();
+        Integer pageSize = queryCompanyItemVO.getPageSize();
 
-        if(startPage<0){
+        if(startPage==null){
             startPage = 0;
         }
 
-        if(pageSize<2) {pageSize = 10;}
+        if(pageSize == null) {pageSize = 10;}
 
 
         BoolQueryBuilder bqb = QueryBuilders.boolQuery();//布尔查询
