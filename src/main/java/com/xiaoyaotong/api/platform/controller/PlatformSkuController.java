@@ -62,7 +62,7 @@ public class PlatformSkuController {
             PageHelper.startPage(startPage, pageSize);
             if (companyIdV > 0) { //可转换为数字
                 if (null != companySkuV && companySkuV != "") { //根据企业id和公司sku查询
-                    skus = platformSkuService.getSkuByCompanyIdAndSkuCode(companyIdV, companySkuV);
+                    skus = platformSkuService.getPlatformSkuByCompanyIdAndCompanySkuCode(companyIdV, companySkuV);
                 } else if(null!=skuCode && skuCode!= ""){
                     PlatformSku mySku = platformSkuService.getSkuBySkuCode(skuCode);
                     skus.add(mySku);

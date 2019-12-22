@@ -18,7 +18,7 @@ public interface PlatformSkuMapper {
     public List<PlatformSku> getPlatformSkuByCompanyIdAndSpuCode(int companyId, String SpuCode);
 
     //根据公司id和skucode查询商品
-    public List<PlatformSku> getPlatformSkuByCompanyIdAndSkuCode(@Param("companyId") int companyId, @Param("companySkuCode") String companySkuCode);
+    public List<PlatformSku> getPlatformSkuByCompanyIdAndCompanySkuCode(@Param("companyId") int companyId, @Param("companySkuCode") String companySkuCode);
 
 
     //根据公司Id查询所有商品

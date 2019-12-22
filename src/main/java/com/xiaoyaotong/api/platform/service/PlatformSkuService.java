@@ -17,7 +17,7 @@ public interface PlatformSkuService {
     public List<PlatformSku> getPlatformSkuList(int beginPage, int pageSize);
 
     //根据companyid & companyskucode查询
-    public List<PlatformSku> getSkuByCompanyIdAndSkuCode(int companyId, String companySkuCode);
+    public List<PlatformSku> getPlatformSkuByCompanyIdAndCompanySkuCode(int companyId, String companySkuCode);
 
     //插入sku
     public int insertPlatformSku(PlatformSku platformSku);

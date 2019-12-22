@@ -62,7 +62,7 @@
         <include refid="basicSQL"/> where s.company_id = #{companyId} and s.spu_code = #{spuCode}
     </select>
 
-    <select id="getPlatformSkuByCompanyIdAndSkuCode"
+    <select id="getPlatformSkuByCompanyIdAndCompanySkuCode"
             parameterType="hashmap" resultMap="platformSku">
         <include refid="basicSQL"/> where s.company_id = #{companyId} and s.company_sku_code = #{companySkuCode}
         order by id
@@ -127,6 +127,18 @@
     <update id="updatePlatformSkuById">
         update t_platform_sku
         set
+         <if test="skuCode != null and skuCode != '' ">
+            sku_code = #{skuCode},
+        </if>
+        
+         <if test="spuCode != null and spuCode != '' ">
+            spu_code = #{spuCode},
+        </if>
+        
+         <if test="companySkuCode != null and companySkuCode != '' ">
+            company_sku_code = #{companySkuCode},
+        </if>
+        
         <if test="batchNos != null and batchNos != '' ">
             batch_nos = #{batchNos},
         </if>
