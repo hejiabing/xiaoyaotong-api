@@ -36,7 +36,8 @@ public class PlatformServiceImpl implements PlatformSkuService {
 
     @Override
     public List<PlatformSku> getPlatformSkuList(int beginPage, int pageSize) {
-        return platformSkuMapper.getPlatformSkuList(beginPage,pageSize);
+        int beginItem = beginPage * pageSize;
+        return platformSkuMapper.getPlatformSkuList(beginItem,pageSize);
     }
 
     @Override

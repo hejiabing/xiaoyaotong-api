@@ -56,8 +56,8 @@ public class EsPlatformSkuSynServiceImpl implements EsPlatformSkuSynService {
             //同步sku到ES
             for(PlatformSku sku : lists){
                 MedicineSPU spu = medicineSPUService.getBySpuCode(sku.getSpuCode());
-                EsPlatformSku esSku = new EsPlatformSku();
 
+                EsPlatformSku esSku = new EsPlatformSku();
                 esSku.setCommonName(spu.getCommonName());
                 esSku.setApprovalCode(spu.getApprovalCode());
                 esSku.setSpec(spu.getSpec());
