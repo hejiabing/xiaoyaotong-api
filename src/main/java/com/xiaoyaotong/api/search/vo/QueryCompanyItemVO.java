@@ -8,10 +8,10 @@ package com.xiaoyaotong.api.search.vo;
 public class QueryCompanyItemVO {
     private String commonName;
     private String companySkuCode;
-    private int companyId;
-    private int startPage;
-    private int pageSize;
-
+    private Integer companyId;
+    private Integer startPage;
+    private Integer pageSize;
+    private Integer matached; //-1未匹配，1匹配，0表示所有
 
     public String getCommonName() {
         return commonName;
@@ -29,27 +29,35 @@ public class QueryCompanyItemVO {
         this.companySkuCode = companySkuCode;
     }
 
-    public int getCompanyId() {
+    public Integer getCompanyId() {
         return companyId;
     }
 
-    public void setCompanyId(int companyId) {
+    public void setCompanyId(Integer companyId) {
         this.companyId = companyId;
     }
 
-    public int getStartPage() {
+    public Integer getStartPage() {
         return startPage;
     }
 
-    public void setStartPage(int startPage) {
+    public void setStartPage(Integer startPage) {
         this.startPage = startPage;
     }
 
-    public int getPageSize() {
+    public Integer getPageSize() {
         return pageSize;
     }
 
-    public void setPageSize(int pageSize) {
+    public void setPageSize(Integer pageSize) {
         this.pageSize = pageSize;
+    }
+
+    public Integer getMatached() {
+        return matached;
+    }
+
+    public void setMatached(Integer matached) {
+        this.matached = matached;
     }
 }

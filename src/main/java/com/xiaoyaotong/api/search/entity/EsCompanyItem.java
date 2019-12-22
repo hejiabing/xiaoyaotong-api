@@ -44,6 +44,9 @@ public class EsCompanyItem implements Serializable {
     @Field
     private String spuCode;
 
+    @Field
+    private Integer matched; //是否匹配上
+
     public int getId() {
         return id;
     }
@@ -138,5 +141,13 @@ public class EsCompanyItem implements Serializable {
 
     public void setSpuCode(String spuCode) {
         this.spuCode = spuCode;
+    }
+
+    public Integer getMatched() {
+        return matched;
+    }
+
+    public void setMatched(Integer matched) {
+        this.matched = matched;
     }
 }

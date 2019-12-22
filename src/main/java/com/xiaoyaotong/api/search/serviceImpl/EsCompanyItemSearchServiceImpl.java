@@ -39,6 +39,7 @@ public class EsCompanyItemSearchServiceImpl implements EsCompanyItemSearchServic
         String commonName = queryCompanyItemVO.getCommonName();//通用名
         String companySkuCode = queryCompanyItemVO.getCompanySkuCode();//公司skuid
         int companyId = queryCompanyItemVO.getCompanyId();//公司id
+        Integer matched = queryCompanyItemVO.getMatached();//
 
 
         int startPage = queryCompanyItemVO.getStartPage();
@@ -49,6 +50,7 @@ public class EsCompanyItemSearchServiceImpl implements EsCompanyItemSearchServic
         }
 
         if(pageSize<2) {pageSize = 10;}
+
 
         BoolQueryBuilder bqb = QueryBuilders.boolQuery();//布尔查询
 
@@ -66,6 +68,10 @@ public class EsCompanyItemSearchServiceImpl implements EsCompanyItemSearchServic
 
             if(companySkuCode!=null && companySkuCode !=""){
                 bqb.must(QueryBuilders.matchPhraseQuery("companySkuCode",companySkuCode));
+            }
+
+            if(matched!=null){
+                bqb.must(QueryBuilders.matchPhraseQuery("matched",matched));
             }
         }
 

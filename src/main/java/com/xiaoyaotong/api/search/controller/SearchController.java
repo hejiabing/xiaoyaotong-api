@@ -4,7 +4,11 @@ import com.xiaoyaotong.api.companyitem.dto.CompanySkuDTO;
 import com.xiaoyaotong.api.companyitem.entity.CompanySku;
 import com.xiaoyaotong.api.companyitem.service.CompanySkuService;
 import com.xiaoyaotong.api.companyitem.vo.ReturnCompanySkuVO;
+import com.xiaoyaotong.api.platform.dto.PlatformSkuDTO;
+import com.xiaoyaotong.api.platform.entity.PlatformSku;
+import com.xiaoyaotong.api.platform.service.PlatformSkuService;
 import com.xiaoyaotong.api.platform.vo.QueryPlatformSkuVO;
+import com.xiaoyaotong.api.platform.vo.ReturnPlatformVO;
 import com.xiaoyaotong.api.search.dto.CompanyItemDTO;
 import com.xiaoyaotong.api.search.entity.EsCompanyItem;
 import com.xiaoyaotong.api.search.entity.EsMedicineSpu;
@@ -51,6 +55,9 @@ public class SearchController {
     @Autowired
     MedicineSPUService medicineSPUService;
 
+    @Autowired
+    PlatformSkuService platformSkuService;
+
     /**
      * 通过controller向搜索里面批量同步标品库的数据
      * 目前供测试使用
@@ -73,11 +80,22 @@ public class SearchController {
     }
 
     @RequestMapping(value = "/sku", method = RequestMethod.POST)
-    public ReturnSkuVO searchSku(@RequestBody QuerySkuVO querySkuVO) {
+    public ReturnPlatformVO searchSku(@RequestBody QuerySkuVO querySkuVO) {
+        ReturnPlatformVO returnPlatformVO = new ReturnPlatformVO();
         ReturnSkuVO skus = esSkuSearchService.searchSkuList(querySkuVO);
-        skus.setPageNum(querySkuVO.getStartPage());
-        skus.setPageSize(querySkuVO.getPageSize());
-        return skus;
+        List<PlatformSkuDTO> lists = new ArrayList<>();
+        for(EsPlatformSku item: skus.getSkus()){
+            PlatformSku platformSku = platformSkuService.getSkuBySkuCode(item.getSkuCode());
+            MedicineSPU medicineSPU = medicineSPUService.getBySpuCode(item.getSpuCode());
+            PlatformSkuDTO platformSkuDTO = new PlatformSkuDTO();
+            platformSkuDTO.setSku(platformSku);
+            platformSkuDTO.setSpu(medicineSPU);
+            platformSkuDTO.setSkuCode(item.getSkuCode());
+            lists.add(platformSkuDTO);
+        }
+        returnPlatformVO.setPageNum(querySkuVO.getStartPage());
+        returnPlatformVO.setPageSize(querySkuVO.getPageSize());
+        return returnPlatformVO;
     }
 
     @RequestMapping(value = "/companyitem", method = RequestMethod.POST)

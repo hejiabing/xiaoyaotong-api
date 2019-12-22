@@ -61,6 +61,7 @@ public class EsCompanyItemSynServiceImpl implements EsCompanyItemSynService {
                     esItem.setId(item.getId());
                     esItem.setCompanyId(item.getCompanyId());
                     esItem.setCompanySkuCode(item.getCompanySkuCode());
+                    esItem.setMatched(item.getMatched());
 
                     esCompanyItemDao.save(esItem);
                     currentMaxId = currentMaxId > esItem.getId()?currentMaxId : esItem.getId(); //得到最大的minimumId
