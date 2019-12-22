@@ -31,7 +31,7 @@ public class PlatformServiceImpl implements PlatformSkuService {
 
     @Override
     public List<PlatformSku> getSkuByCompanyId(int companyId) {
-        return platformSkuMapper.getPlatformSkyByCompanyId(companyId);
+        return platformSkuMapper.getPlatformSkuByCompanyId(companyId);
     }
 
     @Override
@@ -40,8 +40,8 @@ public class PlatformServiceImpl implements PlatformSkuService {
     }
 
     @Override
-    public List<PlatformSku> getSkuByCompanyIdAndSkuCode(int companyId, String companySkuCode) {
-        return platformSkuMapper.getPlatformSkyByCompanyIdAndSkuCode(companyId,companySkuCode);
+    public List<PlatformSku> getPlatformSkuByCompanyIdAndCompanySkuCode(int companyId, String companySkuCode) {
+        return platformSkuMapper.getPlatformSkuByCompanyIdAndCompanySkuCode(companyId,companySkuCode);
     }
 
     @Override

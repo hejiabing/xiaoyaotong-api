@@ -12,7 +12,7 @@ public class QueryCompanySkuVO {
     private String factoryName;
     private Integer companyId;
     private String companySkuCode;
-    private String spu;
+    private String spuCode;
     private Integer pageSize;
     private Integer startPage;
     private Integer matched;//是否已经匹配
@@ -66,14 +66,6 @@ public class QueryCompanySkuVO {
         this.companySkuCode = companySkuCode;
     }
 
-    public String getSpu() {
-        return spu;
-    }
-
-    public void setSpu(String spu) {
-        this.spu = spu;
-    }
-
     public Integer getPageSize() {
         return pageSize;
     }
@@ -97,4 +89,12 @@ public class QueryCompanySkuVO {
     public void setMatched(Integer matched) {
         this.matched = matched;
     }
+
+	public String getSpuCode() {
+		return spuCode;
+	}
+
+	public void setSpuCode(String spuCode) {
+		this.spuCode = spuCode;
+	}
 }

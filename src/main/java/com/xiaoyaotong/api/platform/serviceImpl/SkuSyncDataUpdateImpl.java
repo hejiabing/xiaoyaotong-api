@@ -56,7 +56,7 @@ public class SkuSyncDataUpdateImpl implements SkuSyncDataUpdate {
 				Integer companyId = Integer.valueOf(list.get(0));
 				String companySkuCode = list.get(1);
 				log.info("库存更新消费消息队列companyId:{},companySkuCode{}",companyId,companySkuCode);
-				List<PlatformSku> platformSkuList =platformSkuService.getSkuByCompanyIdAndSkuCode(companyId, companySkuCode);
+				List<PlatformSku> platformSkuList =platformSkuService.getPlatformSkuByCompanyIdAndCompanySkuCode(companyId, companySkuCode);
 				List<CompanySkuBatch> comSkuCodeList = companySkuBatchService.getValidCompanySkuBatch(companyId, companySkuCode);
 				
 				if(platformSkuList.size() == 1){//未克隆，无近效期品，默认取12个月以上效期的
@@ -143,7 +143,7 @@ public class SkuSyncDataUpdateImpl implements SkuSyncDataUpdate {
 				Integer companyId = Integer.valueOf(list.get(0));
 				String companySkuCode = list.get(1);
 				log.info("价格更新消费消息队列companyId:{},companySkuCode{}",companyId,companySkuCode);
-				List<PlatformSku> platformSkuList =platformSkuService.getSkuByCompanyIdAndSkuCode(companyId, companySkuCode);
+				List<PlatformSku> platformSkuList =platformSkuService.getPlatformSkuByCompanyIdAndCompanySkuCode(companyId, companySkuCode);
 				CompanySkuPrice companySkuPrice = companySkuPriceService.getCompanySkuPrice(companyId, companySkuCode);
 				
 				if(platformSkuList.size() == 1){//未克隆，无近效期品，默认取12个月以上效期的
@@ -152,7 +152,7 @@ public class SkuSyncDataUpdateImpl implements SkuSyncDataUpdate {
 					platformSku.setUpdateTime(new Date());
 					platformSku.setUpdateUser("skuSyncDataJob");
 					platformSkuService.updatePlatformSkuById(platformSku );
-				}else{
+				}else if(platformSkuList.size() > 1){
 					//如果克隆过，取ID最小的，即克隆来源，  逻辑待讨论
 					PlatformSku platformSku = platformSkuList.get(0);
 					platformSku.setCommonPrice(companySkuPrice.getPrice());

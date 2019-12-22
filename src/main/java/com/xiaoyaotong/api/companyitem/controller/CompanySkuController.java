@@ -8,8 +8,11 @@ import com.xiaoyaotong.api.companyitem.vo.ReturnCompanySkuVO;
 import com.xiaoyaotong.api.companyitem.entity.CompanySku;
 import com.xiaoyaotong.api.companyitem.service.CompanySkuService;
 import com.xiaoyaotong.api.platform.dto.PlatformSkuDTO;
+import com.xiaoyaotong.api.platform.entity.PlatformSku;
+import com.xiaoyaotong.api.platform.service.PlatformSkuService;
 import com.xiaoyaotong.api.standardproduct.entity.MedicineSPU;
 import com.xiaoyaotong.api.standardproduct.service.MedicineSPUService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,7 +33,8 @@ import java.util.List;
 public class CompanySkuController {
     @Autowired
     CompanySkuService companySkuService;
-
+    @Autowired
+    PlatformSkuService platformSkuService;
     @Autowired
     MedicineSPUService medicineSPUService;
 
@@ -44,7 +48,7 @@ public class CompanySkuController {
         Assert.notNull(queryCompanySkuVO, "dto can not be empty");
         int companyId = queryCompanySkuVO.getCompanyId();
         String companySkuCode = queryCompanySkuVO.getCompanySkuCode();
-        String spu = queryCompanySkuVO.getSpu();
+        String spu = queryCompanySkuVO.getSpuCode();
 
         if(companyId>0 &&companySkuCode!=null && companySkuCode !=""){ //确保能找到一个商品
             List<CompanySku> companySkus = companySkuService.getSkuByCompanyIdAndSkuCode(companyId,companySkuCode,0);
@@ -54,11 +58,16 @@ public class CompanySkuController {
                     MedicineSPU standardSpu = medicineSPUService.getBySpuCode(spu);
                     if(null != standardSpu && standardSpu.getId()>0){ //spu有效
                         sku.setSpuCode(spu);
-                        int result = companySkuService.updateByCompanyIdAndSkuCode(sku);
-                        if(result>0){return true;}
+                        companySkuService.updateByCompanyIdAndSkuCode(sku);
                     }
                 }
             }
+            List<PlatformSku> platSkuList = platformSkuService.getPlatformSkuByCompanyIdAndCompanySkuCode(companyId, companySkuCode);
+            for(PlatformSku platform : platSkuList){
+            	platform.setSpuCode(spu);
+            	platformSkuService.updatePlatformSkuById(platform);
+            }
+            return true;
         }
         return  false;
 
