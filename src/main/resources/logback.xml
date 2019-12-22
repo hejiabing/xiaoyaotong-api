@@ -23,7 +23,7 @@
      -->
     <appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <!-- 正在记录的日志文件的路径及文件名 -->
-        <file>${LOG_PATH}/${APPDIR}/xiaoyaotong_api.log</file>
+        <file>${LOG_PATH}/${APPDIR}/xiaoyaotong_api_error.log</file>
         <!-- 日志记录器的滚动策略，按日期，按大小记录 -->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- 归档的日志文件的路径，例如今天是1992-11-06日志，当前写的日志文件路径为file节点指定，
@@ -57,7 +57,7 @@
      -->
     <appender name="WARN" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <!-- 正在记录的日志文件的路径及文件名 -->
-        <file>${LOG_PATH}/${APPDIR}/xiaoyaotong_api.log</file>
+        <file>${LOG_PATH}/${APPDIR}/xiaoyaotong_api_warn.log</file>
         <!-- 日志记录器的滚动策略，按日期，按大小记录 -->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- 归档的日志文件的路径，例如今天1992-11-06日志，当前写的日志文件路径为file节点指定，
