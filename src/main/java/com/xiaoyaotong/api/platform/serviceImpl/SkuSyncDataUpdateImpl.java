@@ -152,7 +152,7 @@ public class SkuSyncDataUpdateImpl implements SkuSyncDataUpdate {
 					platformSku.setUpdateTime(new Date());
 					platformSku.setUpdateUser("skuSyncDataJob");
 					platformSkuService.updatePlatformSkuById(platformSku );
-				}else{
+				}else if(platformSkuList.size() > 1){
 					//如果克隆过，取ID最小的，即克隆来源，  逻辑待讨论
 					PlatformSku platformSku = platformSkuList.get(0);
 					platformSku.setCommonPrice(companySkuPrice.getPrice());

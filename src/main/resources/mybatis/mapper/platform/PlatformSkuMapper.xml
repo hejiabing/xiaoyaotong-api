@@ -53,16 +53,16 @@
         <include refid="basicSQL"/> where s.company_sku_code = #{companySkuCode}
     </select>
 
-    <select id="getPlatformSkyByCompanyId" resultMap="platformSku">
+    <select id="getPlatformSkuByCompanyId" resultMap="platformSku">
         <include refid="basicSQL"/> where s.company_id = #{companyId}
     </select>
 
-    <select id="getPlatformSkyByCompanyIdAndSpuCode"
+    <select id="getPlatformSkuByCompanyIdAndSpuCode"
             parameterType="hashmap" resultMap="platformSku">
         <include refid="basicSQL"/> where s.company_id = #{companyId} and s.spu_code = #{spuCode}
     </select>
 
-    <select id="getPlatformSkyByCompanyIdAndSkuCode"
+    <select id="getPlatformSkuByCompanyIdAndSkuCode"
             parameterType="hashmap" resultMap="platformSku">
         <include refid="basicSQL"/> where s.company_id = #{companyId} and s.company_sku_code = #{companySkuCode}
         order by id
