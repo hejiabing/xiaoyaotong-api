@@ -10,12 +10,12 @@ public class QuerySkuVO {
     private String approvalCode;
     private String barCode;
     private String factoryName;
-    private int companyId;
+    private Integer companyId;
     private String companyName;
     private String companySkuCode;
     private String skuCode;
-    private int pageSize;
-    private int startPage;
+    private Integer pageSize;
+    private Integer startPage;
 
     public String getCommonName() {
         return commonName;
@@ -49,11 +49,11 @@ public class QuerySkuVO {
         this.factoryName = factoryName;
     }
 
-    public int getCompanyId() {
+    public Integer getCompanyId() {
         return companyId;
     }
 
-    public void setCompanyId(int companyId) {
+    public void setCompanyId(Integer companyId) {
         this.companyId = companyId;
     }
 
@@ -81,19 +81,19 @@ public class QuerySkuVO {
         this.skuCode = skuCode;
     }
 
-    public int getPageSize() {
+    public Integer getPageSize() {
         return pageSize;
     }
 
-    public void setPageSize(int pageSize) {
+    public void setPageSize(Integer pageSize) {
         this.pageSize = pageSize;
     }
 
-    public int getStartPage() {
+    public Integer getStartPage() {
         return startPage;
     }
 
-    public void setStartPage(int startPage) {
+    public void setStartPage(Integer startPage) {
         this.startPage = startPage;
     }
 }

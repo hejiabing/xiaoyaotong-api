@@ -17,7 +17,7 @@ import java.util.List;
 
 /**
  * @author ：billHe
- * @description：采用
+ * @description：采用ES进行对码
  * @date ：2019/12/21 3:45 PM
  */
 public class EsMatchSpuServiceImpl implements MatchSpuService {
@@ -28,16 +28,18 @@ public class EsMatchSpuServiceImpl implements MatchSpuService {
     @Override
     public List<EsMedicineSpu> matchSpuWithBarCode(CompanySku companySku) {
         String barCode = companySku.getBarCode();
-        TermQueryBuilder termQueryBuilder = QueryBuilders.termQuery("barCode",barCode);
+        if (barCode == null) return null;//如果barCode为空，返回null
+        if (barCode == "") return null;//如果barCode为空串，返回null
 
+        //构造term查询，进行完全匹配
+        TermQueryBuilder termQueryBuilder = QueryBuilders.termQuery("barCode", barCode);
         SearchQuery searchQuery = new NativeSearchQueryBuilder().withQuery(termQueryBuilder)
                 .withIndices("spu").withTypes("spu")
                 .withSearchType(SearchType.DEFAULT)
-                .withPageable(PageRequest.of(0,10))
+                .withPageable(PageRequest.of(0, 10))
                 .build();
 
-        List<EsMedicineSpu> spus = elasticsearchTemplate.queryForList(searchQuery , EsMedicineSpu.class);
-
+        List<EsMedicineSpu> spus = elasticsearchTemplate.queryForList(searchQuery, EsMedicineSpu.class);
         return spus;
     }
 

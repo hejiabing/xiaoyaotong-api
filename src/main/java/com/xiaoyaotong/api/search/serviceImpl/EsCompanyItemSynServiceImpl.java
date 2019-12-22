@@ -40,7 +40,7 @@ public class EsCompanyItemSynServiceImpl implements EsCompanyItemSynService {
         public void synAllCompanyItem() {
             log.info("CompanyItem全量同步开始！");
 
-            int count = companySkuService.getCompanyItemCount();
+            int count = companySkuService.getCompanyItemCount(0);
             int beginIter = 0;
             int pageSize = 1000;
             long currentMaxId = 0;

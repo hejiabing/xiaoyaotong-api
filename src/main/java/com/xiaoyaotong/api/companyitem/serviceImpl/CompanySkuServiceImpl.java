@@ -89,7 +89,7 @@ public class CompanySkuServiceImpl implements CompanySkuService {
 	}
 
     @Override
-    public int getCompanyItemCount() {
-        return companySkuMapper.getCompanyItemCount();
+    public int getCompanyItemCount(int matched) {
+        return companySkuMapper.getCompanyItemCount(matched);
     }
 }

@@ -21,7 +21,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author ：billHe
@@ -71,6 +73,24 @@ public class CompanySkuController {
         }
         return  false;
 
+    }
+
+    /**
+     * 返回所有，未匹配和已匹配的数量
+     * @return
+     */
+    @RequestMapping(value = "/getcounts", method = RequestMethod.POST)
+    public Map<String,Integer> getCompanyItemTypeCount(){
+        Integer allCount = companySkuService.getCompanyItemCount(0);
+        Integer matchedCount = companySkuService.getCompanyItemCount(1);
+        Integer unMatchedCount = companySkuService.getCompanyItemCount(-1);
+
+        Map<String,Integer> counts = new HashMap<>();
+        counts.put("all",allCount);
+        counts.put("matched",matchedCount);
+        counts.put("unmatched",unMatchedCount);
+
+        return counts;
     }
 
     /**

@@ -189,7 +189,10 @@
 
 
     <select id="getCompanyItemCount" resultType="Integer">
-        select count(*) from t_company_sku t
+        select count(*) from t_company_sku s
+        <if test="matched != 0 ">
+            where s.matched = #{matched}
+        </if>
     </select>
 
 

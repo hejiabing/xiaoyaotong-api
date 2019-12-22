@@ -39,16 +39,16 @@ public class EsSkuSearchServiceImpl implements EsSkuSearchService {
         String barCode = querySkuVO.getBarCode();//条形码
         String factoryName = querySkuVO.getFactoryName();//生产厂家
         String companyName = querySkuVO.getCompanyName();// 商家名字
-        int companyId = querySkuVO.getCompanyId();
+        Integer companyId = querySkuVO.getCompanyId();
 
-        int startPage = querySkuVO.getStartPage();
-        int pageSize = querySkuVO.getPageSize();
+        Integer startPage = querySkuVO.getStartPage();
+        Integer pageSize = querySkuVO.getPageSize();
 
-        if(startPage<0){
+        if(startPage==null){
             startPage = 0;
         }
 
-        if(pageSize<2) {pageSize = 10;}
+        if(pageSize==null) {pageSize = 10;}
 
         ReturnSkuVO returnSkuVO = new ReturnSkuVO();
 

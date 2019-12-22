@@ -38,5 +38,5 @@ public interface CompanySkuMapper {
 
 	public int insertCompanySkuBySelective(CompanySku companySku);
 
-	public int getCompanyItemCount();
+	public int getCompanyItemCount(int onShelf);
 }

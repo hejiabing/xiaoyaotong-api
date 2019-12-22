@@ -3,6 +3,7 @@ package com.xiaoyaotong.api.companyitem.service;
 import com.xiaoyaotong.api.companyitem.entity.CompanySku;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author ：billHe
@@ -39,6 +40,5 @@ public interface CompanySkuService {
 
 	public int insertCompanySkuBySelective(CompanySku csku);
 
-	public int getCompanyItemCount();
-	
+	public int getCompanyItemCount(int matched);
 }

@@ -95,6 +95,8 @@ public class SearchController {
         }
         returnPlatformVO.setPageNum(querySkuVO.getStartPage());
         returnPlatformVO.setPageSize(querySkuVO.getPageSize());
+        returnPlatformVO.setCount(skus.getCount());
+        returnPlatformVO.setProductList(lists);
         return returnPlatformVO;
     }
 
@@ -128,6 +130,7 @@ public class SearchController {
         returnCompanySkuVO.setPageNum(queryCompanyItemVO.getStartPage());
         returnCompanySkuVO.setPageSize(queryCompanyItemVO.getPageSize());
         returnCompanySkuVO.setCompanySkuList(dtolist);
+        returnCompanySkuVO.setCount(companyItemDTO.getCount());
 
             return returnCompanySkuVO;
     }
