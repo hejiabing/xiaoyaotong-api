@@ -2,209 +2,226 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xiaoyaotong.api.companyitem.mapper.CompanySkuMapper">
 
-    <resultMap id="companySkuType" type="com.xiaoyaotong.api.companyitem.entity.CompanySku">
-        <id property="id" jdbcType="INTEGER" column="id"/>
-        <result property="companyId" column="company_id" jdbcType="INTEGER"/>
-        <result property="companySkuCode" column="company_sku_code" jdbcType="VARCHAR"/>
-        <result column="common_name" jdbcType="VARCHAR" property="commonName"/>
-        <result column="approval_code" jdbcType="VARCHAR" property="approvalCode"/>
-        <result column="spec" jdbcType="VARCHAR" property="spec"/>
-        <result column="factory_name" jdbcType="VARCHAR" property="factoryName"/>
-        <result column="bar_code" jdbcType="VARCHAR" property="barCode"/>
-        <result column="status" jdbcType="VARCHAR" property="status"/>
-        <result property="spuCode" column="spu_code" jdbcType="VARCHAR"/>
-        <result property="matched" column="matched" jdbcType="INTEGER"/>
-        <result column="create_user" jdbcType="VARCHAR" property="createUser"/>
-        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
-        <result column="update_user" jdbcType="VARCHAR" property="updateUser"/>
-        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
-    </resultMap>
+	<resultMap id="companySkuType"
+		type="com.xiaoyaotong.api.companyitem.entity.CompanySku">
+		<id property="id" jdbcType="INTEGER" column="id" />
+		<result property="companyId" column="company_id" jdbcType="INTEGER" />
+		<result property="companySkuCode" column="company_sku_code"
+			jdbcType="VARCHAR" />
+		<result column="common_name" jdbcType="VARCHAR" property="commonName" />
+		<result column="approval_code" jdbcType="VARCHAR" property="approvalCode" />
+		<result column="spec" jdbcType="VARCHAR" property="spec" />
+		<result column="factory_name" jdbcType="VARCHAR" property="factoryName" />
+		<result column="bar_code" jdbcType="VARCHAR" property="barCode" />
+		<result column="status" jdbcType="VARCHAR" property="status" />
+		<result property="spuCode" column="spu_code" jdbcType="VARCHAR" />
+		<result property="matched" column="matched" jdbcType="INTEGER" />
+		<result column="create_user" jdbcType="VARCHAR" property="createUser" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="update_user" jdbcType="VARCHAR" property="updateUser" />
+		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+	</resultMap>
 
-    <sql id="basicSQL">
-        select
-        s.id as id,
-        s.company_id,
-        s.company_sku_code,
-        s.common_name,
-        s.approval_code,
-        s.spec,
-        s.factory_name,
-        s.bar_code,
-        s.status,
-        s.spu_code,
-        s.create_time,
-        s.create_user,
-        s.update_time,
-        s.update_user
-        from t_company_sku s
-    </sql>
+	<sql id="basicSQL">
+		select
+		s.id as id,
+		s.company_id,
+		s.company_sku_code,
+		s.common_name,
+		s.approval_code,
+		s.spec,
+		s.factory_name,
+		s.bar_code,
+		s.status,
+		s.spu_code,
+		s.create_time,
+		s.create_user,
+		s.update_time,
+		s.update_user
+		from t_company_sku s
+	</sql>
 
-    <insert id="insertCompanySku">
-        insert into t_company_sku(company_id,company_sku_code,common_name,approval_code,spec,factory_name,
-        bar_code,status, create_user,create_time,update_user,update_time)
-        values (
-        #{companyId},#{companySkuCode},#{commonName},#{approvalCode},#{spec},#{factoryName},#{barCode},
-        #{status} ,#{createUser},#{createTime},#{updateUser},now()
-        )
-    </insert>
-    <insert id="insertCompanySkuBySelective">
-        insert into t_company_sku
- 	<trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-       <if test="companyId != null">
-        company_id,
-      </if>
-      <if test="companySkuCode != null">
-        company_sku_code,
-      </if>
-      <if test="commonName != null">
-        common_name,
-      </if>
-      <if test="approvalCode != null">
-        approval_code,
-      </if>
-      <if test="spec != null">
-        spec,
-      </if>
-      <if test="factoryName != null">
-        factory_name,
-      </if>
-      <if test="barCode != null">
-        bar_code,
-      </if>
-      <if test="status != null">
-        status,
-      </if>
-      <if test="createUser != null">
-        create_user,
-      </if>
-      <if test="createTime != null">
-        create_time,
-      </if>
-      <if test="updateUser != null">
-        update_user,
-      </if>
-      <if test="updateTime != null">
-        update_time,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="companyId != null">
-        #{companyId,jdbcType=INTEGER},
-      </if>
-      <if test="companySkuCode != null">
-        #{companySkuCode,jdbcType=VARCHAR},
-      </if>
-       <if test="commonName != null">
-         #{commonName},
-      </if>
-      <if test="approvalCode != null">
-       #{approvalCode},
-      </if>
-      <if test="spec != null">
-        #{spec},
-      </if>
-      <if test="factoryName != null">
-       #{factoryName},
-      </if>
-      <if test="barCode != null">
-       #{barCode},
-      </if>
-      <if test="status != null">
-        #{status} ,
-      </if>
-      <if test="createUser != null">
-        #{createUser},
-      </if>
-      <if test="createTime != null">
-        #{createTime},
-      </if>
-      <if test="updateUser != null">
-        #{updateUser},
-      </if>
-      <if test="updateTime != null">
-        now()
-      </if>
-    </trim>
-  </insert>
-    <delete id="deleteCompanySku">
-        delete from t_company_sku t where t.company_id = #{companyId} and t.company_sku_code = #{companySkuCode}
-    </delete>
+	<insert id="insertCompanySku">
+		insert into
+		t_company_sku(company_id,company_sku_code,common_name,approval_code,spec,factory_name,
+		bar_code,status, create_user,create_time,update_user,update_time)
+		values (
+		#{companyId},#{companySkuCode},#{commonName},#{approvalCode},#{spec},#{factoryName},#{barCode},
+		#{status} ,#{createUser},#{createTime},#{updateUser},now()
+		)
+	</insert>
+	<insert id="insertCompanySkuBySelective">
+		insert into t_company_sku
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="companyId != null">
+				company_id,
+			</if>
+			<if test="companySkuCode != null">
+				company_sku_code,
+			</if>
+			<if test="commonName != null">
+				common_name,
+			</if>
+			<if test="approvalCode != null">
+				approval_code,
+			</if>
+			<if test="spec != null">
+				spec,
+			</if>
+			<if test="factoryName != null">
+				factory_name,
+			</if>
+			<if test="barCode != null">
+				bar_code,
+			</if>
+			<if test="status != null">
+				status,
+			</if>
+			<if test="createUser != null">
+				create_user,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="updateUser != null">
+				update_user,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="companyId != null">
+				#{companyId,jdbcType=INTEGER},
+			</if>
+			<if test="companySkuCode != null">
+				#{companySkuCode,jdbcType=VARCHAR},
+			</if>
+			<if test="commonName != null">
+				#{commonName},
+			</if>
+			<if test="approvalCode != null">
+				#{approvalCode},
+			</if>
+			<if test="spec != null">
+				#{spec},
+			</if>
+			<if test="factoryName != null">
+				#{factoryName},
+			</if>
+			<if test="barCode != null">
+				#{barCode},
+			</if>
+			<if test="status != null">
+				#{status} ,
+			</if>
+			<if test="createUser != null">
+				#{createUser},
+			</if>
+			<if test="createTime != null">
+				#{createTime},
+			</if>
+			<if test="updateUser != null">
+				#{updateUser},
+			</if>
+			<if test="updateTime != null">
+				now()
+			</if>
+		</trim>
+	</insert>
+	<delete id="deleteCompanySku">
+		delete from t_company_sku t where t.company_id = #{companyId} and
+		t.company_sku_code = #{companySkuCode}
+	</delete>
 
-    <update id="updateByCompanyIdAndskuCode">
-        update t_company_sku set
-        common_name=#{commonName},
-        approval_code=#{approvalCode},
-        spec=#{spec},
-        factory_name=#{factoryName},
-        spu_code = #{spuCode},
-        bar_code=#{barCode}  
-        where company_id = #{companyId} and company_sku_code = #{companySkuCode}
-    </update>
+	<update id="updateByCompanyIdAndskuCode">
+		update t_company_sku set
+		common_name=#{commonName},
+		approval_code=#{approvalCode},
+		spec=#{spec},
+		factory_name=#{factoryName},
+		spu_code = #{spuCode},
+		bar_code=#{barCode}
+		where company_id = #{companyId} and company_sku_code = #{companySkuCode}
+	</update>
 
-    <update id="updateSpuCodeByCompanyIdAndskuCode">
-        update t_company_sku set
-        standard_spu=#{spuCode},
-        where company_id = #{companyId} and company_sku_code = #{companySkuCode}
-    </update>
+	<update id="updateSpuCodeByCompanyIdAndskuCode">
+		update t_company_sku set
+		standard_spu=#{spuCode},
+		where company_id = #{companyId} and company_sku_code = #{companySkuCode}
+	</update>
 
-    <select id="selectSkuByCompanyIdAndSkuCode" resultMap="companySkuType">
-        <include refid="basicSQL"/>
-        where s.company_id =#{companyId} and s.company_sku_code = #{companySkuCode}
-        <if test="matched != null and matched == 1">
-            AND s.matched = 1
-        </if>
-        <if test="matched != null and matched == -1">
-        AND s.matched = -1
-        </if>
-    </select>
+	<select id="selectSkuByCompanyIdAndSkuCode" resultMap="companySkuType">
+		<include refid="basicSQL" />
+		where s.company_id =#{companyId} and s.company_sku_code =
+		#{companySkuCode}
+		<if test="matched != null and matched == 1">
+			AND s.matched = 1
+		</if>
+		<if test="matched != null and matched == -1">
+			AND s.matched = -1
+		</if>
+	</select>
 
-    <select id="selectSkuByCompanyId" resultMap="companySkuType">
-        <include refid="basicSQL"/>
-        where s.company_id =#{companyId}
-        <if test="matched != null and matched == 1">
-            AND s.matched = 1
-        </if>
-        <if test="matched != null and matched == -1">
-            AND s.matched = -1
-        </if>
-    </select>
+	<select id="selectSkuByCompanyId" resultMap="companySkuType">
+		<include refid="basicSQL" />
+		where s.company_id =#{companyId}
+		<if test="matched != null and matched == 1">
+			AND s.matched = 1
+		</if>
+		<if test="matched != null and matched == -1">
+			AND s.matched = -1
+		</if>
+	</select>
 
 
-    <select id="selectCompanySkuList" resultMap="companySkuType">
-        <include refid="basicSQL"/>
-        order by s.id desc
-        limit #{itemBegin},#{itemNum}
-    </select>
-	
+	<select id="selectCompanySkuList" resultMap="companySkuType">
+		<include refid="basicSQL" />
+		order by s.id desc
+		limit #{itemBegin},#{itemNum}
+	</select>
+
 	<select id="getCompanySkuId" resultType="Integer">
-        select id from t_company_sku t
-        where t.company_id =#{companyId} and t.company_sku_code = #{companySkuCode}
-    </select>
+		select id from t_company_sku t
+		where t.company_id =#{companyId} and t.company_sku_code = #{companySkuCode}
+	</select>
 
 
-    <select id="getCompanyItemCount" resultType="Integer">
-        select count(*) from t_company_sku s
-        <if test="matched != 0 ">
-            where s.matched = #{matched}
-        </if>
-    </select>
+	<select id="getCompanyItemCount" resultType="Integer">
+		select count(*) from t_company_sku s
+		<if test="matched != 0 ">
+			where s.matched = #{matched}
+		</if>
+	</select>
 
 
 
 
- 	<update id="updateCompanySkuById">
-        update t_company_sku set
-        common_name=#{commonName},
-        approval_code=#{approvalCode},
-        spec=#{spec},
-        factory_name=#{factoryName},
-        bar_code=#{barCode} 
-        where id = {id}
-    </update>
+	<update id="updateCompanySkuById">
+		update t_company_sku
+		<set>
+			<if test="commonName != null">
+				common_name=#{commonName},
+			</if>
+			<if test="approvalCode != null">
+				approval_code=#{approvalCode},
+			</if>
+			<if test="spec != null">
+				spec=#{spec},
+			</if>
+			<if test="factoryName != null">
+				factory_name=#{factoryName},
+			</if>
+			<if test="barCode != null">
+				bar_code=#{barCode} ,
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
 </mapper>

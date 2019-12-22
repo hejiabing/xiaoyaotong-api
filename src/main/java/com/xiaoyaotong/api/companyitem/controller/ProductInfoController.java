@@ -46,22 +46,27 @@ public class ProductInfoController {
 		int total = requestDTO.getProductDTOList().size();
 		int successresult = 0;
 		for (CompanySku csku : requestDTO.getProductDTOList()) {
-			if (requestDTO.getIsAll() == 1) {
-				List<CompanySku> lists = companySkuService
-						.getSkuByCompanyIdAndSkuCode(csku.getCompanyId(),
-								csku.getCompanySkuCode(), 0);
-				
-				if (lists.size() > 0) {
-					int id = lists.get(0).getId();
-					csku.setId(id);
-					successresult += companySkuService
-							.updateCompanySkuById(csku);
+			try{
+				if (requestDTO.getIsAll() == 1) {
+					List<CompanySku> lists = companySkuService
+							.getSkuByCompanyIdAndSkuCode(csku.getCompanyId(),
+									csku.getCompanySkuCode(), 0);
+					
+					if (lists.size() > 0) {
+						int id = lists.get(0).getId();
+						csku.setId(id);
+						successresult += companySkuService
+								.updateCompanySkuById(csku);
+					} else {
+						successresult += companySkuService.insertCompanySkuBySelective(csku);
+					}
 				} else {
 					successresult += companySkuService.insertCompanySkuBySelective(csku);
 				}
-			} else {
-				successresult += companySkuService.insertCompanySkuBySelective(csku);
+			}catch(Exception e){
+				log.error("商品同步报错", e);
 			}
+			
 		}
 		HashMap map = new HashMap();
 		map.put("all", total);
