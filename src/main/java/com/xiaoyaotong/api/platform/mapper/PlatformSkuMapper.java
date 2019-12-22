@@ -22,7 +22,7 @@ public interface PlatformSkuMapper {
 
 
     //根据公司Id查询所有商品
-    public List<PlatformSku> getPlatformSkyByCompanyId(int companyId);
+    public List<PlatformSku> getPlatformSkuByCompanyId(int companyId);
 
 
     //插入
