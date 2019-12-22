@@ -43,6 +43,8 @@ public interface PlatformSkuMapper {
 
 	public int updatePlatformSkuById(PlatformSku platSku);
 
+	public List<PlatformSku> getPlatformSkuBySelective(PlatformSku platformSku);
+
 
 
 

@@ -175,5 +175,51 @@
         delete from t_platform_sku
         where sku_id = #{skuCode}
     </delete>
+	<select id="getPlatformSkuBySelective" resultMap="platformSku" parameterType="com.xiaoyaotong.api.platform.entity.PlatformSku">
+        <include refid="basicSQL"/>
+		<where>
+		<if test="id != null">
+		 id = #{id}
+		</if>
+		 <if test="skuCode != null and skuCode != '' ">
+          and sku_code = #{skuCode} 
+        </if>
+        <if test="companyId != null">
+		 and company_id = #{companyId}
+		</if>
+         <if test="spuCode != null and spuCode != '' ">
+           and  spu_code = #{spuCode} 
+        </if>
+        
+         <if test="companySkuCode != null and companySkuCode != '' ">
+           and  company_sku_code = #{companySkuCode} 
+        </if>
+        
+        <if test="batchNos != null and batchNos != '' ">
+           and  batch_nos = #{batchNos} 
+        </if>
 
+        <if test="deadlineNos != null and deadlineNos != '' ">
+           and  deadline_nos = #{deadlineNos} 
+        </if>
+
+        <if test="commonPrice != null and commonPrice != '' ">
+           and  common_price = #{commonPrice} 
+        </if>
+
+        <if test="validMonthStart != null and validMonthStart != '' ">
+           and  valid_month_start = #{validMonthStart} 
+        </if>
+
+        <if test="validMonthEnd != null and validMonthEnd != '' ">
+         and  valid_month_end = #{validMonthEnd} 
+        </if>
+        <if test="stocks != null and stocks != '' ">
+         and  stocks = #{stocks} 
+        </if>
+        <if test="status != null ">
+        and   status = #{status} 
+        </if>
+		</where>
+    </select>
 </mapper>

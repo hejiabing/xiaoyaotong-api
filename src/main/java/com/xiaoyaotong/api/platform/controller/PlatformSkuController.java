@@ -12,6 +12,8 @@ import com.xiaoyaotong.api.platform.service.PlatformSkuService;
 import com.xiaoyaotong.api.standardproduct.entity.MedicineSPU;
 import com.xiaoyaotong.api.standardproduct.service.MedicineSPUService;
 import com.xiaoyaotong.api.util.GenerateUniqueIdUtil;
+
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -46,12 +48,10 @@ public class PlatformSkuController {
         //返回类型的集合
         List<PlatformSkuDTO> dtos = new ArrayList<>();
         //查询的公司sku集合，分页后的数量
-        List<PlatformSku> skus = new ArrayList<>();
 
         if (null != queryPlatformSkuVO) {//如果对象为空，返回空
-            int companyIdV = queryPlatformSkuVO.getCompanyId(); //公司id
-            String companySkuV = queryPlatformSkuVO.getCompanySkuCode();//公司的sku代码
-            String skuCode = queryPlatformSkuVO.getSkuCode();//skuCode
+        	PlatformSku platformSku =new PlatformSku();
+        	BeanUtils.copyProperties(queryPlatformSkuVO, platformSku);
             int startPage = queryPlatformSkuVO.getStartPage(); //查询的开始页面
             int pageSize = queryPlatformSkuVO.getPageSize(); //每页的数量
 
@@ -60,16 +60,8 @@ public class PlatformSkuController {
 
             PageInfo<PlatformSku> page; //分页的辅助
             PageHelper.startPage(startPage, pageSize);
-            if (companyIdV > 0) { //可转换为数字
-                if (null != companySkuV && companySkuV != "") { //根据企业id和公司sku查询
-                    skus = platformSkuService.getPlatformSkuByCompanyIdAndCompanySkuCode(companyIdV, companySkuV);
-                } else if(null!=skuCode && skuCode!= ""){
-                    PlatformSku mySku = platformSkuService.getSkuBySkuCode(skuCode);
-                    skus.add(mySku);
-                } else {//根据企业id查询
-                    skus = platformSkuService.getSkuByCompanyId(companyIdV);
-                }
-
+            if (platformSku.getCompanyId() > 0) { //可转换为数字
+                List<PlatformSku> skus = platformSkuService.getPlatformSkuBySelective(platformSku);
                 page = new PageInfo<>(skus);
 
                 //组装信息

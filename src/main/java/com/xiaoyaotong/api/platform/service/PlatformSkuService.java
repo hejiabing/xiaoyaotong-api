@@ -30,6 +30,8 @@ public interface PlatformSkuService {
 
 	public int updatePlatformSkuById(PlatformSku platSku);
 
+	public List<PlatformSku> getPlatformSkuBySelective(PlatformSku platformSku);
+
 
     
 }

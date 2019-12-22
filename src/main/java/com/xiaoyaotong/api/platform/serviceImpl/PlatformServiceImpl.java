@@ -63,4 +63,9 @@ public class PlatformServiceImpl implements PlatformSkuService {
 	public int updatePlatformSkuById(PlatformSku platSku) {
 		return platformSkuMapper.updatePlatformSkuById(platSku);
 	}
+
+	@Override
+	public List<PlatformSku> getPlatformSkuBySelective(PlatformSku platformSku) {
+		return platformSkuMapper.getPlatformSkuBySelective(platformSku);
+	}
 }

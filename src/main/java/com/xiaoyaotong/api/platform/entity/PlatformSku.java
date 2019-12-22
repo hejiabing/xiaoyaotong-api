@@ -6,29 +6,29 @@ import java.util.Date;
 
 public class PlatformSku {
 
-  private long id;
+  private Integer id;
   private String skuCode;//自动生成的唯一的skuid
   private String spuCode;//标品库的spucode
-  private int companyId; //卖家的id，companyid
+  private Integer companyId; //卖家的id，companyid
   private String companySkuCode; // 卖家的sku编码
   private String companyName; //公司名称
   private String batchNos; //批号集合
   private String deadlineNos; //效期集合
-  private int stocks; //库存数量，可销售数量
+  private Integer stocks; //库存数量，可销售数量
   private BigDecimal commonPrice; //价格
-  private int validMonthStart; //效期集合的开始时间
-  private  int validMonthEnd;//效期集合的结束时间
-  private int status;
+  private Integer validMonthStart; //效期集合的开始时间
+  private Integer validMonthEnd;//效期集合的结束时间
+  private Integer status;
   private String createUser;
   private java.util.Date createTime;
   private String updateUser;
   private java.util.Date updateTime;
 
-  public long getId() {
+  public Integer getId() {
     return id;
   }
 
-  public void setId(long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -48,11 +48,11 @@ public class PlatformSku {
     this.spuCode = spuCode;
   }
 
-  public int getCompanyId() {
+  public Integer getCompanyId() {
     return companyId;
   }
 
-  public void setCompanyId(int companyId) {
+  public void setCompanyId(Integer companyId) {
     this.companyId = companyId;
   }
 
@@ -88,11 +88,11 @@ public class PlatformSku {
     this.deadlineNos = deadlineNos;
   }
 
-  public int getStocks() {
+  public Integer getStocks() {
     return stocks;
   }
 
-  public void setStocks(int stocks) {
+  public void setStocks(Integer stocks) {
     this.stocks = stocks;
   }
 
@@ -104,27 +104,27 @@ public class PlatformSku {
     this.commonPrice = commonPrice;
   }
 
-  public int getValidMonthStart() {
+  public Integer getValidMonthStart() {
     return validMonthStart;
   }
 
-  public void setValidMonthStart(int validMonthStart) {
+  public void setValidMonthStart(Integer validMonthStart) {
     this.validMonthStart = validMonthStart;
   }
 
-  public int getValidMonthEnd() {
+  public Integer getValidMonthEnd() {
     return validMonthEnd;
   }
 
-  public void setValidMonthEnd(int validMonthEnd) {
+  public void setValidMonthEnd(Integer validMonthEnd) {
     this.validMonthEnd = validMonthEnd;
   }
 
-  public int getStatus() {
+  public Integer getStatus() {
     return status;
   }
 
-  public void setStatus(int status) {
+  public void setStatus(Integer status) {
     this.status = status;
   }
 

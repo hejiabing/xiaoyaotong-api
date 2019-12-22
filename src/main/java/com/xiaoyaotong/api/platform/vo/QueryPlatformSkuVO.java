@@ -15,6 +15,7 @@ public class QueryPlatformSkuVO {
     private int companyId;
     private String companySkuCode;
     private String skuCode;
+    private Integer status;
     private int pageSize;
     private int startPage;
 
@@ -89,4 +90,12 @@ public class QueryPlatformSkuVO {
     public void setStartPage(int startPage) {
         this.startPage = startPage;
     }
+
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
 }
