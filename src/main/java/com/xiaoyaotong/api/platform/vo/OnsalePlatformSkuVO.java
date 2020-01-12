@@ -9,8 +9,12 @@ import java.util.List;
  */
 public class OnsalePlatformSkuVO {
 
+	private Integer companyId;
+	
     private List<String> skuCodes; //skuCode
 
+    private List<String> companySkuCodes;
+    
     private int status; // 状态
 
 
@@ -29,4 +33,20 @@ public class OnsalePlatformSkuVO {
     public void setStatus(int status) {
         this.status = status;
     }
+
+	public List<String> getCompanySkuCodes() {
+		return companySkuCodes;
+	}
+
+	public void setCompanySkuCodes(List<String> companySkuCodes) {
+		this.companySkuCodes = companySkuCodes;
+	}
+
+	public Integer getCompanyId() {
+		return companyId;
+	}
+
+	public void setCompanyId(Integer companyId) {
+		this.companyId = companyId;
+	}
 }

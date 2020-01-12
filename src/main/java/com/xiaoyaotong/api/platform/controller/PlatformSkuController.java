@@ -13,6 +13,7 @@ import com.xiaoyaotong.api.standardproduct.entity.MedicineSPU;
 import com.xiaoyaotong.api.standardproduct.service.MedicineSPUService;
 import com.xiaoyaotong.api.util.GenerateUniqueIdUtil;
 
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
@@ -118,21 +119,34 @@ public class PlatformSkuController {
     @RequestMapping(value ="/onsale",method = RequestMethod.POST)
     public int onSalePlatformSku(@RequestBody OnsalePlatformSkuVO onsalePlatformSkuVO){
         Assert.notNull(onsalePlatformSkuVO, "dto can not be empty");
-        List<String> skus = onsalePlatformSkuVO.getSkuCodes();
-        if(null==skus ||skus.size()<1 ) return 0;
         int onsale = onsalePlatformSkuVO.getStatus();
-
         int result = 0 ;
 
-        for(String skuCode : skus){
-            PlatformSku platformSku = new PlatformSku();
-            platformSku.setSkuCode(skuCode);
-            platformSku.setStatus(onsale);
-            int re = platformSkuService.updatePlatformSku(platformSku);
-            if(re>0){
-                result++;
+        if(CollectionUtils.isNotEmpty(onsalePlatformSkuVO.getCompanySkuCodes())){
+        	for(String companySkuCode : onsalePlatformSkuVO.getCompanySkuCodes()){
+                PlatformSku platformSku = new PlatformSku();
+                platformSku.setCompanySkuCode(companySkuCode);
+                platformSku.setStatus(onsale);
+                platformSku.setCompanyId(onsalePlatformSkuVO.getCompanyId());
+                int re = platformSkuService.updatePlatformSku(platformSku);
+                if(re>0){
+                    result++;
+                }
             }
         }
+        if(CollectionUtils.isNotEmpty(onsalePlatformSkuVO.getSkuCodes())){
+        	for(String skuCode : onsalePlatformSkuVO.getSkuCodes()){
+                PlatformSku platformSku = new PlatformSku();
+                platformSku.setSkuCode(skuCode);
+                platformSku.setStatus(onsale);
+                platformSku.setCompanyId(onsalePlatformSkuVO.getCompanyId());
+                int re = platformSkuService.updatePlatformSku(platformSku);
+                if(re>0){
+                    result++;
+                }
+            }
+        }
+        
         return result;
     }
 
