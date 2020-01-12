@@ -33,7 +33,7 @@ public interface PlatformSkuService {
 
 	public List<PlatformSku> getPlatformSkuBySelective(PlatformSku platformSku);
 
-    public int getChangedPlatformSkuCount(Date beginTime);
+    public int getChangedPlatformSkuCount(String beginTime);
 
-    public List<PlatformSku> getChangedPlatformSkuList(Date beginTime,int beginPage,int pageSize) ;
+    public List<PlatformSku> getChangedPlatformSkuList(String beginTime,int beginPage,int pageSize) ;
 }

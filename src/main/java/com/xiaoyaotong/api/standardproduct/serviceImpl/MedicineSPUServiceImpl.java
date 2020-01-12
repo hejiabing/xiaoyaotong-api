@@ -53,12 +53,12 @@ public class MedicineSPUServiceImpl implements MedicineSPUService {
     }
 
     @Override
-    public List<MedicineSPU> getChangedSPU(Date beginTime, int beginPage, int pageSize) {
+    public List<MedicineSPU> getChangedSPU(String beginTime, int beginPage, int pageSize) {
         return medicineSPUMapper.getChangedSPU(beginTime,beginPage,pageSize);
     }
 
     @Override
-    public int getChangedSPUCount(Date beginTime) {
+    public int getChangedSPUCount(String beginTime) {
         return medicineSPUMapper.getChangedSPUCount(beginTime);
     }
 

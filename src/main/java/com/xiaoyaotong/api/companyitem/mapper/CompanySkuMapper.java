@@ -41,9 +41,9 @@ public interface CompanySkuMapper {
 
 	public int getCompanyItemCount(int onShelf);
 
-	public int getChangedCompanyItemCount(Date beginTime);
+	public int getChangedCompanyItemCount(String beginTime);
 
-	public List<CompanySku> getChangedCompanyItemList(@Param("beginTime")Date beginTime,
+	public List<CompanySku> getChangedCompanyItemList(@Param("beginTime")String beginTime,
                                                       @Param("beginPage") int beginPage,
                                                       @Param("pageSize") int pageSize);
 }

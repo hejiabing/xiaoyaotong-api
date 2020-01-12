@@ -72,12 +72,12 @@ public class PlatformServiceImpl implements PlatformSkuService {
 	}
 
     @Override
-    public int getChangedPlatformSkuCount(Date beginTime) {
+    public int getChangedPlatformSkuCount(String beginTime) {
         return platformSkuMapper.getChangedPlatformCounts(beginTime);
     }
 
     @Override
-    public List<PlatformSku> getChangedPlatformSkuList(Date beginTime,int beginPage,int pageSize) {
+    public List<PlatformSku> getChangedPlatformSkuList(String beginTime,int beginPage,int pageSize) {
         return platformSkuMapper.getChangedPlatformSkuList(beginTime,beginPage,pageSize);
     }
 }

@@ -29,10 +29,10 @@ public interface MedicineSPUService {
     List<MedicineSPU> getSPUListByMinimumId(int minimumId,int pageSize);
 
     //获取列表
-    List<MedicineSPU> getChangedSPU(Date beginTime, int beginPage,int pageSize);
+    List<MedicineSPU> getChangedSPU(String beginTime, int beginPage,int pageSize);
 
     //获取所有的数量
-    int getChangedSPUCount(Date beginTime);
+    int getChangedSPUCount(String beginTime);
 
     boolean insertMedicineSPU(MedicineSPU medicineSPU);
 

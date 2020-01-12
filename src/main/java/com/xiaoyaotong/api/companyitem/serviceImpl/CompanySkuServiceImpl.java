@@ -94,12 +94,12 @@ public class CompanySkuServiceImpl implements CompanySkuService {
     }
 
     @Override
-    public int getIncrementCompanyItemCount(Date beginTime) {
+    public int getIncrementCompanyItemCount(String beginTime) {
         return companySkuMapper.getChangedCompanyItemCount(beginTime);
     }
 
     @Override
-    public List<CompanySku> getIncrementCompanyItemList(Date beginTime, int beginPage, int pageSize) {
+    public List<CompanySku> getIncrementCompanyItemList(String beginTime, int beginPage, int pageSize) {
         return companySkuMapper.getChangedCompanyItemList(beginTime,beginPage,pageSize);
     }
 }

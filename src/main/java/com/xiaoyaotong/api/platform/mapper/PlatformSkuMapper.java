@@ -47,10 +47,9 @@ public interface PlatformSkuMapper {
 	public List<PlatformSku> getPlatformSkuBySelective(PlatformSku platformSku);
 
 
-	public int getChangedPlatformCounts(Date beginTime);
+	public int getChangedPlatformCounts(String beginTime);
 
-    public List<PlatformSku> getChangedPlatformSkuList(@Param("beginTime")Date beginTime,@Param("beginPage") int beginPage, @Param("pageSize")int pageSize);
-
+    public List<PlatformSku> getChangedPlatformSkuList(@Param("beginTime")String beginTime,@Param("beginPage") int beginPage, @Param("pageSize")int pageSize);
 
 
 }

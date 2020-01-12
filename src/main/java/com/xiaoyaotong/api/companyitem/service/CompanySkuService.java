@@ -43,7 +43,7 @@ public interface CompanySkuService {
 
 	public int getCompanyItemCount(int matched);
 
-    public int getIncrementCompanyItemCount(Date beginTime);
+    public int getIncrementCompanyItemCount(String beginTime);
 
-    public List<CompanySku> getIncrementCompanyItemList(Date beginTime,int beginPage,int pageSize);
+    public List<CompanySku> getIncrementCompanyItemList(String beginTime,int beginPage,int pageSize);
 }

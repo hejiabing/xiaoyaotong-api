@@ -43,11 +43,11 @@ public interface MedicineSPUMapper {
     public int updateMedicineSPU(MedicineSPU medicineSPU);
 
     //获取改变的spu
-    public List<MedicineSPU> getChangedSPU(@Param("beginTime") Date beginTime,
+    public List<MedicineSPU> getChangedSPU(@Param("beginTime") String beginTime,
                                            @Param("beginPage")int beginPage,
                                            @Param("pageSize") int pageSize);
 
-    public int getChangedSPUCount(@Param("beginTime") Date beginTime);
+    public int getChangedSPUCount(@Param("beginTime") String beginTime);
 
 
 }

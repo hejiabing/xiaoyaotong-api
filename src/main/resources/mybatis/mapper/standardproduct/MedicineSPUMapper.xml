@@ -99,7 +99,7 @@
     </select>
 
     <select id="getChangedSPUCount" resultType="Integer">
-        select count(*) from t_medicine_spu t where t.update_time > #{beginTime}
+        select count(*) from t_medicine_spu t where t.update_time > #{beginTime,jdbcType=TIMESTAMP}
     </select>
 
 

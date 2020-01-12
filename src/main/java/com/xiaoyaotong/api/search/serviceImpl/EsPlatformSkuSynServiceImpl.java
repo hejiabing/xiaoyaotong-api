@@ -21,6 +21,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -93,7 +94,10 @@ public class EsPlatformSkuSynServiceImpl implements EsPlatformSkuSynService {
     public void synIncrementSku() {
         log.info("SKU增量同步开始");
         Date now = new Date();
-        Date beginTime = new Date(now.getTime() - 420000);
+        Date dd = new Date(now.getTime() - 420000);
+
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String beginTime = formatter.format(dd);
 
         int changePlatformCount = platformSkuService.getChangedPlatformSkuCount(beginTime);
         int beginPage = 0;

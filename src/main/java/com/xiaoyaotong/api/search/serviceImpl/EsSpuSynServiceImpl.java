@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -101,10 +102,14 @@ public class EsSpuSynServiceImpl implements EsSpuSynService {
             int minimum = Integer.valueOf(minimumId);
             */
         Date now = new Date();
-        Date beginTime = new Date(now.getTime() - 540000);
+        Date dd = new Date(now.getTime() - 540000);
+
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String beginTime = formatter.format(dd);
+
 
         int changedSPUCount = medicineSPUService.getChangedSPUCount(beginTime);
-        log.info("SPU增量的数量为："+changedSPUCount);
+        log.info("SPU增量的数量为："+ changedSPUCount);
 
 
         int beginPage = 0;

@@ -80,10 +80,11 @@ public class EsCompanyItemSynServiceImpl implements EsCompanyItemSynService {
     public void synIncrementCompanyItem() {
         log.info("CompanyItem增量同步开始！");
         Date now = new Date();
-        Date beginTime = new Date(now.getTime() - 300000);
+        Date dd = new Date(now.getTime() - 300000);
 
-        //SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd HH:mm:ss" );
-        //String beginTime = sdf.format(d);
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String beginTime = formatter.format(dd);
+
 
         int changePlatformCount = companySkuService.getIncrementCompanyItemCount(beginTime);
         int beginPage = 0;
