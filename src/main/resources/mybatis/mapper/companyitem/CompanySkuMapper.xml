@@ -203,7 +203,7 @@
 
 	<select id="getChangedCompanyItemCount" resultType="Integer">
 		select count(*) from t_company_sku s
-			where s.update_time = #{beginTime}
+			where s.update_time > #{beginTime}
 	</select>
 
 	<select id="getChangedCompanyItemList" resultMap="companySkuType">

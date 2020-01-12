@@ -103,7 +103,7 @@
     </select>
 
 
-    <select id="getChangedSPU" resultType="Integer">
+    <select id="getChangedSPU" resultMap="medicineSPUType">
         <include refid="basicSQL"/> where s.update_time  > #{beginTime}
         order by s.id asc
         limit #{beginPage},#{pageSize}
