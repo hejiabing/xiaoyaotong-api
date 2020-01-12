@@ -201,6 +201,17 @@
 	</select>
 
 
+	<select id="getChangedCompanyItemCount" resultType="Integer">
+		select count(*) from t_company_sku s
+			where s.update_time = #{beginTime}
+	</select>
+
+	<select id="getChangedCompanyItemList" resultMap="companySkuType">
+		<include refid="basicSQL" />
+		where s.update_time > #{beginTime}
+		order by s.id desc
+		limit #{beginPage},#{pageSize}
+	</select>
 
 
 	<update id="updateCompanySkuById">

@@ -2,6 +2,7 @@ package com.xiaoyaotong.api.platform.service;
 
 import com.xiaoyaotong.api.platform.entity.PlatformSku;
 
+import java.util.Date;
 import java.util.List;
 
 public interface PlatformSkuService {
@@ -32,6 +33,7 @@ public interface PlatformSkuService {
 
 	public List<PlatformSku> getPlatformSkuBySelective(PlatformSku platformSku);
 
+    public int getChangedPlatformSkuCount(Date beginTime);
 
-    
+    public List<PlatformSku> getChangedPlatformSkuList(Date beginTime,int beginPage,int pageSize) ;
 }

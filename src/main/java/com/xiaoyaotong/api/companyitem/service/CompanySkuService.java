@@ -2,6 +2,7 @@ package com.xiaoyaotong.api.companyitem.service;
 
 import com.xiaoyaotong.api.companyitem.entity.CompanySku;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -41,4 +42,8 @@ public interface CompanySkuService {
 	public int insertCompanySkuBySelective(CompanySku csku);
 
 	public int getCompanyItemCount(int matched);
+
+    public int getIncrementCompanyItemCount(Date beginTime);
+
+    public List<CompanySku> getIncrementCompanyItemList(Date beginTime,int beginPage,int pageSize);
 }

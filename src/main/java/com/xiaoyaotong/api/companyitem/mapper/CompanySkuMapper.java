@@ -5,6 +5,7 @@ import com.xiaoyaotong.api.companyitem.entity.CompanySku;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -39,4 +40,10 @@ public interface CompanySkuMapper {
 	public int insertCompanySkuBySelective(CompanySku companySku);
 
 	public int getCompanyItemCount(int onShelf);
+
+	public int getChangedCompanyItemCount(Date beginTime);
+
+	public List<CompanySku> getChangedCompanyItemList(@Param("beginTime")Date beginTime,
+                                                      @Param("beginPage") int beginPage,
+                                                      @Param("pageSize") int pageSize);
 }

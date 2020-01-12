@@ -13,9 +13,15 @@ import com.xiaoyaotong.api.standardproduct.service.MedicineSPUService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Configurable;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -39,6 +45,7 @@ public class EsPlatformSkuSynServiceImpl implements EsPlatformSkuSynService {
 
     @Autowired
     private RedisTemplate<String, String> stringRedis;
+
     @Override
     public void synAllSku() {
         log.info("SKU全量同步开始！");
@@ -70,6 +77,7 @@ public class EsPlatformSkuSynServiceImpl implements EsPlatformSkuSynService {
                 esSku.setCompanyId(sku.getCompanyId());
                 esSku.setCompanyName(sku.getCompanyName());
                 esSku.setSkuCode(sku.getSkuCode());
+                esSku.setStatus(sku.getStatus());
                 esPlatformSkuDao.save(esSku);
                 currentMaxId = currentMaxId > spu.getId()?currentMaxId : spu.getId(); //得到最大的minimumId
 
@@ -83,6 +91,36 @@ public class EsPlatformSkuSynServiceImpl implements EsPlatformSkuSynService {
 
     @Override
     public void synIncrementSku() {
+        log.info("SKU增量同步开始");
+        Date now = new Date();
+        Date beginTime = new Date(now.getTime() - 420000);
 
+        int changePlatformCount = platformSkuService.getChangedPlatformSkuCount(beginTime);
+        int beginPage = 0;
+        int pageSize = 1000;
+        log.info("增量同步的数量为："+changePlatformCount);
+        while(beginPage * pageSize < changePlatformCount){
+            List<PlatformSku> lists = platformSkuService.getChangedPlatformSkuList(beginTime,beginPage,pageSize);
+            for(PlatformSku sku : lists){
+                MedicineSPU spu = medicineSPUService.getBySpuCode(sku.getSpuCode());
+
+                EsPlatformSku esSku = new EsPlatformSku();
+                esSku.setCommonName(spu.getCommonName());
+                esSku.setApprovalCode(spu.getApprovalCode());
+                esSku.setSpec(spu.getSpec());
+                esSku.setSpuCode(sku.getSpuCode());
+                esSku.setFactoryName(spu.getFactoryName());
+                esSku.setShortName(spu.getShortName());
+                esSku.setFormalName(spu.getFormalName());
+                esSku.setBarCode(spu.getBarCode());
+                esSku.setId(sku.getId());
+                esSku.setCompanyId(sku.getCompanyId());
+                esSku.setCompanyName(sku.getCompanyName());
+                esSku.setSkuCode(sku.getSkuCode());
+                esSku.setStatus(sku.getStatus());
+                esPlatformSkuDao.save(esSku);
+            }
+            beginPage = beginPage + 1;
+        }
     }
 }

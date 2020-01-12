@@ -4,6 +4,7 @@ import com.xiaoyaotong.api.standardproduct.entity.MedicineSPU;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -40,6 +41,13 @@ public interface MedicineSPUMapper {
 
     //更新
     public int updateMedicineSPU(MedicineSPU medicineSPU);
+
+    //获取改变的spu
+    public List<MedicineSPU> getChangedSPU(@Param("beginTime") Date beginTime,
+                                           @Param("beginPage")int beginPage,
+                                           @Param("pageSize") int pageSize);
+
+    public int getChangedSPUCount(@Param("beginTime") Date beginTime);
 
 
 }

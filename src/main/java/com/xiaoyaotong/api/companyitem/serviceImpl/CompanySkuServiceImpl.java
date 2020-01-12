@@ -92,4 +92,14 @@ public class CompanySkuServiceImpl implements CompanySkuService {
     public int getCompanyItemCount(int matched) {
         return companySkuMapper.getCompanyItemCount(matched);
     }
+
+    @Override
+    public int getIncrementCompanyItemCount(Date beginTime) {
+        return companySkuMapper.getChangedCompanyItemCount(beginTime);
+    }
+
+    @Override
+    public List<CompanySku> getIncrementCompanyItemList(Date beginTime, int beginPage, int pageSize) {
+        return companySkuMapper.getChangedCompanyItemList(beginTime,beginPage,pageSize);
+    }
 }

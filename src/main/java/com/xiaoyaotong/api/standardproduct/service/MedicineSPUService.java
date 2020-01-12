@@ -2,6 +2,7 @@ package com.xiaoyaotong.api.standardproduct.service;
 
 import com.xiaoyaotong.api.standardproduct.entity.MedicineSPU;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -27,6 +28,12 @@ public interface MedicineSPUService {
     //获取大于当前id后面的所有对象
     List<MedicineSPU> getSPUListByMinimumId(int minimumId,int pageSize);
 
+    //获取列表
+    List<MedicineSPU> getChangedSPU(Date beginTime, int beginPage,int pageSize);
+
+    //获取所有的数量
+    int getChangedSPUCount(Date beginTime);
+
     boolean insertMedicineSPU(MedicineSPU medicineSPU);
 
     boolean updateMedicineSPU(MedicineSPU medicineSPU);
@@ -36,5 +43,7 @@ public interface MedicineSPUService {
     int addMedicineSPU(MedicineSPU medicineSPU);
 
     List<MedicineSPU> getSpuByKeyParameters(String spuCode,String commonName,String approvalCode, String barCode);
+
+
 
 }

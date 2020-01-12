@@ -7,6 +7,7 @@ import com.xiaoyaotong.api.util.GenerateUniqueIdUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -49,6 +50,16 @@ public class MedicineSPUServiceImpl implements MedicineSPUService {
     @Override
     public List<MedicineSPU> getSPUListByMinimumId(int minimumId,int pageSize) {
         return medicineSPUMapper.getSpusByminumumId(minimumId,pageSize);
+    }
+
+    @Override
+    public List<MedicineSPU> getChangedSPU(Date beginTime, int beginPage, int pageSize) {
+        return medicineSPUMapper.getChangedSPU(beginTime,beginPage,pageSize);
+    }
+
+    @Override
+    public int getChangedSPUCount(Date beginTime) {
+        return medicineSPUMapper.getChangedSPUCount(beginTime);
     }
 
     @Override

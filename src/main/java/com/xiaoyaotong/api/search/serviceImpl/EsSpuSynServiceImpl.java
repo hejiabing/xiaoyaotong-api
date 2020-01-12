@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -75,6 +76,7 @@ public class EsSpuSynServiceImpl implements EsSpuSynService {
     public void synIncrementSpu() {
 
         log.info("SPU增量同步开始！");
+        /*
         //获取Redis里面的增量同步的当前状态
         String currentStatus = stringRedis.boundValueOps(Constants.ES_INCREMENT_SPU_SYNC).get();
 
@@ -97,10 +99,18 @@ public class EsSpuSynServiceImpl implements EsSpuSynService {
             stringRedis.boundValueOps(Constants.ES_INCREMENT_SPU_SYNC).set(Constants.ES_SYNC_BEGIN);
 
             int minimum = Integer.valueOf(minimumId);
-            int pageSize = 2000;
-            int currentMaxId = 0;
-            List<MedicineSPU> lists = medicineSPUService.getSPUListByMinimumId(minimum,pageSize);
-            log.info(lists.size());
+            */
+        Date now = new Date();
+        Date beginTime = new Date(now.getTime() - 540000);
+
+        int changedSPUCount = medicineSPUService.getChangedSPUCount(beginTime);
+        log.info("SPU增量的数量为："+changedSPUCount);
+
+
+        int beginPage = 0;
+        int pageSize = 1000;
+        while(beginPage * pageSize < changedSPUCount){
+            List<MedicineSPU> lists = medicineSPUService.getChangedSPU(beginTime,beginPage,pageSize);
             for(MedicineSPU spu : lists){
                 EsMedicineSpu esSpu = new EsMedicineSpu();
                 esSpu.setCommonName(spu.getCommonName());
@@ -113,16 +123,10 @@ public class EsSpuSynServiceImpl implements EsSpuSynService {
                 esSpu.setBarCode(spu.getBarCode());
                 esSpu.setId(spu.getId());
                 esMedicineSpuDao.save(esSpu);
-                currentMaxId = currentMaxId > spu.getId()?currentMaxId : spu.getId(); //得到最大的minimumId
-                stringRedis.boundValueOps(Constants.ES_INCREMENT_SPU_SYNC_MAXID).set("" + currentMaxId);
             }
-
-            log.info(currentMaxId);
-            //同步结束
-            stringRedis.boundValueOps(Constants.ES_INCREMENT_SPU_SYNC).set(Constants.ES_SYNC_FINISHED);
-            stringRedis.boundValueOps(Constants.ES_INCREMENT_SPU_SYNC_MAXID).set("" + currentMaxId);
+            beginPage = beginPage + 1;
+        }
             log.info("SPU增量同步结束！");
         }
 
     }
-}

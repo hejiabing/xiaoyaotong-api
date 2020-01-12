@@ -3,10 +3,12 @@ package com.xiaoyaotong.api.search.serviceImpl;
 import com.xiaoyaotong.api.companyitem.entity.CompanySku;
 import com.xiaoyaotong.api.companyitem.service.CompanySkuService;
 import com.xiaoyaotong.api.config.Constants;
+import com.xiaoyaotong.api.platform.entity.PlatformSku;
 import com.xiaoyaotong.api.search.dao.EsCompanyItemDao;
 import com.xiaoyaotong.api.search.dao.EsMedicineSpuDao;
 import com.xiaoyaotong.api.search.entity.EsCompanyItem;
 import com.xiaoyaotong.api.search.entity.EsMedicineSpu;
+import com.xiaoyaotong.api.search.entity.EsPlatformSku;
 import com.xiaoyaotong.api.search.service.EsCompanyItemSynService;
 import com.xiaoyaotong.api.standardproduct.entity.MedicineSPU;
 import com.xiaoyaotong.api.standardproduct.service.MedicineSPUService;
@@ -16,6 +18,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -74,6 +78,34 @@ public class EsCompanyItemSynServiceImpl implements EsCompanyItemSynService {
 
     @Override
     public void synIncrementCompanyItem() {
+        log.info("CompanyItem增量同步开始！");
+        Date now = new Date();
+        Date beginTime = new Date(now.getTime() - 300000);
 
+        //SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd HH:mm:ss" );
+        //String beginTime = sdf.format(d);
+
+        int changePlatformCount = companySkuService.getIncrementCompanyItemCount(beginTime);
+        int beginPage = 0;
+        int pageSize = 1000;
+        log.info("同步的数量为："+changePlatformCount);
+        while(beginPage * pageSize < changePlatformCount){
+            List<CompanySku> lists = companySkuService.getIncrementCompanyItemList(beginTime, beginPage,pageSize);
+            for(CompanySku item : lists){
+                EsCompanyItem esItem = new EsCompanyItem();
+                esItem.setCommonName(item.getCommonName());
+                esItem.setApprovalCode(item.getApprovalCode());
+                esItem.setSpec(item.getSpec());
+                esItem.setSpuCode(item.getSpuCode());
+                esItem.setFactoryName(item.getFactoryName());
+                esItem.setBarCode(item.getBarCode());
+                esItem.setId(item.getId());
+                esItem.setCompanyId(item.getCompanyId());
+                esItem.setCompanySkuCode(item.getCompanySkuCode());
+                esItem.setMatched(item.getMatched());
+                esCompanyItemDao.save(esItem);
+            }
+            beginPage = beginPage + 1;
+        }
     }
 }

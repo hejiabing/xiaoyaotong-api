@@ -98,9 +98,17 @@
         limit 10
     </select>
 
-    <select id="getCountofAllSpus" resultType="Integer">
-        select count(*) from t_medicine_spu
+    <select id="getChangedSPUCount" resultType="Integer">
+        select count(*) from t_medicine_spu t where t.update_time > #{beginTime}
     </select>
+
+
+    <select id="getChangedSPU" resultType="Integer">
+        <include refid="basicSQL"/> where s.update_time  > #{beginTime}
+        order by s.id asc
+        limit #{beginPage},#{pageSize}
+    </select>
+
 
     <insert id="insertMedicineSPU">
         insert into t_medicine_spu(id,spu_code,common_name,approval_code,spec,factory_name,

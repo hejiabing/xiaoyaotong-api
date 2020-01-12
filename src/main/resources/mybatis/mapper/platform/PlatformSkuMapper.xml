@@ -53,6 +53,11 @@
         <include refid="basicSQL"/> where s.company_sku_code = #{companySkuCode}
     </select>
 
+    <select id="getChangedPlatformCounts" resultType="Integer">
+        select count(*) from t_platform_sku t
+        where t.update_time > #{beginTime}
+    </select>
+
     <select id="getPlatformSkuByCompanyId" resultMap="platformSku">
         <include refid="basicSQL"/> where s.company_id = #{companyId}
     </select>
@@ -75,6 +80,11 @@
 
     <select id="getPlatformSkuList" parameterType="hashmap" resultMap="platformSku">
         <include refid="basicSQL"/> order by s.id asc limit #{beginPage},#{pageSize}
+    </select>
+
+    <select id="getChangedPlatformSkuList" parameterType="hashmap" resultMap="platformSku">
+        <include refid="basicSQL"/> where s.update_time > #{beginTime}
+        order by s.id asc limit #{beginPage},#{pageSize}
     </select>
 
 

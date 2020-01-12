@@ -6,6 +6,7 @@ import com.xiaoyaotong.api.platform.service.PlatformSkuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -69,4 +70,14 @@ public class PlatformServiceImpl implements PlatformSkuService {
 	public List<PlatformSku> getPlatformSkuBySelective(PlatformSku platformSku) {
 		return platformSkuMapper.getPlatformSkuBySelective(platformSku);
 	}
+
+    @Override
+    public int getChangedPlatformSkuCount(Date beginTime) {
+        return platformSkuMapper.getChangedPlatformCounts(beginTime);
+    }
+
+    @Override
+    public List<PlatformSku> getChangedPlatformSkuList(Date beginTime,int beginPage,int pageSize) {
+        return platformSkuMapper.getChangedPlatformSkuList(beginTime,beginPage,pageSize);
+    }
 }

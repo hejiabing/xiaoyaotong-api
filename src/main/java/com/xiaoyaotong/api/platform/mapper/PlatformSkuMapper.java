@@ -4,6 +4,7 @@ import com.xiaoyaotong.api.platform.entity.PlatformSku;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -46,6 +47,9 @@ public interface PlatformSkuMapper {
 	public List<PlatformSku> getPlatformSkuBySelective(PlatformSku platformSku);
 
 
+	public int getChangedPlatformCounts(Date beginTime);
+
+    public List<PlatformSku> getChangedPlatformSkuList(@Param("beginTime")Date beginTime,@Param("beginPage") int beginPage, @Param("pageSize")int pageSize);
 
 
 
