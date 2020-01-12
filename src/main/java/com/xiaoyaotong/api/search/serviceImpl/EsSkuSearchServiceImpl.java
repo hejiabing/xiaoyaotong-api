@@ -40,6 +40,7 @@ public class EsSkuSearchServiceImpl implements EsSkuSearchService {
         String factoryName = querySkuVO.getFactoryName();//生产厂家
         String companyName = querySkuVO.getCompanyName();// 商家名字
         Integer companyId = querySkuVO.getCompanyId();
+        Integer status = querySkuVO.getStatus();//上下家状态
 
         Integer startPage = querySkuVO.getStartPage();
         Integer pageSize = querySkuVO.getPageSize();
@@ -73,6 +74,10 @@ public class EsSkuSearchServiceImpl implements EsSkuSearchService {
 
             if(companyName!=null && companyName !=""){
                 bqb.must(QueryBuilders.matchPhraseQuery("companyName",companyName));
+            }
+
+            if(status!=null){
+                bqb.must(QueryBuilders.matchPhraseQuery("status",status));
             }
         }
 

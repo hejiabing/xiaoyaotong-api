@@ -56,6 +56,17 @@ public class EsPlatformSku implements Serializable {
     private int stocks;//库存
     @Field
     private BigDecimal commonPrice; //价格
+    @Field
+    private Integer status; //上下架状态
+
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
 
     public long getId() {
         return id;

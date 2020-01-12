@@ -42,7 +42,7 @@ public class SchedulerConfig {
 
 
             JobDetail syncAllSkuJob = JobBuilder.newJob(EsSyncAllSkuJob.class).withIdentity("job3", "xiaoyaotong").build();
-            String syncAllSkuJobcron = "0 06 21 * * ?";//每天22点30分执行一次全量同步
+            String syncAllSkuJobcron = "0 39 21 * * ?";//每天22点30分执行一次全量同步
             syncAllSkuJob.getJobDataMap().put("syncAllSkuJobcron", syncAllSkuJobcron);
             CronTrigger syncAllSkuTrigger = TriggerBuilder.newTrigger().withIdentity("trigger3", "t3").withSchedule(CronScheduleBuilder.cronSchedule(syncAllSkuJobcron)).build();
             scheduler.scheduleJob(syncAllSkuJob, syncAllSkuTrigger);

@@ -16,6 +16,15 @@ public class QuerySkuVO {
     private String skuCode;
     private Integer pageSize;
     private Integer startPage;
+    private Integer status;//上下架状态
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
 
     public String getCommonName() {
         return commonName;
