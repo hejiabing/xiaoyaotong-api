@@ -92,6 +92,7 @@ public class CompanySkuController {
         	sku.setCompanyId(companyId);
         	sku.setCompanySkuCode(companySkuCode);
             sku.setMatched(-1);
+            sku.setSpuCode("");
             companySkuService.updateByCompanyIdAndSkuCode(sku);
                  
             platformSkuService.deleteByCompanyIdAndCompanySkuCode(companyId, companySkuCode);

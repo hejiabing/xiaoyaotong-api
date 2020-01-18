@@ -148,7 +148,9 @@
 		factory_name=#{factoryName},
 		spu_code = #{spuCode},
 		bar_code=#{barCode},
-		matched=#{matched}
+		<if test="matched != null ">
+			matched=#{matched}
+		</if>
 		where company_id = #{companyId} and company_sku_code = #{companySkuCode}
 	</update>
 
