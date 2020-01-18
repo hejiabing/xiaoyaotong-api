@@ -1,13 +1,11 @@
 package com.xiaoyaotong.api.search.controller;
 
 import com.xiaoyaotong.api.companyitem.dto.CompanySkuDTO;
-import com.xiaoyaotong.api.companyitem.entity.CompanySku;
 import com.xiaoyaotong.api.companyitem.service.CompanySkuService;
 import com.xiaoyaotong.api.companyitem.vo.ReturnCompanySkuVO;
 import com.xiaoyaotong.api.platform.dto.PlatformSkuDTO;
 import com.xiaoyaotong.api.platform.entity.PlatformSku;
 import com.xiaoyaotong.api.platform.service.PlatformSkuService;
-import com.xiaoyaotong.api.platform.vo.QueryPlatformSkuVO;
 import com.xiaoyaotong.api.platform.vo.ReturnPlatformVO;
 import com.xiaoyaotong.api.search.dto.CompanyItemDTO;
 import com.xiaoyaotong.api.search.entity.EsCompanyItem;
