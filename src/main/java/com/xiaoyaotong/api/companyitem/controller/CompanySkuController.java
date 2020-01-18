@@ -77,6 +77,31 @@ public class CompanySkuController {
     }
 
     /**
+     * 更新公司对应的标准码
+     * @param queryCompanySkuVO
+     * @return
+     */
+    @RequestMapping(value = "removeBinding", method = RequestMethod.POST)
+    public Boolean removeBinding(@RequestBody QueryCompanySkuVO queryCompanySkuVO){
+        Assert.notNull(queryCompanySkuVO, "dto can not be empty");
+        int companyId = queryCompanySkuVO.getCompanyId();
+        String companySkuCode = queryCompanySkuVO.getCompanySkuCode();
+
+        if(companyId>0 &&companySkuCode!=null && companySkuCode !=""){ // 
+        	CompanySku sku = new CompanySku();
+        	sku.setCompanyId(companyId);
+        	sku.setCompanySkuCode(companySkuCode);
+            sku.setMatched(-1);
+            companySkuService.updateByCompanyIdAndSkuCode(sku);
+                 
+            platformSkuService.deleteByCompanyIdAndCompanySkuCode(companyId, companySkuCode);
+            return true;
+        }
+        return  false;
+
+    }
+    
+    /**
      * 返回所有，未匹配和已匹配的数量
      * @return
      */

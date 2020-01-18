@@ -1,6 +1,7 @@
 package com.xiaoyaotong.api.platform.mapper;
 
 import com.xiaoyaotong.api.platform.entity.PlatformSku;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -50,6 +51,9 @@ public interface PlatformSkuMapper {
 	public int getChangedPlatformCounts(String beginTime);
 
     public List<PlatformSku> getChangedPlatformSkuList(@Param("beginTime")String beginTime,@Param("beginPage") int beginPage, @Param("pageSize")int pageSize);
+
+	public int deleteByCompanyIdAndCompanySkuCode(Integer companyId,
+			String companySkuCode);
 
 
 }

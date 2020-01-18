@@ -183,7 +183,11 @@
     <!--物理删除-->
     <delete id="deletePlatformSku">
         delete from t_platform_sku
-        where sku_id = #{skuCode}
+        where sku_code = #{skuCode}
+    </delete>
+    <delete id="deleteByCompanyIdAndCompanySkuCode">
+        delete from t_platform_sku
+        where company_id = #{companyId} and  company_sku_code = #{companySkuCode} 
     </delete>
 	<select id="getPlatformSkuBySelective" resultMap="platformSku" parameterType="com.xiaoyaotong.api.platform.entity.PlatformSku">
         <include refid="basicSQL"/>

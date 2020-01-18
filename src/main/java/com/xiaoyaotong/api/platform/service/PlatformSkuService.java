@@ -36,4 +36,7 @@ public interface PlatformSkuService {
     public int getChangedPlatformSkuCount(String beginTime);
 
     public List<PlatformSku> getChangedPlatformSkuList(String beginTime,int beginPage,int pageSize) ;
+
+	public int deleteByCompanyIdAndCompanySkuCode(Integer companyId,
+			String companySkuCode);
 }

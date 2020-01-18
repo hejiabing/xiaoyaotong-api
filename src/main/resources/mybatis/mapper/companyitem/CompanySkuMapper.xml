@@ -147,7 +147,8 @@
 		spec=#{spec},
 		factory_name=#{factoryName},
 		spu_code = #{spuCode},
-		bar_code=#{barCode}
+		bar_code=#{barCode},
+		matched=#{matched}
 		where company_id = #{companyId} and company_sku_code = #{companySkuCode}
 	</update>
 

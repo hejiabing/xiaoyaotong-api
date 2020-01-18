@@ -3,6 +3,7 @@ package com.xiaoyaotong.api.platform.serviceImpl;
 import com.xiaoyaotong.api.platform.entity.PlatformSku;
 import com.xiaoyaotong.api.platform.mapper.PlatformSkuMapper;
 import com.xiaoyaotong.api.platform.service.PlatformSkuService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -80,4 +81,10 @@ public class PlatformServiceImpl implements PlatformSkuService {
     public List<PlatformSku> getChangedPlatformSkuList(String beginTime,int beginPage,int pageSize) {
         return platformSkuMapper.getChangedPlatformSkuList(beginTime,beginPage,pageSize);
     }
+
+	@Override
+	public int deleteByCompanyIdAndCompanySkuCode(Integer companyId,
+			String companySkuCode) {
+		return platformSkuMapper.deleteByCompanyIdAndCompanySkuCode(companyId,companySkuCode);
+	}
 }
