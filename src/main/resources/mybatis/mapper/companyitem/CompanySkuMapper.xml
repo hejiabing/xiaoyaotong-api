@@ -141,16 +141,27 @@
 	</delete>
 
 	<update id="updateByCompanyIdAndskuCode">
-		update t_company_sku set
-		common_name=#{commonName},
-		approval_code=#{approvalCode},
-		spec=#{spec},
-		factory_name=#{factoryName},
-		spu_code = #{spuCode},
-		bar_code=#{barCode},
-		<if test="matched != null ">
-			matched=#{matched}
-		</if>
+		update t_company_sku 
+		<set>
+			<if test="commonName != null">
+				common_name=#{commonName},
+			</if>
+			<if test="approvalCode != null">
+				approval_code=#{approvalCode},
+			</if>
+			<if test="spec != null">
+				spec=#{spec},
+			</if>
+			<if test="factoryName != null">
+				factory_name=#{factoryName},
+			</if>
+			<if test="barCode != null">
+				bar_code=#{barCode} ,
+			</if>
+			<if test="matched != null ">
+				matched=#{matched},
+			</if>
+		</set>
 		where company_id = #{companyId} and company_sku_code = #{companySkuCode}
 	</update>
 
