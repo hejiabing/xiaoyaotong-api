@@ -1,5 +1,6 @@
 package com.xiaoyaotong.api.search.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.xiaoyaotong.api.companyitem.dto.CompanySkuDTO;
 import com.xiaoyaotong.api.companyitem.service.CompanySkuService;
 import com.xiaoyaotong.api.companyitem.vo.ReturnCompanySkuVO;
@@ -18,6 +19,9 @@ import com.xiaoyaotong.api.search.service.EsSpuSearchService;
 import com.xiaoyaotong.api.search.vo.*;
 import com.xiaoyaotong.api.standardproduct.entity.MedicineSPU;
 import com.xiaoyaotong.api.standardproduct.service.MedicineSPUService;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,6 +39,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/search")
 public class SearchController {
+	
+	private static Logger log = LoggerFactory.getLogger(SearchController.class);
     @Autowired
     private EsMedicineSpuService eSMedicineSpuService;
 
@@ -69,6 +75,7 @@ public class SearchController {
 
     @RequestMapping(value = "/spu", method = RequestMethod.POST)
     public ReturnSpuVO searchSpu(@RequestBody QuerySpuVO querySpuVO) {
+    	log.info("查询标品，参数："+JSON.toJSONString(querySpuVO));
         ReturnSpuVO returnSpuVO = new ReturnSpuVO();
         List<EsMedicineSpu> spus = esSpuSearchService.searchSpuList(querySpuVO);
         returnSpuVO.setSpus(spus);
@@ -79,6 +86,7 @@ public class SearchController {
 
     @RequestMapping(value = "/sku", method = RequestMethod.POST)
     public ReturnPlatformVO searchSku(@RequestBody QuerySkuVO querySkuVO) {
+    	log.info("查询platsku，参数："+JSON.toJSONString(querySkuVO));
         ReturnPlatformVO returnPlatformVO = new ReturnPlatformVO();
         ReturnSkuVO skus = esSkuSearchService.searchSkuList(querySkuVO);
         List<PlatformSkuDTO> lists = new ArrayList<>();
