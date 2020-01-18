@@ -6,10 +6,7 @@ import com.xiaoyaotong.api.search.service.EsSpuSearchService;
 import com.xiaoyaotong.api.search.vo.QuerySpuVO;
 import org.elasticsearch.action.search.SearchType;
 import org.elasticsearch.client.RestHighLevelClient;
-import org.elasticsearch.index.query.BoolQueryBuilder;
-import org.elasticsearch.index.query.MatchAllQueryBuilder;
-import org.elasticsearch.index.query.MultiMatchQueryBuilder;
-import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.index.query.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
@@ -50,8 +47,8 @@ public class EsSpuSearchServiceImpl implements EsSpuSearchService {
 
         if (querySpuVO != null){
             if(commonName!=null && commonName !=""){
-                MultiMatchQueryBuilder mqb = QueryBuilders
-                        .multiMatchQuery(commonName,
+                TermsQueryBuilder mqb = QueryBuilders
+                        .termsQuery(commonName,
                                 "commonName",
                                 "approvalCode",
                                 "barCode");//多字段查询
