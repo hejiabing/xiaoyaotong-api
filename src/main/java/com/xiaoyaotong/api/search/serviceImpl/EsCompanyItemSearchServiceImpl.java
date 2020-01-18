@@ -63,7 +63,8 @@ public class EsCompanyItemSearchServiceImpl implements EsCompanyItemSearchServic
             }
 
             if(commonName!=null && commonName !=""){
-                bqb.must(QueryBuilders.matchPhraseQuery("commonName",commonName));
+                //bqb.must(QueryBuilders.matchPhraseQuery("commonName",commonName));
+                bqb.must(QueryBuilders.multiMatchQuery(commonName,"commonName","companySkuCode","approvalCode"));
             }
 
             if(companySkuCode!=null && companySkuCode !=""){
