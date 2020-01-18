@@ -1,5 +1,6 @@
 package com.xiaoyaotong.api.companyitem.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.xiaoyaotong.api.companyitem.dto.CompanySkuDTO;
@@ -13,6 +14,8 @@ import com.xiaoyaotong.api.platform.service.PlatformSkuService;
 import com.xiaoyaotong.api.standardproduct.entity.MedicineSPU;
 import com.xiaoyaotong.api.standardproduct.service.MedicineSPUService;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,6 +36,8 @@ import java.util.Map;
 @RestController
 @RequestMapping(value = "companysku")
 public class CompanySkuController {
+	
+	private static Logger log = LoggerFactory.getLogger(CompanySkuController.class);
     @Autowired
     CompanySkuService companySkuService;
     @Autowired
@@ -83,6 +88,7 @@ public class CompanySkuController {
      */
     @RequestMapping(value = "removeBinding", method = RequestMethod.POST)
     public Boolean removeBinding(@RequestBody QueryCompanySkuVO queryCompanySkuVO){
+    	log.info("解除对码绑定，参数："+JSON.toJSONString(queryCompanySkuVO));
         Assert.notNull(queryCompanySkuVO, "dto can not be empty");
         int companyId = queryCompanySkuVO.getCompanyId();
         String companySkuCode = queryCompanySkuVO.getCompanySkuCode();
