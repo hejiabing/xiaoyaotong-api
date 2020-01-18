@@ -1,17 +1,8 @@
 package com.xiaoyaotong.api.platform.controller;
 
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
-import com.xiaoyaotong.api.platform.dto.PlatformSkuDTO;
-import com.xiaoyaotong.api.platform.vo.CopyPlatformSkuVO;
-import com.xiaoyaotong.api.platform.vo.OnsalePlatformSkuVO;
-import com.xiaoyaotong.api.platform.vo.QueryPlatformSkuVO;
-import com.xiaoyaotong.api.platform.vo.ReturnPlatformVO;
-import com.xiaoyaotong.api.platform.entity.PlatformSku;
-import com.xiaoyaotong.api.platform.service.PlatformSkuService;
-import com.xiaoyaotong.api.standardproduct.entity.MedicineSPU;
-import com.xiaoyaotong.api.standardproduct.service.MedicineSPUService;
-import com.xiaoyaotong.api.util.GenerateUniqueIdUtil;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.BeanUtils;
@@ -22,9 +13,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.xiaoyaotong.api.platform.dto.PlatformSkuDTO;
+import com.xiaoyaotong.api.platform.entity.PlatformSku;
+import com.xiaoyaotong.api.platform.service.PlatformSkuService;
+import com.xiaoyaotong.api.platform.service.SkuSyncDataUpdate;
+import com.xiaoyaotong.api.platform.vo.CopyPlatformSkuVO;
+import com.xiaoyaotong.api.platform.vo.OnsalePlatformSkuVO;
+import com.xiaoyaotong.api.platform.vo.QueryPlatformSkuVO;
+import com.xiaoyaotong.api.platform.vo.ReturnPlatformVO;
+import com.xiaoyaotong.api.standardproduct.entity.MedicineSPU;
+import com.xiaoyaotong.api.standardproduct.service.MedicineSPUService;
+import com.xiaoyaotong.api.util.GenerateUniqueIdUtil;
 
 /**
  * @author ：billHe
@@ -37,7 +38,8 @@ public class PlatformSkuController {
 
     @Autowired
     PlatformSkuService platformSkuService;
-
+    @Autowired
+    SkuSyncDataUpdate skuSyncDataUpdate;
     @Autowired
     MedicineSPUService medicineSPUService;
 
@@ -113,6 +115,7 @@ public class PlatformSkuController {
         newPlatformSku.setSpuCode(basicPlatformSku.getSpuCode());
 
         platformSkuService.insertPlatformSku(newPlatformSku);
+        skuSyncDataUpdate.stockProducer(basicPlatformSku.getCompanySkuCode(), basicPlatformSku.getCompanyId());
         return platformSkuService.getSkuBySkuCode(newSkuId);
     }
 
