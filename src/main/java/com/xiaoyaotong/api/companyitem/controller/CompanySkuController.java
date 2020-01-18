@@ -60,6 +60,7 @@ public class CompanySkuController {
                     MedicineSPU standardSpu = medicineSPUService.getBySpuCode(spu);
                     if(null != standardSpu && standardSpu.getId()>0){ //spu有效
                         sku.setSpuCode(spu);
+                        sku.setMatched(queryCompanySkuVO.getMatched());
                         companySkuService.updateByCompanyIdAndSkuCode(sku);
                     }
                 }
