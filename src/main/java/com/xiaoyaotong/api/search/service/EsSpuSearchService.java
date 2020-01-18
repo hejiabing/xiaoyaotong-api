@@ -12,4 +12,5 @@ import java.util.List;
  */
 public interface EsSpuSearchService {
     public List<EsMedicineSpu> searchSpuList(QuerySpuVO querySpuVO);
-}
+    public List<EsMedicineSpu> searchSpuListByFileds(QuerySpuVO querySpuVO) ;
+    }
