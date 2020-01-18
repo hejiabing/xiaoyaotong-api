@@ -2,6 +2,7 @@ package com.xiaoyaotong.api.platform.controller;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.collections4.CollectionUtils;
@@ -113,7 +114,9 @@ public class PlatformSkuController {
         newPlatformSku.setValidMonthEnd(validMonthEnd); //设置效期结束时间
         newPlatformSku.setCommonPrice(price);
         newPlatformSku.setSpuCode(basicPlatformSku.getSpuCode());
-
+        newPlatformSku.setStatus(1);//克隆默认上架
+        newPlatformSku.setCreateTime(new Date());
+        newPlatformSku.setCreateUser(basicPlatformSku.getCompanyId().toString());
         platformSkuService.insertPlatformSku(newPlatformSku);
         skuSyncDataUpdate.stockProducer(basicPlatformSku.getCompanySkuCode(), basicPlatformSku.getCompanyId());
         return platformSkuService.getSkuBySkuCode(newSkuId);
