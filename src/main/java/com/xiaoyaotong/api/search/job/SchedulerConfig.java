@@ -30,7 +30,7 @@ public class SchedulerConfig {
         //EsTaskScheduler taskScheduler = new EsTaskScheduler();
         //String jobName, String jobGroupName, String triggerName, String triggerGroupName, Class jobClass, String cron
         //全量同步spu,每天晚上11点30分
-        taskScheduler.addJob("syncAllSpuJob","group1","trigger1","t1",EsSyncAllSpuJob.class,"0 30 14 * * ?");
+        taskScheduler.addJob("syncAllSpuJob","group1","trigger1","t1",EsSyncAllSpuJob.class,"0 45 15 * * ?");
         //增量同步spu,每7分钟一次
         taskScheduler.addJob("syncIncrementSpuJob","group2","trigger2","t2",EsSyncIncrementSpuJob.class,"0 */20 * * * ?");
         //全量同步sku，每天晚上2点
