@@ -10,8 +10,8 @@ public class QuerySpuVO {
     private String approvalCode;
     private String barCode;
     private String factoryName;
-    private int pageSize;
-    private int startPage;
+    private Integer pageSize;
+    private Integer startPage;
 
 
     public String getCommonName() {
@@ -50,7 +50,7 @@ public class QuerySpuVO {
         return pageSize;
     }
 
-    public void setPageSize(int pageSize) {
+    public void setPageSize(Integer pageSize) {
         this.pageSize = pageSize;
     }
 
@@ -58,7 +58,7 @@ public class QuerySpuVO {
         return startPage;
     }
 
-    public void setStartPage(int startPage) {
+    public void setStartPage(Integer startPage) {
         this.startPage = startPage;
     }
 }
