@@ -44,16 +44,18 @@ public class EsSpuSearchServiceImpl implements EsSpuSearchService {
         int startPage = querySpuVO.getStartPage();
         int pageSize = querySpuVO.getPageSize();
 
+        BoolQueryBuilder bqb = QueryBuilders.boolQuery();//布尔查询
+
 
         if (querySpuVO != null){
             if(commonName!=null && commonName !=""){
-                TermsQueryBuilder mqb = QueryBuilders
-                        .termsQuery(commonName,
-                                "commonName",
-                                "approvalCode",
-                                "barCode");//多字段查询
 
-                SearchQuery searchQuery = new NativeSearchQueryBuilder().withQuery(mqb)
+                bqb.should(QueryBuilders.matchPhraseQuery("approvalCode", commonName));//查询国药准字，不分词，分词查询
+                //bqb.should(QueryBuilders.matchPhraseQuery("barCode",commonName));//查询条码，不分词
+                //bqb.should(QueryBuilders.matchQuery("commonName",commonName));//查询通用名，分词
+                //bqb.should(QueryBuilders.matchPhraseQuery("spuCode",commonName));//查询spucode，不分词
+
+                SearchQuery searchQuery = new NativeSearchQueryBuilder().withQuery(bqb)
                         .withIndices("spu").withTypes("spu")
                         .withSearchType(SearchType.DEFAULT)
                         .withPageable(PageRequest.of(startPage,pageSize))

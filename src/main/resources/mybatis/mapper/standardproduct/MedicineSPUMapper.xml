@@ -103,6 +103,10 @@
     </select>
 
 
+    <select id="getCountofAllSpus" resultType="Integer">
+        select count(*) from t_medicine_spu t
+    </select>
+
     <select id="getChangedSPU" resultMap="medicineSPUType">
         <include refid="basicSQL"/> where s.update_time  > #{beginTime}
         order by s.id asc

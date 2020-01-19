@@ -1,9 +1,11 @@
 package com.xiaoyaotong.api.search.entity;
 
 import lombok.Data;
+import org.apache.lucene.index.FieldInfo;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
 
 import java.io.Serializable;
 
@@ -16,22 +18,30 @@ import java.io.Serializable;
 @Document(indexName = "spu",type="spu")
 public class EsMedicineSpu implements Serializable {
 
-    @Field
+    @Field(type = FieldType.Text,analyzer = "ik_max_word", searchAnalyzer = "ik_max_word")
     private String commonName; //通用名
+
     @Field
-    private String spuCode;// spu code
-    @Field
+    private String spuCode;// spu code,不进行分词，not_analyzed
+
+    @Field(type = FieldType.Text,analyzer = "ik_max_word", searchAnalyzer = "ik_max_word")
     private String approvalCode; //批准文号
-    @Field
+
+    @Field(type = FieldType.Text,analyzer = "ik_max_word", searchAnalyzer = "ik_max_word")
     private String spec; //规格
-    @Field
+
+    @Field(type = FieldType.Text,analyzer = "ik_max_word", searchAnalyzer = "ik_max_word")
     private String factoryName; //生产厂家
-    @Field
+
+    @Field(type = FieldType.Text,analyzer = "ik_max_word", searchAnalyzer = "ik_max_word")
     private String formalName; //商品名
-    @Field
+
+    @Field(type = FieldType.Text,analyzer = "ik_max_word", searchAnalyzer = "ik_max_word")
     private String shortName; //别名
+
     @Field
     private String barCode; //条形码
+
     @Id
     private int id;//id
 
