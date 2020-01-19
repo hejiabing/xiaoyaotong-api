@@ -1,17 +1,15 @@
 package com.xiaoyaotong.api.search.serviceImpl;
 
-import com.xiaoyaotong.api.companyitem.service.CompanySkuService;
-import com.xiaoyaotong.api.companyitem.vo.ReturnCompanySkuVO;
 import com.xiaoyaotong.api.search.dto.CompanyItemDTO;
 import com.xiaoyaotong.api.search.entity.EsCompanyItem;
-import com.xiaoyaotong.api.search.entity.EsPlatformSku;
 import com.xiaoyaotong.api.search.service.EsCompanyItemSearchService;
 import com.xiaoyaotong.api.search.vo.QueryCompanyItemVO;
-import com.xiaoyaotong.api.search.vo.ReturnSkuVO;
-import com.xiaoyaotong.api.standardproduct.service.MedicineSPUService;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.elasticsearch.action.search.SearchType;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
@@ -28,6 +26,8 @@ import java.util.List;
  */
 @Service
 public class EsCompanyItemSearchServiceImpl implements EsCompanyItemSearchService {
+    private static Log log = LogFactory.getLog(EsSpuSynServiceImpl.class);
+
 
     @Autowired
     ElasticsearchTemplate elasticsearchTemplate;
@@ -35,12 +35,12 @@ public class EsCompanyItemSearchServiceImpl implements EsCompanyItemSearchServic
 
     @Override
     public CompanyItemDTO searchCompanyItemList(QueryCompanyItemVO queryCompanyItemVO) {
+
         CompanyItemDTO companyItemDTO = new CompanyItemDTO();
         String commonName = queryCompanyItemVO.getCommonName();//通用名
         String companySkuCode = queryCompanyItemVO.getCompanySkuCode();//公司skuid
         int companyId = queryCompanyItemVO.getCompanyId();//公司id
         Integer matched = queryCompanyItemVO.getMatached();//
-
 
         Integer startPage = queryCompanyItemVO.getStartPage();
         Integer pageSize = queryCompanyItemVO.getPageSize();
@@ -81,6 +81,11 @@ public class EsCompanyItemSearchServiceImpl implements EsCompanyItemSearchServic
                 .withSearchType(SearchType.DEFAULT)
                 .withPageable(PageRequest.of(startPage,pageSize))
                 .build();
+
+        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+        searchSourceBuilder.query(searchQuery.getQuery());
+        log.info("拼接的查询请求======");
+        log.info(searchSourceBuilder.toString());
 
         long count = elasticsearchTemplate.count(searchQuery);
         List<EsCompanyItem> skus = elasticsearchTemplate.queryForList(searchQuery , EsCompanyItem.class);
