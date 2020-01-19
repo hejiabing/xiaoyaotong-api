@@ -75,7 +75,7 @@ public class SearchController {
 
     @RequestMapping(value = "/spu", method = RequestMethod.POST)
     public ReturnSpuVO searchSpu(@RequestBody QuerySpuVO querySpuVO) {
-    	log.info("查询标品，参数："+JSON.toJSONString(querySpuVO));
+    	log.info("查询/search/spu，参数："+JSON.toJSONString(querySpuVO));
         ReturnSpuVO returnSpuVO = new ReturnSpuVO();
         List<EsMedicineSpu> spus = esSpuSearchService.searchSpuList(querySpuVO);
         returnSpuVO.setSpus(spus);
@@ -86,7 +86,7 @@ public class SearchController {
 
     @RequestMapping(value = "/sku", method = RequestMethod.POST)
     public ReturnPlatformVO searchSku(@RequestBody QuerySkuVO querySkuVO) {
-    	log.info("查询platsku，参数："+JSON.toJSONString(querySkuVO));
+    	log.info("查询/search/sku，参数："+JSON.toJSONString(querySkuVO));
         ReturnPlatformVO returnPlatformVO = new ReturnPlatformVO();
         ReturnSkuVO skus = esSkuSearchService.searchSkuList(querySkuVO);
         List<PlatformSkuDTO> lists = new ArrayList<>();
@@ -108,6 +108,7 @@ public class SearchController {
 
     @RequestMapping(value = "/companyitem", method = RequestMethod.POST)
     public ReturnCompanySkuVO searchCompanyItem(@RequestBody QueryCompanyItemVO queryCompanyItemVO) {
+    	log.info("查询/search/companyitem，参数："+JSON.toJSONString(queryCompanyItemVO));
         ReturnCompanySkuVO returnCompanySkuVO = new ReturnCompanySkuVO();
         //搜索出符合条件的list
         CompanyItemDTO companyItemDTO = esCompanyItemSearchService.searchCompanyItemList(queryCompanyItemVO);
