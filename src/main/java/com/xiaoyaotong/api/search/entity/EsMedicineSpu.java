@@ -18,25 +18,25 @@ import java.io.Serializable;
 @Document(indexName = "spu",type="spu")
 public class EsMedicineSpu implements Serializable {
 
-    @Field(type = FieldType.Text,analyzer = "ik_max_word", searchAnalyzer = "ik_max_word")
+    @Field(type = FieldType.Text,analyzer = "ik_smart", searchAnalyzer = "ik_smart")
     private String commonName; //通用名
 
     @Field
     private String spuCode;// spu code,不进行分词，not_analyzed
 
-    @Field(type = FieldType.Text,analyzer = "ik_max_word", searchAnalyzer = "ik_max_word")
+    @Field(type = FieldType.Text,analyzer = "ik_smart", searchAnalyzer = "ik_smart")
     private String approvalCode; //批准文号
 
-    @Field(type = FieldType.Text,analyzer = "ik_max_word", searchAnalyzer = "ik_max_word")
+    @Field(type = FieldType.Text,analyzer = "ik_smart", searchAnalyzer = "ik_smart")
     private String spec; //规格
 
-    @Field(type = FieldType.Text,analyzer = "ik_max_word", searchAnalyzer = "ik_max_word")
+    @Field(type = FieldType.Text,analyzer = "ik_smart", searchAnalyzer = "ik_smart")
     private String factoryName; //生产厂家
 
-    @Field(type = FieldType.Text,analyzer = "ik_max_word", searchAnalyzer = "ik_max_word")
+    @Field(type = FieldType.Text,analyzer = "ik_smart", searchAnalyzer = "ik_smart")
     private String formalName; //商品名
 
-    @Field(type = FieldType.Text,analyzer = "ik_max_word", searchAnalyzer = "ik_max_word")
+    @Field(type = FieldType.Text,analyzer = "ik_smart", searchAnalyzer = "ik_smart")
     private String shortName; //别名
 
     @Field
