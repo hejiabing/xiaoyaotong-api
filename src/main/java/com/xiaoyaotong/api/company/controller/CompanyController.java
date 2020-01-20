@@ -17,7 +17,7 @@ public class CompanyController {
 	private CompanyService companyService;
 	
 	@RequestMapping(value ="/getCompanyInfo",method = RequestMethod.POST)
-    public Company getCompanyInfo(@RequestBody Integer companyId){
+    public Company getCompanyInfo( Integer companyId){
 		return companyService.getCompanyByCompanyId(companyId);
 	}
 }
