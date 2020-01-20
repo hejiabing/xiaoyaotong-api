@@ -3,6 +3,7 @@ package com.xiaoyaotong.api.search.entity;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -21,42 +22,53 @@ public class EsPlatformSku implements Serializable {
     private long id;
 
     //spu的信息
-    @Field
+    @Field(type = FieldType.Text,analyzer = "ik_smart", searchAnalyzer = "ik_smart")
     private String spuCode;// spu code
-    @Field
+
+    @Field(type = FieldType.Text,analyzer = "ik_smart", searchAnalyzer = "ik_smart")
     private String commonName; //通用名
-    @Field
+
+    @Field(type = FieldType.Text,analyzer = "ik_smart", searchAnalyzer = "ik_smart")
     private String approvalCode; //批准文号
 
-    @Field
+    @Field(type = FieldType.Text,analyzer = "ik_smart", searchAnalyzer = "ik_smart")
     private String spec; //规格
 
-    @Field
+    @Field(type = FieldType.Text,analyzer = "ik_smart", searchAnalyzer = "ik_smart")
     private String factoryName; //生产厂家
-    @Field
+
+    @Field(type = FieldType.Text,analyzer = "ik_smart", searchAnalyzer = "ik_smart")
     private String formalName; //商品名
-    @Field
+
+    @Field(type = FieldType.Text,analyzer = "ik_smart", searchAnalyzer = "ik_smart")
     private String shortName; //别名
 
-    @Field
+    @Field(type = FieldType.Text,analyzer = "ik_smart", searchAnalyzer = "ik_smart")
     private String barCode; //条形码
 
     //sku的信息
-    @Field
+    @Field(type = FieldType.Text,analyzer = "ik_smart", searchAnalyzer = "ik_smart")
     private String skuCode;//sku code
-    @Field
+
+    @Field(type = FieldType.Integer)
     private int companyId; //卖家id
-    @Field
+
+    @Field(type = FieldType.Text,analyzer = "ik_smart", searchAnalyzer = "ik_smart")
     private String companyName; //卖家名称
-    @Field
+
+    @Field(type = FieldType.Text,index = false)
     private String batchNos; //批号集合
-    @Field
+
+    @Field(type = FieldType.Text,index = false)
     private String deadlineNos; //效期集合
-    @Field
+
+    @Field(type = FieldType.Integer,index = false)
     private int stocks;//库存
-    @Field
+
+    @Field(type = FieldType.Double,index = false)
     private BigDecimal commonPrice; //价格
-    @Field
+
+    @Field(type = FieldType.Text,analyzer = "ik_smart", searchAnalyzer = "ik_smart")
     private Integer status; //上下架状态
 
 

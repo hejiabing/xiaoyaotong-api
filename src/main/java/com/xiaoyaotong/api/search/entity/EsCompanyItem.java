@@ -3,6 +3,7 @@ package com.xiaoyaotong.api.search.entity;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -20,31 +21,40 @@ public class EsCompanyItem implements Serializable {
     @Id
     private int id;
 
-    @Field
+    @Field(type = FieldType.Integer)
     private int companyId; //卖家id
-    @Field
+
+    @Field(type = FieldType.Text,analyzer = "ik_smart", searchAnalyzer = "ik_smart")
     private String companyName; //卖家名称
-    @Field
+
+    @Field(type = FieldType.Text,analyzer = "ik_smart", searchAnalyzer = "ik_smart")
     private String companySkuCode;//
-    @Field
+
+    @Field(type = FieldType.Text,analyzer = "ik_smart", searchAnalyzer = "ik_smart")
     private String commonName; //通用名
-    @Field
+
+    @Field(type = FieldType.Text,analyzer = "ik_smart", searchAnalyzer = "ik_smart")
     private String approvalCode; //批准文号
-    @Field
+
+    @Field(type = FieldType.Text,analyzer = "ik_smart", searchAnalyzer = "ik_smart")
     private String spec; //规格
 
-    @Field
+    @Field(type = FieldType.Text,analyzer = "ik_smart", searchAnalyzer = "ik_smart")
     private String factoryName; //生产厂家
-    @Field
+
+    @Field(type = FieldType.Text,analyzer = "ik_smart", searchAnalyzer = "ik_smart")
     private String formalName; //商品名
-    @Field
+
+    @Field(type = FieldType.Text,analyzer = "ik_smart", searchAnalyzer = "ik_smart")
     private String shortName; //别名
-    @Field
+
+    @Field(type = FieldType.Text,analyzer = "ik_smart", searchAnalyzer = "ik_smart")
     private String barCode; //条形码
-    @Field
+
+    @Field(type = FieldType.Text,analyzer = "ik_smart", searchAnalyzer = "ik_smart")
     private String spuCode;
 
-    @Field
+    @Field(type = FieldType.Text,analyzer = "ik_smart", searchAnalyzer = "ik_smart")
     private Integer matched; //是否匹配上
 
     public int getId() {

@@ -30,15 +30,15 @@ public class SchedulerConfig {
         //EsTaskScheduler taskScheduler = new EsTaskScheduler();
         //String jobName, String jobGroupName, String triggerName, String triggerGroupName, Class jobClass, String cron
         //全量同步spu,每天晚上11点30分
-        taskScheduler.addJob("syncAllSpuJob","group1","trigger1","t1",EsSyncAllSpuJob.class,"0 45 15 * * ?");
+        taskScheduler.addJob("syncAllSpuJob","group1","trigger1","t1",EsSyncAllSpuJob.class,"0 45 11 * * ?");
         //增量同步spu,每7分钟一次
         taskScheduler.addJob("syncIncrementSpuJob","group2","trigger2","t2",EsSyncIncrementSpuJob.class,"0 */20 * * * ?");
         //全量同步sku，每天晚上2点
-        taskScheduler.addJob("syncAllSkuJob","group3","trigger3","t3",EsSyncAllSkuJob.class,"0 27 21 * * ?");
+        taskScheduler.addJob("syncAllSkuJob","group3","trigger3","t3",EsSyncAllSkuJob.class,"0 47 11 * * ?");
         //增量同步sku,每5分钟一次
         taskScheduler.addJob("syncIncrementSkuJob","group4","trigger4","t4", EsSyncIncrementSkuJob.class,"0 */20 * * * ?");
         //全量同步公司自己的sku
-        taskScheduler.addJob("syncAllCompanyItemJob","group5","trigger5","t5",EsSyncAllCompanyItemJob.class,"00 35 21 * * ?");
+        taskScheduler.addJob("syncAllCompanyItemJob","group5","trigger5","t5",EsSyncAllCompanyItemJob.class,"00 49 11 * * ?");
         //增量同步公司自己的sku,每3分钟一次
         taskScheduler.addJob("EsSyncIncrementCompanyItemJob","group6","trigger6","t6",EsSyncIncrementCompanyItemJob.class,"0 */20 * * * ?");
     }

@@ -21,7 +21,7 @@ public class EsMedicineSpu implements Serializable {
     @Field(type = FieldType.Text,analyzer = "ik_smart", searchAnalyzer = "ik_smart")
     private String commonName; //通用名
 
-    @Field
+    @Field(type = FieldType.Text,analyzer = "ik_smart", searchAnalyzer = "ik_smart")
     private String spuCode;// spu code,不进行分词，not_analyzed
 
     @Field(type = FieldType.Text,analyzer = "ik_smart", searchAnalyzer = "ik_smart")
@@ -39,7 +39,7 @@ public class EsMedicineSpu implements Serializable {
     @Field(type = FieldType.Text,analyzer = "ik_smart", searchAnalyzer = "ik_smart")
     private String shortName; //别名
 
-    @Field
+    @Field(type = FieldType.Text,analyzer = "ik_smart", searchAnalyzer = "ik_smart")
     private String barCode; //条形码
 
     @Id
