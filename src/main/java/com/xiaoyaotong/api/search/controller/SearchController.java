@@ -33,7 +33,7 @@ import java.util.List;
 
 /**
  * @author ：billHe
- * @description：TODO
+ * @description：搜索的controller类
  * @date ：2019/12/2 9:10 PM
  */
 @RestController
@@ -112,7 +112,7 @@ public class SearchController {
         ReturnCompanySkuVO returnCompanySkuVO = new ReturnCompanySkuVO();
         //搜索出符合条件的list
         CompanyItemDTO companyItemDTO = esCompanyItemSearchService.searchCompanyItemList(queryCompanyItemVO);
-        List<CompanySkuDTO> dtolist = new ArrayList<>();
+        List<CompanySkuDTO> dtoList = new ArrayList<>();
 
         for(EsCompanyItem item : companyItemDTO.getItems()){
             CompanySkuDTO companySkuDTO = new CompanySkuDTO();
@@ -131,12 +131,12 @@ public class SearchController {
                 MedicineSPU medicineSPU = medicineSPUService.getBySpuCode(spuCode);
                 companySkuDTO.setMedicineSPU(medicineSPU);
             }
-            dtolist.add(companySkuDTO);
+            dtoList.add(companySkuDTO);
         }
 
         returnCompanySkuVO.setPageNum(queryCompanyItemVO.getStartPage());
         returnCompanySkuVO.setPageSize(queryCompanyItemVO.getPageSize());
-        returnCompanySkuVO.setCompanySkuList(dtolist);
+        returnCompanySkuVO.setCompanySkuList(dtoList);
         returnCompanySkuVO.setCount(companyItemDTO.getCount());
 
             return returnCompanySkuVO;

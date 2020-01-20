@@ -24,7 +24,7 @@ import java.util.List;
 
 /**
  * @author ：billHe
- * @description：TODO
+ * @description：本类主要用于对商家自己的商品进行全量同步和增量同步
  * @date ：2019/12/21 8:39 PM
  */
 @Service

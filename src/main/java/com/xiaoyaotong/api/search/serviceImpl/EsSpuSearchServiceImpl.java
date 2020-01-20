@@ -1,5 +1,6 @@
 package com.xiaoyaotong.api.search.serviceImpl;
 
+import com.alibaba.fastjson.JSON;
 import com.xiaoyaotong.api.search.dao.EsMedicineSpuDao;
 import com.xiaoyaotong.api.search.entity.EsMedicineSpu;
 import com.xiaoyaotong.api.search.service.EsSpuSearchService;
@@ -35,26 +36,30 @@ public class EsSpuSearchServiceImpl implements EsSpuSearchService {
     @Autowired
     ElasticsearchTemplate elasticsearchTemplate;
 
-    @Autowired
-    RestHighLevelClient client;
-
 
     @Override
     public List<EsMedicineSpu> searchSpuList(QuerySpuVO querySpuVO) {
-
+        log.debug(JSON.toJSONString(querySpuVO));
         List<EsMedicineSpu> spus = new ArrayList<>();
         String commonName = querySpuVO.getCommonName();//通用名
         String approvalCode = querySpuVO.getApprovalCode();//批准文号
         String barCode = querySpuVO.getBarCode();//条形码
-        int startPage = querySpuVO.getStartPage();
-        int pageSize = querySpuVO.getPageSize();
 
-        //
-        if(pageSize<2){pageSize=10;}
+        Integer startPage = querySpuVO.getStartPage();
+        Integer pageSize = querySpuVO.getPageSize();
+
+        if(startPage == null){//防呆，如果为空，则置为0
+            startPage = 0;
+        }
+
+        if(pageSize == null) {//防呆，如果为空，则置为10
+            pageSize = 10;
+        }else if(pageSize < 1){//防呆，如果小于1，则置为10
+            pageSize = 10;
+        }
 
         if (querySpuVO != null){
             if(commonName!=null && commonName !=""){
-
                 BoolQueryBuilder bqb =
                         QueryBuilders.boolQuery()
                                 /*查询通用名，分词*/
@@ -65,7 +70,6 @@ public class EsSpuSearchServiceImpl implements EsSpuSearchService {
                                 .should(QueryBuilders.matchPhraseQuery("spuCode",commonName))
                                 /*查询barCode*/
                                 .should(QueryBuilders.matchPhraseQuery("barCode",commonName));
-                ;
 
                 SearchQuery searchQuery = new NativeSearchQueryBuilder().withQuery(bqb)
                         .withIndices("spu").withTypes("spu")
@@ -76,8 +80,8 @@ public class EsSpuSearchServiceImpl implements EsSpuSearchService {
 
                 SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
                 searchSourceBuilder.query(searchQuery.getQuery());
-                log.info("拼接的查询请求======");
-                log.info(searchSourceBuilder.toString());
+                log.debug("拼接的查询请求======");
+                log.debug(searchSourceBuilder.toString());
 
                 spus = elasticsearchTemplate.queryForList(searchQuery , EsMedicineSpu.class);
 
