@@ -161,6 +161,9 @@
 			<if test="matched != null ">
 				matched=#{matched},
 			</if>
+			<if test="spu != null ">
+				spu_code = #{spuCode},
+			</if>
 		</set>
 		where company_id = #{companyId} and company_sku_code = #{companySkuCode}
 	</update>
