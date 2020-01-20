@@ -68,7 +68,7 @@ public class EsPlatformSku implements Serializable {
     @Field(type = FieldType.Double,index = false)
     private BigDecimal commonPrice; //价格
 
-    @Field(type = FieldType.Text,analyzer = "ik_smart", searchAnalyzer = "ik_smart")
+    @Field(type = FieldType.Integer)
     private Integer status; //上下架状态
 
 

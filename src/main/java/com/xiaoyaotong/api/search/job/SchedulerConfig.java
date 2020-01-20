@@ -38,7 +38,7 @@ public class SchedulerConfig {
         //增量同步sku,每5分钟一次
         taskScheduler.addJob("syncIncrementSkuJob","group4","trigger4","t4", EsSyncIncrementSkuJob.class,"0 */20 * * * ?");
         //全量同步公司自己的sku
-        taskScheduler.addJob("syncAllCompanyItemJob","group5","trigger5","t5",EsSyncAllCompanyItemJob.class,"00 49 11 * * ?");
+        taskScheduler.addJob("syncAllCompanyItemJob","group5","trigger5","t5",EsSyncAllCompanyItemJob.class,"00 50 17 * * ?");
         //增量同步公司自己的sku,每3分钟一次
         taskScheduler.addJob("EsSyncIncrementCompanyItemJob","group6","trigger6","t6",EsSyncIncrementCompanyItemJob.class,"0 */20 * * * ?");
     }
