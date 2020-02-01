@@ -1,4 +1,4 @@
-package com.xiaoyaotong.api.search.job;
+package com.xiaoyaotong.api.util;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -13,12 +13,13 @@ import org.quartz.*;
  * @date ：2019/12/3 10:25 PM
  */
 @Service
-public class EsTaskScheduler {
+public class TaskSchedulerService {
 
-    private static Log log = LogFactory.getLog(EsTaskScheduler.class);
+    private static Log log = LogFactory.getLog(TaskSchedulerService.class);
 
     @Autowired
     SchedulerFactoryBean schedulerFactory;
+
     @Autowired
     private Scheduler scheduler;
 

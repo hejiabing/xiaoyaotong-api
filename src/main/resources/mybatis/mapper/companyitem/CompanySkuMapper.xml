@@ -204,6 +204,13 @@
 		limit #{itemBegin},#{itemNum}
 	</select>
 
+	<select id="getUnmatchedCompanyItems" resultMap="companySkuType">
+		<include refid="basicSQL" />
+		where s.matched = 0
+		order by s.id desc
+		limit #{size}
+	</select>
+
 	<select id="getCompanySkuId" resultType="Integer">
 		select id from t_company_sku t
 		where t.company_id =#{companyId} and t.company_sku_code = #{companySkuCode}

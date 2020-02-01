@@ -99,6 +99,11 @@ public class CompanySkuServiceImpl implements CompanySkuService {
     }
 
     @Override
+    public List<CompanySku> getUnmatchedCompanyItems() {
+        return companySkuMapper.getUnmatchedCompanyItems(200);
+    }
+
+    @Override
     public List<CompanySku> getIncrementCompanyItemList(String beginTime, int beginPage, int pageSize) {
         return companySkuMapper.getChangedCompanyItemList(beginTime,beginPage,pageSize);
     }

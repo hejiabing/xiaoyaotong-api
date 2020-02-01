@@ -43,6 +43,8 @@ public interface CompanySkuMapper {
 
 	public int getChangedCompanyItemCount(String beginTime);
 
+	public List<CompanySku> getUnmatchedCompanyItems(int size);
+
 	public List<CompanySku> getChangedCompanyItemList(@Param("beginTime")String beginTime,
                                                       @Param("beginPage") int beginPage,
                                                       @Param("pageSize") int pageSize);

@@ -33,8 +33,14 @@ public interface CompanySkuService {
      */
     public List<CompanySku> getSkuByCompanyId(int companyId,int matached);
 
+    /*
+    * 增加公司的sku
+    */
     public int addCompanySkuList(List<CompanySku> skus);
 
+    /*
+    *update 公司的sku
+    */
     public int updateCompanySkuById(CompanySku csku);
 
     public int updateByCompanyIdAndSkuCode(CompanySku csku);
@@ -44,6 +50,8 @@ public interface CompanySkuService {
 	public int getCompanyItemCount(int matched);
 
     public int getIncrementCompanyItemCount(String beginTime);
+
+    public List<CompanySku> getUnmatchedCompanyItems();
 
     public List<CompanySku> getIncrementCompanyItemList(String beginTime,int beginPage,int pageSize);
 }
