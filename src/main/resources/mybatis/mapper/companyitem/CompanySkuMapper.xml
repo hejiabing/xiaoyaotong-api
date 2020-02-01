@@ -161,7 +161,7 @@
 			<if test="matched != null ">
 				matched=#{matched},
 			</if>
-			<if test="spu != null ">
+			<if test="spuCode != null ">
 				spu_code = #{spuCode},
 			</if>
 		</set>
