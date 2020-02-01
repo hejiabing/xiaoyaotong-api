@@ -49,6 +49,8 @@ public class SkuMatchServiceImpl implements SkuMatchService {
                     //匹配上以后，打标&设置
                     iter.setSpuCode(spu.getSpuCode());
                     iter.setMatched(1);
+                    companySkuService.updateCompanySkuById(iter);
+                    return;
                 }
             }
         }
