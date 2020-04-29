@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.xiaoyaotong.api.companyitem.entity.CompanySku;
 import com.xiaoyaotong.api.companyitem.mapper.CompanySkuMapper;
 import com.xiaoyaotong.api.companyitem.service.CompanySkuService;
+import com.xiaoyaotong.api.companyitem.vo.CompanySkuInfo;
+import com.xiaoyaotong.api.companyitem.vo.QueryCompanySkuVO;
 
 /**
  * @author ：billHe
@@ -107,4 +109,10 @@ public class CompanySkuServiceImpl implements CompanySkuService {
     public List<CompanySku> getIncrementCompanyItemList(String beginTime, int beginPage, int pageSize) {
         return companySkuMapper.getChangedCompanyItemList(beginTime,beginPage,pageSize);
     }
+
+	@Override
+	public List<CompanySkuInfo> getCompanySkuInfoList(
+			QueryCompanySkuVO queryCompanySkuVO) {
+		return companySkuMapper.getCompanySkuInfoList(queryCompanySkuVO);
+	}
 }

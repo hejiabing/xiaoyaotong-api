@@ -1,6 +1,8 @@
 package com.xiaoyaotong.api.companyitem.mapper;
 
 import com.xiaoyaotong.api.companyitem.entity.CompanySku;
+import com.xiaoyaotong.api.companyitem.vo.CompanySkuInfo;
+import com.xiaoyaotong.api.companyitem.vo.QueryCompanySkuVO;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -48,4 +50,7 @@ public interface CompanySkuMapper {
 	public List<CompanySku> getChangedCompanyItemList(@Param("beginTime")String beginTime,
                                                       @Param("beginPage") int beginPage,
                                                       @Param("pageSize") int pageSize);
+
+	public List<CompanySkuInfo> getCompanySkuInfoList(
+			QueryCompanySkuVO queryCompanySkuVO);
 }

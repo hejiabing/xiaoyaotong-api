@@ -1,6 +1,8 @@
 package com.xiaoyaotong.api.companyitem.service;
 
 import com.xiaoyaotong.api.companyitem.entity.CompanySku;
+import com.xiaoyaotong.api.companyitem.vo.CompanySkuInfo;
+import com.xiaoyaotong.api.companyitem.vo.QueryCompanySkuVO;
 
 import java.util.Date;
 import java.util.List;
@@ -54,4 +56,7 @@ public interface CompanySkuService {
     public List<CompanySku> getUnmatchedCompanyItems();
 
     public List<CompanySku> getIncrementCompanyItemList(String beginTime,int beginPage,int pageSize);
+
+	public List<CompanySkuInfo> getCompanySkuInfoList(
+			QueryCompanySkuVO queryCompanySkuVO);
 }

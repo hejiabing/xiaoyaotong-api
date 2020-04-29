@@ -259,4 +259,57 @@
 		</set>
 		where id = #{id,jdbcType=INTEGER}
 	</update>
+	
+	
+	<resultMap id="companySkuInfoMap"
+		type="com.xiaoyaotong.api.companyitem.vo.CompanySkuInfo">
+		<id property="id" jdbcType="INTEGER" column="id" />
+		<result property="companyId" column="company_id" jdbcType="INTEGER" />
+		<result property="companySkuCode" column="company_sku_code"
+			jdbcType="VARCHAR" />
+		<result column="common_name" jdbcType="VARCHAR" property="commonName" />
+		<result column="approval_code" jdbcType="VARCHAR" property="approvalCode" />
+		<result column="spec" jdbcType="VARCHAR" property="spec" />
+		<result column="factory_name" jdbcType="VARCHAR" property="factoryName" />
+		<result column="bar_code" jdbcType="VARCHAR" property="barCode" />
+		<result column="status" jdbcType="VARCHAR" property="status" />
+		<result property="spuCode" column="spu_code" jdbcType="VARCHAR" />
+		<result property="matched" column="matched" jdbcType="INTEGER" />
+		<result column="create_user" jdbcType="VARCHAR" property="createUser" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="update_user" jdbcType="VARCHAR" property="updateUser" />
+		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+		<association property="skuPirce" select="com.xiaoyaotong.api.companyitem.mapper.CompanySkuPriceMapper.getCompanySkuPrice"
+	    	column="{companyId=company_id,companySkuCode=company_sku_code}">
+		</association>
+		<collection property="skuBatchList" javaType="java.util.ArrayList" ofType="com.xiaoyaotong.api.companyitem.entity.CompanySkuBatch"
+					select="com.xiaoyaotong.api.companyitem.mapper.CompanySkuBatchMapper.getValidCompanySkuBatch" column="{companyId=company_id,companySkuCode=company_sku_code}" />
+	</resultMap>
+	
+	<select id="getCompanySkuInfoList" resultMap="companySkuInfoMap">
+		<include refid="basicSQL" />
+		<where>
+			<if test="companyId != null">
+			 and	company_id = #{companyId,jdbcType=INTEGER}
+			</if>
+			<if test="companySkuCode != null">
+			and company_sku_code =	#{companySkuCode,jdbcType=VARCHAR}
+			</if>
+			<if test="commonName != null">
+				and common_name=#{commonName}
+			</if>
+			<if test="approvalCode != null">
+				and approval_code=#{approvalCode}
+			</if>
+			<!-- <if test="spec != null">
+				and spec=#{spec},
+			</if> -->
+			<if test="factoryName != null">
+				and factory_name=#{factoryName}
+			</if>
+			<if test="barCode != null">
+				and bar_code=#{barCode} 
+			</if>
+		</where>
+	</select>
 </mapper>

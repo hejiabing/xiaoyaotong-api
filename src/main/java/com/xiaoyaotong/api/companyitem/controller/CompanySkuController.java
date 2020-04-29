@@ -1,18 +1,9 @@
 package com.xiaoyaotong.api.companyitem.controller;
 
-import com.alibaba.fastjson.JSON;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
-import com.xiaoyaotong.api.companyitem.dto.CompanySkuDTO;
-import com.xiaoyaotong.api.companyitem.vo.QueryCompanySkuVO;
-import com.xiaoyaotong.api.companyitem.vo.ReturnCompanySkuVO;
-import com.xiaoyaotong.api.companyitem.entity.CompanySku;
-import com.xiaoyaotong.api.companyitem.service.CompanySkuService;
-import com.xiaoyaotong.api.platform.dto.PlatformSkuDTO;
-import com.xiaoyaotong.api.platform.entity.PlatformSku;
-import com.xiaoyaotong.api.platform.service.PlatformSkuService;
-import com.xiaoyaotong.api.standardproduct.entity.MedicineSPU;
-import com.xiaoyaotong.api.standardproduct.service.MedicineSPUService;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,10 +14,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.alibaba.fastjson.JSON;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.xiaoyaotong.api.companyitem.dto.CompanySkuDTO;
+import com.xiaoyaotong.api.companyitem.entity.CompanySku;
+import com.xiaoyaotong.api.companyitem.service.CompanySkuService;
+import com.xiaoyaotong.api.companyitem.vo.CompanySkuInfo;
+import com.xiaoyaotong.api.companyitem.vo.QueryCompanySkuVO;
+import com.xiaoyaotong.api.companyitem.vo.ReturnCompanySkuVO;
+import com.xiaoyaotong.api.platform.entity.PlatformSku;
+import com.xiaoyaotong.api.platform.service.PlatformSkuService;
+import com.xiaoyaotong.api.standardproduct.entity.MedicineSPU;
+import com.xiaoyaotong.api.standardproduct.service.MedicineSPUService;
 
 /**
  * @author ：billHe
@@ -194,4 +194,16 @@ public class CompanySkuController {
         }
         return returnCompanySkuVO;
     }// end of getPlatformSku
+    
+    /**
+     * 返回sku信息，包含库存、价格
+     * @return
+     */
+    @RequestMapping(value = "/getSkuInfo", method = RequestMethod.POST)
+    public PageInfo<CompanySkuInfo> getSkuInfo(@RequestBody QueryCompanySkuVO queryCompanySkuVO){
+    	PageHelper.startPage(queryCompanySkuVO.getStartPage(), queryCompanySkuVO.getPageSize());
+		List<CompanySkuInfo> list = companySkuService.getCompanySkuInfoList(queryCompanySkuVO);
+		PageInfo pageInfo = new PageInfo(list);
+        return pageInfo;
+    }
 }//end of the clase
